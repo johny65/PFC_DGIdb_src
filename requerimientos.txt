@@ -1,0 +1,15 @@
+tensorflow
+tensorflow-gpu
+keras
+pandas
+numpy
+pillow
+wandb
+h5py
+opencv-python
+scikit-learn
+scikit-image
+matplotlib
+PyPDF2
+textract
+nltk
