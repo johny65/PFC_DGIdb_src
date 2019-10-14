@@ -53,6 +53,6 @@ if __name__ == "__main__":
                 if len(l.split()) > 1:
                     out.write(l)
                 else:
-                    url = get_src_url(l)
+                    url = get_src_url(l) # l == pmid
                     print(l.strip(), url)
                     out.write(l.strip() + " " + url + "\n")
