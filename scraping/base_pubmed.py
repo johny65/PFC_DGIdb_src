@@ -4,13 +4,17 @@ obtiene la URL de las fuentes y las guarda al lado de cada PMID.
 """
 
 import urllib.request
+from urllib.error import HTTPError
 import sys
 
 def fetch_url(url):
     """Descarga y devuelve el contenido de una URL."""
-    with urllib.request.urlopen(url) as f:
-        data = f.read()
-        return data.decode("utf8")
+    try:
+        with urllib.request.urlopen(url) as f:
+            data = f.read()
+            return data.decode("utf8")
+    except HTTPError:
+        return "404"
 
 def get_src_url(pmid):
     """Dado un PMID, devuelve la URL de la fuente."""
