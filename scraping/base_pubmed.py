@@ -28,7 +28,7 @@ def extract_src_url(data):
         try:
             found = l.index("Full Text Sources")
             href = l.index("href=", found)
-            url = l[href+6:l.index('"', href+7)]
+            url = l[href+6:l.index('"', href+7)].replace("&amp;", "&")
             return url
         except:
             pass
