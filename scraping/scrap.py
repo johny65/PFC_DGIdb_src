@@ -5,6 +5,8 @@ import pathlib
 import subprocess
 import sys
 # scrapers:
+# (cada scraper contiene un método 'scrap(url)' que dada la URL de la fuente
+# devuelve la URL del PDF, o None si no pudo obtenerla)
 import jbc
 
 
@@ -30,12 +32,15 @@ def load_downloaded():
 
 def process(url):
     """
-    Dada una URL determina la fuente y devuelve la URL para descargar el PDF según el
-    scraper correspondiente.
+    Dada una URL determina la fuente y llama al scraper correspondiente para que
+    devuelve la URL para descargar el PDF.
     """
     if "jbc.org" in url:
-        return jbc.jbc(url)
-    return None
+        scraper = jbc
+    else:
+        scraper = None
+    
+    return scraper.scrap(url) if scraper else None
 
 
 def process_line(line):
