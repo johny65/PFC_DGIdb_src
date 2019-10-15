@@ -168,3 +168,9 @@ join drugs d on d.id = i.drug_id
 where p.pmid is not null
 group by pubmed,gen,droga,interaccion
 order by pubmed
+
+select g.name as gen, array_agg(ga.alias)
+from genes g
+join gene_aliases ga on g.id = ga.gene_id
+group by gen
+order by gen,2
