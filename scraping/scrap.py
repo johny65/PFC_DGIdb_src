@@ -10,6 +10,7 @@ import math
 # (cada scraper contiene un método 'scrap(url)' que dada la URL de la fuente
 # devuelve la URL del PDF, o None si no pudo obtenerla)
 import jbc
+import cancerres
 
 
 def download_async(url, pmid):
@@ -45,6 +46,8 @@ def process(url):
     """
     if "jbc.org" in url:
         scraper = jbc
+    elif "cancerres" in url:
+        scraper = cancerres
     else:
         scraper = None
     
@@ -78,7 +81,6 @@ def paralelizar(lines):
     jobs = []
     for i in range(cpus):
         chunk = lines[chunksize * i:chunksize * (i + 1)]
-        print("Chunk", i, chunk)
         thread = mp.Process(target=process_chunk, args=(chunk,))
         jobs.append(thread)
         thread.start()
