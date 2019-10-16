@@ -50,8 +50,8 @@ def convertMultiple(pdfDir, txtDir):
 #p : pdfDir
 #t = txtDir
 def main(argv):
-    pdfDir = "D:\\Descargas\\Python\\neural_networks\\"
-    txtDir = "D:\\Descargas\\Python\\neural_networks\\"
+    pdfDir = "D:\\Descargas\\Python\\PFC_DGIdb_src\\"
+    txtDir = "D:\\Descargas\\Python\\PFC_DGIdb_src\\"
     try:
         opts, args = getopt.getopt(argv,"ip:t:")
     except getopt.GetoptError:
