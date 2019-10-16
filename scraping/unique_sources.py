@@ -1,20 +1,20 @@
+import utils
 import sys
 
 def unique_sources(data_file):
     """data_file es un archivo de salida de base_pubmed.py, siendo cada línea 'pmid url'."""
-    sources = set()
+    sources = {}
     with open(data_file) as f:
         for l in f:
-            base_url = l.split(" ")[1]
-            try:
-                pos = base_url.index("://")
-            except ValueError:
-                continue
-            pos += 3
-            base_url = base_url[pos:base_url.index("/", pos)]
-            sources.add(base_url)
+            base_url = utils.get_base_server(l.split(" ")[1])
+            if not base_url: continue
+            if not base_url in sources:
+                sources[base_url] = 0
+            sources[base_url] += 1
         print("Fuentes distintas:", len(sources))
-        print(sorted(list(sources)))
+        print("Artículos en cada una:")
+        for x in sorted(list(sources.items()), key=lambda x: x[1], reverse=True):
+            print(x[0] + ":", x[1])
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
