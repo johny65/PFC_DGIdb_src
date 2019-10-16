@@ -52,11 +52,11 @@ create table interacciones_farmaco_gen (
 
 /* Datos */
 
-copy (select gen from genes_ifg) to 'D:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\genes.csv' csv header
-copy (select droga from drogas_ifg) to 'D:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\drogas.csv' csv header
-copy (select interaccion from interacciones_ifg) to 'D:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\interacciones.csv' csv header
-copy (select droga,alias from drogas_alias_ifg) to 'D:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\drogas_alias.csv' csv header
-copy (select gen,alias from genes_alias_ifg) to 'D:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\genes_alias.csv' csv header
+-- copy (select gen from genes_ifg) to 'D:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\genes.csv' csv header
+-- copy (select droga from drogas_ifg) to 'D:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\drogas.csv' csv header
+-- copy (select interaccion from interacciones_ifg) to 'D:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\interacciones.csv' csv header
+-- copy (select droga,alias from drogas_alias_ifg) to 'D:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\drogas_alias.csv' csv header
+-- copy (select gen,alias from genes_alias_ifg) to 'D:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\genes_alias.csv' csv header
 
  --
 
