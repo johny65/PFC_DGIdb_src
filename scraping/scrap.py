@@ -13,6 +13,7 @@ import parallel
 import jbc
 import cancerres
 import jnccn
+import nature
 
 
 def download_async(url, pmid):
@@ -52,6 +53,8 @@ def process(url):
         scraper = cancerres
     elif "jnccn.org" in url:
         scraper = jnccn
+    elif "nature.com" in url:
+        scraper = nature
     else:
         scraper = None
     
