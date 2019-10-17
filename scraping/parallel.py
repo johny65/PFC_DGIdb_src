@@ -1,4 +1,5 @@
 import multiprocessing
+import operator
 import math
 
 def parallel_map(func, elements):
@@ -7,14 +8,14 @@ def parallel_map(func, elements):
     sería: res = [func(x) for x in elements] pero paralelamente.
     """
     cant = len(elements)
-    cpus = multiprocessing.cpu_count()
+    cpus = multiprocessing.cpu_count() * 2
     chunksize = int(math.ceil(cant / cpus))
     outq = multiprocessing.Queue()
     jobs = []
     for i in range(cpus):
         chunk = elements[chunksize * i:chunksize * (i + 1)]
         thread = multiprocessing.Process(
-            target=self.process_chunk, args=(chunk, i, outq))
+            target=process_chunk, args=(func, chunk, i, outq))
         jobs.append(thread)
         thread.start()
 
@@ -29,8 +30,9 @@ def parallel_map(func, elements):
     # for t in res:
         # self.data.extend(t[1])
 
-def process_chunk(chunk, chunk_index, outq):
-    outq.put((chunk_index, mls))
+def process_chunk(func, chunk, chunk_index, outq):
+    res = [func(x) for x in chunk]
+    outq.put((chunk_index, res))
 
 
 def parallel_map_to_file(func, elements, outfile):

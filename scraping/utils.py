@@ -2,6 +2,7 @@ from html.parser import HTMLParser
 from urllib.error import HTTPError
 import urllib.request
 import urllib.parse
+import subprocess
 import logging
 
 class ElsevierParser(HTMLParser):
@@ -22,6 +23,14 @@ def fetch_url(url):
     except HTTPError as ex:
         logging.log(logging.ERROR, ex)
         return ""
+
+def fetch_url_wget(url):
+    """
+    Descarga y devuelve el contenido de una URL usando por abajo un proceso de wget,
+    en caso de que el servidor bloquee bots.
+    """
+    res = subprocess.run(["wget", "-O", "-", url], capture_output=True, text=True)
+    return res.stdout
 
 def redirect(url):
     """Navega la URL y devuelve la URL a la que redirigió."""

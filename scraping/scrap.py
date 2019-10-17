@@ -6,11 +6,13 @@ import subprocess
 import multiprocessing as mp
 import sys
 import math
+import parallel
 # scrapers:
 # (cada scraper contiene un método 'scrap(url)' que dada la URL de la fuente
 # devuelve la URL del PDF, o None si no pudo obtenerla)
 import jbc
 import cancerres
+import jnccn
 
 
 def download_async(url, pmid):
@@ -48,6 +50,8 @@ def process(url):
         scraper = jbc
     elif "cancerres" in url:
         scraper = cancerres
+    elif "jnccn.org" in url:
+        scraper = jnccn
     else:
         scraper = None
     
@@ -70,42 +74,19 @@ def process_line(line):
                 print(pmid, "ya descargado")
 
 
-def paralelizar(lines):
-    """
-    Divide todo el archivo de entrada en N partes (donde N es la cantidad de cpus)
-    y procesa cada parte en paralelo.
-    """
-    cant = len(lines)
-    cpus = mp.cpu_count()
-    chunksize = int(math.ceil(cant / cpus))
-    jobs = []
-    for i in range(cpus):
-        chunk = lines[chunksize * i:chunksize * (i + 1)]
-        thread = mp.Process(target=process_chunk, args=(chunk,))
-        jobs.append(thread)
-        thread.start()
-    for j in jobs:
-        j.join()
-
-
-def process_chunk(lines):
-    for l in lines:
-        process_line(l)
-
-
 if __name__ == "__main__":
-    parallel = False
+    in_parallel = False
     if len(sys.argv) == 3 and sys.argv[2] == "-p":
         # ejecutar en paralelo
-        parallel = True
+        in_parallel = True
     if len(sys.argv) < 2:
-        print("Uso: {} entrada")
+        print("Uso: {} entrada [-p]".format(sys.argv[0]))
         exit()
     downloaded = load_downloaded()
 
     with open(sys.argv[1]) as f:
-        if parallel:
-            paralelizar(f.readlines())
+        if in_parallel:
+            parallel.parallel_map(process_line, f.readlines())
         else:
             for line in f:
                 process_line(line)
