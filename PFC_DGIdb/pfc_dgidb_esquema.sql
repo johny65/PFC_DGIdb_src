@@ -57,6 +57,7 @@ create table interacciones_farmaco_gen (
 -- copy (select interaccion from interacciones_ifg) to 'D:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\interacciones.csv' csv header
 -- copy (select droga,alias from drogas_alias_ifg) to 'D:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\drogas_alias.csv' csv header
 -- copy (select gen,alias from genes_alias_ifg) to 'D:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\genes_alias.csv' csv header
+-- copy (select gen,droga,interaccion,publicacion from interaccion_farmaco_gen) to 'D:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\interaccion_farmaco_gen.csv' csv header
 
  --
 
@@ -87,6 +88,26 @@ from genes g
 join gen_alias_aux gaa on g.nombre = gaa.gen
 
 drop table gen_alias_aux
+
+--
+
+create table ifg_aux (
+	id serial primary key,
+	gen varchar(60) not null,
+	droga varchar(60) not null,
+	interaccion varchar(60) not null,
+	publicacion int not null
+);
+
+insert into interacciones_farmaco_gen(id_gen,id_droga,id_interaccion,id_publicacion)
+select g.id,d.id,i.id,p.id
+from ifg_aux ifga
+join genes g on ifga.gen = g.nombre
+join drogas d on ifga.droga = d.nombre
+join interacciones i on ifga.interaccion = i.nombre
+join publicaciones p on ifga.publicacion = p.pmid
+
+drop table ifg_aux
 
 --
 

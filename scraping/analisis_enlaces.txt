@@ -1,0 +1,23 @@
+Purchase:
+https://academic.oup.com/jcem/article-lookup/doi/10.1210/jcem-47-1-151
+https://www.karger.com?DOI=10.1159/000198006
+http://journals.sagepub.com/doi/full/10.1177/00220345770560080301?url_ver=Z39.88-2003&rfr_id=ori:rid:crossref.org&rfr_dat=cr_pub%3dpubmed
+https://jamanetwork.com/journals/jamaneurology/fullarticle/vol/36/pg/393
+https://www.annals.org/article.aspx?volume=89&issue=6&page=945
+http://www.physiology.org/doi/full/10.1152/ajplegacy.1975.229.5.1381?url_ver=Z39.88-2003&rfr_id=ori:rid:crossref.org&rfr_dat=cr_pub%3dpubmed
+http://arjournals.annualreviews.org/doi/full/10.1146/annurev.pa.16.040176.000341?url_ver=Z39.88-2003&rfr_id=ori:rid:crossref.org&rfr_dat=cr_pub%3dpubmed
+
+CookieAbsents:
+https://onlinelibrary.wiley.com/resolve/openurl?genre=article&sid=nlm:pubmed&issn=0007-1188&date=1979&volume=65&issue=1&spage=155
+
+url: http://iovs.arvojournals.org/article.aspx?volume=17&page=1109
+geturl: no me anda (https://iovs.arvojournals.org/article.aspx?articleid=2175533)
+pdf: https://iovs.arvojournals.org/arvo/content_public/journal/iovs/933309/1109.pdf
+
+url: http://europepmc.org/abstract/MED/239403
+geturl: http://europepmc.org/abstract/MED/239403
+pdf: Es raro, se puede descargar pero no encuentro el enlace
+
+url: http://www.thieme-connect.com/DOI/DOI?10.1055/s-0028-1094556
+geturl: https://www.thieme-connect.com/products/ejournals/abstract/10.1055/s-0028-1094556
+pdf: register (http://www.thieme-connect.com/products/ejournals/pdf/10.1055/s-0028-1094556.pdf)
