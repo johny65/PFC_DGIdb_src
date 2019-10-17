@@ -52,6 +52,8 @@ def parallel_map_to_file(func, elements, outfile):
     for j in jobs:
         j.join()
     # unir archivos
+    # "cat " + " ".join(["{}_{}".format(outfile, i) for i in range(cpus)])
+
 
 def process_filechunk(func, chunk, chunk_index, outfile):
     with open("{}_{}".format(outfile, chunk_index), "w") as out:

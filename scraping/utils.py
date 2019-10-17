@@ -2,6 +2,7 @@ from html.parser import HTMLParser
 from urllib.error import HTTPError
 import urllib.request
 import urllib.parse
+import logging
 
 class ElsevierParser(HTMLParser):
     """Parseador para obtener la URL de redirección de un enlace de Elsevier."""
@@ -18,7 +19,8 @@ def fetch_url(url):
         with urllib.request.urlopen(url) as f:
             data = f.read()
             return data.decode("utf8")
-    except HTTPError:
+    except HTTPError as ex:
+        logging.log(logging.ERROR, ex)
         return ""
 
 def redirect(url):
@@ -36,10 +38,25 @@ def elsevier(url):
     parser.feed(data)
     return parser.the_url
 
-def get_base_server(url):
-    """Devuelve el servidor de un enlace. `None` si la url no tiene el protocolo."""
+def get_server(url):
+    """
+    Devuelve el servidor de un enlace. `None` si la url no tiene el protocolo.
+    Ejemplo: get_server("http://docs.python.org/search") = "docs.python.org"
+    """
     try:
         pos = url.index("://") + 3
         return url[pos:url.index("/", pos)]
+    except:
+        return None
+
+def get_base_server(url):
+    """
+    Devuelve el servidor base de un enlace. `None` si la url no tiene el protocolo.
+    Ejemplo: get_base_server("http://docs.python.org/search") = "python.org"
+    """
+    try:
+        s = get_server(url)
+        l = s.split(".")[1:]
+        return s if len(l) == 1 else ".".join(l)
     except:
         return None

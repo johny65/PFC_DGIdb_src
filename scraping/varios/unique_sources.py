@@ -6,7 +6,7 @@ def unique_sources(data_file):
     sources = {}
     with open(data_file) as f:
         for l in f:
-            base_url = utils.get_base_server(l.split(" ")[1])
+            base_url = utils.get_server(l.split(" ")[1])
             if not base_url: continue
             if not base_url in sources:
                 sources[base_url] = 0
