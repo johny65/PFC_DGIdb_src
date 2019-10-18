@@ -1,4 +1,5 @@
 import multiprocessing
+import subprocess
 import operator
 import math
 
@@ -54,6 +55,7 @@ def parallel_map_to_file(func, elements, outfile):
     for j in jobs:
         j.join()
     # unir archivos
+    # subprocess.run(
     # "cat " + " ".join(["{}_{}".format(outfile, i) for i in range(cpus)])
 
 
