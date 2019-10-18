@@ -13,21 +13,21 @@ www.sciencedirect.com: 3534
 doi.org: 1444
 onlinelibrary.wiley.com: 943
 SC www.jbc.org: 908
-link.springer.com: 907
-academic.oup.com: 856
+SC link.springer.com: 907
+SC academic.oup.com: 856 (pero el scraper tiene problemas, parece que bloquea los robots)
 dx.doi.org: 796
 SC www.nature.com: 664
-jpet.aspetjournals.org: 539
-www.tandfonline.com: 414
+PC jpet.aspetjournals.org: 539
+PC www.tandfonline.com: 414
 SC cancerres.aacrjournals.org: 406
 SC clincancerres.aacrjournals.org: 391
-molpharm.aspetjournals.org: 388
+PC molpharm.aspetjournals.org: 388
 ovidsp.ovid.com: 334
 www.pnas.org: 330
 www.physiology.org: 293
 mct.aacrjournals.org: 211
 ascopubs.org: 195
-www.karger.com?DOI=10.1159: 173
+www.karger.com: 173
 ashpublications.org: 171
 www.jimmunol.org: 168
 insights.ovid.com: 165
@@ -52,7 +52,7 @@ www.liebertpub.com: 75
 www.impactjournals.com: 66
 www.sciencemag.org: 64
 www.dovepress.com: 64
-dmd.aspetjournals.org: 63
+PC dmd.aspetjournals.org: 63
 diabetes.diabetesjournals.org: 61
 www.cancercell.org: 58
 linkinghub.elsevier.com: 57
@@ -133,7 +133,7 @@ gut.bmj.com: 11
 www.ingentaconnect.com: 11
 goldjournal.net: 10
 maturitas.org: 10
-pharmrev.aspetjournals.org: 10
+PC pharmrev.aspetjournals.org: 10
 redjournal.org: 10
 journalofsurgicalresearch.com: 10
 journal-of-hepatology.eu: 10
@@ -304,14 +304,14 @@ meetinglibrary.asco.org: 2
 ehoonline.biomedcentral.com: 2
 www.current-oncology.com: 2
 ovarianresearch.biomedcentral.com: 2
-guilfordjournals.com: 1
-www.japmaonline.org: 1
-pmj.bmj.com: 1
-jpsmjournal.com: 1
-jognn.awhonn.org: 1
-www.ane.pl: 1
-jvascsurg.org: 1
-www.medicaljournals.se: 1
+MP guilfordjournals.com: 1
+UK www.japmaonline.org: 1
+OK pmj.bmj.com: 1
+OK jpsmjournal.com: 1
+PC jognn.awhonn.org: 1
+OK www.ane.pl: 1
+OK jvascsurg.org: 1
+OK www.medicaljournals.se: 1
 OK cmr.asm.org: 1
 PC oem.bmj.com: 1 (54 fuentes, hacer SC)
 OK www.ajnr.org: 1

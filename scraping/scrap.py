@@ -7,6 +7,7 @@ import multiprocessing as mp
 import sys
 import math
 import parallel
+import logging
 # scrapers:
 # (cada scraper contiene un método 'scrap(url)' que dada la URL de la fuente
 # devuelve la URL del PDF, o None si no pudo obtenerla)
@@ -17,6 +18,7 @@ import nature
 import springer
 import oxford
 import bmc
+import aspet
 
 
 def download_async(url, pmid):
@@ -33,7 +35,7 @@ def download(url, pmid):
         subprocess.run(["wget", "-c", "-O", out_file, url], check=True)
         print("Guardado", out_file)
     except subprocess.CalledProcessError as ex:
-        print("Error descargando:", ex)
+        logging.log(logging.ERROR, "Error descargando:", ex)
 
 
 def load_downloaded():
@@ -60,10 +62,12 @@ def process(url):
         scraper = nature
     elif "link.springer.com" in url:
         scraper = springer
-    elif "academic.oup.com" in url:
-        scraper = oxford
+    # elif "academic.oup.com" in url:
+        # scraper = oxford
     elif "biomedcentral.com" in url:
         scraper = bmc
+    # elif "aspetjournals.org" in url:
+        # scraper = aspet
     else:
         scraper = None
     
