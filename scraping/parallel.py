@@ -8,7 +8,7 @@ def parallel_map(func, elements):
     sería: res = [func(x) for x in elements] pero paralelamente.
     """
     cant = len(elements)
-    cpus = multiprocessing.cpu_count() * 2
+    cpus = multiprocessing.cpu_count()
     chunksize = int(math.ceil(cant / cpus))
     outq = multiprocessing.Queue()
     jobs = []

@@ -14,6 +14,7 @@ import jbc
 import cancerres
 import jnccn
 import nature
+import springer
 
 
 def download_async(url, pmid):
@@ -55,6 +56,8 @@ def process(url):
         scraper = jnccn
     elif "nature.com" in url:
         scraper = nature
+    elif "link.springer.com" in url:
+        scraper = springer
     else:
         scraper = None
     
