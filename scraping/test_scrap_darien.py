@@ -1,7 +1,7 @@
 import urllib.request
 from urllib.error import URLError
 
-url = "https://www.ncbi.nlm.nih.gov/pmc/articles/pmid/393437/"
+url = "https://diagnosticpathology.biomedcentral.com/articles/10.1186/s13000-016-0475-5"
 
 try:
     res = urllib.request.urlopen(url)

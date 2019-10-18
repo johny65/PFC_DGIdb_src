@@ -16,6 +16,7 @@ import jnccn
 import nature
 import springer
 import oxford
+import bmc
 
 
 def download_async(url, pmid):
@@ -61,6 +62,8 @@ def process(url):
         scraper = springer
     elif "academic.oup.com" in url:
         scraper = oxford
+    elif "biomedcentral.com" in url:
+        scraper = bmc
     else:
         scraper = None
     
