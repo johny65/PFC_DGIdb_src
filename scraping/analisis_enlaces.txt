@@ -308,10 +308,10 @@ guilfordjournals.com: 1
 www.japmaonline.org: 1
 pmj.bmj.com: 1
 jpsmjournal.com: 1
-jognn.awhonn.org: 1
-www.ane.pl: 1
-jvascsurg.org: 1
-www.medicaljournals.se: 1
+PC jognn.awhonn.org: 1
+MP www.ane.pl: 1
+OK jvascsurg.org: 1
+OK www.medicaljournals.se: 1
 OK cmr.asm.org: 1
 PC oem.bmj.com: 1 (54 fuentes, hacer SC)
 OK www.ajnr.org: 1
