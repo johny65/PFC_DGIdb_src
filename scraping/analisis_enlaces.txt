@@ -1,3 +1,251 @@
+OK: Descarga manual completada.
+PC: Purchase.
+SC: Se descarga mediante scraper.
+MP: La página no existe (Missing page).
+UK: Desconocido. La página existe pero es nada.
+
+Voy desde el fondo hacia arriba haciendo las descargas manuales
+
+Fuentes distintas: 425
+
+Artículos en cada una:
+www.sciencedirect.com: 3534
+doi.org: 1444
+onlinelibrary.wiley.com: 943
+SC www.jbc.org: 908
+link.springer.com: 907
+academic.oup.com: 856
+dx.doi.org: 796
+SC www.nature.com: 664
+jpet.aspetjournals.org: 539
+www.tandfonline.com: 414
+SC cancerres.aacrjournals.org: 406
+SC clincancerres.aacrjournals.org: 391
+molpharm.aspetjournals.org: 388
+ovidsp.ovid.com: 334
+www.pnas.org: 330
+www.physiology.org: 293
+mct.aacrjournals.org: 211
+ascopubs.org: 195
+www.karger.com?DOI=10.1159: 173
+ashpublications.org: 171
+www.jimmunol.org: 168
+insights.ovid.com: 165
+www.ahajournals.org: 159
+europepmc.org: 155
+Insights.ovid.com: 153
+journals.sagepub.com: 146
+joi.jlc.jst.go.jp: 145
+portlandpress.com: 142
+www.eurekaselect.com: 126
+www.nejm.org: 122
+www.cell.com: 113
+dx.plos.org: 109
+www.febsletters.org: 107
+www.spandidos-publications.com: 101
+www.thelancet.com: 96
+www.jneurosci.org: 93
+cancerdiscovery.aacrjournals.org: 91
+www.thieme-connect.com: 90
+www.jci.org: 80
+www.liebertpub.com: 75
+www.impactjournals.com: 66
+www.sciencemag.org: 64
+www.dovepress.com: 64
+dmd.aspetjournals.org: 63
+diabetes.diabetesjournals.org: 61
+www.cancercell.org: 58
+linkinghub.elsevier.com: 57
+mcb.asm.org: 53
+www.fasebj.org: 46
+jamanetwork.com: 45
+anesthesiology.pubs.asahq.org: 44
+jto.org: 42
+www.atsjournals.org: 41
+iovs.arvojournals.org: 40
+jem.rupress.org: 40
+metabolismjournal.com: 39
+jidonline.org: 38
+aac.asm.org: 36
+www.jlr.org: 36
+biologicalpsychiatryjournal.com: 34
+joe.bioscientifica.com: 34
+clinicaltherapeutics.com: 34
+journal.yiigle.com: 34
+stm.sciencemag.org: 32
+journals.prous.com: 31
+jacionline.org: 29
+www.nrcresearchpress.com: 29
+gastrojournal.org: 29
+ejcancer.com: 29
+lungcancerjournal.info: 29
+journals.elsevierhealth.com: 28
+kidney-international.theisn.org: 27
+thrombosisresearch.com: 26
+www.degruyter.com: 26
+ar.iiarjournals.org: 26
+jmmc-online.com: 25
+bmccancer.biomedcentral.com: 24
+jb.asm.org: 23
+www.ncbi.nlm.nih.gov: 22
+www.jurology.com: 22
+jasn.asnjournals.org: 22
+www.hindawi.com: 22
+mcr.aacrjournals.org: 22
+scripts.iucr.org: 21
+theoncologist.alphamedpress.org: 21
+www.haematologica.org: 21
+japanlinkcenter.org: 20
+gynecologiconcology-online.net: 20
+jcs.biologists.org: 20
+www.chinaphar.com: 20
+ajog.org: 18
+jgp.rupress.org: 18
+eje.bioscientifica.com: 18
+arjournals.annualreviews.org: 17
+cell.com: 17
+www.psychiatrist.com: 17
+jni-journal.com: 16
+jnm.snmjournals.org: 16
+exphem.org: 16
+www.if-pan.krakow.pl: 16
+molecular-cancer.biomedcentral.com: 16
+jvi.asm.org: 15
+ajconline.org: 14
+atherosclerosis-journal.com: 14
+www.plantphysiol.org: 14
+erj.ersjournals.com: 14
+fertstert.org: 14
+bjanaesthesia.org: 13
+contraceptionjournal.org: 13
+www.medicalonline.jp: 13
+jcb.rupress.org: 13
+www.cambridge.org: 13
+cebp.aacrjournals.org: 13
+www.jpp.krakow.pl: 13
+www.wjgnet.com: 13
+www.futuremedicine.com: 13
+ard.bmj.com: 12
+content.iospress.com: 12
+iai.asm.org: 11
+www.genesdev.org: 11
+gut.bmj.com: 11
+www.ingentaconnect.com: 11
+goldjournal.net: 10
+maturitas.org: 10
+pharmrev.aspetjournals.org: 10
+redjournal.org: 10
+journalofsurgicalresearch.com: 10
+journal-of-hepatology.eu: 10
+plefa.com: 10
+www.scielo.br: 10
+erc.bioscientifica.com: 10
+jpharmsci.org: 9
+jaad.org: 9
+www.biophysj.org: 9
+ajp.psychiatryonline.org: 9
+clinical-lung-cancer.com: 9
+www.springerlink.com: 9
+thorax.bmj.com: 8
+www.clinchem.org: 8
+www.journals.elsevierhealth.com: 8
+www.actabp.pl: 8
+clinical-colorectal-cancer.com: 8
+ajo.com: 7
+pubs.rsc.org: 7
+avmajournals.avma.org: 7
+www.molbiolcell.org: 7
+arthritis-research.biomedcentral.com: 7
+respiratory-research.biomedcentral.com: 7
+translational-medicine.biomedcentral.com: 7
+jhoonline.biomedcentral.com: 7
+www.mdpi.com: 7
+SC jnccn.org: 7
+aem.asm.org: 6
+thejns.org: 6
+ehp.niehs.nih.gov: 6
+surgjournal.com: 6
+ejog.org: 6
+www.intjdevbiol.com: 6
+www.jle.com: 6
+www.biomed.cas.cz: 6
+jme.bioscientifica.com: 6
+www.europeanurology.com: 6
+jeccr.biomedcentral.com: 6
+www.frontiersin.org: 6
+journalofdairyscience.org: 5
+diabetesresearchclinicalpractice.com: 5
+jns-journal.com: 5
+www.ajhg.org: 5
+jurology.com: 5
+cvi.asm.org: 5
+amjmedsci.org: 5
+oarsijournal.com: 5
+www.cancernetwork.com: 5
+cancertreatmentreviews.com: 5
+www.actaps.com.cn: 5
+www.medscimonit.com: 5
+care.diabetesjournals.org: 5
+www.molvis.org: 5
+rbej.biomedcentral.com: 5
+www.bioscience.org: 5
+rep.bioscientifica.com: 5
+breast-cancer-research.biomedcentral.com: 5
+surveyophthalmol.com: 4
+www.annals.org: 4
+jdsjournal.com: 4
+journal.chestnet.org: 4
+aaojournal.org: 4
+heart.bmj.com: 4
+cgd.aacrjournals.org: 4
+jpedsurg.org: 4
+content.apa.org: 4
+pediatrics.aappublications.org: 4
+www.archivesofpathology.org: 4
+www.jrheum.org: 4
+jkms.org: 4
+www.em-consulte.com: 4
+www.revneurol.com: 4
+www.asiaandro.com: 4
+www.hh.um.es: 4
+cghjournal.org: 4
+xuebao.bjmu.edu.cn: 4
+www.pieronline.jp: 4
+www.annclinlabsci.org: 4
+iv.iiarjournals.org: 4
+jem-journal.com: 4
+jcp.bmj.com: 4
+www.ijdvl.com: 4
+amjmed.com: 3
+jeb.biologists.org: 3
+www.rnajournal.org: 3
+americanjournalofsurgery.com: 3
+www.future-science.com: 3
+archive.foundationalmedicinereview.com: 3
+www.neurology.org: 3
+jaoa.org: 3
+ajkd.org: 3
+www.aafp.org: 3
+www.lib.okayama-u.ac.jp: 3
+jopan.org: 3
+bmcpharma.biomedcentral.com: 3
+cgmj.cgu.edu.tw: 3
+mic.microbiologyresearch.org: 3
+autonomicneuroscience.com: 3
+annalsthoracicsurgery.org: 3
+publications.edpsciences.org: 3
+www.cancergeneticsjournal.org: 3
+jpain.org: 3
+dev.biologists.org: 3
+internationaljournalofcardiology.com: 3
+bmcmedgenet.biomedcentral.com: 3
+ec.asm.org: 3
+webview.isho.jp: 3
+heartrhythmjournal.com: 3
+cjasn.asnjournals.org: 3
+cancergeneticsjournal.org: 3
+elifesciences.org: 3
+molecularcasestudies.cshlp.org: 3
 www.genetics.org: 2
 pubs.rsna.org: 2
 resmedjournal.com: 2
@@ -64,122 +312,125 @@ jognn.awhonn.org: 1
 www.ane.pl: 1
 jvascsurg.org: 1
 www.medicaljournals.se: 1
-cmr.asm.org: 1
-oem.bmj.com: 1
-www.ajnr.org: 1
-www.cmj.hr: 1
-www.pdiconnect.com: 1
-annemergmed.com: 1
-jiac-j.com: 1
-econtent.hogrefe.com: 1
-mp.bmj.com: 1
-dtb.bmj.com: 1
-www.ooooe.net: 1
-www.rmlg.ulg.ac.be: 1
-www.plantcell.org: 1
-bmcdermatol.biomedcentral.com: 1
-archive.cancerimmunity.org: 1
-www.akademiai.com: 1
-bmcimmunol.biomedcentral.com: 1
-jaacap.org: 1
-jrnjournal.org: 1
-dermatology.cdlib.org: 1
-annalsofvascularsurgery.com: 1
-connect.springerpub.com: 1
-jcardioanesthesia.com: 1
-www.clinmedres.org: 1
-filariajournal.biomedcentral.com: 1
-www.ismni.org: 1
-www.molcells.org: 1
-bmcbiol.biomedcentral.com: 1
-bmcgastroenterol.biomedcentral.com: 1
-www.blackwell-synergy.com: 1
-jim.bmj.com: 1
-www.turkjgastroenterol.org: 1
-www.hxkqyxzz.net: 1
-jpma.org.pk: 1
-jsm.jsexmed.org: 1
-ann-clinmicrob.biomedcentral.com: 1
-www.ajmc.com: 1
-journals.aace.com: 1
-www.publish.csiro.au: 1
-annallergy.org: 1
-theclinics.com: 1
-www.seq.es: 1
-hormones.gr: 1
-www.sma.org.sg: 1
-www.actacams.com: 1
-bjsm.bmj.com: 1
-jmig.org: 1
-tbiomed.biomedcentral.com: 1
-behavioralandbrainfunctions.biomedcentral.com: 1
-bmcmedicine.biomedcentral.com: 1
-huon.hu: 1
-www.epilepsybehavior.com: 1
-bmcmicrobiol.biomedcentral.com: 1
-ieeexplore.ieee.org: 1
-ijaai.tums.ac.ir: 1
-gsejournal.biomedcentral.com: 1
-mmbr.asm.org: 1
-jmg.bmj.com: 1
-www.njmonline.nl: 1
-apps.szu.cz: 1
-jaapos.org: 1
-www.rcjournal.com: 1
-www.jabfm.org: 1
-coughjournal.biomedcentral.com: 1
-ccforum.biomedcentral.com: 1
-blues.sabinet.co.za: 1
-cgp.iiarjournals.org: 1
-www.jbuon.com: 1
-www.cps.org.tw: 1
-dldjournalonline.com: 1
-jneuroinflammation.biomedcentral.com: 1
-ajcc.aacnjournals.org: 1
-www.painphysicianjournal.com: 1
-journal-inflammation.biomedcentral.com: 1
-www.jiaci.org: 1
-xbyxb.csu.edu.cn: 1
-jahonline.org: 1
-stke.sciencemag.org: 1
-jbiomedsci.biomedcentral.com: 1
-bbmt.org: 1
-ejves.com: 1
-www.hellenicjcardiol.org: 1
-doctorsonly.co.il: 1
-bmcmedgenomics.biomedcentral.com: 1
-bjgp.org: 1
-jkns.or.kr: 1
-neuraldevelopment.biomedcentral.com: 1
-pamw.pl: 1
-jgv.microbiologyresearch.org: 1
-www.funpecrp.com.br: 1
-clinicalschizophrenia.org: 1
-www.ijaweb.org: 1
-wjso.biomedcentral.com: 1
-cshperspectives.cshlp.org: 1
-www.bloodresearch.or.kr: 1
-molecularbrain.biomedcentral.com: 1
-f1000.com: 1
-www.aepress.sk: 1
-www.ijem.in: 1
-www.elis.sk: 1
-www.ejgo.org: 1
-mbio.asm.org: 1
-www.impactaging.com: 1
-www.jpharmacol.com: 1
-www.jcancer.org: 1
-clinical-lymphoma-myeloma-leukemia.com: 1
-biomedj.cgu.edu.tw: 1
-www.drugsincontext.com: 1
-tlcr.amegroups.com: 1
-erc.endocrinology-journals.org: 1
-clinicalsarcomaresearch.biomedcentral.com: 1
-thegreenjournal.com: 1
-cancerimmunolres.aacrjournals.org: 1
-www.e-crt.org: 1
-ebiomedicine.com: 1
-bmcpulmmed.biomedcentral.com: 1
+OK cmr.asm.org: 1
+PC oem.bmj.com: 1 (54 fuentes, hacer SC)
+OK www.ajnr.org: 1
+OK www.cmj.hr: 1
+PC www.pdiconnect.com: 1
+PC annemergmed.com: 1
+PC jiac-j.com: 1
+PC econtent.hogrefe.com: 1
+PC mp.bmj.com: 1 (54 fuentes, hacer SC)
+PC dtb.bmj.com: 1 (54 fuentes, hacer SC)
+PC www.ooooe.net: 1
+OK www.rmlg.ulg.ac.be: 1
+OK www.plantcell.org: 1
+SC bmcdermatol.biomedcentral.com: 1
+MP archive.cancerimmunity.org: 1
+OK www.akademiai.com: 1
+SC bmcimmunol.biomedcentral.com: 1
+PC jaacap.org: 1
+PC jrnjournal.org: 1
+UK dermatology.cdlib.org: 1
+PC annalsofvascularsurgery.com: 1
+PC connect.springerpub.com: 1
+PC jcardioanesthesia.com: 1
+OK www.clinmedres.org: 1
+SC filariajournal.biomedcentral.com: 1
+OK www.ismni.org: 1
+OK www.molcells.org: 1
+SC bmcbiol.biomedcentral.com: 1
+SC bmcgastroenterol.biomedcentral.com: 1
+UK www.blackwell-synergy.com: 1
+PC jim.bmj.com: 1 (54 fuentes, hacer SC)
+OK www.turkjgastroenterol.org: 1
+MP www.hxkqyxzz.net: 1
+OK jpma.org.pk: 1
+PC jsm.jsexmed.org: 1
+SC ann-clinmicrob.biomedcentral.com: 1
+OK www.ajmc.com: 1
+PC journals.aace.com: 1
+PC www.publish.csiro.au: 1
+PC annallergy.org: 1
+PC theclinics.com: 1
+OK www.seq.es: 1
+OK hormones.gr: 1
+OK www.sma.org.sg: 1
+MP www.actacams.com: 1
+PC bjsm.bmj.com: 1 (54 fuentes, hacer SC)
+PC jmig.org: 1
+SC tbiomed.biomedcentral.com: 1
+SC behavioralandbrainfunctions.biomedcentral.com: 1
+SC bmcmedicine.biomedcentral.com: 1
+OK huon.hu: 1
+PC www.epilepsybehavior.com: 1
+SC bmcmicrobiol.biomedcentral.com: 1
+PC ieeexplore.ieee.org: 1
+OK ijaai.tums.ac.ir: 1
+SC gsejournal.biomedcentral.com: 1
+OK mmbr.asm.org: 1
+PC jmg.bmj.com: 1 (54 fuentes, hacer SC)
+OK www.njmonline.nl: 1
+OK apps.szu.cz: 1
+PC jaapos.org: 1
+OK www.rcjournal.com: 1
+OK www.jabfm.org: 1
+SC coughjournal.biomedcentral.com: 1
+SC ccforum.biomedcentral.com: 1
+MP blues.sabinet.co.za: 1
+OK cgp.iiarjournals.org: 1
+MP www.jbuon.com: 1
+OK www.cps.org.tw: 1
+PC dldjournalonline.com: 1
+SC jneuroinflammation.biomedcentral.com: 1
+OK ajcc.aacnjournals.org: 1
+OK www.painphysicianjournal.com: 1
+SC journal-inflammation.biomedcentral.com: 1
+OK www.jiaci.org: 1
+OK xbyxb.csu.edu.cn: 1
+PC jahonline.org: 1
+PC stke.sciencemag.org: 1
+SC jbiomedsci.biomedcentral.com: 1
+OK bbmt.org: 1
+OK ejves.com: 1
+OK www.hellenicjcardiol.org: 1
+OK doctorsonly.co.il: 1
+SC bmcmedgenomics.biomedcentral.com: 1
+OK bjgp.org: 1
+OK jkns.or.kr: 1
+SC neuraldevelopment.biomedcentral.com: 1
+OK pamw.pl: 1
+OK jgv.microbiologyresearch.org: 1
+OK www.funpecrp.com.br: 1
+PC clinicalschizophrenia.org: 1
+OK www.ijaweb.org: 1
+SC wjso.biomedcentral.com: 1
+OK cshperspectives.cshlp.org: 1
+OK www.bloodresearch.or.kr: 1
+SC molecularbrain.biomedcentral.com: 1
+OK f1000.com: 1
+OK www.aepress.sk: 1
+OK www.ijem.in: 1
+OK www.elis.sk: 1
+OK www.ejgo.org: 1
+OK mbio.asm.org: 1
+OK www.impactaging.com: 1
+OK www.jpharmacol.com: 1
+OK www.jcancer.org: 1
+PC clinical-lymphoma-myeloma-leukemia.com: 1
+OK biomedj.cgu.edu.tw: 1
+OK www.drugsincontext.com: 1
+OK tlcr.amegroups.com: 1
+OK erc.endocrinology-journals.org: 1
+SC clinicalsarcomaresearch.biomedcentral.com: 1
+PC thegreenjournal.com: 1
+OK cancerimmunolres.aacrjournals.org: 1
+OK www.e-crt.org: 1
+OK ebiomedicine.com: 1
+SC bmcpulmmed.biomedcentral.com: 1
+SC jitc.biomedcentral.com: 1
+SC diagnosticpathology.biomedcentral.com: 1
 PC www.ntvg.nl: 1
 OK insight.jci.org: 1
-OK gynoncrp.biomedcentral.com: 1
+SC gynoncrp.biomedcentral.com: 1
+SC jmedicalcasereports.biomedcentral.com: 1

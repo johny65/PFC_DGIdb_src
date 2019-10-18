@@ -1,7 +1,7 @@
 import urllib.request
 from urllib.error import URLError
 
-url = "https://diagnosticpathology.biomedcentral.com/articles/10.1186/s13000-016-0475-5"
+url = "http://jcp.bmj.com/cgi/pmidlookup?view=long&pmid=25681512"
 
 try:
     res = urllib.request.urlopen(url)
