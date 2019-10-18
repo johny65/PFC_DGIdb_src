@@ -22,8 +22,8 @@ PC www.tandfonline.com: 414
 SC cancerres.aacrjournals.org: 406
 SC clincancerres.aacrjournals.org: 391
 PC molpharm.aspetjournals.org: 388
-ovidsp.ovid.com: 334
-www.pnas.org: 330
+PC ovidsp.ovid.com: 334
+SC www.pnas.org: 330
 www.physiology.org: 293
 mct.aacrjournals.org: 211
 ascopubs.org: 195

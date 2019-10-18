@@ -19,7 +19,10 @@ import springer
 import oxford
 import bmc
 import aspet
+import pnas
 
+# scrapers activos, sólo se usarán los scrapers de esta lista (si está vacía se usan todos):
+ACTIVE_SCRAPERS = [pnas]
 
 def download_async(url, pmid):
     """Dada la URL de un PDF, lo descarga en files/pmid.pdf (usando wget en 
@@ -68,10 +71,14 @@ def process(url):
         scraper = bmc
     # elif "aspetjournals.org" in url:
         # scraper = aspet
+    elif "pnas.org" in url:
+        scraper = pnas
     else:
         scraper = None
     
-    return scraper.scrap(url) if scraper else None
+    # activo?
+    active = (not ACTIVE_SCRAPERS or scraper in ACTIVE_SCRAPERS)
+    return scraper.scrap(url) if scraper and active else None
 
 
 def process_line(line):
