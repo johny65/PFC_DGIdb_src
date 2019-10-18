@@ -9,7 +9,7 @@ Voy desde el fondo hacia arriba haciendo las descargas manuales
 Fuentes distintas: 425
 
 Artículos en cada una:
-www.sciencedirect.com: 3534
+PC www.sciencedirect.com: 3534
 doi.org: 1444
 onlinelibrary.wiley.com: 943
 SC www.jbc.org: 908
@@ -24,7 +24,7 @@ SC clincancerres.aacrjournals.org: 391
 PC molpharm.aspetjournals.org: 388
 PC ovidsp.ovid.com: 334
 SC www.pnas.org: 330
-www.physiology.org: 293
+SC www.physiology.org: 293 (pero el scraper tiene problemas, parece que bloquea los robots)
 mct.aacrjournals.org: 211
 ascopubs.org: 195
 www.karger.com: 173

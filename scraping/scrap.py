@@ -20,9 +20,12 @@ import oxford
 import bmc
 import aspet
 import pnas
+import physiology
 
 # scrapers activos, sólo se usarán los scrapers de esta lista (si está vacía se usan todos):
-ACTIVE_SCRAPERS = [pnas]
+ACTIVE_SCRAPERS = [physiology]
+# los scrapers de la siguiente lista siempre se excluirán:
+EXCLUDE_SCRAPERS = [aspet, oxford]
 
 def download_async(url, pmid):
     """Dada la URL de un PDF, lo descarga en files/pmid.pdf (usando wget en 
@@ -65,19 +68,22 @@ def process(url):
         scraper = nature
     elif "link.springer.com" in url:
         scraper = springer
-    # elif "academic.oup.com" in url:
-        # scraper = oxford
+    elif "academic.oup.com" in url:
+        scraper = oxford
     elif "biomedcentral.com" in url:
         scraper = bmc
-    # elif "aspetjournals.org" in url:
-        # scraper = aspet
+    elif "aspetjournals.org" in url:
+        scraper = aspet
     elif "pnas.org" in url:
         scraper = pnas
+    elif "physiology.org" in url:
+        scraper = physiology
     else:
         scraper = None
     
     # activo?
-    active = (not ACTIVE_SCRAPERS or scraper in ACTIVE_SCRAPERS)
+    active = (not ACTIVE_SCRAPERS or scraper in ACTIVE_SCRAPERS) \
+        and scraper not in EXCLUDE_SCRAPERS
     return scraper.scrap(url) if scraper and active else None
 
 
@@ -87,10 +93,10 @@ def process_line(line):
     if len(l) > 1:
         pmid, url = l[0], " ".join(l[1:])
         if url != "No encontrado":
-            print("Procesando", url)
             if pmid not in downloaded:
                 pdf_url = process(url)
                 if pdf_url:
+                    print("Descargando", pdf_url)
                     download(pdf_url, pmid)
                     # download_async(pdf_url, pmid)
             else:

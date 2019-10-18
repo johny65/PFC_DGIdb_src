@@ -30,6 +30,7 @@ def fetch_url_wget(url):
     en caso de que el servidor bloquee bots.
     """
     res = subprocess.run(["wget", "-O", "-", url], capture_output=True, text=True)
+    logging.log(logging.ERROR, res.stderr)
     return res.stdout
 
 def redirect(url):

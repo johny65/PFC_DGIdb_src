@@ -7,7 +7,7 @@ import utils
 def scrap(url):
     # redirige a otra url que termina en .long
     res = utils.redirect(url)
-    return res.replace("content/", "content/pnas/").replace(".long", ".full.pdf") or None
+    return res.replace("content/", "content/pnas/").replace(".long", ".full.pdf") if res else None
 
 if __name__ == "__main__":
     print(scrap("http://www.pnas.org/cgi/pmidlookup?view=long&pmid=10339548"))
