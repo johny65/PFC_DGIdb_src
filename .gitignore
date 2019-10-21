@@ -3,3 +3,4 @@ venv/
 *.pyc
 scraping/files/*.pdf
 wget-log*
+PMC-ids.csv
