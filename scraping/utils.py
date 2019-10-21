@@ -33,6 +33,15 @@ def fetch_url_wget(url):
     logging.log(logging.ERROR, res.stderr)
     return res.stdout
 
+def fetch_url_wget_windows(wget_path, url):
+    """
+    Descarga y devuelve el contenido de una URL usando por abajo un proceso de wget,
+    en caso de que el servidor bloquee bots.
+    """
+    #subprocess.run([wget_path, "-O", "_aux", url], capture_output=False, text=True)
+    res = open("_aux", encoding="utf8").read()
+    return res
+
 def redirect(url):
     """Navega la URL y devuelve la URL a la que redirigió."""
     try:
