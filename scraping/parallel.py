@@ -2,6 +2,7 @@ import multiprocessing
 import subprocess
 import operator
 import math
+import os
 
 def parallel_map(func, elements):
     """
@@ -42,7 +43,7 @@ def parallel_map_to_file(func, elements, outfile):
     sería: res = [func(x) for x in elements] pero paralelamente.
     """
     cant = len(elements)
-    cpus = multiprocessing.cpu_count()
+    cpus = multiprocessing.cpu_count() * 2
     chunksize = int(math.ceil(cant / cpus))
     outq = multiprocessing.Queue()
     jobs = []
@@ -55,12 +56,16 @@ def parallel_map_to_file(func, elements, outfile):
     for j in jobs:
         j.join()
     # unir archivos
-    # subprocess.run(
-    # "cat " + " ".join(["{}_{}".format(outfile, i) for i in range(cpus)])
+    aux_files = ["{}_{}".format(outfile, i) for i in range(cpus)]
+    os.system("cat " + " ".join(aux_files) + " > " + outfile)
+    for af in aux_files:
+        os.remove(af)
 
 
 def process_filechunk(func, chunk, chunk_index, outfile):
     with open("{}_{}".format(outfile, chunk_index), "w") as out:
         for element in chunk:
-            out.write(func(element) + "\n")
+            res = func(element)
+            if res:
+                out.write(res + "\n")
     
