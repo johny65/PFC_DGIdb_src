@@ -59,7 +59,39 @@ create table interacciones_farmaco_gen (
 -- copy (select gen,alias from genes_alias_ifg) to 'D:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\genes_alias.csv' csv header
 -- copy (select gen,droga,interaccion,publicacion from interaccion_farmaco_gen) to 'D:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\interaccion_farmaco_gen.csv' csv header
 
- --
+-- copy (
+-- select g.nombre as gen, ga.alias as alias
+-- from genes g
+-- join gen_alias ga on ga.id_gen = g.id
+-- group by gen,alias
+-- order by gen,alias
+-- ) to 'D:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\gen_alias.csv' csv header
+
+-- copy (
+-- select g.nombre as gen, ga.alias as alias
+-- from genes g
+-- join gen_alias ga on ga.id_gen = g.id
+-- group by gen,alias
+-- order by gen,alias
+-- ) to 'D:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\gen_alias.tsv' WITH NULL AS ''
+
+-- copy (
+-- select d.nombre as droga, da.alias as alias
+-- from drogas d
+-- join droga_alias da on da.id_droga = d.id
+-- group by droga,alias
+-- order by droga,alias
+-- ) to 'D:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\droga_alias.csv' csv header
+
+-- copy (
+-- select d.nombre as droga, da.alias as alias
+-- from drogas d
+-- join droga_alias da on da.id_droga = d.id
+-- group by droga,alias
+-- order by droga,alias
+-- ) to 'D:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\droga_alias.tsv' WITH NULL AS ''
+
+--
 
 create table droga_alias_aux (
 	id serial primary key,
@@ -110,4 +142,3 @@ join publicaciones p on ifga.publicacion = p.pmid
 drop table ifg_aux
 
 --
-
