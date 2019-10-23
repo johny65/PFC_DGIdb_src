@@ -5,6 +5,10 @@ from html.parser import HTMLParser
 import sys
 import utils
 import parallel
+try:
+    from bs4 import BeautifulSoup
+except:
+    print("No se pudo importar BeautifulSoup")
 
 BASE_PUBMED_URL = "https://www.ncbi.nlm.nih.gov/pubmed/"
 
@@ -29,6 +33,15 @@ class AbstractParser(HTMLParser):
             self.abstract = data.replace("\n", " ")
 
 
+class BSAbstractParser():
+    def __init__(self, pmid):
+        url = BASE_PUBMED_URL + pmid
+        data = utils.fetch_url_wget(url)
+        soup = BeautifulSoup(data, 'html.parser')
+        d = soup.find(class_="abstr")
+        self.abstract = d.get_text(" ")
+
+
 def load_downloaded(outfile):
     """Crea un caché con los pmids de los abstracts ya descargados para no volver a procesarlos."""
     cache = set()
@@ -46,10 +59,12 @@ def load_downloaded(outfile):
 def process_line(line):
     pmid = line.split()[0]
     if pmid in downloaded:
-        print(pmid, "ya descargado")
+        # print(pmid, "ya descargado")
+        pass
     else:
         print("Procesando", pmid)
-        parser = AbstractParser(pmid)
+        # parser = AbstractParser(pmid)
+        parser = BSAbstractParser(pmid)
         return pmid + " " + (parser.abstract or "N/A")
 
 
