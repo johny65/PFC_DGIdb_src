@@ -28,22 +28,22 @@ import explore_data as ed
 # ed.plot_sample_length_distribution(x_entrenamiento)
 
 # Variables
-top_palabras_frecuentes = 20000 # Cantidad de palabras en el vocabulario
-maxima_longitud_ejemplos = 500 # Máxima longitud de los ejemplos de entrada
-dimension_vectores_embedding = 300 # Cantidad de elementos de los vectores de embedding
-embedding_entrenable = True # Bandera de adaptación de pesos para embeddings preentrenados
-porcentaje_dropeo = 0.5 # Pone en 0 el #% de los datos aleatoriamente
-cantidad_filtros = 16 # Cantidad de filtro de convolución
-dimension_kernel = 3 # De 1x3
-dimension_pooling = 2
-neuronas_ocultas = 32
-velocidad_aprendizaje = 1e-3
-cantidad_epocas = 100
-porcentaje_validacion = 0.2 # 20% de ejemplos usados para validar. Son tomados desde el final
-dimension_bacha = 512
+TOP_PALABRAS_FRECUENTES = 20000 # Cantidad de palabras en el vocabulario
+MAXIMA_LONGITUD_EJEMPLOS = 500 # Máxima longitud de los ejemplos de entrada
+DIMENSION_VECTORES_EMBEDDING = 300 # Cantidad de elementos de los vectores de embedding
+EMBEDDING_ENTRENABLE = True # Bandera de adaptación de pesos para embeddings preentrenados
+PORCENTAJE_DROPEO = 0.5 # Pone en 0 el #% de los datos aleatoriamente
+CANTIDAD_FILTROS = 16 # Cantidad de filtro de convolución
+DIMENSION_KERNEL = 3 # De 1x3
+DIMENSION_POOLING = 2
+NEURONAS_OCULTAS = 32
+VELOCIDAD_APRENDIZAJE = 1e-3
+CANTIDAD_EPOCAS = 100
+PORCENTAJE_VALIDACION = 0.2 # 20% de ejemplos usados para validar. Son tomados desde el final
+DIMENSION_BACHA = 512
 
 # Crea el vocabulario a partir de los datos de entrenamiento
-tokenizer = text.Tokenizer(num_words=top_palabras_frecuentes)
+tokenizer = text.Tokenizer(num_words=TOP_PALABRAS_FRECUENTES)
 tokenizer.fit_on_texts(x_entrenamiento)
 
 # Vectorización de los datos de entrada (entrenamiento y prueba): "Hola querido mundo" -> [3857 274 982]
@@ -52,8 +52,8 @@ x_prueba_vectorizado = tokenizer.texts_to_sequences(x_prueba)
 
 # Obtener longitud del ejemplo más largo
 maxima_longitud = len(max(x_entrenamiento_vectorizado,key=len))
-if maxima_longitud > maxima_longitud_ejemplos:
-    maxima_longitud = maxima_longitud_ejemplos
+if maxima_longitud > MAXIMA_LONGITUD_EJEMPLOS:
+    maxima_longitud = MAXIMA_LONGITUD_EJEMPLOS
 
 # Se arreglan los ejemplos para que todos tengan la misma longitud
 x_entrenamiento_arreglado = sequence.pad_sequences(x_entrenamiento_vectorizado,maxlen=maxima_longitud)
@@ -71,9 +71,9 @@ for line in f:
     embeddings_index[word] = coefs
 f.close()
 
-embedding_matrix = np.zeros((top_palabras_frecuentes,dimension_vectores_embedding))
+embedding_matrix = np.zeros((TOP_PALABRAS_FRECUENTES,DIMENSION_VECTORES_EMBEDDING))
 for word, index in tokenizer.word_index.items():
-    if index > top_palabras_frecuentes - 1:
+    if index > TOP_PALABRAS_FRECUENTES - 1:
         break
     else:
         embedding_vector = embeddings_index.get(word)
@@ -85,40 +85,40 @@ modelo = Sequential()
 
 '''Dropout: se utiliza para evitar el sobreentrenamiento'''
 
-# model.add(Embedding(input_dim=top_palabras_frecuentes,
-#                     output_dim=dimension_vectores_embedding,
+# model.add(Embedding(input_dim=TOP_PALABRAS_FRECUENTES,
+#                     output_dim=DIMENSION_VECTORES_EMBEDDING,
 #                     input_length=maxima_longitud))
 
-modelo.add(Embedding(input_dim=top_palabras_frecuentes,
-                    output_dim=dimension_vectores_embedding,
+modelo.add(Embedding(input_dim=TOP_PALABRAS_FRECUENTES,
+                    output_dim=DIMENSION_VECTORES_EMBEDDING,
                     input_length=maxima_longitud,
                     weights=[embedding_matrix],
-                    trainable=embedding_entrenable))
+                    trainable=EMBEDDING_ENTRENABLE))
 
-# modelo.add(Dropout(porcentaje_dropeo))
+# modelo.add(Dropout(PORCENTAJE_DROPEO))
 
-modelo.add(Conv1D(filters=cantidad_filtros,
-                 kernel_size=dimension_kernel,
+modelo.add(Conv1D(filters=CANTIDAD_FILTROS,
+                 kernel_size=DIMENSION_KERNEL,
                  activation='relu',
                  bias_initializer='random_uniform',
                  padding='same'))
-modelo.add(MaxPooling1D(pool_size=dimension_pooling))
+modelo.add(MaxPooling1D(pool_size=DIMENSION_POOLING))
 
-modelo.add(Conv1D(filters=cantidad_filtros,
-                 kernel_size=dimension_kernel,
+modelo.add(Conv1D(filters=CANTIDAD_FILTROS,
+                 kernel_size=DIMENSION_KERNEL,
                  activation='relu',
                  bias_initializer='random_uniform',
                  padding='same'))
-modelo.add(MaxPooling1D(pool_size=dimension_pooling))
+modelo.add(MaxPooling1D(pool_size=DIMENSION_POOLING))
 
 modelo.add(Flatten()) # input_shape=(imagen_ancho,imagen_alto)
 
 # Capa de entrada
-modelo.add(Dropout(porcentaje_dropeo))
-modelo.add(Dense(neuronas_ocultas,activation='relu'))
+modelo.add(Dropout(PORCENTAJE_DROPEO))
+modelo.add(Dense(NEURONAS_OCULTAS,activation='relu'))
 
 # Capa de salida
-modelo.add(Dropout(porcentaje_dropeo))
+modelo.add(Dropout(PORCENTAJE_DROPEO))
 modelo.add(Dense(1,activation='sigmoid'))
 
 '''
@@ -137,7 +137,7 @@ Activations: Funciones de activación
 '''
 
 # Proceso de aprendizaje
-optimizador = Adam(lr=velocidad_aprendizaje)
+optimizador = Adam(lr=VELOCIDAD_APRENDIZAJE)
 modelo.compile(optimizer=optimizador, # Velocidad de aprendizaje
                loss='binary_crossentropy', # Función de error
                metrics=['accuracy']) # Análisis del modelo (Tasa de acierto))
@@ -193,11 +193,11 @@ modelo.summary()
 # Entrenamiento del modelo
 registro = modelo.fit(x_entrenamiento_arreglado,
                       y_entrenamiento,
-                      epochs=cantidad_epocas,
+                      epochs=CANTIDAD_EPOCAS,
                       callbacks=callbacks,
-                      validation_data=(x_prueba_arreglado,y_prueba), # porcentaje_validacion
+                      validation_data=(x_prueba_arreglado,y_prueba), # PORCENTAJE_VALIDACION
                       verbose=1,
-                      batch_size=dimension_bacha)
+                      batch_size=DIMENSION_BACHA)
 
 fa.graficas(registro)
 

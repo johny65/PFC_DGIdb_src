@@ -142,3 +142,34 @@ join publicaciones p on ifga.publicacion = p.pmid
 drop table ifg_aux
 
 --
+
+-- Cantidad de publicaciones con las etiquetas completas: 5115 (menos 96 que no tiene abstract y tampoco publicación). 5115-96 = 5019
+select p.pmid as pmid
+from interacciones_farmaco_gen ifg
+join genes g on g.id = ifg.id_gen
+join drogas d on d.id = ifg.id_droga
+join interacciones i on i.id = ifg.id_interaccion
+join publicaciones p on p.id = ifg.id_publicacion
+group by pmid
+order by pmid
+
+-- Cantidad de interacciones fármaco-gen etiquetadas: 10175
+select p.pmid as pmid,g.nombre as gen,d.nombre as droga,i.nombre as interaccion
+from interacciones_farmaco_gen ifg
+join genes g on g.id = ifg.id_gen
+join drogas d on d.id = ifg.id_droga
+join interacciones i on i.id = ifg.id_interaccion
+join publicaciones p on p.id = ifg.id_publicacion
+group by pmid,gen,droga,interaccion
+order by pmid,gen,droga,interaccion
+
+-- copy (
+-- select p.pmid as pmid,g.nombre as gen,d.nombre as droga,i.nombre as interaccion
+-- from interacciones_farmaco_gen ifg
+-- join genes g on g.id = ifg.id_gen
+-- join drogas d on d.id = ifg.id_droga
+-- join interacciones i on i.id = ifg.id_interaccion
+-- join publicaciones p on p.id = ifg.id_publicacion
+-- group by pmid,gen,droga,interaccion
+-- order by pmid,gen,droga,interaccion
+-- ) to 'D:\Descargas\Python\PFC_DGIdb_src\ifg.csv' csv header
