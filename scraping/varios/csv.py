@@ -24,17 +24,17 @@ def generate_training(ifg_file, abstracts_file, out_file):
     Ejemplo: 10722,ADRA1A,MEPHENTERMINE,agonist,el abstract
     """
     abstracts = {}
-    with open(abstracts_file) as afile:
+    with open(abstracts_file,encoding="utf8") as afile:
         for l in afile:
             ll = l.split()
             pmid = ll[0]
             a = " ".join(ll[1:])
-            abstracts[pmid] = a
+            abstracts[pmid] = a.strip()
 
-    out = open(out_file, "w")
-    writer = ww(out, delimiter='\t')
+    out = open(out_file, "w",encoding="utf8")
+    writer = ww(out, delimiter='\t',lineterminator="\n")
 
-    with open(ifg_file) as csvfile:
+    with open(ifg_file,encoding="utf8") as csvfile:
         reader = getCsvReader(csvfile)
         for row in reader:
             out_line = list(row) + [abstracts[row[0]]]
