@@ -1,73 +1,108 @@
 import sys
+import csv
 
-def aplanar(entrada_tsv,salida_tsv):
+def eliminar_repetidos_gen(gen_ruta,alias_gen_ruta):
     '''
-    Coloca el nombre del gen/droga y sus alias en la misma linea.
-    El gen/droga queda en la primer posición.
+    Entradas:
+    - Archivo csv con la lista de genes.
+    - Archivo csv con la lista de alias para cada gen
+    Salida: 
+    - Archivo csv con tantas filas como genes hay, con el formato "gen seguido de aliases" sin denominaciones repetidas
     '''
-    referencia = ''
-    for linea in entrada_tsv:
-        cadena_separada = linea.split("\t") # Separa la cadena en una lista de cadenas
-        nombre = cadena_separada[0]
-        alias = cadena_separada[1].strip() # Elimina el carácter "\n" del último elemento
-        if referencia != nombre:
-            salida_tsv.write("\n")
-            salida_tsv.write("{}\t{}".format(nombre,alias))
-            referencia = nombre
-        else:
-            salida_tsv.write("\t{}".format(alias))
 
-def contar_alias(entrada_tsv):
-    '''
-    Cuenta la cantidad de alias por gen/droga.
-    '''
-    for linea in entrada_tsv:
-        cadena_separada = linea.split("\t") # Separa la cadena en una lista de cadenas
-        print(len(cadena_separada)-1)
+    nombres_list = list()
+    with open(gen_ruta,encoding="utf8") as genes:
+        lector_csv = csv.reader(genes,delimiter=',',quoting=csv.QUOTE_ALL)
+        for fila in lector_csv:
+            nombres_list.append(fila[0])
 
-def eliminar_duplicados(entrada_tsv,salida_tsv):
+    salida = open("E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/alias_gen.csv","w",encoding="utf8")
+    escritor_csv = csv.writer(salida,delimiter=',',lineterminator="\n")
+    for elemento in nombres_list:
+        with open(alias_gen_ruta,encoding="utf8") as alias_gen:
+            lector_csv = csv.reader(alias_gen,delimiter=',',quoting=csv.QUOTE_ALL)
+            alias_lista = list()
+            for fila in lector_csv:
+                if elemento == fila[0]:
+                    alias_lista.append(fila[1])
+                    alias_lista.append(fila[2])
+            lista = [elemento] + alias_lista
+            lista = list(set(lista))
+            lista.remove(elemento)
+            lista.sort(reverse=True)
+            lista.append(elemento)
+            lista.reverse()
+            escritor_csv.writerow(lista)
+    salida.close()
+        
+def eliminar_repetidos_droga(droga_ruta,alias_droga_ruta1,alias_droga_ruta2):
     '''
-    Elimina los nombres/alias de genes/drogas duplicados en cada linea.
-    Se mantiene el orden original.
-    El nombre de gen/droga se encuentra en la primer posición.
+    Entradas:
+    - Archivo csv con la lista de drogas.
+    - Archivo csv con la lista de alias1 para cada droga
+    - Archivo csv con la lista de alias2 para cada droga
+    Salida: 
+    - Archivo csv con tantas filas como drogas hay, con el formato "droga seguido de aliases" sin denominaciones repetidas
     '''
-    for linea in entrada_tsv:
-        lista = linea.split("\t") # Separa la cadena en una lista de cadenas
-        lista[-1] = lista[-1].strip() # Elimina el carácter "\n" del último elemento
-        conjunto = set()
-        contador = 0
-        for elemento in lista: # Elimina los duplicados manteniendo el ordenamiento
-            contador +=1
-            if elemento not in conjunto:
-                conjunto.add(elemento)
-                if len(lista) == contador:
-                    salida_tsv.write(elemento) # Si es el último elemento no coloca el "\t"
-                else:
-                    salida_tsv.write("{}\t".format(elemento)) # Si no es el último elemento coloca el "\t"
-        salida_tsv.write("\n")
+
+    nombres_list = list()
+    with open(droga_ruta,encoding="utf8") as drogas:
+        lector_csv = csv.reader(drogas,delimiter=',',quoting=csv.QUOTE_ALL)
+        for fila in lector_csv:
+            nombres_list.append(fila[0])
+
+    salida = open("E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/alias_droga.csv","w",encoding="utf8")
+    escritor_csv = csv.writer(salida,delimiter=',',lineterminator="\n")
+    for elemento in nombres_list:
+        alias_lista = list()
+        with open(alias_droga_ruta1,encoding="utf8") as alias_droga1:
+            lector_csv = csv.reader(alias_droga1,delimiter=',',quoting=csv.QUOTE_ALL)
+            for fila in lector_csv:
+                if elemento == fila[0]:
+                    alias_lista = alias_lista + fila[1:]
+        with open(alias_droga_ruta2,encoding="utf8") as alias_droga2:
+            lector_csv = csv.reader(alias_droga2,delimiter=',',quoting=csv.QUOTE_ALL)
+            for fila in lector_csv:
+                if elemento == fila[0]:
+                    alias_lista = alias_lista + fila[1:]
+        lista = [elemento] + alias_lista
+        lista = list(set(lista))
+        lista.remove(elemento)
+        lista.sort(reverse=True)
+        lista.append(elemento)
+        lista.reverse()
+        escritor_csv.writerow(lista)
+    salida.close()
+
+def formato_insercion_alias(alias_ruta):
+    salida = open("E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/formato_insercion_alias_droga.csv","w",encoding="utf8")
+    escritor_csv = csv.writer(salida,delimiter=',',lineterminator="\n")
+    with open(alias_ruta,encoding="utf8") as alias:
+        lector_csv = csv.reader(alias,delimiter=',',quoting=csv.QUOTE_ALL)
+        for fila in lector_csv:
+            nombre = fila[0]
+            aliases = fila[1:]
+            for elemento in aliases:
+                lista = [nombre, elemento]
+                escritor_csv.writerow(lista)
+    salida.close()
 
 if __name__ == "__main__":
     if len(sys.argv) != 1:
         print("Forma de uso: {} entrada salida".format(sys.argv[0]))
         exit()
 
-    # archivo_entrada = open("D:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\gen_alias.tsv",encoding="utf8")
-    # archivo_salida = open("D:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\gen_alias_aplanado.tsv",'w',encoding="utf8")
-    # archivo_entrada = open("D:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\droga_alias.tsv",encoding="utf8")
-    # archivo_salida = open("D:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\droga_alias_aplanado.tsv",'w',encoding="utf8")
+    # gen_ruta = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/dgidb_export_genes.csv"
+    # alias_gen_ruta = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/dgidb_export_alias_gen.csv"
+    # eliminar_repetidos_gen(gen_ruta,alias_gen_ruta)
 
-    # aplanar(archivo_entrada,archivo_salida)
+    # droga_ruta = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/dgidb_export_drogas.csv"
+    # alias_droga_ruta1 = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/dgidb_export_alias_droga1.csv"
+    # alias_droga_ruta2 = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/dgidb_export_alias_droga2.csv"
+    # eliminar_repetidos_droga(droga_ruta,alias_droga_ruta1,alias_droga_ruta2)
 
-    # archivo_entrada = open("D:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\gen_alias_aplanado.tsv",encoding="utf8")
+    # alias_gen_ruta = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/alias_gen.csv"
+    # formato_insercion_alias(alias_gen_ruta)
 
-    # contar_alias(archivo_entrada)
-
-    # archivo_entrada = open("D:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\gen_alias_aplanado.tsv",encoding="utf8")
-    # archivo_salida = open("D:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\gen_alias_entrenamiento.tsv",'w',encoding="utf8")
-    # archivo_entrada = open("D:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\droga_alias_aplanado.tsv",encoding="utf8")
-    # archivo_salida = open("D:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\droga_alias_entrenamiento.tsv",'w',encoding="utf8")
-
-    # eliminar_duplicados(archivo_entrada,archivo_salida)
-
-    # archivo_salida.close()
-    # archivo_entrada.close()
+    # alias_droga_ruta = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/alias_droga.csv"
+    # formato_insercion_alias(alias_droga_ruta)

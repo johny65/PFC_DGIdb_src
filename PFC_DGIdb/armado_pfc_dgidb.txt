@@ -1,0 +1,219 @@
+-- Para cargar la base de datos DGIdb en PostgreSQL:
+
+C:\Program Files\PostgreSQL\12\bin> .\psql.exe -U postgres -d DGIdb -f E:\Descargas\Python\DGIdb\dgi-db\db\structure.sql
+C:\Program Files\PostgreSQL\12\bin> .\psql.exe -U postgres -d DGIdb -f E:\Descargas\Python\DGIdb\dgidb_data\data.sql
+
+-- Exportación de datos desde DGIdb:
+
+Se crea una vista con la información de: genes (not null), drogas (not null), interacciones (null and not null) y publicaciones (not null)
+Cantidad de filas: 28385
+
+create view vista_ifg as (
+select g.id as gen_id, g.name as gen, d.id as droga_id, d.name as droga, ict.id as interaccion_id, ict.type as interaccion, p.pmid as publicacion
+from interaction_claims ic
+left join gene_claims gc on ic.gene_claim_id = gc.id
+left join drug_claims dc on ic.drug_claim_id = dc.id
+left join interaction_claims_publications icp on icp.interaction_claim_id = ic.id
+left join publications p on icp.publication_id = p.id
+left join interaction_claim_types_interaction_claims ictic on ictic.interaction_claim_id = ic.id
+left join interaction_claim_types ict on ictic.interaction_claim_type_id = ict.id
+left join genes g on gc.gene_id = g.id
+left join drugs d on dc.drug_id = d.id
+where g.id is not null and d.id is not null and p.pmid is not null
+group by g.id,gen,d.id,droga,ict.id,interaccion,publicacion 
+order by gen,droga,interaccion,publicacion
+)
+
+Se exportan los genes: 2440
+
+copy (
+select gen from vista_ifg
+group by gen
+order by gen
+) to 'E:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\dgidb_export_genes.csv' csv header
+
+Se exportan las drogas: 3568
+
+copy (
+select droga from vista_ifg
+group by droga
+order by droga
+) to 'E:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\dgidb_export_drogas.csv' csv header
+
+Se exportan las interacciones: 34
+
+copy (
+select interaccion from vista_ifg
+group by interaccion
+order by interaccion
+) to 'E:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\dgidb_export_interacciones.csv' csv header
+
+Se exportan las publicaciones: 13056
+
+copy (
+select publicacion from vista_ifg
+group by publicacion
+order by publicacion
+) to 'E:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\dgidb_export_publicaciones.csv' csv header
+
+Se exportan los alias de genes: 515659
+
+copy (
+select vifg.gen as gen,ga.alias as alias1,gca.alias as alias2 from vista_ifg vifg
+left join gene_aliases ga on ga.gene_id = vifg.gen_id
+left join gene_claims gc on gc.gene_id = vifg.gen_id
+left join gene_claim_aliases gca on gca.gene_claim_id = gc.id
+where vifg.gen is not null and ga.alias is not null and gca.alias is not null
+group by gen,alias1,alias2
+order by gen,alias1,alias2
+) to 'E:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\dgidb_export_alias_gen.csv' csv header
+
+Los aliases de drogas son extraidos por separados porque la consulta combinada es imposible
+
+Se exportan los alias1 de drogas: 288167
+
+copy (
+select vifg.droga as droga,da.alias as alias1 from vista_ifg vifg
+left join drug_aliases da on da.drug_id = vifg.droga_id
+where vifg.droga is not null and da.alias is not null
+group by droga,alias1
+order by droga,alias1
+) to 'E:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\dgidb_export_alias_droga1.csv' csv header
+
+Se exportan los alias2 de drogas: 288944
+
+copy (
+select vifg.droga as droga,dca.alias as alias2 from vista_ifg vifg
+left join drug_claims dc on dc.drug_id = vifg.droga_id
+left join drug_claim_aliases dca on dca.drug_claim_id = dc.id
+where vifg.droga is not null and dca.alias is not null
+group by droga,alias2
+order by droga,alias2
+) to 'E:\Descargas\Python\PFC_DGIdb_src\PFC_DGIdb\dgidb_export_alias_droga2.csv' csv header
+
+-- Se crea una nueva base de datos llamada PFC_DGIdb
+
+En PostgreSQL: Create -> Database -> <nombre>
+
+-- Se crean las tablas de PFC_DGIdb:
+
+create table gen (
+	id serial primary key,
+	nombre varchar(60) not null
+);
+
+create table droga (
+	id serial primary key,
+	nombre text not null
+);
+
+create table interaccion (
+	id serial primary key,
+	nombre varchar(60) not null
+);
+
+create table publicacion (
+	id serial primary key,
+	pmid int not null,
+	abstract text not null default true
+);
+
+create table gen_alias (
+	id serial primary key,
+	alias text not null,
+	id_gen int not null,
+	
+	constraint fk1_gen_alias_gen foreign key (id_gen) references gen(id)
+);
+
+create table droga_alias (
+	id serial primary key,
+	alias text not null,
+	id_droga int not null,
+	
+	constraint fk1_droga_alias_droga foreign key (id_droga) references droga(id)
+);
+
+create table interaccion_farmaco_gen (
+	id serial primary key,
+	id_gen int not null,
+	id_droga int not null,
+	id_interaccion int null,
+	id_publicacion int not null,
+	
+	constraint fk1_interacciones_farmaco_gen_gen foreign key (id_gen) references gen(id),
+	constraint fk2_interacciones_farmaco_gen_droga foreign key (id_droga) references droga(id),
+	constraint fk3_interacciones_farmaco_gen_interaccion foreign key (id_interaccion) references interaccion(id),
+	constraint fk4_interacciones_farmaco_gen_publicacion foreign key (id_publicacion) references publicacion(id)
+);
+
+-- Carga de datos en PFC_DGIdb:
+
+Se cargan los genes: tabla gen -> Import -> dgidb_export_genes.csv -> nombre
+Se cargan las drogas: tabla droga -> Import -> dgidb_export_drogas.csv -> nombre
+Se cargan las publicaciones: tabla publicacion -> Import -> dgidb_export_publicaciones.csv -> pmid
+
+Para cargar los alias de droga se crea la tabla auxiliar droga_alias_aux:
+
+create table droga_alias_aux (
+	id serial primary key,
+	droga text not null,
+	alias text not null
+);
+
+Se cargan los alias de droga: tabla droga_alias_aux -> Import -> formato_insercion_alias_droga.csv -> droga,alias
+
+Se utilizan los datos de droga_alias_aux para llenar droga_alias:
+
+insert into droga_alias(alias,id_droga)
+select daa.alias,d.id
+from droga d
+join droga_alias_aux daa on d.nombre = daa.droga
+
+Se elimina la tabla auxiliar: drop table droga_alias_aux
+
+Para cargar los alias de gen se crea la tabla auxiliar gen_alias_aux:
+
+create table gen_alias_aux (
+	id serial primary key,
+	gen text not null,
+	alias text not null
+);
+
+Se cargan los alias de gen: tabla gen_alias_aux -> Import -> formato_insercion_alias_gen.csv -> gen,alias
+
+Se utilizan los datos de gen_alias_aux para llenar gen_alias:
+
+insert into gen_alias(alias,id_gen)
+select gaa.alias,g.id
+from gen g
+join gen_alias_aux gaa on g.nombre = gaa.gen
+
+Se elimina la tabla auxiliar: drop table gen_alias_aux
+
+Para cargar la información de las interaciones fármaco-gen se crea la tabla auxiliar ifg_aux:
+
+create table ifg_aux (
+	id serial primary key,
+	gen text not null,
+	droga text not null,
+	interaccion text null,
+	publicacion int not null
+);
+
+Se cargan las interacciones fármaco-gen: tabla ifg_aux -> Import -> dgidb_export_ifg.csv -> gen,droga,interaccion,publicacion
+
+Se utilizan los datos de ifg_aux para llenar interaccion_farmaco_gen:
+
+insert into interaccion_farmaco_gen(id_gen,id_droga,id_interaccion,id_publicacion)
+select g.id,d.id,i.id,p.id
+from ifg_aux ifga
+join gen g on ifga.gen = g.nombre
+join droga d on ifga.droga = d.nombre
+join interaccion i on ifga.interaccion = i.nombre
+join publicacion p on ifga.publicacion = p.pmid
+
+Se elimina la tabla auxiliar: drop table ifg_aux
+
+Publicaciones que no tienen abstract: 89
+UPDATE publicacion SET abstract = false WHERE pmid IN (11134, 29252, 458448, 570044, 689791, 1207670, 1350385, 1654268, 1678274, 1731757, 1852778, 1986546, 2157221, 2611529, 3060178, 3770229, 4152054, 4156788, 4406367, 4539395, 4555460, 4719131, 4861216, 4887393, 4889058, 5284360, 5692397, 5833399, 6010427, 6131674, 6245760, 6336597, 6351026, 6364362, 6897316, 7725982, 7873420, 8153059, 8576907, 8777582, 8813989, 8878254, 9038626, 9341357, 9666280, 10386066, 10715145, 10794682, 11311067, 11378004, 11740746, 12083499, 12538756, 12591363, 12815153, 13438725, 13505370, 14035428, 14752016, 14993472, 15674127, 15679624, 15795321, 16480143, 16547811, 16702197, 16973761, 17202450, 17351742, 17823646, 17824139, 17881754, 18780321, 19075491, 19098484, 19293512, 19458366, 19461861, 19465361, 19604717, 20187262, 20345211, 20378572, 20399934, 20525913, 20562554, 21719882, 22917017, 23289116);

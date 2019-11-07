@@ -19,9 +19,7 @@ import cargar_imdb as ci
 import explore_data as ed
 
 # Carga de datos
-(x_entrenamiento,y_entrenamiento),(x_prueba,y_prueba) = ci.load_imdb_sentiment_analysis_dataset('D:\\Descargas\\Python\\neural_networks')
-
-print(x_entrenamiento[0])
+(x_entrenamiento,y_entrenamiento),(x_prueba,y_prueba) = ci.load_imdb_sentiment_analysis_dataset('E:\\Descargas\\Python\\neural_networks')
 
 # num_classes = ed.get_num_classes(y_entrenamiento)
 # print(num_classes)
@@ -65,7 +63,7 @@ indice_palabras = tokenizer.word_index
 
 # Se cargan vectores de embedding preentrenados (GloVe)
 embeddings_index = dict()
-f = open('glove.6B.300d.txt',encoding="utf8")
+f = open("E:\Descargas\Python\glove.6B.300d.txt",encoding="utf8")
 for line in f:
     values = line.split()
     word = values[0]
