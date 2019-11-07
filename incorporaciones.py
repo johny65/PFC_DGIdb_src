@@ -4,40 +4,40 @@ import numpy as np
 import re
 
 # Preprocesamiento de los datos (texto)
-from keras.preprocessing import text,sequence 
+# from keras.preprocessing import text,sequence 
 
 def cargar_datos_entrenamiento(datos_entrenamiento_ruta,alias_gen_entrenamiento,alias_droga_entrenamiento,embeddings_ruta):
     '''
 
     '''
 
-    embeddings_dict = dict()
-    with open(embeddings_ruta,encoding="utf8") as embeddings:
-        for fila in embeddings:
-            datos = fila.split()
-            palabra = datos[0]
-            embedding = np.asarray(datos[1:],dtype='float32')
-            embeddings_dict[palabra] = embedding
+    # embeddings_dict = dict()
+    # with open(embeddings_ruta,encoding="utf8") as embeddings:
+    #     for fila in embeddings:
+    #         datos = fila.split()
+    #         palabra = datos[0]
+    #         embedding = np.asarray(datos[1:],dtype='float32')
+    #         embeddings_dict[palabra] = embedding
 
-    print("Embeddings cargados")
+    # print("Embeddings cargados")
 
-    # alias_gen_conjunto = set()
-    # with open(alias_gen_entrenamiento,encoding="utf8") as alias_gen_tsv:
-    #     lector_tsv = csv.reader(alias_gen_tsv, delimiter='\t', quoting=csv.QUOTE_ALL)
-    #     for fila in lector_tsv:
-    #         for e in fila:
-    #             alias_gen_conjunto.add(e.lower())        
+    alias_gen_conjunto = set()
+    with open(alias_gen_entrenamiento,encoding="utf8") as alias_gen_csv:
+        lector_csv = csv.reader(alias_gen_csv, delimiter=',', quoting=csv.QUOTE_ALL)
+        for fila in lector_csv:
+            for e in fila:
+                alias_gen_conjunto.add(e) #.lower()
 
-    # print("Aliases de genes cargados")
+    print("Aliases de genes cargados")
 
-    # alias_droga_conjunto = set()
-    # with open(alias_droga_entrenamiento,encoding="utf8") as alias_droga_tsv:
-    #     lector_tsv = csv.reader(alias_droga_tsv, delimiter='\t', quoting=csv.QUOTE_ALL)
-    #     for fila in lector_tsv:
-    #         for e in fila:
-    #             alias_droga_conjunto.add(e.lower())
+    alias_droga_conjunto = set()
+    with open(alias_droga_entrenamiento,encoding="utf8") as alias_droga_csv:
+        lector_csv = csv.reader(alias_droga_csv, delimiter=',', quoting=csv.QUOTE_ALL)
+        for fila in lector_csv:
+            for e in fila:
+                alias_droga_conjunto.add(e) #.lower()
 
-    # print("Aliases de drogas cargados")
+    print("Aliases de drogas cargados")
 
     abstracts_dict = dict() # Mapa / Diccionario
     # abstracts_list = list() # list() == []
@@ -45,8 +45,8 @@ def cargar_datos_entrenamiento(datos_entrenamiento_ruta,alias_gen_entrenamiento,
         lector_tsv = csv.reader(archivo_tsv, delimiter='\t', quoting=csv.QUOTE_ALL)
         for fila in lector_tsv:
             # 0: pmid, 1: gen, 2: droga, 3: interacción, 4: abstract
-            s = fila[4].lower()
-            s = re.sub('[^a-zA-Z ]','',s)
+            s = fila[4] #.lower()
+            # s = re.sub('[\.\,]','',s)
             abstracts_dict[fila[0]] = s # abstracts_dict['pmid'] = abstract.str
             # abstracts_list.append(fila[4])
 
@@ -56,20 +56,42 @@ def cargar_datos_entrenamiento(datos_entrenamiento_ruta,alias_gen_entrenamiento,
 
     print("Abstracts cargados")
 
-    sin_embedding = open("sin_embedding6.tsv","w",encoding="utf8")
-    escritor_tsv = csv.writer(sin_embedding,delimiter='\t',lineterminator="\n",quoting=csv.QUOTE_ALL)
+    aparicion_gen = open("aparicion_gen.csv","w",encoding="utf8")
+    aparicion_droga = open("aparicion_droga.csv","w",encoding="utf8")
+    escritor_csv_gen = csv.writer(aparicion_gen,delimiter=',',lineterminator="\n")
+    escritor_csv_droga = csv.writer(aparicion_droga,delimiter=',',lineterminator="\n")
 
     for fila in abstracts_dict:
         palabras = abstracts_dict[fila].split()
-        lista = list()
+        lista_gen = list()
+        lista_droga = list()
         for palabra in palabras:
-            if palabra not in embeddings_dict:
-                lista.append(palabra)
-        escritor_tsv.writerow(lista)
+            if palabra in alias_gen_conjunto:
+                lista_gen.append(palabra)
+            if palabra in alias_droga_conjunto:
+                lista_droga.append(palabra)
+        escritor_csv_gen.writerow(lista_gen)
+        escritor_csv_droga.writerow(lista_droga)
 
-    sin_embedding.close()
+    aparicion_gen.close()
+    aparicion_droga.close()
 
-    print("Archivo sin_embedding creado")
+    print("Archivos de búsqueda de aliases creados")
+    
+    # sin_embedding = open("sin_embedding.csv","w",encoding="utf8")
+    # escritor_tsv = csv.writer(sin_embedding,delimiter=',',lineterminator="\n",quoting=csv.QUOTE_ALL)
+
+    # for fila in abstracts_dict:
+    #     palabras = abstracts_dict[fila].split()
+    #     lista = list()
+    #     for palabra in palabras:
+    #         if palabra not in embeddings_dict:
+    #             lista.append(palabra)
+    #     escritor_tsv.writerow(lista)
+
+    # sin_embedding.close()
+
+    # print("Archivo sin_embedding creado")
 
     # lista_gen = list()
     # lista_droga = list()
@@ -111,7 +133,7 @@ def cargar_datos_entrenamiento(datos_entrenamiento_ruta,alias_gen_entrenamiento,
     # x_entrenamiento_arreglado = sequence.pad_sequences(x_entrenamiento_vectorizado,maxlen=maxima_longitud)
     # x_prueba_arreglado = sequence.pad_sequences(x_prueba_vectorizado,maxlen=maxima_longitud)
 
-    return
+    # return
 
 # def interacciones_tipos(datos_entrenamiento):
 #     interacciones = set()
@@ -162,8 +184,8 @@ if __name__ == "__main__":
         exit()
     
     datos_entrenamiento_ruta = "E:/Descargas/Python/PFC_DGIdb_src/scraping/varios/datos_entrenamiento.tsv"
-    alias_gen_entrenamiento = "E:/Descargas/Python/PFC_DGIdb_src/gen_alias_entrenamiento.tsv"
-    alias_droga_entrenamiento = "E:/Descargas/Python/PFC_DGIdb_src/droga_alias_entrenamiento.tsv"
+    alias_gen_entrenamiento = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/alias_gen.csv"
+    alias_droga_entrenamiento = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/alias_droga.csv"
     embeddings_ruta = "E:/Descargas/Python/glove.6B.300d.txt"
 
     cargar_datos_entrenamiento(datos_entrenamiento_ruta,alias_gen_entrenamiento,alias_droga_entrenamiento,embeddings_ruta)
