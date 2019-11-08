@@ -8,6 +8,7 @@ import sys
 import math
 import parallel
 import logging
+from termcolor import colored
 # scrapers:
 # (cada scraper contiene un método 'scrap(url)' que dada la URL de la fuente
 # devuelve la URL del PDF, o None si no pudo obtenerla)
@@ -21,11 +22,13 @@ import bmc
 import aspet
 import pnas
 import physiology
+import wiley
+import super_scrap
 
 # scrapers activos, sólo se usarán los scrapers de esta lista (si está vacía se usan todos):
-ACTIVE_SCRAPERS = [physiology]
+ACTIVE_SCRAPERS = [springer, nature, wiley, aspet, oxford]
 # los scrapers de la siguiente lista siempre se excluirán:
-EXCLUDE_SCRAPERS = [aspet, oxford]
+EXCLUDE_SCRAPERS = []
 
 def download_async(url, pmid):
     """Dada la URL de un PDF, lo descarga en files/pmid.pdf (usando wget en 
@@ -39,8 +42,9 @@ def download(url, pmid):
     out_file = "files/{}.pdf".format(pmid)
     try:
         subprocess.run(["wget", "-c", "-O", out_file, url], check=True)
-        print("Guardado", out_file)
+        print(colored("Guardado", "green"), out_file)
     except subprocess.CalledProcessError as ex:
+        print(colored("Error descargando.", "red"))
         logging.log(logging.ERROR, "Error descargando:", ex)
 
 
@@ -78,6 +82,8 @@ def process(url):
         scraper = pnas
     elif "physiology.org" in url:
         scraper = physiology
+    elif "wiley" in url:
+        scraper = wiley
     else:
         scraper = None
     
@@ -94,24 +100,27 @@ def process_line(line):
         pmid, url = l[0], " ".join(l[1:])
         if url != "No encontrado":
             if pmid not in downloaded:
-                pdf_url = process(url)
+                if use_super:
+                    pdf_url = super_scrap.scrap(pmid)
+                else:
+                    pdf_url = process(url)
+
                 if pdf_url:
                     print("Descargando", pdf_url)
                     download(pdf_url, pmid)
                     # download_async(pdf_url, pmid)
             else:
-                print(pmid, "ya descargado")
+                print(pmid, colored("ya descargado", "yellow"))
 
 
 if __name__ == "__main__":
-    in_parallel = False
-    if len(sys.argv) == 3 and sys.argv[2] == "-p":
-        # ejecutar en paralelo
-        in_parallel = True
     if len(sys.argv) < 2:
-        print("Uso: {} entrada [-p]".format(sys.argv[0]))
+        print("Uso: {} entrada [-p] [--super]".format(sys.argv[0]))
         exit()
     downloaded = load_downloaded()
+
+    in_parallel = "-p" in sys.argv
+    use_super = "--super" in sys.argv
 
     with open(sys.argv[1]) as f:
         if in_parallel:

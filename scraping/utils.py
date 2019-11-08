@@ -47,7 +47,8 @@ def redirect(url):
     try:
         res = urllib.request.urlopen(url)
         return res.geturl()
-    except:
+    except Exception as ex:
+        print(ex)
         return None
 
 def elsevier(url):
