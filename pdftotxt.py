@@ -40,18 +40,18 @@ def convertMultiple(pdfDir, txtDir):
         if fileExtension == "pdf":
             pdfFilename = pdfDir + pdf 
             text = convert(pdfFilename) #get string of text content of pdf
-            new_text = re.sub('[^a-zA-Z0-9\.]',' ',text) # Elimina caracteres especiales
+            # new_text = re.sub('[^a-zA-Z0-9\.]',' ',text) # Elimina caracteres especiales
             textFilename = txtDir + pdf + ".txt"
-            textFile = open(textFilename, "w") #make text file
-            textFile.write(new_text) #write text to text file
+            textFile = open(textFilename, "w",encoding="utf8") #make text file
+            textFile.write(text) #write text to text file
             # cat textFilename | tr -d '\r\n' > textFilename + '2.txt' 
 
 #i : info
 #p : pdfDir
 #t = txtDir
 def main(argv):
-    pdfDir = "D:\\Descargas\\Python\\PFC_DGIdb_src\\"
-    txtDir = "D:\\Descargas\\Python\\PFC_DGIdb_src\\"
+    pdfDir = "E:/Descargas/Python/PFC_DGIdb_src/"
+    txtDir = "E:/Descargas/Python/PFC_DGIdb_src/"
     try:
         opts, args = getopt.getopt(argv,"ip:t:")
     except getopt.GetoptError:
