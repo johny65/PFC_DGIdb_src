@@ -25,6 +25,17 @@ def scrap(pmid):
     # res = urllib.request.urlopen(req)
     # return res.geturl().replace("/abs/", "/pdfdirect/")
 
+def scrap2(doi):
+    base_url = "http://libgen.lc/scimag/ads.php?doi="
+    html = utils.fetch_url(base_url + doi)
+    for fila in html.split("\n"):
+        try:
+            clave = fila.index("http://booksdl.org/scimag/get.php?doi=" + doi)
+            url = fila[clave:fila.index('"',clave)]
+            return url
+        except:
+            pass
 
 if __name__ == "__main__":
     print(scrap("25864487"))
+    print(scrap2("10.1016/0003-9861(87)90443-7"))

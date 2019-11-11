@@ -26,7 +26,7 @@ import wiley
 import super_scrap
 
 # scrapers activos, sólo se usarán los scrapers de esta lista (si está vacía se usan todos):
-ACTIVE_SCRAPERS = [springer, nature, wiley, aspet, oxford]
+ACTIVE_SCRAPERS = []
 # los scrapers de la siguiente lista siempre se excluirán:
 EXCLUDE_SCRAPERS = []
 
@@ -95,13 +95,16 @@ def process(url):
 
 def process_line(line):
     """Procesa una línea [pmid url]."""
+    downloaded = load_downloaded()
+    use_super = True
     l = line.strip().split(" ")
     if len(l) > 1:
         pmid, url = l[0], " ".join(l[1:])
         if url != "No encontrado":
             if pmid not in downloaded:
                 if use_super:
-                    pdf_url = super_scrap.scrap(pmid)
+                    # pdf_url = super_scrap.scrap(pmid)
+                    pdf_url = super_scrap.scrap2(url)
                 else:
                     pdf_url = process(url)
 
