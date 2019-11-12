@@ -103,8 +103,8 @@ def process_line(line):
         if url != "No encontrado":
             if pmid not in downloaded:
                 if use_super:
-                    # pdf_url = super_scrap.scrap(pmid)
-                    pdf_url = super_scrap.scrap2(url)
+                    pdf_url = super_scrap.scrap(pmid)
+                    # pdf_url = super_scrap.scrap2(url)
                 else:
                     pdf_url = process(url)
 

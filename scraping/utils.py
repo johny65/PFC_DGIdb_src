@@ -19,7 +19,11 @@ def fetch_url(url):
     try:
         with urllib.request.urlopen(url) as f:
             data = f.read()
-            return data.decode("utf8")
+            try:
+                return data.decode("utf8")
+            except:
+                return data.decode("windows-1252")
+
     except HTTPError as ex:
         logging.log(logging.ERROR, ex)
         return ""
