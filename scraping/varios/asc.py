@@ -1,6 +1,6 @@
 import sys
 import csv
-import utils
+# import utils
 
 def pmid_src():
     """Guarda en un archivo el pmid y su fuente."""

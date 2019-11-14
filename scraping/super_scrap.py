@@ -1,5 +1,5 @@
 """
-Web scraping para Wiley.
+Super scraper.
 """
 import urllib.request
 import urllib.parse
