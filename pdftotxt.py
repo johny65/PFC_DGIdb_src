@@ -13,10 +13,10 @@ def pdftotext(ruta_pdf,ruta_txt):
             salida_nombre = archivo.replace(".pdf",".txt")
             salida_ruta = os.path.join(ruta_txt,salida_nombre)
             lista = [xpdf_ruta,"-enc","UTF-8","-nopgbrk","-nodiag",entrada_ruta,salida_ruta]
-            # subprocess.Popen(lista)
-            res = subprocess.run(lista)
-            if res.returncode != 0:
-                print("Error: " + archivo)
+            subprocess.Popen(lista)
+            # res = subprocess.run(lista)
+            # if res.returncode != 0:
+            #     print("Error: " + archivo)
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
