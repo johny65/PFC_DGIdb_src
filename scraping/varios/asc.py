@@ -1,8 +1,6 @@
 import sys
-import _csv
-from _csv import writer as ww
-from _csv import reader as rr
-# import utils
+import csv
+import utils
 
 def pmid_src():
     """Guarda en un archivo el pmid y su fuente."""
@@ -14,7 +12,7 @@ def pmid_src():
 
 
 def getCsvReader(reading_file):
-    return rr(reading_file, delimiter=',', quoting=_csv.QUOTE_ALL)
+    return csv.reader(reading_file, delimiter=',', quoting=csv.QUOTE_ALL)
 
 
 def generate_training(ifg_file, abstracts_file, out_file):
@@ -24,22 +22,23 @@ def generate_training(ifg_file, abstracts_file, out_file):
     Ejemplo: 10722,ADRA1A,MEPHENTERMINE,agonist,el abstract
     """
     abstracts = {}
-    with open(abstracts_file,encoding="utf8") as afile:
+    with open(abstracts_file, encoding="utf8") as afile:
         for l in afile:
             ll = l.split()
             pmid = ll[0]
             a = " ".join(ll[1:])
             abstracts[pmid] = a.strip()
 
-    out = open(out_file, "w",encoding="utf8")
-    writer = ww(out, delimiter='\t',lineterminator="\n")
+    out = open(out_file, "w", encoding="utf8")
+    writer = csv.writer(out, delimiter='\t', lineterminator="\n")
 
-    with open(ifg_file,encoding="utf8") as csvfile:
+    with open(ifg_file, encoding="utf8") as csvfile:
         reader = getCsvReader(csvfile)
         for row in reader:
             out_line = list(row) + [abstracts[row[0]]]
             writer.writerow(out_line)
     out.close()
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 4:
