@@ -2,11 +2,12 @@ import sys
 import csv
 import numpy as np
 import re
+import os
 
 # Preprocesamiento de los datos (texto)
 # from keras.preprocessing import text,sequence 
 
-def cargar_datos_entrenamiento(datos_entrenamiento_ruta,alias_gen_entrenamiento,alias_droga_entrenamiento,embeddings_ruta):
+def cargar_datos_entrenamiento(interaccion_farmaco_gen,alias_gen_entrenamiento,alias_droga_entrenamiento,embeddings_ruta):
     '''
 
     '''
@@ -26,7 +27,7 @@ def cargar_datos_entrenamiento(datos_entrenamiento_ruta,alias_gen_entrenamiento,
         lector_csv = csv.reader(alias_gen_csv, delimiter=',', quoting=csv.QUOTE_ALL)
         for fila in lector_csv:
             for e in fila:
-                alias_gen_conjunto.add(e) #.lower()
+                alias_gen_conjunto.add(e).lower()
 
     print("Aliases de genes cargados")
 
@@ -35,11 +36,11 @@ def cargar_datos_entrenamiento(datos_entrenamiento_ruta,alias_gen_entrenamiento,
         lector_csv = csv.reader(alias_droga_csv, delimiter=',', quoting=csv.QUOTE_ALL)
         for fila in lector_csv:
             for e in fila:
-                alias_droga_conjunto.add(e) #.lower()
+                alias_droga_conjunto.add(e).lower()
 
     print("Aliases de drogas cargados")
 
-    abstracts_dict = dict() # Mapa / Diccionario
+    pubs_dict = dict() # Mapa / Diccionario
     # abstracts_list = list() # list() == []
     with open(datos_entrenamiento_ruta,encoding="utf8") as archivo_tsv:
         lector_tsv = csv.reader(archivo_tsv, delimiter='\t', quoting=csv.QUOTE_ALL)
@@ -49,6 +50,18 @@ def cargar_datos_entrenamiento(datos_entrenamiento_ruta,alias_gen_entrenamiento,
             # s = re.sub('[\.\,]','',s)
             abstracts_dict[fila[0]] = s # abstracts_dict['pmid'] = abstract.str
             # abstracts_list.append(fila[4])
+
+    ruta_txt = "E:/Descargas/Python/PFC_DGIdb_src/scraping/files/txt"
+    for archivo in sorted(os.listdir(ruta_pdf)):
+        if archivo.endswith(".txt") and os.path.splittext(archivo)[0] in alias_gen_conjunto:
+            entrada_ruta = os.path.join(ruta_pdf,archivo)
+            salida_nombre = archivo.replace(".pdf",".txt")
+            salida_ruta = os.path.join(ruta_txt,salida_nombre)
+            lista = [xpdf_ruta,"-enc","UTF-8","-nopgbrk","-nodiag",entrada_ruta,salida_ruta]
+            subprocess.Popen(lista)
+            # res = subprocess.run(lista)
+            # if res.returncode != 0:
+            #     print("Error: " + archivo)
 
     # print(abstracts_dict['17288876'])
     # print(abstracts_dict)
@@ -183,9 +196,9 @@ if __name__ == "__main__":
         print("Forma de uso: {} entrada salida".format(sys.argv[0]))
         exit()
     
-    datos_entrenamiento_ruta = "E:/Descargas/Python/PFC_DGIdb_src/scraping/varios/datos_entrenamiento.tsv"
+    interaccion_farmaco_gen = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/dgidb_export_ifg.csv"
     alias_gen_entrenamiento = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/alias_gen.csv"
     alias_droga_entrenamiento = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/alias_droga.csv"
     embeddings_ruta = "E:/Descargas/Python/glove.6B.300d.txt"
 
-    cargar_datos_entrenamiento(datos_entrenamiento_ruta,alias_gen_entrenamiento,alias_droga_entrenamiento,embeddings_ruta)
+    cargar_datos_entrenamiento(interaccion_farmaco_gen,alias_gen_entrenamiento,alias_droga_entrenamiento,embeddings_ruta)
