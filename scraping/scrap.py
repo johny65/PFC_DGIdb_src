@@ -8,7 +8,12 @@ import sys
 import math
 import parallel
 import logging
-from termcolor import colored
+import argparse
+try:
+    from termcolor import colored
+except:
+    print("No se pudo importar termcolor. Colores desactivados.")
+    colored = lambda x, y: x
 # scrapers:
 # (cada scraper contiene un método 'scrap(url)' que dada la URL de la fuente
 # devuelve la URL del PDF, o None si no pudo obtenerla)
@@ -95,16 +100,15 @@ def process(url):
 
 def process_line(line):
     """Procesa una línea [pmid url]."""
-    downloaded = load_downloaded()
-    use_super = True
     l = line.strip().split(" ")
     if len(l) > 1:
         pmid, url = l[0], " ".join(l[1:])
         if url != "No encontrado":
             if pmid not in downloaded:
-                if use_super:
+                if use_super1:
                     pdf_url = super_scrap.scrap(pmid)
-                    # pdf_url = super_scrap.scrap2(url)
+                elif use_super2:
+                    pdf_url = super_scrap.scrap2(url)
                 else:
                     pdf_url = process(url)
 
@@ -117,17 +121,22 @@ def process_line(line):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("Uso: {} entrada [-p] [--super]".format(sys.argv[0]))
-        exit()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("entrada", help="Archivo de entrada", type=open)
+    parser.add_argument("-p", "--parallel", help="Ejecuta en forma paralela", action="store_true")
+    parser.add_argument("--super1", help="Usa el Super Scraper 1 (Sci-hub)", action="store_true")
+    parser.add_argument("--super2", help="Usa el Super Scraper 2 (Libgen)", action="store_true")
+    args = parser.parse_args()
+
     downloaded = load_downloaded()
 
-    in_parallel = "-p" in sys.argv
-    use_super = "--super" in sys.argv
-
-    with open(sys.argv[1]) as f:
-        if in_parallel:
-            parallel.parallel_map(process_line, f.readlines())
-        else:
-            for line in f:
-                process_line(line)
+    in_parallel = args.parallel
+    use_super1 = args.super1
+    use_super2 = args.super2
+    
+    f = args.entrada
+    if in_parallel:
+        parallel.parallel_map(process_line, f.readlines())
+    else:
+        for line in f:
+            process_line(line)
