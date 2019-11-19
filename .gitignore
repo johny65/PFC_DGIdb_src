@@ -1,6 +1,6 @@
 .vscode/
 venv/
 *.pyc
-scraping/files/*.pdf
+scraping/files/**/*.pdf
 wget-log*
 PMC-ids.csv
