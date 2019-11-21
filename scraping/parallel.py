@@ -45,7 +45,6 @@ def parallel_map_to_file(func, elements, outfile):
     cant = len(elements)
     cpus = multiprocessing.cpu_count() * 2
     chunksize = int(math.ceil(cant / cpus))
-    outq = multiprocessing.Queue()
     jobs = []
     for i in range(cpus):
         chunk = elements[chunksize * i:chunksize * (i + 1)]
