@@ -1,0 +1,11 @@
+-- exporta todas las interacciones fármaco-gen etiquetadas completamente
+
+copy (
+select p.pmid, lower(g.nombre), lower(d.nombre), lower(i.nombre)
+from interaccion_farmaco_gen ifg
+join publicacion p on p.id = ifg.id_publicacion
+join gen g on g.id = ifg.id_gen
+join droga d on d.id = ifg.id_droga
+join interaccion i on i.id = ifg.id_interaccion
+order by 1, 2, 3, 4
+) to '/tmp/pfc_dgidb_export_ifg.csv' csv

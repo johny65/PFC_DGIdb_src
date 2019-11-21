@@ -152,6 +152,7 @@ create table interaccion_farmaco_gen (
 Se cargan los genes: tabla gen -> Import -> dgidb_export_genes.csv -> nombre
 Se cargan las drogas: tabla droga -> Import -> dgidb_export_drogas.csv -> nombre
 Se cargan las publicaciones: tabla publicacion -> Import -> dgidb_export_publicaciones.csv -> pmid
+Se cargan las interacciones: tabla interaccion -> Import -> dgidb_export_interacciones.csv -> nombre
 
 Para cargar los alias de droga se crea la tabla auxiliar droga_alias_aux:
 
