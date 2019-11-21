@@ -87,11 +87,23 @@ def formato_insercion_alias(alias_ruta):
                 escritor_csv.writerow(lista)
     salida.close()
 
+def limpiar_alias(in_file, out_file):
+    with open(out_file, "w", encoding="utf8") as salida:
+        writer = csv.writer(salida)
+        with open(in_file, encoding="utf8") as f:
+            reader = csv.reader(f)
+            for row in reader:
+                # primer elemento es el nombre original
+                all_alias = set(e.lower() for e in row[1:] if not e.isnumeric())
+                writer.writerow([row[0].lower()] + sorted(all_alias))
+
 if __name__ == "__main__":
-    if len(sys.argv) != 1:
+    if len(sys.argv) != 3:
         print("Forma de uso: {} entrada salida".format(sys.argv[0]))
         exit()
 
+    limpiar_alias(sys.argv[1], sys.argv[2])
+    
     # gen_ruta = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/dgidb_export_genes.csv"
     # alias_gen_ruta = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/dgidb_export_alias_gen.csv"
     # eliminar_repetidos_gen(gen_ruta,alias_gen_ruta)
