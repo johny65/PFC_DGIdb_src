@@ -1,770 +1,1242 @@
 ""
-6284
-1471
-552
-5464
-2898
-4908
-8803
-445
-p85
-290
-2905
-1978
-221
-1027
-1056
-2891
-1800
-338
-302
-7056
-3460
-6278
-331
-2534
-6876
-1737
-29
-2030
-646
-2330
-8912
-7421
-811
-1644
-4327
-5534
-932
-7376
-1674
-3061
-2642
-3570
-9588
-79
-263
-598
-6016
-2671
-612
-9453
-3932
-782
-468
-3619
-257
-292
-50
-5588
-1784
-478
-6329
-1485
-21
-69
-7043
-2168
-2628
-2678
-1133
-1571
-1558
-186
-2640
-2528
-403
-1965
-2098
-1874
-11761
-785
-125
-7
-3561
-768
-644
-2046
-2230
-285
-43
-1628
-2002
-2743
-1339
-10599
-444
-5294
-9836
-1638
-2160
-1806
-2
-643
-2028
-1030
-2617
-1384
-1817
-1374
-6469
-775
-798
-214
-2693
-2771
-1378
-5469
-5837
-2764
-2434
-19
-p45
-2890
-8743
-1063
-3791
-5187
-1831
-833
-1066
-7166
-3091
-632
-39
-320
-2582
-9536
-5465
-9817
-408
-10019
-4502
-2505
-441
-2915
-6773
-5141
-2654
-538
-1243
-411
-2638
-6258
-453
-2697
-543
-875
-2624
-983
-47
-2366
-3676
-2395
-6869
-3
-1815
-89
-1595
-1636
-1424
-6240
-10
-1719
-4192
-1241
-42
-4907
-1748
-2597
-76
-400
-231
-15
-2742
-1550
-6285
-819
-1509
-2893
-4498
-1340
-5467
-8553
-870
-547
-341
-1404
-366
-3609
-546
-22
-1380
-9446
-3553
-438
-256
-7941
-937
-761
-1025
-1646
-1589
-3312
-486
-2625
-1649
-11
-220
-1559
-1401
-13
-7132
-1375
-467
-5173
-2744
-1811
-1244
-1360
-587
-348
-2933
-457
-1325
-6561
-8
-4324
-319
-58
-417
-1463
-2451
-894
-7436
-25
-2593
-992
-10991
-55
-3026
-1058
-1956
-3684
-2068
-2536
-1278
-279
-1385
-1431
-1493
-282
-382
-3356
-280
-2594
-27
-2322
-1977
-3782
-2605
-537
-324
-3176
-219
-1678
-5292
-1848
-6872
-2623
-2770
-7980
-264
-6915
-54
-5167
-10535
-3976
-7172
-9122
-1527
-7422
-2246
-465
-2606
-64386
-11255
-2352
-1869
-6446
-583
-2264
-3785
-1382
-2904
-6283
-5967
-3690
-6510
-7167
-2334
-336
-6843
-3465
-1814
-217
-2048
-1455
-554
-1727
-2798
-343
-11004
-38
-7170
-1667
-4089
-886
-927
-2209
-407
-2897
-20
-2766
-2878
-626
-3554
-427
-24
-tachykinin receptor 1
-1639
-2731
-1787
-620
-3354
-5244
-8001
-4329
-384
-2981
-921
-4583
-1022
-1541
-1593
-2180
-2308
-2045
-2101
-2637
-2350
-1356
-9607
-1363
-132
-2631
-593
-28
-1021
-695
-990
-2894
-383
-4
-5295
-368
-2339
-914
-242
-8527
-1936
-2746
-2629
-4057
-5737
-3527
-2841
-8772
-6559
-3689
-2690
-26
-51
-1081
-897
-553
-355
-2185
-778
-847
-64146
-5293
-1662
-781
-404
-412
-6009
-4695
-1953
-2903
-462
-45
-2200
-1962
-2353
-1490
-2621
-1373
-p75
-1786
-8974
-1954
-8654
-590
-1813
-854
-799
-622
-4193
-4708
-369
-4092
-108
-387
-1612
-2885
-7155
-16
-p52
-2348
-1915
-4947
-4170
-978
-4575
-621
-3416
-328
-2778
-4809
-10914
-1634
-3575
-435
-2521
-994
-2064
-4702
-2531
-6367
-409
-6530
-603
-2153
-1043
-2053
-p40
-599
-3606
-2095
-1569
-3592
-1370
-1994
-1445
-1462
-959
-1381
-8032
-3628
-2545
-7157
-586
-4311
-2215
-1362
-629
-9475
+ec 3.-.-.-
+nos
+smn
+vegfr1/2/3
+steroid 11-beta-monooxygenase
+ec 3.4.24.-
+ensg00000115353
+c-k-ras
+ec 1.9.3.1
+glutathione s-transferase m1
+ec 6.1.1.16
+glp-1
+activator protein 1
+ec 3.6.3
+gbp
+calcr_human
+pum
+cr
+nal synthase
+lipa
+adra1d
+ensg00000135744
+threonyl-trna synthetase
+ec 7.2.2.10
+ec 2.7.3.2
+rip1
+vitamin k gamma glutamyl carboxylase
+ddah
+ec 2.7.10.1
+ugt1a
+hbab
+ec 2.7.1.153
+ec 7.6.2.2
+ref1
+ec 2.1.1.144
+sodium-dependent noradrenaline transporter
+ec 3.4.21.-
+arl1
+p-pst
+q9nsa2
+ec 2.8.1.8
+fcg3
+ceh
+pcn3
+cdkn2
 p50
-5321
-6535
-714
-2978
-869
-1990
-896
-2548
-3737
-6307
-613
-779
-405
-1631
-p23
-2466
-1594
-439
-708
-2285
-4312
-592
-4852
-2516
-7419
-5291
-1795
-1991
-1937
-2243
-124
-2280
-868
-930
-3490
-414
-1633
-5241
-1544
-784
-2181
-627
-3614
-4582
-36
-933
-3551
-3537
-2622
-2595
-4191
-1268
-533
-57
-6541
-2026
-p55
-283
-926
-4088
-1
-2367
-1048
-91
-915
-288
-4317
-6833
-1464
-1632
-2269
-2740
-18
-183
-90
-2433
-262
-3418
-624
-1026
-2645
-203068
-1393
-5196
-4893
-30
-347
-1158
-77
-1472
-381
-293
-1764
-1369
-1677
-253
-2877
-977
-6512
-5111
-6906
-6
-p67
-635
-2456
-1788
-3778
-4507
-6768
-410
-2335
-35
-259
-4846
-4325
-1503
-p38
-2155
-6019
-2592
-1583
-177
-3569
-6752
-700
-1400
-5210
-268
-2590
-796
-6524
-34
-6138
-2047
-929
-3767
-1828
-4879
-595
-117
-786
-3309
-4323
-5217
-1785
-7161
-2879
-94
-2600
-500
-9052
-3742
-252
-1606
-7173
-3574
-1232
+ec 1.14.13.-
+flavoprotein-linked monooxygenase
+protein tyrosine phosphatase
+ces1
+ensg00000010810
+tryptophanyl-trna synthetase
+fh
+si
+ec 3.2.1.1
+ec 6.1.1.12
+acvrlk4
+glutathione s-aryltransferase
+egfr (her1/erbb1)her2 (erbb2/neu)her4 (erbb4)
+epididymis secretory sperm binding protein
+retinol dehydrogenase
+grik2
+nosiii
+ec 1.1.1.205
+ec 2.4.2
+ec 3.1.1.13
+mad3
+trk
+ec 2.5.1.18
+hkpx1
+ec 1.14.11.29
+lrp
+d-glucosyl-n-acylsphingosine glucohydrolase
+tsc
+src1
+hug-br1
+udpgt
+glycine hydroxymethyltransferase
+nad+-specific icdh
+ec 6.2.1
+ec 6.1.1.15
+p85
+mmp25
+calcium/calmodulin-stimulated cyclic nucleotide phosphodiesterase
+cd25
+tsr-i
+thrrs
+gmp-pde gamma
+cdk4i
+n/a
+tpo
+cox2
+p150
+mct 6
+ec 4.3.1.17
+tdh
+fcg2
+cysteinyl-trna synthetase
+ec 2.1.1.37
+cms1a
+casein kinase ii subunit alpha
+atf2
+h<sub>3</sub> receptor
+ptdins-3-kinase p110
+farnesyl diphosphate synthase
+qpc
+ec 3.1.27.-
+ec 1.1.1.62
+ip
+hnpcc
+slc6a2
+pp17
+glutamate receptor ka-2
+ec 1.4.1.3
+"trans-1,2-dihydrobenzene-1,2-diol dehydrogenase"
+ugt1e
+cd16
+ec 3.1.27.5
+fcgr1
+cd32 antigen
+hai
+hk1
+ghrh
+ec 2.7.11.15
+p63027
+nachra7
+ec 2.7.11.26
+mct4
+myc
+lph
+hph-3
+ec 2.3.1.48
+mct7
+ec 3.5.3.18
+nk3
+ec 3.6.5.2
+ec 1.5.1.3
+abp
+nrf2
+proteasome
+p18825
+monocarboxylate transporter 6
+malate dehydrogenase (oxaloacetate-decarboxylating) (nadp(+))
+rac1
+isoleucyl-trna synthetase
+latency-associated peptide
+sdh
+q9ulk0
+cyp2c
+alglucerase
+thrombopoietin receptor
+p48551
+tc1
+ensg00000196557
+ec 2.7.10
+ibp1
+udp-glucuronosyltransferase 1-a
+cox
+q06432
+peptidase m
+pfeiffer syndrome
+mac-1
+udp-glucuronosyltransferase 1-e
+trap
+plasma kallikrein
+cyp-m
+ec 2.7.10.2
+pct
+gal1
+mrp6
+mrp8
+fa7_human
+ec 1.14.16
+dr4
+mk2
+cpla2
+tr1
+ec 2.6.1.2
+pnp
+proto-oncogene tyrosine-protein kinase abl1
+tacr1
+psa
+ec 6.2.1.1
+ec 3.1.4.53
+aldh7
+glucosylceramidase
+adr
+alpha-1a adrenergic receptor
+q09428
+egfr (her1/erbb1)her2 (erbb2/neu)her3 (erbb3)
+cnc
+cdkn1
+ec 1.1.1.105
+ensg00000198211
+mmp-25
+ec 1.20.4.2
+dyt14
+geranyltranstransferase
+chk
+p08709
+dao
+cac
+gamma-secretase
+pp
+complex iii subunit viii
+ec 3.6.4.6
+ec 2.1.1
+apc
+p52
+ec 2.7.11.24
+ec 2.5.1.1
+"polymerase (dna-directed), alpha (70kd)"
+ensg00000122025
+constitutive nos
+cd135 antigen
+nad(+) nucleosidase
+p17181
+mat
+cox3
+ec 3.4.24.82
+ensg00000164867
+ec 1.14.11.2
+erg1
+ec 1.1.1.94
+ugt1-05
+ec 3.6.5
+leucine translase
+nbr13
+adra1a
+ec 6.2.1.4
+ec 6.4.1
+ec 6.2.1.17
+fgfr1-3
+s1p<sub>5</sub> receptor
+ec 1.17.4.1
+umpk
+clcn2
+ensg00000220205
+gs
+gls
+q15842
+alpha-1d adrenoreceptor
+gig18
+ec 3.5.3.15
+alars
+p11166
+p-gp
+fr
+serotonin receptor
+net
+ci-sgdh
+tubb5
+slk
+klk3
+ec 3.1.4.12
+aminopeptidase a
+uridine monophosphate kinase
+ec 3.1.1
+hcp
+ec 1.1.1.27
+rotamase
+ec 6.4.1.2
+ec 1.17.4.4
+oxalosuccinate decarboxylase
+aldh4
+ec 3.4.24.7
+solute carrier family 6 member 5
+q12879
+slc6a5
+ensg00000108878
+aac1
+ocif
+co4
+beta-gc
+rbp3
+q03431
+gcs
+ec 2.3.1.26
+peptide-aspartate beta-dioxygenase
+mt1
+protein-tyrosine kinase
+p40238
+pi3k
+asprs
+tps2
+lbp
+stk1
+udp-glucuronosyltransferase 1a1
+prl-r
+enos
+hbsci
+ec 1.1.1.42
+ec 2.8.3
+ec 6.1.1.2
+e2dh
+pai
+ec 3.4.21
+alpha-glucosidase
+fiba_human
+mbp
+ampk
+q9ugi6
+ec 2.4.1.-
+ec 1.1.1.184
+l-threonine dehydratase
+gnpi
+ec 2.3.2.13
+kcnmb2
+epp
+tuba1
+p17612
+vdr
+l-dopachrome isomerase
+acat
+"glutamate receptor ionotropic, kainate 5"
+ilers
+par1
+"d3,d2-enoyl-coa isomerase"
+tubulin beta-4 chain
+gdh2
+cbp
+acecs1
+p36888
+tnfrsf11b
+mapk 1
+phosphatidylcholine 2-acylhydrolase
+nkh
+gst2
+ec 6.1.1.5
+fcgr1a
+peptidyl-glutamate 4-carboxylase
+protein kinase c alpha type
+ec 3.6.-.-
+fdh
+klk6
+adprtl3
+ec 2.7.4.3
+ec 1.14.15
+ec 2.3.2.27
+ec 4.6.1.18
+tm
+norepinephrine transporter
+hydroperoxy icosatetraenoate dehydratase
+k<sub>ca</sub>2.3
+p30988
+ptx1
+ec 3.1.3.3
+c-abl
+smo
+q99062
+ec 3.1.3.16
+ec 1.11.1.-
+ec 2.7.11
+edh17b2
+ensg00000068976
+o14684
+gabrq
+activation peptide
+ec 1.6.2.2
+q9y5n1
+eif2
+multidrug resistance protein 1
+ensg00000119535
+pdi
+ca-rp
+k-ras 2
+rsk
+ec 1.14.14.18
+p35354
+ec 1.11.1
+ec 2.7.11.23
+hras1
+"cdk 1,2,4,5,6,7,9 (pan-cdk)"
+ugt1
+monoamine oxidase
+tryptase ii
+cox-2
+acat1
+gcap
+hydroxyaryl-protein kinase
+cav3.1c
+mct3
+ec 6.1.1.7
+rbp
+mk
+"adrenergic, alpha-1a-, receptor"
 &beta;<sub>1</sub>-adrenoceptor
-1015
-581
-2747
-4922
-1885
-1499
-10988
-317
-771
-2152
-2345
-269
-916
-1803
-5164
-3579
-4087
-59
-2464
-1062
-1675
-1812
-540
-1391
-2342
-573
-6692
-289
-2475
-2212
-1968
-1514
-14
-380
-367
+complex i 51kda subunit
+o60895
+adprtl2
+ec 3.2.1
+adh4
+ec 4.1.1.29
+p32297
+ec 5.99.1.3
+ec 4.2.1
+ec 1.1.1.270
+atp receptor
+ec 1.3.99
+ec 3.5.1
+ec 7.1.1.2
+fhc
+ec 6.2.1.3
+recql2
+cob
+peptidyl-dipeptidase a
+p11217
+heparin-glucosamine 3-o-sulfotransferase
+ec 7.2.2.8
+nadp(+)-specific icdh
+s-(hydroxyalkyl)glutathione lyase
+"atp-binding cassette, sub-family c (cftr/mrp), member 8"
+tubulin beta-4a chain
+gamma-glutamylcysteine synthetase
+carbonic anhydrase b
+ec 1.4.3
+"1,4-cineole 2-exo-monooxygenase"
+apr
+type i dehydrogenase
+ec 2.7.7.15
+"beta-n-acetylglucosaminyl-glycolipid beta-1,4-galactosyltransferase"
+cd16a
+pgg/hs
+ec 6.4.1.3
+ec 6.2.1.15
+kga
+gcp-1
+dodecenoyl-coa isomerase
+ec 3.4.19.12
+fc-gamma ri
+ec 4.4.1.20
+pkca
+ec 3.1.3.48
+cardiac potassium channel
+ec 3.1.4.35
+ec 2.3.1.5
+ec 2.4.1.17
+nat1
+ec 1.14.99
+af-1
+oxidoreductase
+(r)-limonene 6-monooxygenase
+ec 2.7.4.6
+alpha-adrenergic receptor 1a
+fx
+inos
+mcsp
+kras2
+ec 6.2.1.5
+bilirubin-specific udpgt isozyme 1
+pdpk1
+tryptase beta-2
+ecgf
+ec 1.-.-.-
+dhp
+ec 1.14.14.52
+t1
+p18507
+l-dopachrome tautomerase
+ec 2.7.3
+mrp7
+faldh
+ec 3.1.3.1
+std
+aspartate 1-decarboxylase
+agc1
+glutathione s-aralkyltransferase
+epo
+ec 4.3.1.19
+na-k-2cl cotransporter
+excitatory amino acid receptor 2
+cad
+ec 3.5.1.98
+q92731
+cpt1
+mmp21
+"calcium channel, l type, alpha-1 polypeptide"
+scl
+glr
+ec 2.7.1.48
+bdplt2
+sdh1
+p25103
+ddh1
+carbonic dehydratase
+mbp1
+glur7
+anxa2_human
+fc-gamma riii
+p59-fyn
+gtb
+ensg00000159128
+abl
+adc
+fas
+fc-gamma rii-c
+cblc
+nps receptor
+asp
+ck
+ec 2.4.1.22
+mn
+dystonia 14
+hk4
+ec 1.1.1.35
+iddm20
+aurora a/b/c
+ec 1.14.11.-
+ec 3.4.24.65
+ebn
+ec 3.1.1.4
+nk1r
+ptger2
+pkc
+aldose reductase
+ec 3.1.3
+bumetanide-sensitive sodium-(potassium)-chloride cotransporter 2
+mct6
+car1
+tubb4
+pc1
+map2
+ec 2.7.1.21
+ec 2.3.1.50
+mrp1
+er
+ec 4.2.1.1
+b<sub>2</sub> receptor
+hst
+dbi
+progesterone reductase
+oat1
+aryl hydrocarbon hydroxylase
+ec 1.1.1.300
+igfr3
+rask2
+raf1
+p20701
+glutathione peroxidase 6
+20-alpha-hsd
+udp-glucuronosyltransferase 1-1
+endothelial nos
+angt_human
+p32927
+mmp20
+pap
+adra1
+gabrd
+ec 2.4.1
+fp
+cat
+ec 2.4.1.90
+substance-p receptor
+pdk1
+adenylate monophosphate kinase
+alpha-1d adrenoceptor
+dna gyrase
+microsomal monooxygenase
+lap1
+cmt2d
+ec 2.1.1.43
+gluc
+mif
+hblrr
+tnnc1
+ap-1
+ec 1.1.1.-
+gluk5
+solute carrier family 6 member 2
+ec 2.6.1.7
+p22694
+igfr2
+cyp11b
+monocarboxylate transporter 4
+ensg00000156113
+gdh
+n-acetyllactosamine synthase
+phers
+ec 3.4.24.35
+oi4
+ec 1.3.5.1
+adora2a
+15-oxoprostaglandin 13-reductase
+lap
+tpsb2
+high affinity immunoglobulin gamma fc receptor i
+ec 2.6.1.44
+gabrb2
+tyrrs
+cdw32
+ar
+ec 1.2.1.8
+pvalb
+ec 2.5.1.59
+ensg00000171560
+hsp27
+ka2
+p67
+spr
+neuronal acetylcholine receptor subunit alpha-7
+qp-c
+jak1/2
+ec 2.5.1.60
+p29274
+ec 1.14.15.4
+ec 3.4.21.4
+p51788
+ec 2.3.1.21
+ec 6.1.1.20
+tumor necrosis factor receptor 1
+fl cytokine receptor
+bgp
+ensg00000085662
+q12791
+grin2a
+vegfr
+cmm8
+purinergic receptor
+p40
+q04771
+ec 6.1.1.1
+pkc-alpha
+3-beta-hydroxy-5-ene steroid dehydrogenase
+ecto-5'-nucleotidase
+ec 1.1.1.372
+sk
+cox1
+p48443
+sleb6
+udp-glucuronosyltransferase 1a5
+fc-gamma-riic
+asb
+gpi
+fcr-10
+ec 2.3.1.97
+schad
+ec 1.1.1.239
+matrix metalloproteinase 21
+pp18
+spk
+20 alpha-hydroxysteroid dehydrogenase
+ec 2.4.2.-
+imd28
+fyn
+p34972
+gat3
+acid beta-glucosidase
+cpsb
+tac1r
+raf
+gabrg3
+ec 4.6.1.2
+q9h228
+ifnar2
+ec 5.6.2.2
+b4gal-t3
+excitatory amino acid transporter 3
+ec 1.1.1.112
+ec 1.2.1.3
+rpd3
+cd14
+cdf
+glud1
+p07355
+alr
+p23
+cav
+ec 3.4.22
+pdf
+ec 1.14.14.1
+gst1
+igg fc receptor i
+dbp
+hl
+pthr
+ec 3.4.23
+plasma kallikrein heavy chain
+ec 3.4.25.1
+ec 3.1.3.5
+ec 2.3.1.13
+ec 2.4.1.1
+tel1
+mct 5
+ec 1.2.4.1
+q13093
+5'-nt
+agt
+ec 6.3.5
+ugt1.1
+"cdk 1,2,5,9"
+ec 4.6.1.1
+acetoacetyl coenzyme a thiolase
+lad
+mlp
+p13631
+ec 2.7.7.1
+dimethylallyltranstransferase
+gba
+ifn-alpha-rec
+ec 3.6.1
+ec 4.4.1.13
+xdh
+ec 2.7.7.7
+pkc-a
+vitamin k-dependent gamma-carboxylase
+beta-glucocerebrosidase
+ec 3.4.24.24
+dp2
+gt
+l-serine dehydratase
+kras
+ec 2.7.7
+tyrosyl-trna synthetase
+aldr1
+ec 6.1.1.4
+mlp1
+intermediate filament protein
+cd32
+mk1
+tfi
+ec 1.14.11.4
+cam2
+lam
+hspg
+ec 5.3.3.8
+serine methylase
+membrane-bound
+glud2
+glucose transporter  1
+ec 3.4.21.9
+pca1
+ec 3.5.3.1
+ec 1.6.99.5
+thermostable phenol sulfotransferase
+tubb1
+ec 3.5.1.15
+ec 2.6.1.42
+ghbp
+car
+gc
+tubb4a
+ec 3.4.11.18
+ec 1.4.1
+ec 2.7.4
+aac2
+c-ki-ras
+k<sub>v</sub>4.1
+ec 1.14.99.1
+"3,2-trans-enoyl-coa isomerase"
+monocarboxylate transporter 7
+camk
+transaminase a
+hph-1
+bnsp
+kininogenin
+ugt-1e
+ec 1.1.1.54
+glyt1
+o75751
+"cdk 2,7,9"
+ec 3.1.4
+gaba(c) receptor
+cyclic amp-responsive element-binding protein 2
+ec 2.1.1.-
+dihydrodiol dehydrogenase 3
+fcgr2c
+fcrii-c
+pgd
+par-1
+p100
+ec 3.4.21.68
+ec 2.1.1.5
+lhrhr
+organic cation transporter 3
+scn1
+ec 1.1.1.357
+ec 2.7.11.11
+ec 6.1.1.22
+interleukin-2 receptor
+pdgfr
+ec 2.7.7.18
+ec 3.1.4.4
+pi
+ec 2.7.1.107
+at1
+p14784
+ppt
+wrs
+p01019
+tryptase-2
+p55
+avp
+p37268
+alpha-7 nicotinic cholinergic receptor subunit
+p10644
+amy2
+ec 2.7.11.30
+ec 2.1.2.11
+ec 2.4.1.38
+"glycogen phosphorylase, muscle form"
+lap3
+procollagen-proline 3-dioxygenase
+ec 2.3.1.9
+tr
+mct 3
+p62508
+aldehyde reductase
+ec 3.4.24.22
+cyph
+pkr
+apo(a)
+p69905
+hgf
+ec 4.1.1.15
+pc
+hbeta3
+pbp
+hcs
+p35
+ec 2.7.7.-
+p02671
+"delta(3),delta(2)-enoyl-coa isomerase"
+mek
+p29474
+fc-gamma ria
+"glutamate receptor, ionotropic, delta 1"
+cftd
+net1
+gpx6
+psp
+hsp90
+ec 2.7.1.1
+udp-glucuronosyltransferase 1-5
+ec 1.1.1.49
+grid1
+pumag
+pcpb
+fcg1
+p06241
+ec 3.6.4.-
+dd3
+alanyl-trna synthetase
+ugt1.5
+ms4a2
+p19
+ensg00000258429
+ts
+junb
+p30411
+acp1
+atp:amp phosphotransferase
+xenobiotic monooxygenase
+ec 6.1.1
+lsk
+pyruvic-malic carboxylase
+udpgt 1-5
+mrp
+ec 1.14.14.-
+ec 1.2.1
+pth1 receptor
+ec 3.1.27
+ec 3.1.4.17
+ec 1.5.1.2
+cyclosporin a-binding protein
+cap
+pgdh
+ec 2.3.1
+prolyl 3-hydroxylase 3
+ec 4.2.1.3
+g protein-coupled receptor
+hcg
+gce
+ec 6.1.1.3
+hss
+ec 4.1.1.11
+gat2
+p90
+ec 2.8.2.1
+ec-nos
+cgrp
+ec 5.3.99.3
+ec 1.6.5.3
+ppiase
+mme
+monocarboxylate transporter 5
+l-serine ammonia-lyase
+pcap
+glutamate--trna ligase
+msk16
+ec 1.14.13.39
+lactose synthase a protein
+p41594
+p38484
+ec 3.6.3.14
+p31785
+ec 2.7.8.29
+ec 3.4.21.7
+"(2e,6e)-farnesyl diphosphate synthase"
+ensg00000008516
+ccn1
+p37023
+ec 4.1.2.13
+k<sub>ir</sub>6.1
+nt
+bfnc
+casein kinase i
+kat4
+opg
+ec 2.7.11.22
+"3',5'-cyclic amp synthetase"
+ec 2.1.2.1
+ec 2.7.11.10
+gnt1
+pbs
+(s)-limonene 6-monooxygenase
+p42701
+estrogen receptor-&beta;
+aconitase
+fcgr3a
+mct 4
+3-phosphoinositide-dependent protein kinase 1
+csnk2a1
+mct 7
+ec 2.7.12.1
+cnos
+ugt1a5
+p06239
+pkb
+ec 1.1.-.-
+tgf-b superfamily receptor type i
+protein kinase b
+ec 1.1.1.40
+lp
+ec 1.1.1.37
+stk-1
+cod3
+ggcx
+ec 1.3.1.48
+ec 2.7.11.13
+adf
+chrna7
+p43005
+dba
+ec 3.6.4.12
+ec 2.6.1.1
+sk1
+ec 1.11.1.15
+seven transmembrane helix receptor
+nem1
+ec 1.11.1.7
+dss
+tubulin 5 beta
+ec 3.2.2.6
+cat1
+ensg00000004948
+hcp1
+plasma prekallikrein
+glns
+ec 3.6.3.4
+ec 3.1.3.2
+hpdk1
+ec 1.14.11
+ec 7.1.2.2
+try4
+ec 1.1.1
+hnf4a
+ec 3.2.1.20
+estrogen-related receptor-&gamma;
+ec 2.8.3.5
+ct
+ec 1.4.3.4
+idh
+trprs
+ec 2.7.11.2
+trf
+cps1
+p45
+p08588
+q13639
+ec 6.3.4.5
+ec 1.14.19
+aldh class 2
+sterol esterase
+5'-nucleotidase
+ec 1.16.3.1
+alp
+cd20
+ec 7.6.2.-
+3-beta-hydroxy-delta(5)-steroid dehydrogenase
+ec 3.4.11
+p46976
+ec 1.3.1.24
+hgl
+tyrosylprotein kinase
+ec 2.7.12.2
+gr
+hdac
+gp180
+glycogenase
+p05106
+triacylglycerol lipase
+ec 2.1.1.77
+ec 1.14.14.51
+recql3
+gda
+fcriii
+ugt-1a
+cholesterol 25-hydroxylase
+mct5
+prkaca
+his
+stem cell tyrosine kinase 1
+htr4
+(s)-limonene 7-monooxygenase
 c-src tyrosine kinase
-1395
-1557
-2610
-251
-6257
-945
-3355
-1736
-31
-52
-240
-254
-3763
-1613
-1807
-1441
-950
-601
-46
+shmt
+kcna8
+ki-ras
+mor1
+mcm
+ec 1.6.99.3
+mpges1
+idp
+ec 3.1.-.-
+hm74b
+atf
+ec 1.3.1.20
+ec 1.2.1.12
+ec 1.1.1.64
+ec 7.6.2.1
+hrs
+acat2
+ec 2.5.1.10
+ec 2.4.2.30
+nk-1r
+fcgr2
+p15121
+ec 2.5.1.6
+ec 1.2.1.36
+ec 3.4.24
+voltage-dependent t-type calcium channel subunit alpha-1h
+tk2
+alk1
+lfa-1
+placental protein 18
+q9nph3
+igfr1
+mglu<sub>5</sub> receptor
+ec 1.3.1.22
+beta2
+alpha-1d adrenergic receptor
+cblb
+grik5
+erk
+l-serine dehydratase/l-threonine deaminase
+sdh2
+ugt1-01
+wbs
+tyrosine-protein kinase
+hadh
+"cdk 4,6"
+serine/threonine protein kinase
+ec 1.14.11.7
+p75
+ec 2.7.1
+trp1
+camp-responsive element-binding protein 2
+cysrs
+ec 1.14.14.53
+q9ubs5
+ptc
+ec 2.7.11.1
+tubulin beta-1 chain
+ec 3.4.21');
+parp
+indanol dehydrogenase
+pla2
+p13612
+bar
+ec 3.1.4.11
+ec 3.4.24.80
+prkca
+ec 2.6.1.13
+ghr
+klkb1
+ec 4.2.1.11
+nadp-me
+creb2
+mma(v) reductase
+2-phospho-d-glycerate hydro-lyase
+fbp
+squalene synthase
+monocarboxylate transporter 3
+&alpha;<sub>2c</sub>-adrenoceptor
+steroid delta-isomerase
+fceri
+pep
+mpph
+aspartyl-trna synthetase
+ec 2.5.1.58
+fletcher factor
+actin-depolymerizing factor
+2-phospho-d-glycerate hydrolyase
+asparaginyl-trna synthetase
+ec 6.4.1.4
+vegfr2/3
+fcgr3
+ensg00000182718
+t2
+pkk
+retinoic acid receptor-&gamma;
+leurs
+asnrs
+ensg00000057593
+cyp1
+hsd3b
+propionate--coa ligase
+plp
+glct1
+glutathione s-alkyltransferase
+scya2
+glutathione-dependent dehydroascorbate reductase
+ec 2.4.1.135
+citrate hydro-lyase
+p07437
+creb-2
+map1a
+ec 2.3.1.37
+s-mephenytoin 4-hydroxylase
+leucyl-trna synthetase
+tig1
+eaa2
+p38
+m6pr
+e3
+ec 4.1.1
+retinoid x receptor-&gamma;
+puma-g
+monomethylarsonic acid reductase
+ejm6
+hap
+nk-1 receptor
+ec 1.1.1.41
+f7
+ec 3.6.3.44
+prolyl-trna synthetase
+cysteine sulfinic acid decarboxylase
+htr
+ec 2.3.1.-
+bhlhe42
+bdplt16
+at
+emt
+gabrg2
+q9y6f1
+ec 6.3.2
+tr2
+ec 2.6.1
+igg fc receptor ii-c
+delta-5-3-ketosteroid isomerase
+phhi
+low affinity immunoglobulin gamma fc region receptor ii-c
 p25
-931
-60
-6844
-2184
-2206
-406
-2465
-1247
-1582
-1329
-4313
-3308
-70
-5289
-1955
-1543
-2745
-1437
-23
-216
-1118
-5
-8630
-2561
-10939
-1585
-1324
-4552
-6010
-756
-362
-1504
-7124
-3741
-1950
-1432
-6023
-1318
-4688
-610
-2159
-2752
-1647
-1327
-218
-1361
-273
-1643
-4326
-2760
-9376
-1804
-509
-2158
-1809
-1103
-3265
-1245
-332
-995
-250
-1234
-249
-4795
-485
-7432
-928
-10682
+lap-3
+arachidonate--coa ligase
+ensg00000172236
+gamma-glutamyl carboxylase
+l-glutamine amidohydrolase
+lignoceroyl-coa synthase
+por
+ik1
+ec 1.2.1.5
+p80
+"beta-n-acetylglucosaminylglycopeptide beta-1,4-galactosyltransferase"
+gtpase kras
+ec 5.2.1.8
+ec 2.7.11.17
+ebn1
+ant 2
+ep
+cb<sub>2</sub> receptor
+crt
+ec 2.7.1.40
+ensg00000110203
+ec 3.4.17
+mds
+ugt1a1
+il1ra
+ensg00000182866
+ec 4.1.1.50
+lhr
+ec 1.11.1.9
+ec 4.2.1.152
+mt2
+imiglucerase
+pla<sub>2</sub>-g7
+q14626
+orm
+hhg
+p41439
+ef-tu
+par2
+ec 5.3.3.12
+ec 3.6.3.8
+ec 1.1.1.21
+hsd17
+q9hbh1
+fcgammaria
+transforming protein p21
+udpgt 1-1
+adora2
+ec 3.4.21.59
+il8ra
+ec 1.8.5.1
+ant
+tachykinin receptor 1
+plasma kallikrein light chain
+ec 3.1.1.56
+aaat
+serine/threonine specific protein phosphatase
+ec 3.5.1.2
+proto-oncogene tyrosine-protein kinase lck
+ms4a1
+o95180
+activin a receptor type il
+eca2
+endothelial nitric oxide synthase
+ec 1.1.1.1
+ejm
+oct3
+fcri
+ec 3.1.1.3
+ec 6.3.4.4
+q6w5p4
+ec 2.8.2
+l-serine deaminase
+mcap
+ap lyase
+fad
+ec 1.8.1
+ec 1.14.99.3
