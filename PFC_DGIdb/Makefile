@@ -1,29 +1,31 @@
+# se deja el nombre en minúscula porque el comando para crearla no toma en mayúscula:
+DB=pfc_dgidb
 PSQL=psql -U postgres -h localhost
-PSQL_PFC=${PSQL} -d PFC_DGIdb
+PSQL_PFC=${PSQL} -d ${DB}
 
 help:
 	@echo 'Ayuda:'
-	@echo 'make dgidb: crea y llena la base de datos DGIdb.'
-	@echo 'make pfc: crea y llena la base de datos PFC_DGIdb.'
+	@echo '    make dgidb: crea y llena la base de datos DGIdb.'
+	@echo '    make pfcdb: crea y llena la base de datos PFC_DGIdb.'
+	@echo '    make clean: limpia la carpeta de temporales.'
 
-pfc: PFC_DGIdb_schema.sql formato_insercion_alias_droga.csv formato_insercion_alias_gen.csv dgidb_export_ifg.csv
-	# crear la base PFC_DGIdb primero
-	# ${PSQL_PFC} -f $<
-	# ${PSQL_PFC} -c "\copy droga_alias_aux (droga, alias) from 'formato_insercion_alias_droga.csv' csv"
-	# ${PSQL_PFC} -c "\copy gen_alias_aux (gen, alias) from 'formato_insercion_alias_gen.csv' csv"
-	${PSQL_PFC} -c "\copy ifg_aux (gen, droga, interaccion, publicacion) from 'dgidb_export_ifg.csv' csv"
+pfcdb: PFC_DGIdb_schema.sql PFC_DGIdb_armado.sql
+	${PSQL} -c "CREATE DATABASE ${DB}"
+	${PSQL_PFC} -f PFC_DGIdb_schema.sql
+	${PSQL_PFC} -f PFC_DGIdb_armado.sql
 
-dgidb: data.sql structure.sql
-	# crear la base primero
-	${PSQL} -d dgidb -f structure.sql
-	${PSQL} -d dgidb -f data.sql
+dgidb: tmp_dgidb_repo tmp_dgidb_data_repo
+	${PSQL} -c "CREATE DATABASE dgidb"
+	${PSQL} -d dgidb -f tmp_dgidb_repo/db/structure.sql
+	${PSQL} -d dgidb -f tmp_dgidb_data_repo/data.sql
 
-data.sql:
-	# descargar de algún lado
-	echo "nop"
+tmp_dgidb_repo:
+	git clone --depth=1 https://github.com/griffithlab/dgi-db $@
 
-structure.sql:
-	# descargar de algún lado
-	echo "nop"
+tmp_dgidb_data_repo:
+	git clone --depth=1 git://git.genomedata.org/dgidb_data.git $@
 
-.PHONY: help dgidb pfc
+clean:
+	rm -rf tmp_dgidb_repo tmp_dgidb_data_repo
+
+.PHONY: help dgidb pfcdb clean
