@@ -1,3 +1,9 @@
+# Makefile para armar automáticamente las dos bases de datos (DGIdb y PFC_DGIdb).
+# 
+# Se necesita tener ejecutando un servidor de PostgreSQL con un usuario por defecto
+# 'postgres' (y configurado con guardado de contraseña para que no la pida en cada
+# comando).
+
 # se deja el nombre en minúscula porque el comando para crearla no toma en mayúscula:
 DB=pfc_dgidb
 PSQL=psql -U postgres -h localhost
