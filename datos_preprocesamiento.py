@@ -113,19 +113,37 @@ def cargar_publicaciones(publicaciones_directorio,pmids_titulos_abstracts_keywor
                         publicaciones_dict[pmid] = linea[1].lower()
     return publicaciones_dict
 
-def ocurrencias(entidades,publicaciones,embeddings,repeticiones,salida):
+def ocurrencias(entidades,publicaciones,embeddings,repeticiones,salida_no_embedding_no_repeticiones): # ,salida_no_embedding_con_repeticiones,salida_todas
     '''
     Muestra las apariciones de genes/aliases o drogas/aliases en las publicaciones que no tienen embedding
     '''
-    with open(salida,"w",encoding="utf8") as salida_csv:
-        escritor_csv = csv.writer(salida_csv,delimiter=',',lineterminator="\n")
-        for elemento in publicaciones:
-            print(elemento)
-            lista = list()
-            for entidad in entidades:
-                if entidad in publicaciones[elemento] and entidad not in embeddings and entidad not in repeticiones:
-                    lista.append(entidad)
-            escritor_csv.writerow(lista)
+    salida_no_embedding_no_repeticiones_csv = open(salida_no_embedding_no_repeticiones,"w",encoding="utf8")
+    # salida_no_embedding_con_repeticiones_csv = open(salida_no_embedding_con_repeticiones,"w",encoding="utf8")
+    # salida_todas_csv = open(salida_todas,"w",encoding="utf8")
+
+    escritor_csv1 = csv.writer(salida_no_embedding_no_repeticiones_csv,delimiter=',',lineterminator="\n")
+    # escritor_csv2 = csv.writer(salida_no_embedding_con_repeticiones_csv,delimiter=',',lineterminator="\n")
+    # escritor_csv3 = csv.writer(salida_todas_csv,delimiter=',',lineterminator="\n")
+
+    for elemento in publicaciones:
+        print(elemento)
+        lista1 = list()
+        # lista2 = list()
+        # lista3 = list()
+        for entidad in entidades:
+            if entidad in publicaciones[elemento] and entidad not in embeddings and entidad not in repeticiones:
+                lista1.append(entidad)
+            # if entidad in publicaciones[elemento] and entidad not in embeddings:
+            #     lista2.append(entidad)
+            # if entidad in publicaciones[elemento]:
+            #     lista3.append(entidad)
+        escritor_csv1.writerow(lista1)
+        # escritor_csv2.writerow(lista2)
+        # escritor_csv3.writerow(lista3)
+    
+    salida_no_embedding_no_repeticiones_csv.close()
+    # salida_no_embedding_con_repeticiones_csv.close()
+    # salida_todas_csv.close()
 
 def etiquetas_publicacion_gen(pmids_lista,ifg_lista,aliases_lista,salida):
     with open(salida,"w",encoding="utf8") as salida_csv:
@@ -167,13 +185,13 @@ if __name__ == "__main__":
 
     aliases_gen_ruta = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/alias_gen.csv"
     aliases_gen_conjunto = cargar_aliases_conjunto(aliases_gen_ruta)
-    # aliases_gen_lista = cargar_aliases_lista(aliases_gen_ruta)
+    aliases_gen_lista = cargar_aliases_lista(aliases_gen_ruta)
     # print(aliases_gen)
     print("alias gen cargados")
 
     aliases_droga_ruta = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/alias_droga.csv"
     aliases_droga_conjunto = cargar_aliases_conjunto(aliases_droga_ruta)
-    # aliases_droga_lista = cargar_aliases_lista(aliases_droga_ruta)
+    aliases_droga_lista = cargar_aliases_lista(aliases_droga_ruta)
     # print(aliases_droga)
     print("alias droga cargados")
 
@@ -187,19 +205,17 @@ if __name__ == "__main__":
     embeddings_dict = cargar_embeddings(embeddings_ruta)
     print("Embeddings cargados")
 
-    publicaciones_directorio = "E:/Descargas/Python/PFC_DGIdb_src/scraping/files/txt"
+    publicaciones_directorio = "E:/Descargas/Python/PFC_DGIdb_src/scraping/files/labeled/txt/txt_ungreek"
     pmids_titulos_abstracts_keywords_ruta = "E:/Descargas/Python/PFC_DGIdb_src/scraping/pmids_titulos_abstracts_keywords.csv"
     publicaciones_dict = cargar_publicaciones(publicaciones_directorio,pmids_titulos_abstracts_keywords_ruta,pmids_lista)
     # print(publicaciones_dict)
     print("publicaciones cargadas")
 
-    ocurrencias(aliases_gen_conjunto,publicaciones_dict,embeddings_dict,repeticiones_genes_lista,"ocurrencias_genes.csv")
-    ocurrencias(aliases_droga_conjunto,publicaciones_dict,embeddings_dict,repeticiones_drogas_lista,"ocurrencias_drogas.csv")
+    ocurrencias(aliases_gen_conjunto,publicaciones_dict,embeddings_dict,repeticiones_genes_lista,"ocurrencias_genes_se_sr.csv") # ,"ocurrencias_genes_se_cr.csv","ocurrencias_genes_todas.csv"
+    ocurrencias(aliases_droga_conjunto,publicaciones_dict,embeddings_dict,repeticiones_drogas_lista,"ocurrencias_drogas_se_sr.csv") # ,"ocurrencias_drogas_se_cr.csv","ocurrencias_drogas_todas.csv"
 
     # aliases_repeticiones(aliases_gen_conjunto,aliases_gen_lista,"repeticiones_genes.csv")
     # aliases_repeticiones(aliases_droga_conjunto,aliases_droga_lista,"repeticiones_drogas.csv")
-
-    
 
     # ifg_csv_ruta = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/pfc_dgidb_export_ifg.csv"
     # ifg_lista = cargar_ifg(ifg_csv_ruta)
