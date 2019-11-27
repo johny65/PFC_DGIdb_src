@@ -41,6 +41,37 @@ def cargar_aliases_lista(aliases_ruta):
             aliases_lista.append(fila)
     return aliases_lista
 
+def cargar_aliases_dict(aliases_ruta):
+    '''
+    Carga los aliases de gen o de droga dependiendo del archivo de entrada, en un diccionario
+    de la forma: alias -> [nombres reales con ese alias]
+    '''
+    aliases = {}
+    with open(aliases_ruta, encoding="utf8") as aliases_csv:
+        lector_csv = csv.reader(aliases_csv,delimiter=',',quoting=csv.QUOTE_ALL)
+        for fila in lector_csv:
+            nombre_real = fila[0]
+            for alias in fila[1:]:
+                aliases.setdefault(alias, []).append(nombre_real)
+    return aliases
+
+def cargar_etiquetas_dict(ifg_file):
+    '''
+    Carga las etiquetas de las publicaciones en 2 diccionarios, uno para los genes y otro
+    para las drogas.
+    '''
+    labels_genes = {}
+    labels_drogas = {}
+    with open(ifg_file, encoding="utf8") as f:
+        lector_csv = csv.reader(f, delimiter=',', quoting=csv.QUOTE_ALL)
+        for fila in lector_csv:
+            pmid = fila[0]
+            gen = fila[1]
+            droga = fila[2]
+            labels_genes.setdefault(pmid, set()).add(gen)
+            labels_drogas.setdefault(pmid, set()).add(droga)
+    return labels_genes, labels_drogas
+
 def cargar_embeddings(embeddings_ruta):
     '''
     Carga los vectores de embeddings de GloVe
@@ -93,24 +124,30 @@ def aliases_repeticiones(aliases_conjunto,aliases_lista,salida):
                 lista.append(contador)
                 escritor_csv.writerow(lista)
 
-def cargar_publicaciones(publicaciones_directorio,pmids_titulos_abstracts_keywords_ruta,pmids_lista):
+def cargar_abstracts(pmids_titulos_abstracts_keywords_ruta):
+    """Carga en un diccionario para cada pmid su abstract (pasado a minúscula)."""
+    abstracts_dict = {}
+    with open(pmids_titulos_abstracts_keywords_ruta, encoding="utf8") as abstracts:
+        lector_csv = csv.reader(abstracts,delimiter=',',quoting=csv.QUOTE_ALL)
+        for linea in lector_csv:
+            abstracts_dict[linea[0]] = linea[1].lower()
+    return abstracts_dict
+
+def cargar_publicaciones(publicaciones_directorio, abstracts_dict, pmids_lista):
     '''
     Carga las publicaciones que ya se encuentran en formato txt.
     Si la publicación no existe carga el titulo_abstract_keywords en su lugar.
     '''
+    files_in_dir = sorted(os.listdir(publicaciones_directorio))
     publicaciones_dict = dict()
     for pmid in pmids_lista:
         archivo_nombre = pmid + ".txt"
-        if archivo_nombre in sorted(os.listdir(publicaciones_directorio)):
+        if archivo_nombre in files_in_dir:
             archivo_ruta = os.path.join(publicaciones_directorio,archivo_nombre)
             with open(archivo_ruta,encoding="utf8") as publicacion:
                 publicaciones_dict[pmid] = publicacion.read().lower()
         else:
-            with open(pmids_titulos_abstracts_keywords_ruta,encoding="utf8") as abstracts:
-                lector_csv = csv.reader(abstracts,delimiter=',',quoting=csv.QUOTE_ALL)
-                for linea in lector_csv:
-                    if linea[0] == pmid:
-                        publicaciones_dict[pmid] = linea[1].lower()
+            publicaciones_dict[pmid] = abstracts_dict[pmid]
     return publicaciones_dict
 
 def ocurrencias(entidades,publicaciones,embeddings,repeticiones,salida_no_embedding_no_repeticiones): # ,salida_no_embedding_con_repeticiones,salida_todas
@@ -145,6 +182,16 @@ def ocurrencias(entidades,publicaciones,embeddings,repeticiones,salida_no_embedd
     # salida_no_embedding_con_repeticiones_csv.close()
     # salida_todas_csv.close()
 
+def cargar_ocurrencias(in_file):
+    """A partir de un archivo de ocurrencias de genes/drogas crea un diccionario con
+    ese listado para cada pmid."""
+    ocs = {}
+    with open(in_file, encoding="utf8") as f:
+        lector_csv = csv.reader(f, delimiter=',', quoting=csv.QUOTE_ALL)
+        for linea in lector_csv:
+            ocs[linea[0]] = linea[1:]
+    return ocs
+
 def etiquetas_publicacion_gen(pmids_lista,ifg_lista,aliases_lista,salida):
     with open(salida,"w",encoding="utf8") as salida_csv:
         escritor_csv = csv.writer(salida_csv,delimiter=',',lineterminator="\n")
@@ -157,8 +204,8 @@ def etiquetas_publicacion_gen(pmids_lista,ifg_lista,aliases_lista,salida):
                         if etiqueta[1].lower() == entidad[0].lower():
                             lista = lista + entidad
             print(lista)
-            escritor_csv.writerow(lista)
 
+            escritor_csv.writerow(lista)
 def etiquetas_publicacion_droga(pmids_lista,ifg_lista,aliases_lista,salida):
     with open(salida,"w",encoding="utf8") as salida_csv:
         escritor_csv = csv.writer(salida_csv,delimiter=',',lineterminator="\n")
@@ -173,7 +220,7 @@ def etiquetas_publicacion_droga(pmids_lista,ifg_lista,aliases_lista,salida):
             print(lista)
             escritor_csv.writerow(lista)
 
-if __name__ == "__main__":
+if __name__ == "__main__2":
     # if len(sys.argv) != 1:
     #     print("Forma de uso: {} entrada salida".format(sys.argv[0]))
     #     exit()
@@ -199,7 +246,7 @@ if __name__ == "__main__":
     repeticiones_drogas_ruta = "E:/Descargas/Python/PFC_DGIdb_src/repeticiones_drogas.csv"
     repeticiones_genes_lista = cargar_repeticiones(repeticiones_genes_ruta)
     repeticiones_drogas_lista = cargar_repeticiones(repeticiones_drogas_ruta)
-    print("repeticiones cargadas")
+    zprint("repeticiones cargadas")
 
     embeddings_ruta = "E:/Descargas/Python/glove.6B.300d.txt"
     embeddings_dict = cargar_embeddings(embeddings_ruta)
@@ -224,3 +271,20 @@ if __name__ == "__main__":
 
     # etiquetas_publicacion_gen(pmids_lista,ifg_lista,aliases_gen_lista,"etiquetas_publicaciones_gen.csv")
     # etiquetas_publicacion_droga(pmids_lista,ifg_lista,aliases_droga_lista,"etiquetas_publicaciones_droga.csv")
+
+
+
+
+
+
+if __name__ == "__main__":
+# a = cargar_aliases_dict(sys.argv[1])
+#     print(a["creatine kinase m chain"])
+#     print(a["ec 3.4.24"])
+
+    eg, ed = cargar_etiquetas_dict("PFC_DGIdb/pfc_dgidb_export_ifg.csv")
+    print(eg["29133"])
+    print(ed["29133"])
+    print(eg["10722"])
+    print(ed["10722"])
+    
