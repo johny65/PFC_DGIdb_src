@@ -3,6 +3,9 @@ import csv
 import numpy as np
 import re
 import os
+import logging
+
+logger = logging.getLogger("datos_preprocesamiento")
 
 # Preprocesamiento de los datos (texto)
 # from keras.preprocessing import text,sequence 
@@ -58,7 +61,7 @@ def cargar_aliases_dict(aliases_ruta):
 def cargar_etiquetas_dict(ifg_file):
     '''
     Carga las etiquetas de las publicaciones en 2 diccionarios, uno para los genes y otro
-    para las drogas.
+    para las drogas. Cada diccionario tiene la forma: pmid -> listado de genes/drogas etiquetados.
     '''
     labels_genes = {}
     labels_drogas = {}
@@ -126,12 +129,25 @@ def aliases_repeticiones(aliases_conjunto,aliases_lista,salida):
 
 def cargar_abstracts(pmids_titulos_abstracts_keywords_ruta):
     """Carga en un diccionario para cada pmid su abstract (pasado a minúscula)."""
+    logger.debug("Cargando diccionario de abstracts...")
     abstracts_dict = {}
     with open(pmids_titulos_abstracts_keywords_ruta, encoding="utf8") as abstracts:
         lector_csv = csv.reader(abstracts,delimiter=',',quoting=csv.QUOTE_ALL)
         for linea in lector_csv:
-            abstracts_dict[linea[0]] = linea[1].lower()
+            pmid = linea[0]
+            abstract = linea[1]
+            logger.debug("PMID: %s, abstract: len %d", pmid, len(abstract))
+            abstracts_dict[pmid] = abstract.lower()
     return abstracts_dict
+
+def cargar_pmids(pmids_file):
+    """Carga de un archivo un listado de PMID. Cada línea del archivo debe ser de la forma
+    [pmid algún texto]."""
+    pmids = []
+    with open(pmids_file, encoding="utf8") as f:
+        for l in f:
+            pmids.append(l.split()[0])
+    return pmids
 
 def cargar_publicaciones(publicaciones_directorio, abstracts_dict, pmids_lista):
     '''
@@ -141,6 +157,7 @@ def cargar_publicaciones(publicaciones_directorio, abstracts_dict, pmids_lista):
     files_in_dir = sorted(os.listdir(publicaciones_directorio))
     publicaciones_dict = dict()
     for pmid in pmids_lista:
+        logging.info(pmid)
         archivo_nombre = pmid + ".txt"
         if archivo_nombre in files_in_dir:
             archivo_ruta = os.path.join(publicaciones_directorio,archivo_nombre)
@@ -189,7 +206,8 @@ def cargar_ocurrencias(in_file):
     with open(in_file, encoding="utf8") as f:
         lector_csv = csv.reader(f, delimiter=',', quoting=csv.QUOTE_ALL)
         for linea in lector_csv:
-            ocs[linea[0]] = linea[1:]
+            if linea:
+                ocs[linea[0]] = linea[1:]
     return ocs
 
 def etiquetas_publicacion_gen(pmids_lista,ifg_lista,aliases_lista,salida):
