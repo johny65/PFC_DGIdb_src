@@ -3,10 +3,134 @@ import pathlib
 import sys
 import argparse
 import logging
+import random
 
 
-def reemplazar_bme(contents, ocurrencias):
-    pass
+def reemplazar_bme(pmid, contents, output_dir):
+    """
+    contents: el contenido del paper (puede ser todo el artículo, o el abstract o título o palabras clave)
+    output_dir: directorio de salida
+    Variables disponibles:
+    alias_gen: diccionario alias -> [nombres reales de genes con ese alias]
+    alias_droga: diccionario alias -> [nombres reales de drogas con ese alias]
+    etiquetas_genes: dicciona pmid -> [genes etiquetados en ese artículo]
+    etiquetas_drogas: dicciona pmid -> [drogas etiquetadas en ese artículo]
+    """
+
+    # REEMPLAZO PARA GENES -----------------------------------------------------------
+    
+    genes_etiquetados = list(etiquetas_genes[pmid])
+    genes_etiquetados_encontrados = set()
+    
+    for og in ocurrencias_genes_se_sr[pmid]: # analizo sin embedding - sin repetición
+        genes = alias_gen[og]
+        if len(genes) != 1:
+            logging.error("Usando SIN REPETICIONES se encontró un alias de gen repetido!!: %s", og)
+            logging.error("Diccionario: %s", str(genes))
+        gen = list(genes)[0]
+        contents = contents.replace(og, "{[" + gen + "]}")
+        if gen in genes_etiquetados:
+            genes_etiquetados_encontrados.add(gen)
+    
+    if set(genes_etiquetados) != genes_etiquetados_encontrados:
+        # analizo sin embedding - con repetición
+        ocurrencias_repetidas_no_analizadas = set(ocurrencias_genes_se_cr[pmid]) - set(ocurrencias_genes_se_sr[pmid])
+        for og in ocurrencias_repetidas_no_analizadas:
+            genes = alias_gen[og]
+            gen = None
+            for g in genes: # si el alias se mapea a varios genes, tratar de elegir uno etiquetado
+                if g in genes_etiquetados:
+                    gen = g
+                    logging.info("La ocurrencia %s tiene varios nombres reales de genes (%s), se eligió: %s por estar etiquetado",
+                                og, str(genes), gen)
+                    genes_etiquetados_encontrados.add(gen)
+                    break
+            if not gen:
+                # ninguno etiquetado, elijo cualquiera?
+                gen = list(genes)[random.randint(0, len(genes)-1)]
+                logging.warning("La ocurrencia %s tiene varios nombres reales de genes (%s), se eligió aleatoriamente: %s",
+                                og, str(genes), gen)
+            contents = contents.replace(og, "{[" + gen + "]}")
+            
+            if set(genes_etiquetados) != genes_etiquetados_encontrados:
+                # analizo con embedding - con repetición
+                genes_etiquetados_no_encontrados = set(genes_etiquetados) - genes_etiquetados_encontrados
+                ocurrencias_repetidas_no_analizadas = set(ocurrencias_genes_ce_cr[pmid]) - set(ocurrencias_genes_se_cr[pmid])
+                for og in ocurrencias_repetidas_no_analizadas:
+                    logging.info("Analizando ahora gen con embedding - con repetición...")
+                    genes = alias_gen[og]
+                    gen = None
+                    for g in genes: # si el alias se mapea a varios genes, tratar de elegir uno etiquetado
+                        if g in genes_etiquetados_no_encontrados:
+                            gen = g
+                            logging.info("La ocurrencia %s tiene varios nombres reales de genes (%s), se eligió: %s por estar etiquetado",
+                                        og, str(genes), gen)
+                            genes_etiquetados_encontrados.add(gen)
+                            contents = contents.replace(og, "{[" + gen + "]}")
+                            break
+
+    genes_etiquetados_no_encontrados = set(genes_etiquetados) - genes_etiquetados_encontrados
+    logging.info("De los genes etiquetados, no se encontró: %s", str(genes_etiquetados_no_encontrados))
+    
+    
+    
+    # REEMPLAZO PARA DROGAS -----------------------------------------------------------
+
+    drogas_etiquetadas = list(etiquetas_drogas[pmid])
+    drogas_etiquetadas_encontradas = set()
+    
+    for og in ocurrencias_drogas_se_sr[pmid]: # analizo sin embedding - sin repetición
+        drogas = alias_droga[og]
+        if len(drogas) != 1:
+            logging.error("Usando SIN REPETICIONES se encontró un alias de droga repetido!!: %s", og)
+            logging.error("Diccionario: %s", str(drogas))
+        droga = list(drogas)[0]
+        contents = contents.replace(og, "{[" + droga + "]}")
+        if droga in drogas_etiquetadas:
+            drogas_etiquetadas_encontradas.add(droga)
+    
+    if set(drogas_etiquetadas) != drogas_etiquetadas_encontradas:
+        # analizo sin embedding - con repetición
+        ocurrencias_repetidas_no_analizadas = set(ocurrencias_drogas_se_cr[pmid]) - set(ocurrencias_drogas_se_sr[pmid])
+        for og in ocurrencias_repetidas_no_analizadas:
+            drogas = alias_droga[og]
+            droga = None
+            for d in drogas: # si el alias se mapea a varios drogas, tratar de elegir uno etiquetado
+                if d in drogas_etiquetadas:
+                    droga = d
+                    logging.info("La ocurrencia %s tiene varios nombres reales de drogas (%s), se eligió: %s por estar etiquetado",
+                                og, str(drogas), droga)
+                    drogas_etiquetadas_encontradas.add(droga)
+                    break
+            if not droga:
+                # ninguno etiquetado, elijo cualquiera?
+                droga = list(drogas)[random.randint(0, len(drogas)-1)]
+                logging.warning("La ocurrencia %s tiene varios nombres reales de drogas (%s), se eligió aleatoriamente: %s",
+                                og, str(drogas), droga)
+            contents = contents.replace(og, "{[" + droga + "]}")
+            
+            if set(drogas_etiquetadas) != drogas_etiquetadas_encontradas:
+                # analizo con embedding - con repetición
+                drogas_etiquetadas_no_encontradas = set(drogas_etiquetadas) - drogas_etiquetadas_encontradas
+                ocurrencias_repetidas_no_analizadas = set(ocurrencias_drogas_ce_cr[pmid]) - set(ocurrencias_drogas_se_cr[pmid])
+                for og in ocurrencias_repetidas_no_analizadas:
+                    logging.info("Analizando droga ahora con embedding - con repetición...")
+                    drogas = alias_droga[og]
+                    droga = None
+                    for g in drogas: # si el alias se mapea a varios drogas, tratar de elegir uno etiquetado
+                        if g in drogas_etiquetadas_no_encontradas:
+                            droga = g
+                            logging.info("La ocurrencia %s tiene varios nombres reales de drogas (%s), se eligió: %s por estar etiquetado",
+                                        og, str(drogas), droga)
+                            drogas_etiquetadas_encontradas.add(droga)
+                            contents = contents.replace(og, "{[" + droga + "]}")
+                            break
+
+    drogas_etiquetadas_no_encontradas = set(drogas_etiquetadas) - drogas_etiquetadas_encontradas
+    logging.info("De las drogas etiquetadas, no se encontró: %s", str(drogas_etiquetadas_no_encontradas))
+    
+    with open(output_dir / (pmid + ".txt"), "w") as f:
+        f.write(contents)
 
 
 
@@ -18,6 +142,7 @@ if __name__ == "__main__":
     parser.add_argument("dir_txt_publicaciones", help="Directorio con los TXT de los papers")
     parser.add_argument("ruta_abstracts", help="Archivo con los abstracts/títulos/palabras clave")
     parser.add_argument("dir_pfc_dgidb", help="Directorio PFC_DGIdb para obtener archivos con datos")
+    parser.add_argument("output_dir", help="Directorio de salida con los textos reemplazados")
     args = parser.parse_args()
 
     print("Cargando todo...")
@@ -26,6 +151,11 @@ if __name__ == "__main__":
     publicaciones_dict = cargar_publicaciones(args.dir_txt_publicaciones, abstracts_dict,
                                               cargar_pmids(args.lista_pmid))
     
+    output_dir = pathlib.Path(args.output_dir)
+    if not output_dir.exists():
+        output_dir.mkdir()
+
+
     dir_pfc_dgidb = pathlib.Path(args.dir_pfc_dgidb)
     alias_gen = cargar_aliases_dict(dir_pfc_dgidb / "alias_gen.csv")
     alias_droga = cargar_aliases_dict(dir_pfc_dgidb / "alias_droga.csv")
@@ -39,7 +169,7 @@ if __name__ == "__main__":
 
     etiquetas_genes, etiquetas_drogas = cargar_etiquetas_dict(dir_pfc_dgidb / "pfc_dgidb_export_ifg.csv")
 
-    # for pmid, contents in publicaciones_dict.items():
-        # reemplazar_bme(contents, ocurrencias_dict[pmid])
+    for pmid, contents in publicaciones_dict.items():
+        reemplazar_bme(pmid, contents, output_dir)
 
     print("Listo.")

@@ -47,15 +47,15 @@ def cargar_aliases_lista(aliases_ruta):
 def cargar_aliases_dict(aliases_ruta):
     '''
     Carga los aliases de gen o de droga dependiendo del archivo de entrada, en un diccionario
-    de la forma: alias -> [nombres reales con ese alias]
+    de la forma: alias -> [nombres reales con ese alias] (set)
     '''
     aliases = {}
     with open(aliases_ruta, encoding="utf8") as aliases_csv:
         lector_csv = csv.reader(aliases_csv,delimiter=',',quoting=csv.QUOTE_ALL)
         for fila in lector_csv:
             nombre_real = fila[0]
-            for alias in fila[1:]:
-                aliases.setdefault(alias, []).append(nombre_real)
+            for alias in fila:
+                aliases.setdefault(alias, set()).add(nombre_real)
     return aliases
 
 def cargar_etiquetas_dict(ifg_file):
