@@ -4,11 +4,13 @@ import numpy as np
 import re
 import os
 import logging
+import preprocesamiento
 
 logger = logging.getLogger("datos_preprocesamiento")
 
 # Preprocesamiento de los datos (texto)
-# from keras.preprocessing import text,sequence 
+# from keras.preprocessing import text,sequence
+# from preprocesamiento import remplazo_inteligente
 
 def cargar_pmids(pmids_etiquetas_completas_csv):
     '''
@@ -57,6 +59,23 @@ def cargar_aliases_dict(aliases_ruta):
             for alias in fila:
                 aliases.setdefault(alias, set()).add(nombre_real)
     return aliases
+
+def longitud_maxima_alias(aliases_ruta_lista):
+    '''
+    Entrada: lista con las rutas de los archivos de aliases.
+    Salida: longitud del alias más largo.
+    '''
+    maxima_longitud = 0
+    aliases_conjunto = set()
+    for elemento in aliases_ruta_lista:
+        aliases_conjunto = aliases_conjunto | cargar_aliases_conjunto(elemento)
+    aliases_lista = list(aliases_conjunto)
+    for elemento in aliases_lista:
+        elemento_lista = elemento.split()
+        longitud = len(elemento_lista)
+        if longitud > maxima_longitud:
+            maxima_longitud = longitud
+    return maxima_longitud
 
 def cargar_etiquetas_dict(ifg_file):
     '''
@@ -238,46 +257,46 @@ def etiquetas_publicacion_droga(pmids_lista,ifg_lista,aliases_lista,salida):
             print(lista)
             escritor_csv.writerow(lista)
 
-if __name__ == "__main__2":
+if __name__ == "__main__":
     # if len(sys.argv) != 1:
     #     print("Forma de uso: {} entrada salida".format(sys.argv[0]))
     #     exit()
     
-    pmids_etiquetas_completas_csv = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/pmids_etiquetas_completas.csv"
-    pmids_lista = cargar_pmids(pmids_etiquetas_completas_csv)
+    # pmids_etiquetas_completas_csv = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/pmids_etiquetas_completas.csv"
+    # pmids_lista = cargar_pmids(pmids_etiquetas_completas_csv)
     # print(pmids_lista)
-    print("pmids cargados")
+    # print("pmids cargados")
 
-    aliases_gen_ruta = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/alias_gen.csv"
-    aliases_gen_conjunto = cargar_aliases_conjunto(aliases_gen_ruta)
-    aliases_gen_lista = cargar_aliases_lista(aliases_gen_ruta)
+    # aliases_gen_ruta = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/alias_gen.csv"
+    # aliases_gen_conjunto = cargar_aliases_conjunto(aliases_gen_ruta)
+    # aliases_gen_lista = cargar_aliases_lista(aliases_gen_ruta)
     # print(aliases_gen)
-    print("alias gen cargados")
+    # print("alias gen cargados")
 
-    aliases_droga_ruta = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/alias_droga.csv"
-    aliases_droga_conjunto = cargar_aliases_conjunto(aliases_droga_ruta)
-    aliases_droga_lista = cargar_aliases_lista(aliases_droga_ruta)
+    # aliases_droga_ruta = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/alias_droga.csv"
+    # aliases_droga_conjunto = cargar_aliases_conjunto(aliases_droga_ruta)
+    # aliases_droga_lista = cargar_aliases_lista(aliases_droga_ruta)
     # print(aliases_droga)
-    print("alias droga cargados")
+    # print("alias droga cargados")
 
-    repeticiones_genes_ruta = "E:/Descargas/Python/PFC_DGIdb_src/repeticiones_genes.csv"
-    repeticiones_drogas_ruta = "E:/Descargas/Python/PFC_DGIdb_src/repeticiones_drogas.csv"
-    repeticiones_genes_lista = cargar_repeticiones(repeticiones_genes_ruta)
-    repeticiones_drogas_lista = cargar_repeticiones(repeticiones_drogas_ruta)
-    zprint("repeticiones cargadas")
+    # repeticiones_genes_ruta = "E:/Descargas/Python/PFC_DGIdb_src/repeticiones_genes.csv"
+    # repeticiones_drogas_ruta = "E:/Descargas/Python/PFC_DGIdb_src/repeticiones_drogas.csv"
+    # repeticiones_genes_lista = cargar_repeticiones(repeticiones_genes_ruta)
+    # repeticiones_drogas_lista = cargar_repeticiones(repeticiones_drogas_ruta)
+    # print("repeticiones cargadas")
 
-    embeddings_ruta = "E:/Descargas/Python/glove.6B.300d.txt"
-    embeddings_dict = cargar_embeddings(embeddings_ruta)
-    print("Embeddings cargados")
+    # embeddings_ruta = "E:/Descargas/Python/glove.6B.300d.txt"
+    # embeddings_dict = cargar_embeddings(embeddings_ruta)
+    # print("Embeddings cargados")
 
-    publicaciones_directorio = "E:/Descargas/Python/PFC_DGIdb_src/scraping/files/labeled/txt/txt_ungreek"
-    pmids_titulos_abstracts_keywords_ruta = "E:/Descargas/Python/PFC_DGIdb_src/scraping/pmids_titulos_abstracts_keywords.csv"
-    publicaciones_dict = cargar_publicaciones(publicaciones_directorio,pmids_titulos_abstracts_keywords_ruta,pmids_lista)
+    # publicaciones_directorio = "E:/Descargas/Python/PFC_DGIdb_src/scraping/files/labeled/txt/txt_ungreek"
+    # pmids_titulos_abstracts_keywords_ruta = "E:/Descargas/Python/PFC_DGIdb_src/scraping/pmids_titulos_abstracts_keywords.csv"
+    # publicaciones_dict = cargar_publicaciones(publicaciones_directorio,pmids_titulos_abstracts_keywords_ruta,pmids_lista)
     # print(publicaciones_dict)
-    print("publicaciones cargadas")
+    # print("publicaciones cargadas")
 
-    ocurrencias(aliases_gen_conjunto,publicaciones_dict,embeddings_dict,repeticiones_genes_lista,"ocurrencias_genes_se_sr.csv") # ,"ocurrencias_genes_se_cr.csv","ocurrencias_genes_todas.csv"
-    ocurrencias(aliases_droga_conjunto,publicaciones_dict,embeddings_dict,repeticiones_drogas_lista,"ocurrencias_drogas_se_sr.csv") # ,"ocurrencias_drogas_se_cr.csv","ocurrencias_drogas_todas.csv"
+    # ocurrencias(aliases_gen_conjunto,publicaciones_dict,embeddings_dict,repeticiones_genes_lista,"ocurrencias_genes_se_sr.csv") # ,"ocurrencias_genes_se_cr.csv","ocurrencias_genes_todas.csv"
+    # ocurrencias(aliases_droga_conjunto,publicaciones_dict,embeddings_dict,repeticiones_drogas_lista,"ocurrencias_drogas_se_sr.csv") # ,"ocurrencias_drogas_se_cr.csv","ocurrencias_drogas_todas.csv"
 
     # aliases_repeticiones(aliases_gen_conjunto,aliases_gen_lista,"repeticiones_genes.csv")
     # aliases_repeticiones(aliases_droga_conjunto,aliases_droga_lista,"repeticiones_drogas.csv")
@@ -290,19 +309,31 @@ if __name__ == "__main__2":
     # etiquetas_publicacion_gen(pmids_lista,ifg_lista,aliases_gen_lista,"etiquetas_publicaciones_gen.csv")
     # etiquetas_publicacion_droga(pmids_lista,ifg_lista,aliases_droga_lista,"etiquetas_publicaciones_droga.csv")
 
+    archivo_ruta = "E:/Descargas/Python/PFC_DGIdb_src/scraping/files/labeled/txt/txt_ungreek/10722.txt"
+    f = open(archivo_ruta,encoding="utf8")
+    content = f.read()
+    # print(content)
+    content_remplazado = preprocesamiento.remplazo_inteligente(content,"s t r u c t u r a l l y to the n a t u r a l catecholamines.","XXXXXXXXXXXXXXX")
+    # s = re.sub("\w+\.",'\0',content)
+    # print(content_remplazado)
+    f.close()
+  
+    # maxima_longitud = longitud_maxima_alias([aliases_gen_ruta, aliases_droga_ruta])
+    # print(maxima_longitud)
 
+    # lista = preprocesamiento.unir_elementos_lista(["a","b","c","d","e","f","g"],3,2)
+    # print(lista)
 
+    
 
-
-
-if __name__ == "__main__":
+# if __name__ == "__main__":
 # a = cargar_aliases_dict(sys.argv[1])
 #     print(a["creatine kinase m chain"])
 #     print(a["ec 3.4.24"])
 
-    eg, ed = cargar_etiquetas_dict("PFC_DGIdb/pfc_dgidb_export_ifg.csv")
-    print(eg["29133"])
-    print(ed["29133"])
-    print(eg["10722"])
-    print(ed["10722"])
+    # eg, ed = cargar_etiquetas_dict("PFC_DGIdb/pfc_dgidb_export_ifg.csv")
+    # print(eg["29133"])
+    # print(ed["29133"])
+    # print(eg["10722"])
+    # print(ed["10722"])
     

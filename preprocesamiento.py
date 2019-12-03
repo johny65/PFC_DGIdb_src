@@ -4,7 +4,55 @@ import sys
 import argparse
 import logging
 import random
+import re
 
+def unir_elementos_lista(lista, posicion_inicio, cantidad_elementos):
+    '''
+    Agrupa los elementos de una lista con espacio entre ellos.
+    La cantidad de elementos a agrupar depende del parámetro cantidad_elementos
+    Mínimo: 1, deja la lista tal cual entra.
+    Los elementos anteriores a la posicion_inicio se dejan como están
+    '''
+    principio = lista[:posicion_inicio]
+    fin = list()
+    for i in range(posicion_inicio, len(lista), cantidad_elementos):
+        fin.append(" ".join(lista[i:i+cantidad_elementos]))
+    lista_salida = principio + fin
+    return lista_salida
+
+def aplanar_lista(lista):
+    '''
+    Separa todos los elementos de una lista por espacios
+    '''
+    lista_salida = list()
+    for elemento in lista:
+        lista_salida = lista_salida + elemento.split()
+    return lista_salida
+
+def lista_a_cadena(lista):
+    '''
+    Convierte una lista en una cadena con sus elementos separados por espacios
+    '''
+    cadena = " "
+    return cadena.join(lista)
+
+def remplazo_inteligente(texto,cadena_a_remplazar,remplazar_con):
+    '''
+    Remplaza palabras completas o palabras simultáneas pero no subcadenas.
+    '''
+    texto_lista = texto.split()
+    maxima_longitud = 33 # Longitud del alias más largo. Encontrada con el algortimo longitud_maxima_alias del archivo datos_preprocesamiento.py
+    for cantidad_elementos in range(1, maxima_longitud, 1):
+        for posicion_inicio in range(0, maxima_longitud, 1):
+            lista = unir_elementos_lista(texto_lista,posicion_inicio,cantidad_elementos)
+            for posicion, elemento in enumerate(lista):
+                # print("Posicion: {}; Elemento: {}".format(posicion,elemento))
+                if elemento == cadena_a_remplazar:
+                    # print("Posicion: {}; Elemento: {}".format(posicion,elemento))
+                    lista[posicion] = remplazar_con
+                    texto_lista = aplanar_lista(lista)
+    texto_remplazado = lista_a_cadena(texto_lista)
+    return texto_remplazado
 
 def reemplazar_bme(pmid, contents, output_dir):
     """
