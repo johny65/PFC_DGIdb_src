@@ -1,4 +1,4 @@
-from datos_preprocesamiento import cargar_publicaciones, cargar_abstracts, cargar_ocurrencias, cargar_aliases_dict, cargar_etiquetas_dict, cargar_pmids
+# from datos_preprocesamiento import cargar_publicaciones, cargar_abstracts, cargar_ocurrencias, cargar_aliases_dict, cargar_etiquetas_dict, cargar_pmids
 import pathlib
 import sys
 import argparse
