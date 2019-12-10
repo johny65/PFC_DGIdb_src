@@ -4,7 +4,7 @@ import numpy as np
 import re
 import os
 import logging
-import preprocesamiento
+# import preprocesamiento
 
 logger = logging.getLogger("datos_preprocesamiento")
 
@@ -49,7 +49,7 @@ def cargar_aliases_lista(aliases_ruta):
 def cargar_aliases_dict(aliases_ruta):
     '''
     Carga los aliases de gen o de droga dependiendo del archivo de entrada, en un diccionario
-    de la forma: alias -> [nombres reales con ese alias] (set)
+    de la forma: alias -> [nombres reales con ese alias] (lista)
     '''
     aliases = {}
     with open(aliases_ruta, encoding="utf8") as aliases_csv:
@@ -57,7 +57,12 @@ def cargar_aliases_dict(aliases_ruta):
         for fila in lector_csv:
             nombre_real = fila[0]
             for alias in fila:
-                aliases.setdefault(alias, set()).add(nombre_real)
+                if alias:
+                    ya_alias = aliases.setdefault(alias, [])
+                    if not alias in ya_alias:
+                        ya_alias.append(nombre_real)
+                else:
+                    logger.warning("Para %s, nombre real %s se encontró un alias vacío", aliases_ruta, nombre_real)
     return aliases
 
 def longitud_maxima_alias(aliases_ruta_lista):
@@ -226,7 +231,7 @@ def cargar_ocurrencias(in_file):
         lector_csv = csv.reader(f, delimiter=',', quoting=csv.QUOTE_ALL)
         for linea in lector_csv:
             if linea:
-                ocs[linea[0]] = linea[1:]
+                ocs[linea[0]] = linea[1:] if linea[1] else []
     return ocs
 
 def etiquetas_publicacion_gen(pmids_lista,ifg_lista,aliases_lista,salida):
