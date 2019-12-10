@@ -108,8 +108,9 @@ def cargar_embeddings(embeddings_ruta):
         for fila in embeddings:
             datos = fila.split()
             palabra = datos[0]
-            embedding = np.asarray(datos[1:],dtype='float32')
+            embedding = np.asarray(datos[1:]+[0, 0],dtype='float32')
             embeddings_dict[palabra] = embedding
+            # print("Embedding de la palabra <{}> cargado.".format(palabra))
     return embeddings_dict
 
 def cargar_ifg(ifg_csv_ruta):
