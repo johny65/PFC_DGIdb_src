@@ -3,31 +3,51 @@ import numpy as np
 from keras.preprocessing import text,sequence
 import datos_preprocesamiento
 import csv
+import re
 
-def cargar_ejemplos(ejemplos_directorio): # etiquetas_neural_networks_ruta,
+def cargar_ejemplos(etiquetas_neural_networks_ruta, ejemplos_directorio):
     '''
-    Carga los ejemplos para las redes en una lista de cadenas
+    Carga los ejemplos para las redes neuronales en una lista de listas
+    Entradas:
+        etiquetas_neural_networks_ruta: archivo de interacciones fármaco-gen generadas
+        ejemplos_directorio: directorio de los archivos txt de las publicaciones con los remplazos hechos (xxx<nombre>xxx)
+    Salidas:
+        ejemplos_lista: lista con los ejemplos en formato lista de strings (ya separados).
+        genes: lista de genes etiquetados.
+        drogas: lista de drogas etiquetadas.
+        maxima_longitud: longitud del ejemplo más largo.
     '''
     pmids = list()
     genes = list()
     drogas = list()
     interacciones = list()
+    contenido_dict = dict()
+    maxima_longitud = 0
     with open(etiquetas_neural_networks_ruta,encoding="utf8") as enn_csv:
         lector_csv = csv.reader(enn_csv,delimiter=',',quoting=csv.QUOTE_ALL)
         for fila in lector_csv:
-            pmids.append(fila[0])
+            pmid = fila[0]
+            if contenido_dict.get(pmid) is None:
+                # print("Agregando contenido de {} al diccionario".format(pmid))
+                archivo_nombre = pmid + ".txt"
+                archivo_ruta = os.path.join(ejemplos_directorio,archivo_nombre)
+                with open(archivo_ruta,encoding="utf8") as ejemplo:
+                    string = ejemplo.read()
+                    lista = re.findall(r"\b\S+\b",string)
+                    contenido_dict[pmid] = lista
+                    if len(lista) > maxima_longitud:
+                        maxima_longitud = len(lista)
+            pmids.append(pmid)
             genes.append(fila[1])
             drogas.append(fila[2])
             interacciones.append(fila[3])
-
+    print("Listas pmids,genes,drogas,interacciones y diccionario de contenidos armados.")
+    # hacer padding al inicio (llenar con ceros al inicio para que todos los ejemplos queden de la misma longitud)
     ejemplos_lista = list()
     for i in range(0,len(pmids),1):
-        archivo_nombre = pmids[i] + ".txt"
-        archivo_ruta = os.path.join(ejemplos_directorio,archivo_nombre)
-        with open(archivo_ruta,encoding="utf8") as ejemplo:
-            ejemplos_lista.append(ejemplo.read())
-            print("Ejemplo {} con etiquetas {},{},{} cargado.".format(pmids[i],genes[i],drogas[i],interacciones[i]))
-    return ejemplos_lista,genes,drogas
+        ejemplos_lista.append(contenido_dict[pmids[i]])
+        # print("Ejemplo {} con etiquetas {},{},{} cargado.".format(pmids[i],genes[i],drogas[i],interacciones[i]))
+    return ejemplos_lista,genes,drogas,maxima_longitud
 
 def arreglar_ejemplos(ejemplos_lista):
     '''
@@ -69,21 +89,29 @@ def generar_entradas_salidas_redes(ejemplos_lista_arreglados,vocabulario,embeddi
 
 if __name__ == "__main__":
 
-    ejemplos_directorio = "E:/Descargas/Python/PFC_DGIdb_src/scraping/files/labeled/txt/txt_ungreek"
-    embeddings_ruta = "E:/Descargas/Python/glove.6B.300d.txt"
+    etiquetas_neural_networks_ruta = "etiquetas_neural_networks.csv"
+    ejemplos_directorio = "replaced"
+    # embeddings_ruta = "E:/Descargas/Python/glove.6B.300d.txt"
 
     
+    # test_file_ruta = "replaced/16534240.txt"
+    # string = ""
+    # with open(test_file_ruta,encoding="utf8") as test:
+    #     string = test.read()
+    # print(re.findall(r"\b\S+\b",string))
 
-    # ejemplos_lista = cargar_ejemplos(ejemplos_directorio)
-    # print("Ejemplos cargados.")
-    # print(len(ejemplos_lista))
+    ejemplos_lista,genes_lista,drogas_lista,maxima_longitud = cargar_ejemplos(etiquetas_neural_networks_ruta, ejemplos_directorio)
+    print("Ejemplos cargados.")
+    print(len(ejemplos_lista))
+    print(ejemplos_lista[226187])
+    print(maxima_longitud)
     # ejemplos_lista_arreglados,vocabulario = arreglar_ejemplos(ejemplos_lista)
     # print("Maxima longitud: {}".format(maxima_longitud))
     # print(ejemplos_lista_arreglados[0])
     # print(len(ejemplos_lista_arreglados[0]))
     # print(vocabulario.word_index["hello"])
 
-    embeddings_dict = datos_preprocesamiento.cargar_embeddings(embeddings_ruta)
+    # embeddings_dict = datos_preprocesamiento.cargar_embeddings(embeddings_ruta)
     
     # print(len(embeddings_dict["hello"]))
 
@@ -96,3 +124,14 @@ if __name__ == "__main__":
     # droga[0][-1] = 1
     # print(gen)
     # print(droga)
+
+    # diccionario = dict()
+    # diccionario["1"] = "hola1"
+    # diccionario["2"] = "hola2"
+    # diccionario["3"] = "hola3"
+    # diccionario["4"] = "hola4"
+    # diccionario["5"] = "hola5"
+    # diccionario["6"] = "hola6"
+
+    # print(diccionario["7"])
+    # print(diccionario.get("7"))
