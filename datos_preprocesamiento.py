@@ -274,7 +274,7 @@ def cargar_publicaciones_con_remplazos(publicaciones_directorio):
 
 def cargar_nombres(alias_ruta):
     '''
-    Carga los nombres (nombres posta, la primer columna) de genes y drogas en una lista
+    Carga los nombres (nombres posta, la primer columna) de genes o drogas en una lista
     '''
     nombres_lista = list()
     with open(alias_ruta,encoding="utf8") as aliases:
@@ -285,7 +285,7 @@ def cargar_nombres(alias_ruta):
 
 def ocurrencias_remplazos(publicaciones_dict,nombres_lista):
     '''
-    Busca las ocurrencias de genes/drogas (según nombres_lista) que tengan el formato {[<nombre>]}.
+    Busca las ocurrencias de genes/drogas (según nombres_lista) que tengan el formato xxx<nombre>xxx.
     Las ocurrencias son guardadas en un diccionario con formato: pmid -> [<nombre1>, <nombre2>, ..., <nombreN>]
     '''
     ocurrencias_remplazos_dict = dict()
@@ -293,7 +293,7 @@ def ocurrencias_remplazos(publicaciones_dict,nombres_lista):
         # print("Buscando ocurrencias en {}.".format(pmid))
         nombres = list()
         for nombre in nombres_lista:
-            nombre_clave = "{[" + nombre + "]}"
+            nombre_clave = "xxx" + nombre + "xxx"
             if nombre_clave in contenido:
                 print("Ocurrencia {} encontrada en {}.".format(nombre,pmid))
                 nombres.append(nombre)
@@ -329,7 +329,7 @@ def procesar_etiquetas(ifg_dgidb,ifg_generadas,salida):
             contador = 0
             for ifg_d in ifg_dgidb:
                 if ifg_g[:-1] == ifg_d[:-1]:
-                    print("Correspondencia con etiqueta de DGIdb encontrada.")
+                    print("Correspondencia con etiqueta de DGIdb encontrada: {},{},{}".format(ifg_g[0],ifg_g[1],ifg_g[2]))
                     escritor_csv.writerow(ifg_d)
                     contador += 1
             if contador == 0:
@@ -402,7 +402,7 @@ if __name__ == "__main__":
     # lista = preprocesamiento.unir_elementos_lista(["a","b","c","d","e","f","g"],3,2)
     # print(lista)
 
-    publicaciones_directorio = "E:/Descargas/Python/PFC_DGIdb_src/scraping/files/labeled/txt/txt_ungreek"
+    publicaciones_directorio = "E:/Descargas/Python/PFC_DGIdb_src/replaced"
     publicaciones_dict = cargar_publicaciones_con_remplazos(publicaciones_directorio)
     print("Publicaciones cargadas.")
 
@@ -417,7 +417,7 @@ if __name__ == "__main__":
     print("Ocurrencias de remplazos de drogas obtenidas.")
 
     generar_etiquetas(ocurrencias_remplazos_genes_dict,ocurrencias_remplazos_drogas_dict,"etiquetas_generadas.csv")
-    print("Generación de etiquetas completa")
+    print("Generación de etiquetas completa.")
 
     ifg_dgidb_ruta = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/pfc_dgidb_export_ifg.csv"
     ifg_dgidb = cargar_ifg(ifg_dgidb_ruta)
