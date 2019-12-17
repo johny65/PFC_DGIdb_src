@@ -103,6 +103,7 @@ def cargar_embeddings(embeddings_ruta):
     '''
     Carga los vectores de embeddings de GloVe
     '''
+    print("Cargando archivo de embeddings...")
     embeddings_dict = dict()
     with open(embeddings_ruta,encoding="utf8") as embeddings:
         for fila in embeddings:
@@ -111,6 +112,7 @@ def cargar_embeddings(embeddings_ruta):
             embedding = np.asarray(datos[1:]+[0, 0],dtype='float32')
             embeddings_dict[palabra] = embedding
             # print("Embedding de la palabra <{}> cargado.".format(palabra))
+    print("Listo.")
     return embeddings_dict
 
 def cargar_ifg(ifg_csv_ruta):

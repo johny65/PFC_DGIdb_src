@@ -1,0 +1,20 @@
+sin_interaccion
+inhibitor
+agonist
+antagonist
+cofactor
+binder
+inducer
+antibody
+partial agonist
+ligand
+product of
+activator
+multitarget
+other
+modulator
+negative modulator
+potentiator
+suppressor
+blocker
+stimulator
