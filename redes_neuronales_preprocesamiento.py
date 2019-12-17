@@ -8,17 +8,18 @@ import re
 DIMENSION_EMBEDDING = 302
 
 
-def cargar_ejemplos(etiquetas_neural_networks_ruta, ejemplos_directorio):
+def cargar_ejemplos(etiquetas_neural_networks_ruta, ejemplos_directorio, out_interacciones_ruta):
     '''
     Carga los ejemplos para las redes neuronales en una lista de listas
     Entradas:
         etiquetas_neural_networks_ruta: archivo de interacciones fármaco-gen generadas
-        ejemplos_directorio: directorio de los archivos txt de las publicaciones con los remplazos hechos (xxx<nombre>xxx)
+        ejemplos_directorio: directorio de los archivos txt de las publicaciones con los
+                             remplazos hechos (xxx<nombre>xxx)
+        out_interacciones: ruta del archivo con las interacciones de salida existentes, una por línea,
+                           en el orden en que se mapeará la salida
     Salidas:
-        ejemplos_lista: lista con los ejemplos en formato lista de strings (ya separados).
-        genes: lista de genes etiquetados.
-        drogas: lista de drogas etiquetadas.
-        maxima_longitud: longitud del ejemplo más largo.
+        xs: lista de matrices con los embeddings para servir como entrada a la red
+        ys: lista de vectores de salida
     '''
     pmids = list()
     genes = list()
@@ -35,8 +36,8 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta, ejemplos_directorio):
                 archivo_nombre = pmid + ".txt"
                 archivo_ruta = os.path.join(ejemplos_directorio,archivo_nombre)
                 with open(archivo_ruta,encoding="utf8") as ejemplo:
-                    string = ejemplo.read()
-                    lista = re.findall(r"\b\S+\b",string)
+                    data = ejemplo.read()
+                    lista = re.findall(r"\b\S+\b", data)
                     contenido_dict[pmid] = lista
                     if len(lista) > maxima_longitud:
                         maxima_longitud = len(lista)
@@ -44,7 +45,7 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta, ejemplos_directorio):
             genes.append(fila[1])
             drogas.append(fila[2])
             interacciones.append(fila[3])
-    print("Listas pmids,genes,drogas,interacciones y diccionario de contenidos armados.")
+    print("Listas pmids, genes, drogas, interacciones y diccionario de contenidos armados.")
     
     # hacer padding al inicio (llenar con ceros al inicio para que todos los ejemplos queden de la misma
     # longitud; para esto se agrega una palabra que no tenga embedding):
@@ -52,24 +53,44 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta, ejemplos_directorio):
         v = ["<PADDING>"] * (maxima_longitud - len(v)) + v
         assert len(v) == maxima_longitud
 
-
     embeddings_dict = dp.cargar_embeddings("glove.6B.300d.txt")
+    interacciones_dict = cargar_interacciones(out_interacciones_ruta)
 
-    # ejemplos_lista = list()
+    # xs son las matrices de entrada; ys son los vectores de salida:
+    xs = []; ys = []
     for i in range(len(pmids)):
         contenido = contenido_dict[pmids[i]]
-        em = generar_matriz_embeddings(contenido, genes[i], drogas[i], interacciones[i], embeddings_dict)
-        print(em)
-        # assert len(c) == maxima_longitud
-        # ejemplos_lista.append(c)
-        # print("Ejemplo {} con etiquetas {},{},{} cargado.".format(pmids[i],genes[i],drogas[i],interacciones[i]))
-    # return ejemplos_lista,genes,drogas,maxima_longitud
+        x = generar_matriz_embeddings(contenido, genes[i], drogas[i], embeddings_dict)
+        y = np.zeros((len(interacciones_dict), 1))
+        y[interacciones_dict.get(interacciones[i], len(interacciones_dict)-1)] = 1
+        xs.append(x)
+        ys.append(y)
 
 
-
-def generar_matriz_embeddings(contenido, gen, droga, interaccion, embeddings_dict):
+def cargar_interacciones(in_file):
     """
-    Arma las matrices de entrada para la red.
+    Carga el archivo de interacciones existentes de salida, y devuelve un diccionario
+    con el índice de cada una para mapear el vector de salida. Por ejemplo:
+
+        inhibitor
+        agonist
+        potentiator
+
+    Cuando el caso de ejemplo sea de "inhibitor", el vector de salida será [1, 0, 0, 0].
+    El último elemento se usa para agrupar las que no se nombran. Por ejemplo, con el listado
+    anterior, cuando el caso de ejemplo sea de "modulator" el vector de salida será
+    [0, 0, 0, 1].
+
+    """
+    with open(in_file, encoding="utf8") as f:
+        res = {l.strip(): i for i, l in enumerate(f.readlines())}
+    res["OTHER"] = len(res)
+    return res
+
+
+def generar_matriz_embeddings(contenido, gen, droga, embeddings_dict):
+    """
+    Arma las matrices de entrada para la red. Funciona para un caso de ejemplo por vez.
 
     [p|p]      [x1|x2]
     [a|a]  ->  [x1|x2]
@@ -81,7 +102,7 @@ def generar_matriz_embeddings(contenido, gen, droga, interaccion, embeddings_dic
     embeddings_dict: diccionario de embeddings, de la forma [palabra] -> embedding (columna)
     """
 
-    print("Gen:", gen, " Droga:", droga, " Interacción:", interaccion)
+    print("Gen:", gen, " Droga:", droga)
     gen_emb = np.zeros((DIMENSION_EMBEDDING, 1))
     gen_emb[DIMENSION_EMBEDDING-2] = 1
     droga_emb = np.zeros((DIMENSION_EMBEDDING, 1))
@@ -101,39 +122,13 @@ def generar_matriz_embeddings(contenido, gen, droga, interaccion, embeddings_dic
     return arreglo_base
 
 
-def generar_entradas_salidas_redes(ejemplos_lista_arreglados, vocabulario, embeddings_dict, genes, drogas):
-    """Arma las matrices de entrada para la red."""
-    embeddings = list()
-    cantidad_palabras = vocabulario.num_words
-    dimension_embedding = 302
-    gen = np.zeros((1,dimension_embedding))
-    gen[0][-2] = 1
-    droga = np.zeros((1,dimension_embedding))
-    droga[0][-1] = 1
-    for i in range(0,len(ejemplos_lista_arreglados),1):
-        arreglo_base = np.zeros((cantidad_palabras,dimension_embedding))
-        ejemplo_arreglado = ejemplos_lista_arreglados[i]
-        for j in range(0,len(ejemplo_arreglado),1):
-            palabra_numero = ejemplo_arreglado[j]
-            palabra_texto = vocabulario.get(palabra_numero)
-            if palabra_texto == "{[" + genes[i] + "]}":
-                arreglo_base[j] = gen
-            elif palabra_texto == "{[" + drogas[i] + "]}":
-                arreglo_base[j] = droga
-            else:
-                embedding_vector = embeddings_dict.get(palabra_texto)
-                if embedding_vector is not None:
-                    arreglo_base[j] = embedding_vector
-        embeddings.append(arreglo_base)
-    return embeddings
-    
-
 if __name__ == "__main__":
 
     # etiquetas_neural_networks_ruta = "etiquetas_neural_networks.csv"
     etiquetas_neural_networks_ruta = "test_etiquetas"
     ejemplos_directorio = "."
     # embeddings_ruta = "E:/Descargas/Python/glove.6B.300d.txt"
+    out_interacciones_ruta = "test_int"
 
     
     # test_file_ruta = "replaced/16534240.txt"
@@ -142,7 +137,7 @@ if __name__ == "__main__":
     #     string = test.read()
     # print(re.findall(r"\b\S+\b",string))
 
-    cargar_ejemplos(etiquetas_neural_networks_ruta, ejemplos_directorio)
+    cargar_ejemplos(etiquetas_neural_networks_ruta, ejemplos_directorio, out_interacciones_ruta)
     # ejemplos_lista,genes_lista,drogas_lista,maxima_longitud = cargar_ejemplos(etiquetas_neural_networks_ruta, ejemplos_directorio)
     # print("Ejemplos cargados.")
     # print(len(ejemplos_lista))
