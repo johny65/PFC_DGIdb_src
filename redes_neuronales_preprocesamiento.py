@@ -46,10 +46,12 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta, ejemplos_directorio):
             interacciones.append(fila[3])
     print("Listas pmids,genes,drogas,interacciones y diccionario de contenidos armados.")
     
+    # hacer padding al inicio (llenar con ceros al inicio para que todos los ejemplos queden de la misma
     # longitud; para esto se agrega una palabra que no tenga embedding):
     for k, v in contenido_dict.items():
         v = ["<PADDING>"] * (maxima_longitud - len(v)) + v
         assert len(v) == maxima_longitud
+
 
     embeddings_dict = dp.cargar_embeddings("glove.6B.300d.txt")
 
@@ -62,6 +64,8 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta, ejemplos_directorio):
         # ejemplos_lista.append(c)
         # print("Ejemplo {} con etiquetas {},{},{} cargado.".format(pmids[i],genes[i],drogas[i],interacciones[i]))
     # return ejemplos_lista,genes,drogas,maxima_longitud
+
+
 
 def generar_matriz_embeddings(contenido, gen, droga, interaccion, embeddings_dict):
     """
@@ -95,6 +99,34 @@ def generar_matriz_embeddings(contenido, gen, droga, interaccion, embeddings_dic
             if embedding_vector is not None:
                 arreglo_base[:,j] = embedding_vector
     return arreglo_base
+
+
+def generar_entradas_salidas_redes(ejemplos_lista_arreglados, vocabulario, embeddings_dict, genes, drogas):
+    """Arma las matrices de entrada para la red."""
+    embeddings = list()
+    cantidad_palabras = vocabulario.num_words
+    dimension_embedding = 302
+    gen = np.zeros((1,dimension_embedding))
+    gen[0][-2] = 1
+    droga = np.zeros((1,dimension_embedding))
+    droga[0][-1] = 1
+    for i in range(0,len(ejemplos_lista_arreglados),1):
+        arreglo_base = np.zeros((cantidad_palabras,dimension_embedding))
+        ejemplo_arreglado = ejemplos_lista_arreglados[i]
+        for j in range(0,len(ejemplo_arreglado),1):
+            palabra_numero = ejemplo_arreglado[j]
+            palabra_texto = vocabulario.get(palabra_numero)
+            if palabra_texto == "{[" + genes[i] + "]}":
+                arreglo_base[j] = gen
+            elif palabra_texto == "{[" + drogas[i] + "]}":
+                arreglo_base[j] = droga
+            else:
+                embedding_vector = embeddings_dict.get(palabra_texto)
+                if embedding_vector is not None:
+                    arreglo_base[j] = embedding_vector
+        embeddings.append(arreglo_base)
+    return embeddings
+    
 
 if __name__ == "__main__":
 

@@ -15,17 +15,11 @@ from keras.optimizers import Adam
 
 import funciones_auxiliares as fa
 import cargar_imdb as ci
-# import redes_neuronales_preprocesamiento
 
 import explore_data as ed
 
 # Carga de datos
 (x_entrenamiento,y_entrenamiento),(x_prueba,y_prueba) = ci.load_imdb_sentiment_analysis_dataset('E:\\Descargas\\Python\\neural_networks')
-
-# etiquetas_neural_networks_ruta = "etiquetas_neural_networks.csv"
-# ejemplos_directorio = "replaced"
-# redes_neuronales_preprocesamiento.cargar_ejemplos(etiquetas_neural_networks_ruta,ejemplos_directorio)
-
 
 # num_classes = ed.get_num_classes(y_entrenamiento)
 # print(num_classes)
