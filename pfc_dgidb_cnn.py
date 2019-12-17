@@ -1,26 +1,31 @@
 # Compatibilidad entre Python 2 y 3
 from __future__ import absolute_import, division, print_function, unicode_literals
 
-import pandas as pd # Para el manejo de datos
-import numpy as np # Para operaciones matemáticas de nivel inicial
+# import pandas as pd # Para el manejo de datos
+# import numpy as np # Para operaciones matemáticas de nivel inicial
 
 # Preprocesamiento de los datos (texto)
-from keras.preprocessing import text,sequence 
+# from keras.preprocessing import text,sequence 
 
 # Modelo
-from keras.models import Sequential
-from keras.layers import Embedding,Conv1D,MaxPooling1D,Flatten,Dropout,Dense # SeparableConv1D, GlobalAveragePooling1D
-from keras.callbacks import EarlyStopping
-from keras.optimizers import Adam
+# from keras.models import Sequential
+# from keras.layers import Embedding,Conv1D,MaxPooling1D,Flatten,Dropout,Dense # SeparableConv1D, GlobalAveragePooling1D
+# from keras.callbacks import EarlyStopping
+# from keras.optimizers import Adam
 
-import funciones_auxiliares as fa
-import cargar_imdb as ci
-# import redes_neuronales_preprocesamiento
+# import funciones_auxiliares as fa
+# import cargar_imdb as ci
+import redes_neuronales_preprocesamiento
 
-import explore_data as ed
+# import explore_data as ed
 
 # Carga de datos
-(x_entrenamiento,y_entrenamiento),(x_prueba,y_prueba) = ci.load_imdb_sentiment_analysis_dataset('E:\\Descargas\\Python\\neural_networks')
+# (x_entrenamiento,y_entrenamiento),(x_prueba,y_prueba) = ci.load_imdb_sentiment_analysis_dataset('E:\\Descargas\\Python\\neural_networks')
+
+etiquetas_neural_networks_ruta = "etiquetas_neural_networks.csv"
+ejemplos_directorio = "replaced"
+redes_neuronales_preprocesamiento.cargar_ejemplos(etiquetas_neural_networks_ruta,ejemplos_directorio)
+
 
 # etiquetas_neural_networks_ruta = "etiquetas_neural_networks.csv"
 # ejemplos_directorio = "replaced"
