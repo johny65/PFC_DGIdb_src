@@ -4,6 +4,7 @@ import numpy as np
 import re
 import os
 import logging
+import tokenizer
 # import preprocesamiento
 
 logger = logging.getLogger("datos_preprocesamiento")
@@ -11,6 +12,9 @@ logger = logging.getLogger("datos_preprocesamiento")
 # Preprocesamiento de los datos (texto)
 # from keras.preprocessing import text,sequence
 # from preprocesamiento import remplazo_inteligente
+
+Tokenizer = tokenizer.Tokenizer
+t2ws = tokenizer.text_to_word_sequence
 
 def cargar_pmids(pmids_etiquetas_completas_csv):
     '''
