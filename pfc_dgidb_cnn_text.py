@@ -1,8 +1,13 @@
 # Paquetes
 from __future__ import absolute_import, division, print_function, unicode_literals # Compatibilidad entre Python 2 y 3
+
+import os
+# os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID" # see issue #152
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+
 from redes_neuronales_preprocesamiento import cargar_ejemplos # Carga de ejemplos
 from keras.models import Sequential
-from keras.layers import Conv1D, MaxPooling1D, Flatten, Dropout, Dense
+from keras.layers import Conv1D, MaxPooling1D, Flatten, Dropout, Dense, Conv2D, MaxPooling2D
 from keras.callbacks import EarlyStopping
 from keras.optimizers import Adam
 import funciones_auxiliares as fa
@@ -11,21 +16,30 @@ import funciones_auxiliares as fa
 etiquetas_neural_networks_ruta = "etiquetas_neural_networks.csv"
 ejemplos_directorio = "replaced"
 out_interacciones_ruta = "interacciones_lista.txt"
+
 x_entrenamiento, y_entrenamiento = cargar_ejemplos(etiquetas_neural_networks_ruta, ejemplos_directorio, out_interacciones_ruta)
 
-print(x_entrenamiento.shape())
-print(y_entrenamiento.shape())
+print(y_entrenamiento.shape[0])
+print(y_entrenamiento.shape[1])
+# print(y_entrenamiento.shape[2])
+
+cantidad_ejemplos = x_entrenamiento.shape[0]
+filas_dimension_embedding = x_entrenamiento.shape[1]
+columnas_maxima_longitud_ejemplos = x_entrenamiento.shape[2]
+canal_color_escala_grises = 1
+
+x_entrenamiento = x_entrenamiento.reshape(cantidad_ejemplos,filas_dimension_embedding,columnas_maxima_longitud_ejemplos,canal_color_escala_grises)
 
 # Variables globales
 PORCENTAJE_DROPEO = 0.5 # Pone en 0 el #% de los datos aleatoriamente
-CANTIDAD_FILTROS = 16 # Cantidad de filtro de convolución
+CANTIDAD_FILTROS = 8 # Cantidad de filtro de convolución
 DIMENSION_KERNEL = 3 # De 1x3
 DIMENSION_POOLING = 2
-NEURONAS_OCULTAS = 32
+NEURONAS_OCULTAS = 10
 VELOCIDAD_APRENDIZAJE = 1e-3
 CANTIDAD_EPOCAS = 100
 PORCENTAJE_VALIDACION = 0.2 # 20% de ejemplos usados para validar. Son tomados desde el final
-DIMENSION_BACHA = 32
+DIMENSION_BACHA = 4
 
 # Red neuronal convolucional
 modelo_cnn = Sequential() # Modelo secuencial (una capa detrás de la otra). Perceptrón multicapa (Arquitectura)
@@ -35,19 +49,22 @@ Una capa de convolución seguida de una capa de polling tantas veces como se des
 Esa es la característica principal de una CNN.
 '''
 
-modelo_cnn.add(Conv1D(filters=CANTIDAD_FILTROS,
-                 kernel_size=DIMENSION_KERNEL,
-                 activation='relu',
-                 bias_initializer='random_uniform',
-                 padding='same'))
-modelo_cnn.add(MaxPooling1D(pool_size=DIMENSION_POOLING))
+formato = (filas_dimension_embedding,columnas_maxima_longitud_ejemplos,canal_color_escala_grises) # ancho,alto,canales
 
-modelo_cnn.add(Conv1D(filters=CANTIDAD_FILTROS,
-                 kernel_size=DIMENSION_KERNEL,
-                 activation='relu',
-                 bias_initializer='random_uniform',
-                 padding='same'))
-modelo_cnn.add(MaxPooling1D(pool_size=DIMENSION_POOLING))
+modelo_cnn.add(Conv2D(filters=CANTIDAD_FILTROS,
+                    kernel_size=(3,3),
+                    activation='relu',
+                    # bias_initializer='random_uniform',
+                    # padding='same',
+                    input_shape=formato))
+modelo_cnn.add(MaxPooling2D(pool_size=(2,2)))
+
+# modelo_cnn.add(Conv1D(filters=CANTIDAD_FILTROS,
+#                  kernel_size=DIMENSION_KERNEL,
+#                  activation='relu',
+#                  bias_initializer='random_uniform',
+#                  padding='same'))
+# modelo_cnn.add(MaxPooling1D(pool_size=DIMENSION_POOLING))
 
 modelo_cnn.add(Flatten()) # input_shape=(imagen_ancho,imagen_alto)
 
@@ -57,7 +74,7 @@ modelo_cnn.add(Dense(NEURONAS_OCULTAS,activation='relu')) # Siempre relu en las 
 
 # Capa de salida
 modelo_cnn.add(Dropout(PORCENTAJE_DROPEO)) # Dropout: se utiliza para evitar el sobreentrenamiento
-modelo_cnn.add(Dense(1,activation='softmax')) # Softmax porque hay más de dos clases
+modelo_cnn.add(Dense(20,activation='softmax')) # Softmax porque hay más de dos clases
 
 '''
 Activations: Funciones de activación
@@ -123,19 +140,19 @@ Metrics: Análisis de desempeño del modelo
 
 # Create callback for early stopping on validation loss. If the loss does
 # not decrease in two consecutive tries, stop training.
-callbacks = [EarlyStopping(monitor='val_accuracy',patience=1)] # 'val_loss'
+# callbacks = [EarlyStopping(monitor='val_accuracy',patience=1)] # 'val_loss'
+
+# Detalles del modelo neuronal
+modelo_cnn.summary()
 
 # Entrenamiento del modelo
 registro = modelo_cnn.fit(x_entrenamiento,
                         y_entrenamiento,
                         epochs=CANTIDAD_EPOCAS,
-                        callbacks=callbacks,
+                        # callbacks=callbacks,
                         validation_split=PORCENTAJE_VALIDACION,
-                        verbose=1,
-                        batch_size=DIMENSION_BACHA)
-
-# Detalles del modelo neuronal
-modelo_cnn.summary()
+                        verbose=1) #,
+                        # batch_size=DIMENSION_BACHA)
 
 fa.graficas(registro)
 

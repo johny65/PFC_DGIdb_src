@@ -5,7 +5,7 @@ import datos_preprocesamiento as dp
 import csv
 import re
 
-DIMENSION_EMBEDDING = 302
+DIMENSION_EMBEDDING = 52
 
 
 def cargar_ejemplos(etiquetas_neural_networks_ruta, ejemplos_directorio, out_interacciones_ruta):
@@ -49,24 +49,31 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta, ejemplos_directorio, out_int
     
     # hacer padding al inicio (llenar con ceros al inicio para que todos los ejemplos queden de la misma
     # longitud; para esto se agrega una palabra que no tenga embedding):
-    for k, v in contenido_dict.items():
-        v = ["<PADDING>"] * (maxima_longitud - len(v)) + v
-        assert len(v) == maxima_longitud
+    for k in contenido_dict:
+        v = contenido_dict[k]
+        contenido_dict[k] = ["<PADDING>"] * (maxima_longitud - len(v)) + v
 
-    embeddings_dict = dp.cargar_embeddings("glove.6B.300d.txt")
+    embeddings_dict = dp.cargar_embeddings("glove.6B.50d.txt")
+    # embeddings_dict = dp.cargar_embeddings("glove.6B.300d.txt")
     interacciones_dict = cargar_interacciones(out_interacciones_ruta)
 
     # xs son las matrices de entrada; ys son los vectores de salida:
     xs = []; ys = []
-    for i in range(512): # len(pmids)
-        print("Generando matrices: {}/{}".format(i+1,512)) # len(pmids)
+    batch = 16
+    # xs = np.empty((batch,DIMENSION_EMBEDDING,maxima_longitud))
+    # ys = np.empty((batch,DIMENSION_EMBEDDING,maxima_longitud))
+    for i in range(batch): # len(pmids)
+        print("Generando matrices: {}/{}".format(i+1,batch)) # len(pmids)
         contenido = contenido_dict[pmids[i]]
         x = generar_matriz_embeddings(contenido, genes[i], drogas[i], embeddings_dict)
-        y = np.zeros((len(interacciones_dict), 1))
+        y = np.zeros((len(interacciones_dict)))
         y[interacciones_dict.get(interacciones[i], len(interacciones_dict)-1)] = 1
         xs.append(x)
         ys.append(y)
-    
+        
+    xs = np.asarray(xs)
+    ys = np.asarray(ys)
+
     return xs, ys
 
 
@@ -87,7 +94,7 @@ def cargar_interacciones(in_file):
     """
     with open(in_file, encoding="utf8") as f:
         res = {l.strip(): i for i, l in enumerate(f.readlines())}
-    res["OTHER"] = len(res)
+    res["other"] = len(res)
     return res
 
 
