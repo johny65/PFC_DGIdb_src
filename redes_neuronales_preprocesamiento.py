@@ -6,7 +6,7 @@ import csv
 import re
 import unittest
 
-DIMENSION_EMBEDDING = 52
+DIMENSION_EMBEDDING = -1 # se autocalcula
 
 def ass(expression):
     if not expression: raise AssertionError()
@@ -32,6 +32,7 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta, ejemplos_directorio, out_int
         xs: lista de matrices con los embeddings para servir como entrada a la red
         ys: lista de vectores de salida
     '''
+    global DIMENSION_EMBEDDING
     pmids = list()
     genes = list()
     drogas = list()
@@ -93,7 +94,7 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta, ejemplos_directorio, out_int
     print("Listo padding.")
 
     embeddings_dict = dp.cargar_embeddings(embeddings_file)
-    # DIMENSION_EMBEDDING = embeddings_dict[]
+    DIMENSION_EMBEDDING = len(next(iter(embeddings_dict.values())))
     interacciones_dict = cargar_interacciones(out_interacciones_ruta)
 
     # xs son las matrices de entrada; ys son los vectores de salida:
