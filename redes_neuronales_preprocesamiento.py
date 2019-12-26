@@ -104,11 +104,14 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta, ejemplos_directorio, out_int
         contenido = contenido_dict[pmids[i]]
         ass(len(contenido) == max_longitud)
         x = generar_matriz_embeddings(contenido, genes[i], drogas[i], embeddings_dict)
-        y = np.zeros((len(interacciones_dict), 1))
+        y = np.zeros((len(interacciones_dict)))
         y[interacciones_dict.get(interacciones[i], len(interacciones_dict)-1)] = 1
         xs.append(x)
         ys.append(y)
-    
+        
+    xs = np.asarray(xs)
+    ys = np.asarray(ys)
+
     return xs, ys
 
 
@@ -129,7 +132,7 @@ def cargar_interacciones(in_file):
     """
     with open(in_file, encoding="utf8") as f:
         res = {l.strip(): i for i, l in enumerate(f.readlines())}
-    res["OTHER"] = len(res)
+    res["other"] = len(res)
     return res
 
 

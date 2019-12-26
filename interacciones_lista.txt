@@ -11,7 +11,6 @@ ligand
 product of
 activator
 multitarget
-other
 modulator
 negative modulator
 potentiator
