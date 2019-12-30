@@ -3,25 +3,32 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 
 import os
 # os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID" # see issue #152
-os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+# os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 from redes_neuronales_preprocesamiento import cargar_ejemplos # Carga de ejemplos
 from keras.models import Sequential
-from keras.layers import Conv1D, MaxPooling1D, Flatten, Dropout, Dense, Conv2D, MaxPooling2D
+from keras.layers import Flatten, Dropout, Dense, Conv2D, MaxPooling2D # Conv1D, MaxPooling1D,
 from keras.callbacks import EarlyStopping
 from keras.optimizers import Adam
 import funciones_auxiliares as fa
 
 # Carga de datos
-etiquetas_neural_networks_ruta = "etiquetas_neural_networks.csv"
+etiquetas_neural_networks_ruta = "etiquetas_neural_networks2.csv"
 ejemplos_directorio = "replaced"
 out_interacciones_ruta = "interacciones_lista.txt"
+embeddings_file = "glove.6B.50d.txt"
+# embeddings_file = "glove.6B.300d.txt"
 
-x_entrenamiento, y_entrenamiento = cargar_ejemplos(etiquetas_neural_networks_ruta, ejemplos_directorio, out_interacciones_ruta)
+x_entrenamiento, y_entrenamiento = cargar_ejemplos(etiquetas_neural_networks_ruta,
+                                                    ejemplos_directorio,
+                                                    out_interacciones_ruta,
+                                                    embeddings_file=embeddings_file,
+                                                    top_palabras=20000, # 20000
+                                                    max_longitud=300) # 500
 
-print(y_entrenamiento.shape[0])
-print(y_entrenamiento.shape[1])
-# print(y_entrenamiento.shape[2])
+print("Cantidad de ejemplos: {}".format(x_entrenamiento.shape[0]))
+print("Dimension del embedding: {}".format(x_entrenamiento.shape[1]))
+print("Longitud de los ejemplos: {}".format(x_entrenamiento.shape[2]))
 
 cantidad_ejemplos = x_entrenamiento.shape[0]
 filas_dimension_embedding = x_entrenamiento.shape[1]
@@ -32,14 +39,14 @@ x_entrenamiento = x_entrenamiento.reshape(cantidad_ejemplos,filas_dimension_embe
 
 # Variables globales
 PORCENTAJE_DROPEO = 0.5 # Pone en 0 el #% de los datos aleatoriamente
-CANTIDAD_FILTROS = 8 # Cantidad de filtro de convolución
+CANTIDAD_FILTROS = 16 # Cantidad de filtro de convolución
 DIMENSION_KERNEL = 3 # De 1x3
 DIMENSION_POOLING = 2
-NEURONAS_OCULTAS = 10
+NEURONAS_OCULTAS = 64
 VELOCIDAD_APRENDIZAJE = 1e-3
 CANTIDAD_EPOCAS = 100
 PORCENTAJE_VALIDACION = 0.2 # 20% de ejemplos usados para validar. Son tomados desde el final
-DIMENSION_BACHA = 4
+DIMENSION_BACHA = 512
 
 # Red neuronal convolucional
 modelo_cnn = Sequential() # Modelo secuencial (una capa detrás de la otra). Perceptrón multicapa (Arquitectura)
@@ -49,22 +56,23 @@ Una capa de convolución seguida de una capa de polling tantas veces como se des
 Esa es la característica principal de una CNN.
 '''
 
-formato = (filas_dimension_embedding,columnas_maxima_longitud_ejemplos,canal_color_escala_grises) # ancho,alto,canales
+formato_entrada = (filas_dimension_embedding,columnas_maxima_longitud_ejemplos,canal_color_escala_grises) # ancho,alto,canales
 
 modelo_cnn.add(Conv2D(filters=CANTIDAD_FILTROS,
-                    kernel_size=(3,3),
+                    kernel_size=(1,DIMENSION_KERNEL),
                     activation='relu',
-                    # bias_initializer='random_uniform',
-                    # padding='same',
-                    input_shape=formato))
-modelo_cnn.add(MaxPooling2D(pool_size=(2,2)))
+                    input_shape=formato_entrada))
+modelo_cnn.add(MaxPooling2D(pool_size=(1,DIMENSION_POOLING)))
 
-# modelo_cnn.add(Conv1D(filters=CANTIDAD_FILTROS,
-#                  kernel_size=DIMENSION_KERNEL,
-#                  activation='relu',
-#                  bias_initializer='random_uniform',
-#                  padding='same'))
-# modelo_cnn.add(MaxPooling1D(pool_size=DIMENSION_POOLING))
+formato_entrada = (filas_dimension_embedding,
+            (columnas_maxima_longitud_ejemplos-DIMENSION_KERNEL+1)/DIMENSION_POOLING,
+            canal_color_escala_grises)
+
+modelo_cnn.add(Conv2D(filters=CANTIDAD_FILTROS,
+                 kernel_size=(1,DIMENSION_KERNEL),
+                 activation='relu',
+                 input_shape=formato_entrada))
+modelo_cnn.add(MaxPooling2D(pool_size=(1,DIMENSION_POOLING)))
 
 modelo_cnn.add(Flatten()) # input_shape=(imagen_ancho,imagen_alto)
 

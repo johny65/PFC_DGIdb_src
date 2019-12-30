@@ -269,7 +269,54 @@ def etiquetas_publicacion_droga(pmids_lista,ifg_lista,aliases_lista,salida):
             print(lista)
             escritor_csv.writerow(lista)
 
-# -----------------------------------------
+# Parte dedicada a la generación de las etiquetas
+
+def cargar_pmids_genes_drogas_unicos(dgidb_export_ifg_csv):
+    '''
+    Carga los pmids con las etiquetas completas en una lista ordenada y sin repeticiones.
+    Los elementos son de tipo entero.
+    '''
+    pmids_conjunto = set()
+    genes_conjunto = set()
+    drogas_conjunto = set()
+    pmids_lista = list()
+    genes_lista = list()
+    drogas_lista = list()
+    with open(dgidb_export_ifg_csv,encoding="utf8") as pmids_csv:
+        lector_csv = csv.reader(pmids_csv,delimiter=',',quoting=csv.QUOTE_ALL)
+        for fila in lector_csv:
+            pmids_conjunto.add(int(fila[0]))
+            genes_conjunto.add(fila[1])
+            drogas_conjunto.add(fila[2])
+        pmids_lista = list(pmids_conjunto)
+        genes_lista = list(genes_conjunto)
+        drogas_lista = list(drogas_conjunto)
+        pmids_lista.sort()
+        genes_lista.sort()
+        drogas_lista.sort()
+    return pmids_lista, genes_lista, drogas_lista
+
+def cargar_entidades_etiquetas_dgidb(pmids_lista,ifg_dgidb_lista):
+    '''
+    A partir de una lista de pmids (números enteros) y una lista de lista con las interacciones fármaco-gen,
+    devuelve dos diccionarios con el formato:
+        pmid -> [<gen1>, <gen2>, ..., <genN>]
+        pmid -> [<droga1>, <droga2>, ..., <drogaN>]
+    conteniendo las entidades nombradas en las etiquetas sin repeticiones.
+    '''
+    genes_dict = dict()
+    drogas_dict = dict()
+    for pmid in pmids_lista:
+        pmid = str(pmid)
+        genes_conjunto = set()
+        drogas_conjunto = set()
+        for lista in ifg_dgidb_lista:
+            if pmid == lista[0]:
+                genes_conjunto.add(lista[1])
+                drogas_conjunto.add(lista[2])
+        genes_dict[pmid] = list(genes_conjunto)
+        drogas_dict[pmid] = list(drogas_conjunto)
+    return genes_dict, drogas_dict
 
 def cargar_publicaciones_con_remplazos(publicaciones_directorio):
     '''
@@ -306,14 +353,21 @@ def ocurrencias_remplazos(publicaciones_dict,nombres_lista):
         for nombre in nombres_lista:
             nombre_clave = "xxx" + nombre + "xxx"
             if nombre_clave in contenido:
-                print("Ocurrencia {} encontrada en {}.".format(nombre,pmid))
+                # print("Ocurrencia {} encontrada en {}.".format(nombre,pmid))
                 nombres.append(nombre)
-        if not nombres: # Si la lista nombres está vacía
-            print("Ninguna ocurrencia encontrada en {}.".format(pmid))
+        # if not nombres: # Si la lista nombres está vacía
+            # print("Ninguna ocurrencia encontrada en {}.".format(pmid))
+        # print("Ocurrencias encontradas en {}: {}".format(pmid,nombres))
         ocurrencias_remplazos_dict[pmid] = nombres
     return ocurrencias_remplazos_dict
 
-def generar_etiquetas(ocurrencias_genes_dict,ocurrencias_drogas_dict,salida):
+def generar_etiquetas(ocurrencias_genes_dict,
+                    ocurrencias_drogas_dict,
+                    genes_etiquetados_dict,
+                    drogas_etiquetadas_dict,
+                    genes_lista,
+                    drogas_lista,
+                    salida):
     '''
     Genera las etiquetas con todas las posibles combinaciones de genes y drogas con el formato: [pmid, gen, droga, "sin_interaccion"]
     Las etiquetas son guardadas en un archivo csv.
@@ -325,10 +379,23 @@ def generar_etiquetas(ocurrencias_genes_dict,ocurrencias_drogas_dict,salida):
                 if pmid_gen == pmid_droga:
                     print("Generando etiquetas para la publicación {}.".format(pmid_gen))
                     if not ((not ocurrencias_gen) or (not ocurrencias_droga)): # Solo cuando ambas listas tengan elementos
+                        agregados = list()
                         for gen in ocurrencias_gen:
-                            for droga in ocurrencias_droga:
-                                lista = [pmid_gen, gen, droga, "sin_interaccion"]
-                                escritor_csv.writerow(lista)
+                            genes_e = genes_etiquetados_dict[pmid_gen]
+                            if gen in genes_e:
+                                for droga in ocurrencias_droga:
+                                    if droga in drogas_lista:
+                                        lista = [pmid_gen, gen, droga, "sin_interaccion"]
+                                        agregados.append(lista)
+                                        escritor_csv.writerow(lista)
+                        for droga in ocurrencias_droga:
+                            drogas_e = drogas_etiquetadas_dict[pmid_droga]
+                            if droga in drogas_e and droga in drogas_lista:
+                                for gen in ocurrencias_gen:
+                                    if gen in genes_lista:
+                                        lista = [pmid_droga, gen, droga, "sin_interaccion"]
+                                        if lista not in agregados:
+                                            escritor_csv.writerow(lista)
 
 def procesar_etiquetas(ifg_dgidb,ifg_generadas,salida):
     '''
@@ -356,13 +423,13 @@ if __name__ == "__main__":
     # print(pmids_lista)
     # print("pmids cargados")
 
-    aliases_gen_ruta = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/alias_gen.csv"
+    # aliases_gen_ruta = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/alias_gen.csv"
     # aliases_gen_conjunto = cargar_aliases_conjunto(aliases_gen_ruta)
     # aliases_gen_lista = cargar_aliases_lista(aliases_gen_ruta)
     # print(aliases_gen)
     # print("alias gen cargados")
 
-    aliases_droga_ruta = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/alias_droga.csv"
+    # aliases_droga_ruta = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/alias_droga.csv"
     # aliases_droga_conjunto = cargar_aliases_conjunto(aliases_droga_ruta)
     # aliases_droga_lista = cargar_aliases_lista(aliases_droga_ruta)
     # print(aliases_droga)
@@ -413,12 +480,29 @@ if __name__ == "__main__":
     # lista = preprocesamiento.unir_elementos_lista(["a","b","c","d","e","f","g"],3,2)
     # print(lista)
 
+    '''---'''
+
     publicaciones_directorio = "E:/Descargas/Python/PFC_DGIdb_src/replaced"
     publicaciones_dict = cargar_publicaciones_con_remplazos(publicaciones_directorio)
     print("Publicaciones cargadas.")
 
+    ifg_dgidb_ruta = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/pfc_dgidb_export_ifg.csv"
+    pmids_lista, genes_lista, drogas_lista = cargar_pmids_genes_drogas_unicos(ifg_dgidb_ruta)
+    print("Lista de pmids, genes y drogas cargadas.")
+
+    ifg_dgidb_ruta = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/pfc_dgidb_export_ifg.csv"
+    ifg_dgidb = cargar_ifg(ifg_dgidb_ruta)
+    print("Interacciones fármaco-gen de DGIdb cargadas.")
+
+    genes_dict,drogas_dict = cargar_entidades_etiquetas_dgidb(pmids_lista,ifg_dgidb)
+    print("Genes en etiquetas cargados")
+    print("Drogas en etiquetas cargadas")
+
+    aliases_gen_ruta = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/alias_gen.csv"
     nombres_gen_lista = cargar_nombres(aliases_gen_ruta)
     print("Nombres de genes cargados.")
+    
+    aliases_droga_ruta = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/alias_droga.csv"
     nombres_droga_lista = cargar_nombres(aliases_droga_ruta)
     print("Nombres de drogas cargados.")
     
@@ -427,18 +511,14 @@ if __name__ == "__main__":
     ocurrencias_remplazos_drogas_dict = ocurrencias_remplazos(publicaciones_dict,nombres_droga_lista)
     print("Ocurrencias de remplazos de drogas obtenidas.")
 
-    generar_etiquetas(ocurrencias_remplazos_genes_dict,ocurrencias_remplazos_drogas_dict,"etiquetas_generadas.csv")
+    generar_etiquetas(ocurrencias_remplazos_genes_dict,ocurrencias_remplazos_drogas_dict,genes_dict,drogas_dict,genes_lista,drogas_lista,"etiquetas_generadas2.csv")
     print("Generación de etiquetas completa.")
 
-    ifg_dgidb_ruta = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/pfc_dgidb_export_ifg.csv"
-    ifg_dgidb = cargar_ifg(ifg_dgidb_ruta)
-    print("Interacciones fármaco-gen de DGIdb cargadas.")
-
-    ifg_generadas_ruta = "E:/Descargas/Python/PFC_DGIdb_src/etiquetas_generadas.csv"
+    ifg_generadas_ruta = "E:/Descargas/Python/PFC_DGIdb_src/etiquetas_generadas2.csv"
     ifg_generadas = cargar_ifg(ifg_generadas_ruta)
     print("Interacciones fármaco-gen generadas cargadas.")
     
-    procesar_etiquetas(ifg_dgidb,ifg_generadas,"etiquetas_neural_networks.csv")
+    procesar_etiquetas(ifg_dgidb,ifg_generadas,"etiquetas_neural_networks2.csv")
     print("Procesamiento de etiquetas finalizado.")
 
     # a = [1,2,3,4,5,6,7,8,9,0]

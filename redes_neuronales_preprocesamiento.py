@@ -5,8 +5,45 @@ import datos_preprocesamiento as dp
 import csv
 import re
 import unittest
+import random
 
 DIMENSION_EMBEDDING = -1 # se autocalcula
+
+def contenido_estructura(lista_strings):
+    '''
+    Devuelve una lista con la estructura del contenido resultante tras haber tokenizado.
+    La lista guarda la cantidad de top words y genes/drogas consecutivas con su respectivo orden.
+    Formato: [['TWE', 15], ['XXX', 1], ['TWE', 69], ['XXX', 3], ..., total_twe, total_xxx]
+    '''
+    estructura_lista = list()
+    contador_twe = 0
+    contador_xxx = 0
+    total_twe = 0
+    total_xxx = 0
+    if lista_strings[0].startswith("xxx") and lista_strings[0].endswith("xxx"):
+        entidad_xxx = True
+    else:
+        entidad_xxx = False
+    for string in lista_strings:
+        if string.startswith("xxx") and string.endswith("xxx"):
+            contador_xxx += 1
+            if entidad_xxx == False:
+                lista = ['TWE', contador_twe]
+                estructura_lista.append(lista)
+                total_twe += contador_twe
+                contador_twe = 0
+                entidad_xxx = True
+        else:
+            contador_twe += 1
+            if entidad_xxx == True:
+                lista = ['XXX', contador_xxx]
+                estructura_lista.append(lista)
+                total_xxx += contador_xxx
+                contador_xxx = 0
+                entidad_xxx = False
+    estructura_lista.append(total_twe)
+    estructura_lista.append(total_xxx)
+    return estructura_lista
 
 def ass(expression):
     if not expression: raise AssertionError()
@@ -53,11 +90,11 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta, ejemplos_directorio, out_int
                     contenido_dict[pmid] = data
                     # if len(lista) > maxima_longitud:
                         # maxima_longitud = len(lista)
-            if incluir_sin_interacciones or fila[3] != "sin_interaccion":
-                pmids.append(pmid)
-                genes.append(fila[1])
-                drogas.append(fila[2])
-                interacciones.append(fila[3])
+            # if incluir_sin_interacciones or fila[3] != "sin_interaccion":
+            pmids.append(pmid)
+            genes.append(fila[1])
+            drogas.append(fila[2])
+            interacciones.append(fila[3])
     print("Listas pmids, genes, drogas, interacciones y diccionario de contenidos armados.")
 
     tokenizer = dp.Tokenizer(num_words=top_palabras)
@@ -83,6 +120,8 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta, ejemplos_directorio, out_int
     # longitud; para esto se agrega una palabra que no tenga embedding):
     for k in contenido_dict:
         v = contenido_dict[k]
+        estructura_lista = contenido_estructura(v)
+        print(estructura_lista)
         if len(v) < max_longitud:
             contenido_dict[k] = ["<PADDING>"] * (max_longitud - len(v)) + v
         else:
@@ -109,9 +148,15 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta, ejemplos_directorio, out_int
         y[interacciones_dict.get(interacciones[i], len(interacciones_dict)-1)] = 1
         xs.append(x)
         ys.append(y)
-        
+
     xs = np.asarray(xs)
     ys = np.asarray(ys)
+
+    seed = random.random()
+    random.seed(seed)
+    random.shuffle(xs)
+    random.seed(seed)
+    random.shuffle(ys)
 
     return xs, ys
 
