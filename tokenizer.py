@@ -42,7 +42,7 @@ def text_to_word_sequence(text,
 
     # seq = text.split(split)
     seq = re.findall(r"\b\S+\b", text)
-    return [i for i in seq if i]
+    return [i for i in seq if (len(i) > 3)] #  or i == 'a')]
 
 
 def one_hot(text, n,
@@ -249,9 +249,12 @@ class Tokenizer(object):
                 self.index_docs[i] += 1
 
 
-    def texts_to_top_words(self, text):
+    def texts_to_top_words(self, text, limit, gen, droga):
         """Devuelve el texto usando sólo las palabras más frecuentes (incluyendo
-        siempre genes y drogas)."""
+        siempre genes y drogas) truncado a 'limit' cantidad de palabras."""
+        self.words_limit = limit
+        self.gen_interes = gen
+        self.droga_interes = droga
         return list(self.texts_to_sequences_generator([text]))[0]
 
 
@@ -299,21 +302,30 @@ class Tokenizer(object):
                                         self.filters,
                                         self.lower,
                                         self.split)
-            vect = []
-            for w in seq:
-                # si es un gen o droga incluir sí o sí
-                if w.startswith("xxx") and w.endswith("xxx"):
-                    vect.append(w)
-                i = self.word_index.get(w)
-                if i is not None:
-                    if num_words and i >= num_words:
-                        if oov_token_index is not None:
-                            vect.append(oov_token_index)
-                    else:
-                        # vect.append(i)
+            ready = False
+            while not ready:
+                vect = []
+                for w in seq:
+                    # si es el gen o droga de interés incluir sí o sí
+                    if w.startswith("xxx") and w.endswith("xxx") and (self.gen_interes in w or self.droga_interes in w):
                         vect.append(w)
-                elif self.oov_token is not None:
-                    vect.append(oov_token_index)
+                    else:
+                        i = self.word_index.get(w)
+                        if i is not None:
+                            if num_words and i >= num_words:
+                                if oov_token_index is not None:
+                                    vect.append(oov_token_index)
+                            else:
+                                # vect.append(i)
+                                vect.append(w)
+                        elif self.oov_token is not None:
+                            vect.append(oov_token_index)
+                num_words -= 1
+                seq = vect.copy()
+                if len(vect) <= self.words_limit:
+                    ready = True
+                else:
+                    print("Palabras: {}/{}, disminuyendo top words: {}".format(len(vect), self.words_limit, num_words))
             yield vect
 
     def sequences_to_texts(self, sequences):
