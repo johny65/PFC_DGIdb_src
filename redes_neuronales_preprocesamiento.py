@@ -55,7 +55,7 @@ class Test(unittest.TestCase):
 
 
 def cargar_ejemplos(etiquetas_neural_networks_ruta, ejemplos_directorio, out_interacciones_ruta,
-                    incluir_sin_interacciones=False, top_palabras=150, max_longitud=500,
+                    incluir_sin_interacciones=True, top_palabras=150, max_longitud=500,
                     embeddings_file="glove.6B.50d.txt"):
     '''
     Carga los ejemplos para las redes neuronales en una lista de listas
@@ -74,6 +74,7 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta, ejemplos_directorio, out_int
     genes = list()
     drogas = list()
     interacciones = list()
+    interacciones_sin = list()
     contenido_dict = dict() # tiene un elemento por artículo: pmid -> contenido
     maxima_longitud = 0
     with open(etiquetas_neural_networks_ruta, encoding="utf8") as enn_csv:
@@ -89,11 +90,23 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta, ejemplos_directorio, out_int
                     contenido_dict[pmid] = data
                     # if len(lista) > maxima_longitud:
                         # maxima_longitud = len(lista)
-            if incluir_sin_interacciones or fila[3] != "sin_interaccion":
+            if incluir_sin_interacciones and fila[3] == "sin_interaccion":
+                interacciones_sin.append(fila)
+            elif incluir_sin_interacciones or fila[3] != "sin_interaccion":
                 pmids.append(pmid)
                 genes.append(fila[1])
                 drogas.append(fila[2])
                 interacciones.append(fila[3])
+
+    # tomar sólo x cantidad de sin_interaccion:
+    sin_interaccion_a_incluir = 3144
+    if interacciones_sin:
+        for fila in random.sample(interacciones_sin, k=sin_interaccion_a_incluir):
+            pmids.append(pmid)
+            genes.append(fila[1])
+            drogas.append(fila[2])
+            interacciones.append(fila[3])
+
     print("Listas pmids, genes, drogas, interacciones y diccionario de contenidos armados.")
 
     tokenizer = dp.Tokenizer(num_words=top_palabras)

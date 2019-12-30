@@ -322,10 +322,10 @@ class Tokenizer(object):
                             vect.append(oov_token_index)
                 num_words -= 1
                 seq = vect.copy()
-                if len(vect) <= self.words_limit:
+                if len(vect) <= self.words_limit or num_words < 0:
                     ready = True
-                else:
-                    print("Palabras: {}/{}, disminuyendo top words: {}".format(len(vect), self.words_limit, num_words))
+                # else:
+                    # print("Palabras: {}/{}, disminuyendo top words: {}".format(len(vect), self.words_limit, num_words))
             yield vect
 
     def sequences_to_texts(self, sequences):

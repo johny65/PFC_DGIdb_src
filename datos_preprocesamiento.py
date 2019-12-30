@@ -361,13 +361,14 @@ def ocurrencias_remplazos(publicaciones_dict,nombres_lista):
         ocurrencias_remplazos_dict[pmid] = nombres
     return ocurrencias_remplazos_dict
 
-def generar_etiquetas(ocurrencias_genes_dict,
-                    ocurrencias_drogas_dict,
-                    genes_etiquetados_dict,
-                    drogas_etiquetadas_dict,
-                    genes_lista,
-                    drogas_lista,
-                    salida):
+
+def generar_etiquetas(ocurrencias_genes_dict, # pmid -> [genes encontrados en ese pmid]
+                    ocurrencias_drogas_dict,  # pmid -> [drogas encontradas en ese pmid]
+                    genes_etiquetados_dict,   # pmid -> [genes en ese pmid que están etiquetados en algún ejemplo]
+                    drogas_etiquetadas_dict,  # pmid -> [drogas en ese pmid que están etiquetadas en algún ejemplo]
+                    genes_lista,              # lista global de genes etiquetados
+                    drogas_lista,             # lista global de drogas etiquetadas
+                    salida):                  # ruta para el archivo de salida
     '''
     Genera las etiquetas con todas las posibles combinaciones de genes y drogas con el formato: [pmid, gen, droga, "sin_interaccion"]
     Las etiquetas son guardadas en un archivo csv.
@@ -396,6 +397,7 @@ def generar_etiquetas(ocurrencias_genes_dict,
                                         lista = [pmid_droga, gen, droga, "sin_interaccion"]
                                         if lista not in agregados:
                                             escritor_csv.writerow(lista)
+
 
 def procesar_etiquetas(ifg_dgidb,ifg_generadas,salida):
     '''
