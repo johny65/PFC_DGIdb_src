@@ -128,12 +128,13 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
     # xs son las matrices de entrada; ys son los vectores de salida:
     xs = []; ys = []
     ll = len(pmids)
+    used_top_words = []
     for i in range(ll):
         print("Generando matrices: {}/{}".format(i+1, ll))
         contenido = contenido_dict[pmids[i]]
 
         # contenido queda como lista sólo con las top words, y padeado en caso de ser necesario
-        contenido = tokenizer.texts_to_top_words(contenido, max_longitud, genes[i], drogas[i])
+        contenido = tokenizer.texts_to_top_words(contenido, max_longitud, genes[i], drogas[i], used_top_words)
 
         if len(contenido) < max_longitud:
             # hacer padding al inicio (llenar con ceros al inicio para que todos los ejemplos queden de la misma
@@ -148,6 +149,7 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
         xs.append(x)
         ys.append(y)
 
+    print("Promedio de top words usadas:", sum(used_top_words)/len(used_top_words))
     xs = np.asarray(xs)
     ys = np.asarray(ys)
 
