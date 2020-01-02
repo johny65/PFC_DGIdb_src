@@ -1,10 +1,6 @@
 # Paquetes
 from __future__ import absolute_import, division, print_function, unicode_literals # Compatibilidad entre Python 2 y 3
 
-import os
-# os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID" # see issue #152
-# os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
-
 from redes_neuronales_preprocesamiento import cargar_ejemplos # Carga de ejemplos
 from keras.models import Sequential
 from keras.layers import Flatten, Dropout, Dense, Conv2D, MaxPooling2D # Conv1D, MaxPooling1D,
@@ -12,19 +8,28 @@ from keras.callbacks import EarlyStopping
 from keras.optimizers import Adam
 import funciones_auxiliares as fa
 
-# Carga de datos
+import os
+# os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID" # see issue #152
+# os.environ["CUDA_VISIBLE_DEVICES"] = "-1" # Para utilizar CPU en lugar de GPU
+
+''' Carga de datos '''
 etiquetas_neural_networks_ruta = "etiquetas_neural_networks2.csv"
 ejemplos_directorio = "replaced"
 out_interacciones_ruta = "interacciones_lista.txt"
 embeddings_file = "glove.6B.50d.txt"
+# embeddings_file = "glove.6B.100d.txt"
+# embeddings_file = "glove.6B.200d.txt"
 # embeddings_file = "glove.6B.300d.txt"
+top_palabras_frecuentes = 500
+maxima_longitud_ejemplos = 1000
 
 x_entrenamiento, y_entrenamiento = cargar_ejemplos(etiquetas_neural_networks_ruta,
                                                     ejemplos_directorio,
                                                     out_interacciones_ruta,
                                                     embeddings_file=embeddings_file,
-                                                    top_palabras=20000, # 20000
-                                                    max_longitud=300) # 500
+                                                    top_palabras=top_palabras_frecuentes,
+                                                    max_longitud=maxima_longitud_ejemplos,
+                                                    incluir_sin_interacciones=True)
 
 print("Cantidad de ejemplos: {}".format(x_entrenamiento.shape[0]))
 print("Dimension del embedding: {}".format(x_entrenamiento.shape[1]))
@@ -37,14 +42,14 @@ canal_color_escala_grises = 1
 
 x_entrenamiento = x_entrenamiento.reshape(cantidad_ejemplos,filas_dimension_embedding,columnas_maxima_longitud_ejemplos,canal_color_escala_grises)
 
-# Variables globales
-PORCENTAJE_DROPEO = 0.5 # Pone en 0 el #% de los datos aleatoriamente
-CANTIDAD_FILTROS = 16 # Cantidad de filtro de convolución
+''' Variables globales '''
+PORCENTAJE_DROPEO = 0.3 # Pone en 0 el #% de los datos aleatoriamente
+CANTIDAD_FILTROS = 32 # Cantidad de filtro de convolución
 DIMENSION_KERNEL = 3 # De 1x3
 DIMENSION_POOLING = 2
-NEURONAS_OCULTAS = 64
+NEURONAS_OCULTAS = 96
 VELOCIDAD_APRENDIZAJE = 1e-3
-CANTIDAD_EPOCAS = 100
+CANTIDAD_EPOCAS = 50
 PORCENTAJE_VALIDACION = 0.2 # 20% de ejemplos usados para validar. Son tomados desde el final
 DIMENSION_BACHA = 512
 

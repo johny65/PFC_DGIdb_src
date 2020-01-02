@@ -9,41 +9,48 @@ import random
 
 DIMENSION_EMBEDDING = -1 # se autocalcula
 
-def contenido_estructura(lista_strings):
-    '''
-    Devuelve una lista con la estructura del contenido resultante tras haber tokenizado.
-    La lista guarda la cantidad de top words y genes/drogas consecutivas con su respectivo orden.
-    Formato: [['TWE', 15], ['XXX', 1], ['TWE', 69], ['XXX', 3], ..., total_twe, total_xxx]
-    '''
-    estructura_lista = list()
-    contador_twe = 0
-    contador_xxx = 0
-    total_twe = 0
-    total_xxx = 0
-    if lista_strings[0].startswith("xxx") and lista_strings[0].endswith("xxx"):
-        entidad_xxx = True
-    else:
-        entidad_xxx = False
-    for string in lista_strings:
-        if string.startswith("xxx") and string.endswith("xxx"):
-            contador_xxx += 1
-            if entidad_xxx == False:
-                lista = ['TWE', contador_twe]
-                estructura_lista.append(lista)
-                total_twe += contador_twe
-                contador_twe = 0
-                entidad_xxx = True
-        else:
-            contador_twe += 1
-            if entidad_xxx == True:
-                lista = ['XXX', contador_xxx]
-                estructura_lista.append(lista)
-                total_xxx += contador_xxx
-                contador_xxx = 0
-                entidad_xxx = False
-    estructura_lista.append(total_twe)
-    estructura_lista.append(total_xxx)
-    return estructura_lista
+# def contenido_estructura(lista_strings):
+#     '''
+#     Devuelve una lista con la estructura del contenido resultante tras haber tokenizado.
+#     La lista guarda la cantidad de top words y genes/drogas consecutivas con su respectivo orden.
+#     Formato: [['TWE', 15], ['XXX', 1], ['TWE', 69], ['XXX', 3], ..., total_twe, total_xxx]
+#     '''
+#     estructura_lista = list()
+#     contador_twe = 0
+#     contador_xxx = 0
+#     total_twe = 0
+#     total_xxx = 0
+#     if lista_strings[0].startswith("xxx") and lista_strings[0].endswith("xxx"):
+#         entidad_xxx = True
+#     else:
+#         entidad_xxx = False
+#     for string in lista_strings:
+#         if string.startswith("xxx") and string.endswith("xxx"):
+#             contador_xxx += 1
+#             if entidad_xxx == False:
+#                 lista = ['TWE', contador_twe]
+#                 estructura_lista.append(lista)
+#                 total_twe += contador_twe
+#                 contador_twe = 0
+#                 entidad_xxx = True
+#         else:
+#             contador_twe += 1
+#             if entidad_xxx == True:
+#                 lista = ['XXX', contador_xxx]
+#                 estructura_lista.append(lista)
+#                 total_xxx += contador_xxx
+#                 contador_xxx = 0
+#                 entidad_xxx = False
+#     estructura_lista.append(total_twe)
+#     estructura_lista.append(total_xxx)
+#     return estructura_lista
+
+def contar_top_words(strings_lista):
+    contador = 0
+    for string in strings_lista:
+        if not (string.startswith("xxx") and string.endswith("xxx")):
+            contador += 1
+    return contador
 
 def ass(expression):
     if not expression: raise AssertionError()
@@ -54,9 +61,14 @@ class Test(unittest.TestCase):
         self.assertTrue(cargar_interacciones("test_emb"))
 
 
-def cargar_ejemplos(etiquetas_neural_networks_ruta, ejemplos_directorio, out_interacciones_ruta,
-                    incluir_sin_interacciones=True, top_palabras=150, max_longitud=500,
-                    embeddings_file="glove.6B.50d.txt"):
+def cargar_ejemplos(etiquetas_neural_networks_ruta,
+                    ejemplos_directorio,
+                    out_interacciones_ruta,
+                    incluir_sin_interacciones=True,
+                    top_palabras=150,
+                    max_longitud=500,
+                    embeddings_file="glove.6B.50d.txt",
+                    sin_interaccion_a_incluir = 3144):
     '''
     Carga los ejemplos para las redes neuronales en una lista de listas
     Entradas:
@@ -76,20 +88,16 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta, ejemplos_directorio, out_int
     interacciones = list()
     interacciones_sin = list()
     contenido_dict = dict() # tiene un elemento por artículo: pmid -> contenido
-    maxima_longitud = 0
     with open(etiquetas_neural_networks_ruta, encoding="utf8") as enn_csv:
         lector_csv = csv.reader(enn_csv,delimiter=',',quoting=csv.QUOTE_ALL)
         for fila in lector_csv:
             pmid = fila[0]
             if contenido_dict.get(pmid) is None:
-                # print("Agregando contenido de {} al diccionario".format(pmid))
                 archivo_nombre = pmid + ".txt"
                 archivo_ruta = os.path.join(ejemplos_directorio,archivo_nombre)
                 with open(archivo_ruta,encoding="utf8") as ejemplo:
                     data = ejemplo.read()
                     contenido_dict[pmid] = data
-                    # if len(lista) > maxima_longitud:
-                        # maxima_longitud = len(lista)
             if incluir_sin_interacciones and fila[3] == "sin_interaccion":
                 interacciones_sin.append(fila)
             elif incluir_sin_interacciones or fila[3] != "sin_interaccion":
@@ -99,7 +107,6 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta, ejemplos_directorio, out_int
                 interacciones.append(fila[3])
 
     # tomar sólo x cantidad de sin_interaccion:
-    sin_interaccion_a_incluir = 3144
     if interacciones_sin:
         for fila in random.sample(interacciones_sin, k=sin_interaccion_a_incluir):
             pmids.append(pmid)
@@ -127,10 +134,13 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta, ejemplos_directorio, out_int
 
         # contenido queda como lista sólo con las top words, y padeado en caso de ser necesario
         contenido = tokenizer.texts_to_top_words(contenido, max_longitud, genes[i], drogas[i])
+
         if len(contenido) < max_longitud:
             # hacer padding al inicio (llenar con ceros al inicio para que todos los ejemplos queden de la misma
             # longitud; para esto se agrega una palabra que no tenga embedding):
             contenido = ["<PADDING>"] * (max_longitud - len(contenido)) + contenido
+        else:
+            contenido = contenido[:max_longitud]
 
         x = generar_matriz_embeddings(contenido, genes[i], drogas[i], embeddings_dict)
         y = np.zeros((len(interacciones_dict)))

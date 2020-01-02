@@ -257,7 +257,6 @@ class Tokenizer(object):
         self.droga_interes = droga
         return list(self.texts_to_sequences_generator([text]))[0]
 
-
     def texts_to_sequences(self, texts):
         """Transforms each text in texts to a sequence of integers.
 
