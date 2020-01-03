@@ -219,16 +219,19 @@ def generar_matriz_embeddings(contenido, gen, droga, embeddings_dict):
     return arreglo_base
 
 
-def armar_test_set(archivo_etiquetas, porcentaje_test):
+def armar_test_set(archivo_etiquetas, archivo_interacciones, porcentaje_test):
     """
     Toma 'porcentaje_test' de ejemplos de manera aleatoria del archivo de etiquetas,
     asegurándose de que casa clase (interacción) esté presente ese mismo porcentaje.
+    Las interacciones tenidas en cuenta son las presentes en el archivo 'archivo_interacciones'
+    (sino se cuentan como "other").
 
     Cada línea del archivo es de la forma "pmid,gen,droga,interacción".
     El porcentaje de la forma 0.x.
     Devuelve dos listas: los ejemplos separados para test, y el total sin esos ejemplos.
     El orden del conjunto de test queda aleatorio también.
     """
+    interacciones_validas = cargar_interacciones(archivo_interacciones)
     clases = {}
     test_set = []
     all_set = []
@@ -236,6 +239,8 @@ def armar_test_set(archivo_etiquetas, porcentaje_test):
         reader = csv.reader(f)
         for row in reader:
             interaccion = row[3]
+            if not interaccion in interacciones_validas:
+                interaccion = "other"
             clases.setdefault(interaccion, []).append(row)
             all_set.append(row)
     for interaccion, ejemplos in clases.items():
@@ -257,6 +262,6 @@ if __name__ == "__main__":
     out_interacciones_ruta = "interacciones_lista.txt"
     cargar_ejemplos(etiquetas_neural_networks_ruta, ejemplos_directorio, out_interacciones_ruta)
     
-    # t, a = armar_test_set("etiquetas_neural_networks2.csv", 0.2)
+    # t, a = armar_test_set(etiquetas_neural_networks_ruta, out_interacciones_ruta, 0.2)
     # print("Cantidad en todos:", len(a))
     # print("Cantidad en test:", len(t))
