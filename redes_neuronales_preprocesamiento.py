@@ -6,6 +6,7 @@ import csv
 import re
 import unittest
 import random
+import math
 
 DIMENSION_EMBEDDING = -1 # se autocalcula
 
@@ -218,6 +219,35 @@ def generar_matriz_embeddings(contenido, gen, droga, embeddings_dict):
     return arreglo_base
 
 
+def armar_test_set(archivo_etiquetas, porcentaje_test):
+    """
+    Toma 'porcentaje_test' de ejemplos de manera aleatoria del archivo de etiquetas,
+    asegurándose de que casa clase (interacción) esté presente ese mismo porcentaje.
+
+    Cada línea del archivo es de la forma "pmid,gen,droga,interacción".
+    El porcentaje de la forma 0.x.
+    Devuelve dos listas: los ejemplos separados para test, y el total sin esos ejemplos.
+    El orden del conjunto de test queda aleatorio también.
+    """
+    clases = {}
+    test_set = []
+    all_set = []
+    with open(archivo_etiquetas, encoding="utf8") as f:
+        reader = csv.reader(f)
+        for row in reader:
+            interaccion = row[3]
+            clases.setdefault(interaccion, []).append(row)
+            all_set.append(row)
+    for interaccion, ejemplos in clases.items():
+        cantidad = len(ejemplos)
+        # siempre deja al menos un elemento de cada clase (con el ceil)
+        test_set += random.sample(ejemplos, k=math.ceil(cantidad*porcentaje_test))
+    for t in test_set:
+        all_set.remove(t)
+    random.shuffle(test_set)
+    return test_set, all_set
+
+
 if __name__ == "__main__":
     etiquetas_neural_networks_ruta = "etiquetas_neural_networks2.csv"
     ejemplos_directorio = "replaced"
@@ -226,3 +256,7 @@ if __name__ == "__main__":
     # embeddings_ruta = "E:/Descargas/Python/glove.6B.300d.txt"
     out_interacciones_ruta = "interacciones_lista.txt"
     cargar_ejemplos(etiquetas_neural_networks_ruta, ejemplos_directorio, out_interacciones_ruta)
+    
+    # t, a = armar_test_set("etiquetas_neural_networks2.csv", 0.2)
+    # print("Cantidad en todos:", len(a))
+    # print("Cantidad en test:", len(t))
