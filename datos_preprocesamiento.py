@@ -522,19 +522,3 @@ if __name__ == "__main__":
     
     procesar_etiquetas(ifg_dgidb,ifg_generadas,"etiquetas_neural_networks2.csv")
     print("Procesamiento de etiquetas finalizado.")
-
-    # a = [1,2,3,4,5,6,7,8,9,0]
-    # for e in a[:-1]:
-    #     print(e)
-
-# if __name__ == "__main__":
-# a = cargar_aliases_dict(sys.argv[1])
-#     print(a["creatine kinase m chain"])
-#     print(a["ec 3.4.24"])
-
-    # eg, ed = cargar_etiquetas_dict("PFC_DGIdb/pfc_dgidb_export_ifg.csv")
-    # print(eg["29133"])
-    # print(ed["29133"])
-    # print(eg["10722"])
-    # print(ed["10722"])
-    

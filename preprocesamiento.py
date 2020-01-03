@@ -10,68 +10,15 @@ import re
 WRAPPER_INI = "xxx"
 WRAPPER_FIN = "xxx"
 
-def unir_elementos_lista(lista, posicion_inicio, cantidad_elementos):
-    '''
-    Agrupa los elementos de una lista con espacio entre ellos.
-    La cantidad de elementos a agrupar depende del parámetro cantidad_elementos
-    Mínimo: 1, deja la lista tal cual entra.
-    Los elementos anteriores a la posicion_inicio se dejan como están.
-    Ejemplo:
-        unir_elementos_lista(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'], 3, 3):
-        Resultado: ['1', '2', '3', '4 5 6', '7 8 9', '10']
-    '''
-    principio = lista[:posicion_inicio]
-    fin = list()
-    for i in range(posicion_inicio, len(lista), cantidad_elementos):
-        fin.append(" ".join(lista[i:i+cantidad_elementos]))
-    lista_salida = principio + fin
-    return lista_salida
-
-def aplanar_lista(lista):
-    '''
-    Separa todos los elementos de una lista por espacios. Por ejemplo:
-    aplanar_lista(['a', 'b', 'c y d'])) -> ['a', 'b', 'c', 'y', 'd']
-    '''
-    lista_salida = list()
-    for elemento in lista:
-        lista_salida = lista_salida + elemento.split()
-    return lista_salida
-
-def lista_a_cadena(lista):
-    '''
-    Convierte una lista en una cadena con sus elementos separados por espacios.
-    '''
-    cadena = " "
-    return cadena.join(lista)
 
 def reemplazo_inteligente(texto,cadena_a_remplazar,remplazar_con):
     return re.sub(r"\b{}\b".format(re.escape(cadena_a_remplazar)), remplazar_con, texto)
-
-def remplazo_inteligente(texto,cadena_a_remplazar,remplazar_con):
-    '''
-    Remplaza palabras completas o palabras simultáneas pero no subcadenas.
-    '''
-    texto_lista = texto.split()
-    maxima_longitud = 33 # Longitud del alias más largo. Encontrada con el algortimo longitud_maxima_alias del archivo datos_preprocesamiento.py
-    for cantidad_elementos in range(1, maxima_longitud, 1):
-        for posicion_inicio in range(0, maxima_longitud, 1):
-            lista = unir_elementos_lista(texto_lista,posicion_inicio,cantidad_elementos)
-            for posicion, elemento in enumerate(lista):
-                # print("Posicion: {}; Elemento: {}".format(posicion,elemento))
-                if elemento == cadena_a_remplazar:
-                    # print("Posicion: {}; Elemento: {}".format(posicion,elemento))
-                    lista[posicion] = remplazar_con
-                    texto_lista = aplanar_lista(lista)
-    texto_remplazado = lista_a_cadena(texto_lista)
-    return texto_remplazado
 
 def replace(original_text, search_for_replace, replace_with):
     """Wrapper a la función de reemplazo."""
     logging.info("Reemplazando %s por %s", search_for_replace, replace_with)
     # reemplazo básico:
     # return original_text.replace(search_for_replace, replace_with)
-    # reemplazo inteligente:
-    # return remplazo_inteligente(original_text, search_for_replace, replace_with)
     # reemplazo inteligente con regex:
     return reemplazo_inteligente(original_text, search_for_replace, replace_with)
 
@@ -250,8 +197,3 @@ if __name__ == "__main__":
 
     for pmid, contents in publicaciones_dict.items():
         reemplazar_bme(pmid, contents, output_dir)
-
-
-
-# if __name__ == "__main__":
-    # print(reemplazo_inteligente("a ver, universidad uni dos, a, ver otra vez", "uni dos", "La"))

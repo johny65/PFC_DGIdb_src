@@ -41,7 +41,7 @@ create table interaccion_farmaco_gen (
 	id serial primary key,
 	id_gen int not null,
 	id_droga int not null,
-	id_interaccion int null,
+	id_interaccion int not null,
 	id_publicacion int not null,
 	
 	constraint fk1_interacciones_farmaco_gen_gen foreign key (id_gen) references gen(id),

@@ -97,13 +97,58 @@ def limpiar_alias(in_file, out_file):
                 all_alias = set(e.lower() for e in row[1:] if not e.isnumeric())
                 writer.writerow([row[0].lower()] + sorted(all_alias))
 
+
+def llenar_ids(in_file, out_file, ids_file):
+    ids = {}
+    with open(ids_file) as f:
+        reader = csv.reader(f)
+        for row in reader:
+            ids[row[1]] = row[0]
+
+    with open(out_file, "w", encoding="utf8") as salida:
+        writer = csv.writer(salida)
+        with open(in_file, encoding="utf8") as f:
+            reader = csv.reader(f)
+            for row in reader:
+                writer.writerow([ids[row[0]]] + row)
+
+
+
+# def _limpiar(alias):
+#     alias = ungreek._ungreek(alias)
+#     alias = ungreek._clean_html(alias)
+#     return alias
+
+# def limpiar_alias(in_file, out_file):
+#     """Dado un archivo de entrada donde cada fila es un gen/droga con uno de sus alias,
+#     arma un archivo de salida donde agrupa en cada fila todos los alias. Además los limpia."""
+#     alias = {}
+#     with open(in_file, encoding="utf8") as f:
+#         reader = csv.reader(f)
+#         for row in reader:
+#             # primer elemento es el ID, segundo el nombre original, tercero el alias
+#             # entidad = alias.setdefault(row[0], [row[1]]) # inicializo con una lista con el nombre
+#             entidad = alias.setdefault(row[1].lower(), [])
+#             entidad.append(row[2])
+
+#     # transformo el diccionario en una lista de listas:
+#     list_alias = []
+#     for k, v in alias.items():
+#         all_alias = set(_limpiar(e) for e in v if not e.isnumeric())
+#         list_alias.append([k] + sorted(all_alias))
+
+#     with open(out_file, "w", encoding="utf8") as salida:
+#         writer = csv.writer(salida)
+#         writer.writerows(list_alias)
+
+
 if __name__ == "__main__":
     if len(sys.argv) != 3:
         print("Forma de uso: {} entrada salida".format(sys.argv[0]))
         exit()
 
     limpiar_alias(sys.argv[1], sys.argv[2])
-    
+
     # gen_ruta = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/dgidb_export_genes.csv"
     # alias_gen_ruta = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/dgidb_export_alias_gen.csv"
     # eliminar_repetidos_gen(gen_ruta,alias_gen_ruta)
@@ -118,3 +163,6 @@ if __name__ == "__main__":
 
     # alias_droga_ruta = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/alias_droga.csv"
     # formato_insercion_alias(alias_droga_ruta)
+
+    # llenar_ids("alias_gen.csv", "alias_gen_2.csv", "ids_gen.csv")
+    # llenar_ids("alias_droga.csv", "alias_droga_2.csv", "ids_droga.csv")
