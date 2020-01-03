@@ -94,8 +94,11 @@ def limpiar_alias(in_file, out_file):
             reader = csv.reader(f)
             for row in reader:
                 # primer elemento es el nombre original
-                all_alias = set(e.lower() for e in row[1:] if not e.isnumeric())
+                all_alias = set(e.lower() for e in row[1:] if not _descartar_alias(e))
                 writer.writerow([row[0].lower()] + sorted(all_alias))
+
+def _descartar_alias(alias):
+    return alias.isnumeric() or alias.replace("%", "").isnumeric()
 
 
 def llenar_ids(in_file, out_file, ids_file):
