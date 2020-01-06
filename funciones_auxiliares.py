@@ -1,6 +1,7 @@
 from __future__ import absolute_import, division, print_function, unicode_literals
 
 import matplotlib.pyplot as plt
+import numpy as np
 
 def mostrar_imagen(imagen,etiqueta):
     plt.figure()
@@ -49,3 +50,22 @@ def graficas(registro_entrenamiento):
     plt.legend()
     
     plt.show()
+
+def kfolding(particiones_numero, x_entrenamiento):
+    ejemplos_cantidad = len(x_entrenamiento)
+    longitud = 0
+    folds_dict = dict()
+    if (ejemplos_cantidad % particiones_numero) == 0:
+        longitud = len(x_entrenamiento)
+    else:
+        longitud = int(ejemplos_cantidad/particiones_numero)*particiones_numero
+    ejemplos_validacion_cantidad = longitud/particiones_numero
+    for i in range(0,particiones_numero,1):
+        indices_validacion = np.arange(int(i*ejemplos_validacion_cantidad),int(i*ejemplos_validacion_cantidad+ejemplos_validacion_cantidad))
+        indices_entrenamiento = list()
+        for j in range(0,longitud,1):
+            if j not in indices_validacion:
+                indices_entrenamiento.append(j)
+        indices_entrenamiento = np.asarray(indices_entrenamiento)
+        folds_dict[i] = [indices_entrenamiento, indices_validacion]
+    return folds_dict
