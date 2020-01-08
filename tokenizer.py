@@ -249,19 +249,14 @@ class Tokenizer(object):
                 self.index_docs[i] += 1
 
 
-    def texts_to_top_words(self, text, limit, gen, droga, used_top_words=None):
+    def texts_to_top_words(self, text, limit, gen, droga):
         """Devuelve el texto usando sólo las palabras más frecuentes (incluyendo
         siempre genes y drogas) truncado a 'limit' cantidad de palabras.
-
-        Si se pasa used_top_words, se agrega a esa lista la cantidad de top words que
-        se terminaron usando.
         """
         self.words_limit = limit
         self.gen_interes = gen
         self.droga_interes = droga
         res = list(self.texts_to_sequences_generator([text]))[0]
-        if used_top_words:
-            used_top_words.append(self.used_top_words)
         return res
 
     def texts_to_sequences(self, texts):
