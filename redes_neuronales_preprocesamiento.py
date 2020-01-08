@@ -135,7 +135,8 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
         contenido = contenido_dict[pmids[i]]
 
         # contenido queda como lista sólo con las top words, y padeado en caso de ser necesario
-        contenido = tokenizer.texts_to_top_words(contenido, max_longitud, genes[i], drogas[i], used_top_words)
+        contenido = tokenizer.texts_to_top_words(contenido, max_longitud, genes[i], drogas[i])
+        used_top_words.append(tokenizer.used_top_words)
 
         if len(contenido) < max_longitud:
             # hacer padding al inicio (llenar con ceros al inicio para que todos los ejemplos queden de la misma
