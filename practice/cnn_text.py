@@ -63,7 +63,7 @@ indice_palabras = tokenizer.word_index
 
 # Se cargan vectores de embedding preentrenados (GloVe)
 embeddings_index = dict()
-f = open("E:\Descargas\Python\glove.6B.300d.txt",encoding="utf8")
+f = open("E:/Descargas/Python/glove.6B.300d.txt",encoding="utf8")
 for line in f:
     values = line.split()
     word = values[0]
@@ -93,7 +93,7 @@ modelo.add(Embedding(input_dim=TOP_PALABRAS_FRECUENTES,
                     output_dim=DIMENSION_VECTORES_EMBEDDING,
                     input_length=maxima_longitud,
                     weights=[embedding_matrix],
-                    trainable=EMBEDDING_ENTRENABLE))
+                    trainable=EMBEDDING_ENTRENABLE)) # De aca sale un 500x300
 
 # modelo.add(Dropout(PORCENTAJE_DROPEO))
 

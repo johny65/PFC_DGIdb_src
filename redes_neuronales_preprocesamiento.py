@@ -90,7 +90,7 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
     interacciones_sin = list()
     contenido_dict = dict() # tiene un elemento por artículo: pmid -> contenido
     with open(etiquetas_neural_networks_ruta, encoding="utf8") as enn_csv:
-        lector_csv = csv.reader(enn_csv,delimiter=',',quoting=csv.QUOTE_ALL)
+        lector_csv = csv.reader(enn_csv, delimiter = ',', quoting = csv.QUOTE_ALL)
         for fila in lector_csv:
             pmid = fila[0]
             if contenido_dict.get(pmid) is None:
@@ -122,7 +122,7 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
     print("Listo fit on texts.")
     # print("Top words:", [tokenizer.index_word[i] for i in range(1, top_palabras)])
     
-    embeddings_dict = dp.cargar_embeddings(embeddings_file)
+    embeddings_dict, maximo_valor_embedding, minimo_valor_embedding = dp.cargar_embeddings(embeddings_file)
     DIMENSION_EMBEDDING = len(next(iter(embeddings_dict.values())))
     interacciones_dict = cargar_interacciones(out_interacciones_ruta)
 
@@ -144,7 +144,7 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
         else:
             contenido = contenido[:max_longitud]
 
-        x = generar_matriz_embeddings(contenido, genes[i], drogas[i], embeddings_dict)
+        x = generar_matriz_embeddings(contenido, genes[i], drogas[i], embeddings_dict, maximo_valor_embedding, minimo_valor_embedding)
         y = np.zeros((len(interacciones_dict)))
         y[interacciones_dict.get(interacciones[i], len(interacciones_dict)-1)] = 1
         xs.append(x)
@@ -154,7 +154,7 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
     xs = np.asarray(xs)
     ys = np.asarray(ys)
 
-    # aleatorizo el orden de los ejemplos:
+    # Aleatoriza el orden de los ejemplos:
     seed = random.random()
     random.seed(seed)
     random.shuffle(xs)
@@ -185,7 +185,7 @@ def cargar_interacciones(in_file):
     return res
 
 
-def generar_matriz_embeddings(contenido, gen, droga, embeddings_dict):
+def generar_matriz_embeddings(contenido, gen, droga, embeddings_dict, maximo_valor_embedding, minimo_valor_embedding):
     """
     Arma las matrices de entrada para la red. Funciona para un caso de ejemplo por vez.
 
@@ -200,22 +200,50 @@ def generar_matriz_embeddings(contenido, gen, droga, embeddings_dict):
     """
 
     # print("Gen:", gen, " Droga:", droga)
-    gen_emb = np.zeros((DIMENSION_EMBEDDING, 1))
-    gen_emb[DIMENSION_EMBEDDING-2] = 1
-    droga_emb = np.zeros((DIMENSION_EMBEDDING, 1))
-    droga_emb[DIMENSION_EMBEDDING-1] = 1
-    arreglo_base = np.zeros((DIMENSION_EMBEDDING, len(contenido)))
+    # gen_emb = np.zeros((DIMENSION_EMBEDDING, 1))
+    # gen_emb[DIMENSION_EMBEDDING-2] = 1
+    # droga_emb = np.zeros((DIMENSION_EMBEDDING, 1))
+    # droga_emb[DIMENSION_EMBEDDING-1] = 1
+    # arreglo_base = np.zeros((DIMENSION_EMBEDDING, len(contenido)))
 
+    # Modificación: intercambio de filas por columnas para usar el Conv1D y el MaxPooling1D
+    gen_emb = np.zeros((1, DIMENSION_EMBEDDING))
+    gen_emb[0, DIMENSION_EMBEDDING-2] = 1
+    droga_emb = np.zeros((1, DIMENSION_EMBEDDING))
+    droga_emb[0, DIMENSION_EMBEDDING-1] = 1
+    arreglo_base = np.zeros((len(contenido), DIMENSION_EMBEDDING))
+
+    # Modificación de los vectores de genes y drogas
+    # gen solo tiene cero en la posición de droga
+    # droga solo tiene cero en la posición de gen
+    # gen_emb = np.ones((DIMENSION_EMBEDDING, 1))
+    # gen_emb[DIMENSION_EMBEDDING - 1] = 0
+    # droga_emb = np.ones((DIMENSION_EMBEDDING, 1))
+    # droga_emb[DIMENSION_EMBEDDING - 2] = 0
+
+    # for j in range(len(contenido)):
+    #     palabra = contenido[j]
+    #     if palabra == "xxx" + gen + "xxx":
+    #         arreglo_base[:,j] = gen_emb[:,0]
+    #     elif palabra == "xxx" + droga + "xxx":
+    #         arreglo_base[:,j] = droga_emb[:,0]
+    #     else:
+    #         embedding_vector = embeddings_dict.get(palabra)
+    #         if embedding_vector is not None:
+    #             arreglo_base[:,j] = embedding_vector # - minimo_valor_embedding) / (maximo_valor_embedding - minimo_valor_embedding) # normaliza los embeddings entre 0 y 1
+    # return arreglo_base
+
+    # Modificación: intercambio de filas por columnas para usar el Conv1D y el MaxPooling1D
     for j in range(len(contenido)):
         palabra = contenido[j]
         if palabra == "xxx" + gen + "xxx":
-            arreglo_base[:,j] = gen_emb[:,0]
+            arreglo_base[j,:] = gen_emb[0,:]
         elif palabra == "xxx" + droga + "xxx":
-            arreglo_base[:,j] = droga_emb[:,0]
+            arreglo_base[j,:] = droga_emb[0,:]
         else:
             embedding_vector = embeddings_dict.get(palabra)
             if embedding_vector is not None:
-                arreglo_base[:,j] = embedding_vector
+                arreglo_base[j,:] = embedding_vector # - minimo_valor_embedding) / (maximo_valor_embedding - minimo_valor_embedding) # normaliza los embeddings entre 0 y 1
     return arreglo_base
 
 

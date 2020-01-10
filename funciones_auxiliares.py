@@ -51,17 +51,32 @@ def graficas(registro_entrenamiento):
     
     plt.show()
 
-def kfolding(particiones_numero, x_entrenamiento):
+def kfolding(particiones_numero, x_entrenamiento, superposicion):
+    '''
+    Retorna un diccionario donde la clave es el número de la partición y el valor una lista de dos elementos.
+    El primero elemento de esta lista son los índices para el conjunto de entrenamiento.
+    El primero elemento de esta lista son los índices para el conjunto de validación.
+    '''
     ejemplos_cantidad = len(x_entrenamiento)
-    longitud = 0
     folds_dict = dict()
+
+    longitud = 0
     if (ejemplos_cantidad % particiones_numero) == 0:
         longitud = len(x_entrenamiento)
     else:
         longitud = int(ejemplos_cantidad/particiones_numero)*particiones_numero
-    ejemplos_validacion_cantidad = longitud/particiones_numero
+
+    ejemplos_validacion_cantidad = 0
+    if superposicion:
+        ejemplos_validacion_cantidad = longitud/(particiones_numero/2)
+    else:
+        ejemplos_validacion_cantidad = longitud/particiones_numero
+
     for i in range(0,particiones_numero,1):
-        indices_validacion = np.arange(int(i*ejemplos_validacion_cantidad),int(i*ejemplos_validacion_cantidad+ejemplos_validacion_cantidad))
+        sup = i
+        if superposicion:
+            sup = i/2
+        indices_validacion = np.arange(int(sup*ejemplos_validacion_cantidad),int(sup*ejemplos_validacion_cantidad+ejemplos_validacion_cantidad))
         indices_entrenamiento = list()
         for j in range(0,longitud,1):
             if j not in indices_validacion:

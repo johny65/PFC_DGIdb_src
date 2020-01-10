@@ -109,15 +109,23 @@ def cargar_embeddings(embeddings_ruta):
     '''
     print("Cargando archivo de embeddings...")
     embeddings_dict = dict()
+    maximo = 0.0
+    minimo = 0.0
     with open(embeddings_ruta,encoding="utf8") as embeddings:
         for fila in embeddings:
             datos = fila.split()
             palabra = datos[0]
-            embedding = np.asarray(datos[1:]+[0, 0],dtype='float32')
+            embedding = np.asarray(datos[1:] + [0, 0], dtype='float32')
             embeddings_dict[palabra] = embedding
+            maximo_vector = max(embedding)
+            if maximo_vector > maximo:
+                maximo = maximo_vector
+            minimo_vector = min(embedding)
+            if minimo_vector < minimo:
+                minimo = minimo_vector
             # print("Embedding de la palabra <{}> cargado.".format(palabra))
-    print("Listo.")
-    return embeddings_dict
+    print("Carga de embeddings finalizada.")
+    return embeddings_dict, maximo, minimo
 
 def cargar_ifg(ifg_csv_ruta):
     '''

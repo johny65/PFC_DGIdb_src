@@ -177,6 +177,7 @@ class Tokenizer(object):
         self.index_docs = defaultdict(int)
         self.word_index = dict()
         self.index_word = dict()
+        self.used_top_words = 0
 
     def fit_on_texts(self, texts):
         """Updates internal vocabulary based on a list of texts.
@@ -260,8 +261,8 @@ class Tokenizer(object):
         self.gen_interes = gen
         self.droga_interes = droga
         res = list(self.texts_to_sequences_generator([text]))[0]
-        if used_top_words:
-            used_top_words.append(self.used_top_words)
+        # if used_top_words == []:
+        used_top_words.append(self.used_top_words)
         return res
 
     def texts_to_sequences(self, texts):

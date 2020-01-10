@@ -1,0 +1,1039 @@
+5 particiones (80/20)% y un conjunto fijo de parámetros
+
+Más de 1 palabra (2 o más):
+Acierto en el entrenamiento promedio: 0.8226332545280457
+Acierto en la validación promedio: 0.6878281712532044
+Error en el entrenamiento promedio: 0.49914984418554925
+Error en la validación promedio: 1.425121567921688
+
+Más de 2 palabras (3 o más):
+Acierto en el entrenamiento promedio: 0.8283611893653869
+Acierto en la validación promedio: 0.7126491665840149
+Error en el entrenamiento promedio: 0.4848191244576598
+Error en la validación promedio: 1.2699421169839402
+
+Más de 3 palabras (4 o más):
+Acierto en el entrenamiento promedio: 0.8902545690536499
+Acierto en la validación promedio: 0.7747016787528992
+Error en el entrenamiento promedio: 0.3008036646999007
+Error en la validación promedio: 1.262020773980574
+
+Más de 4 palabras (5 o más):
+Acierto en el entrenamiento promedio: 0.872792375087738
+Acierto en la validación promedio: 0.7896579146385193
+Error en el entrenamiento promedio: 0.34632104810863706
+Error en la validación promedio: 1.308707976900782
+
+4 o más palabras parece la mejor opción, sin embargo sería interesante usar las palabras menos frecuentes.
+
+Longitud de ejemplos 3000:
+Acierto en el entrenamiento promedio: 0.8319809079170227
+Acierto en la validación promedio: 0.7645187020301819
+Error en el entrenamiento promedio: 0.4529724724155124
+Error en la validación promedio: 1.1288550761168972
+
+Longitud de ejemplos 2000:
+Acierto en el entrenamiento promedio: 0.7601034045219421
+Acierto en la validación promedio: 0.7524264097213745
+Error en el entrenamiento promedio: 0.6324286699923334
+Error en la validación promedio: 1.075911330991827
+
+Top words 1000:
+Acierto en el entrenamiento promedio: 0.6840493261814118
+Acierto en la validación promedio: 0.6517104208469391
+Error en el entrenamiento promedio: 0.9062937527829774
+Error en la validación promedio: 1.4099468519503673
+
+Neuronas ocultas 96:
+Acierto en el entrenamiento promedio: 0.9165473341941833
+Acierto en la validación promedio: 0.8076372504234314
+Error en el entrenamiento promedio: 0.22094606372189554
+Error en la validación promedio: 1.027354757368043
+
+Cantidad de convoluciones 4:
+Acierto en el entrenamiento promedio: 0.975377869606018
+Acierto en la validación promedio: 0.87350834608078
+Error en el entrenamiento promedio: 0.08146076898370049
+Error en la validación promedio: 0.7575455623875944
+
+Neuronas en la capa oculta 50:
+Acierto en el entrenamiento promedio: 0.8953062891960144
+Acierto en la validación promedio: 0.8517104148864746
+Error en el entrenamiento promedio: 0.2936036574589822
+Error en la validación promedio: 0.7429977326376057
+
+Características de los datos de entrada:
+        Cantidad de ejemplos: 6288
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 500
+        Top de palabras frecuentes utilizadas: 100
+Parámetros:
+        Dropout: 0.3
+        Cantidad de convoluciones y poolings: 5
+        Cantidad de filtros: 16
+        Dimensión de los filtros: 1x3
+        Dimensión del pooling: 1x2
+        Neuronas en la capa oculta: 96
+        Neuronas en la capa de salida: 20
+        Cantidad de épocas: 10
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.9147175908088684
+        Acierto en la validación promedio: 0.8902148008346558
+        Error en el entrenamiento promedio: 0.26238385983109297
+        Error en la validación promedio: 0.6284145584728572
+		
+Características de los datos de entrada:
+        Cantidad de ejemplos: 6288
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 500
+        Top de palabras frecuentes utilizadas: 100
+Parámetros:
+        Dropout: 0.3
+        Cantidad de convoluciones y poolings: 5
+        Cantidad de filtros: 32
+        Dimensión de los filtros: 1x3
+        Dimensión del pooling: 1x2
+        Neuronas en la capa oculta: 96
+        Neuronas en la capa de salida: 20
+        Cantidad de épocas: 10
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.9341288924217224
+        Acierto en la validación promedio: 0.8879872798919678
+        Error en el entrenamiento promedio: 0.20361184944787558
+        Error en la validación promedio: 0.6662730028898547
+		
+Características de los datos de entrada:
+        Cantidad de ejemplos: 6288
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 500
+        Top de palabras frecuentes utilizadas: 100
+Parámetros:
+        Dropout: 0.4
+        Cantidad de convoluciones y poolings: 5
+        Cantidad de filtros: 32
+        Dimensión de los filtros: 1x3
+        Dimensión del pooling: 1x2
+        Neuronas en la capa oculta: 96
+        Neuronas en la capa de salida: 20
+        Cantidad de épocas: 10
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.898886239528656
+        Acierto en la validación promedio: 0.8902148008346558
+        Error en el entrenamiento promedio: 0.3001942511595335
+        Error en la validación promedio: 0.5520517302785949
+		
+Características de los datos de entrada:
+        Cantidad de ejemplos: 6288
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 500
+        Top de palabras frecuentes utilizadas: 100
+Parámetros:
+        Dropout: 0.5
+        Cantidad de convoluciones y poolings: 5
+        Cantidad de filtros: 32
+        Dimensión de los filtros: 1x3
+        Dimensión del pooling: 1x2
+        Neuronas en la capa oculta: 96
+        Neuronas en la capa de salida: 20
+        Cantidad de épocas: 10
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.8326571106910705
+        Acierto en la validación promedio: 0.8821002602577209
+        Error en el entrenamiento promedio: 0.4969421165559217
+        Error en la validación promedio: 0.5341547227180847
+
+Características de los datos de entrada:
+        Cantidad de ejemplos: 6288
+        Dimension del embedding: 102
+        Longitud de los ejemplos: 500
+        Top de palabras frecuentes utilizadas: 100
+Parámetros:
+        Dropout: 0.5
+        Cantidad de convoluciones y poolings: 5
+        Cantidad de filtros: 32
+        Dimensión de los filtros: 1x3
+        Dimensión del pooling: 1x2
+        Neuronas en la capa oculta: 96
+        Neuronas en la capa de salida: 20
+        Cantidad de épocas: 10
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.8800716161727905
+        Acierto en la validación promedio: 0.8851233124732971
+        Error en el entrenamiento promedio: 0.35781664717927664
+        Error en la validación promedio: 0.5499938253073248
+
+Características de los datos de entrada:
+        Cantidad de ejemplos: 6288
+        Dimension del embedding: 302
+        Longitud de los ejemplos: 300
+        Top de palabras frecuentes utilizadas: 64
+Parámetros:
+        Dropout: 0.5
+        Cantidad de convoluciones y poolings: 1
+        Cantidad de filtros: 16
+        Dimensión de los filtros: 1x3
+        Dimensión del pooling: 1x2
+        Neuronas en la capa oculta: 20
+        Neuronas en la capa de salida: 20
+        Cantidad de épocas: 15
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.3473746955394745
+        Acierto en la validación promedio: 0.3910899043083191
+        Error en el entrenamiento promedio: 1.9086272449178552
+        Error en la validación promedio: 1.9696263050786444
+		
+Características de los datos de entrada:
+        Cantidad de ejemplos: 6288
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 300
+        Top de palabras frecuentes utilizadas: 64
+Parámetros:
+        Dropout: 0.5
+        Cantidad de convoluciones y poolings: 1
+        Cantidad de filtros: 16
+        Dimensión de los filtros: 1x3
+        Dimensión del pooling: 1x2
+        Neuronas en la capa oculta: 20
+        Neuronas en la capa de salida: 20
+        Cantidad de épocas: 15
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.470326179265976
+        Acierto en la validación promedio: 0.4518695294857025
+        Error en el entrenamiento promedio: 1.4995433787647086
+        Error en la validación promedio: 1.5908757271800804
+		
+Características de los datos de entrada:
+        Cantidad de ejemplos: 6288
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 300
+        Top de palabras frecuentes utilizadas: 64
+Parámetros:
+        Dropout: 0.5
+        Cantidad de convoluciones y poolings: 1
+        Cantidad de filtros: 8
+        Dimensión de los filtros: 1x3
+        Dimensión del pooling: 1x2
+        Neuronas en la capa oculta: 20
+        Neuronas en la capa de salida: 20
+        Cantidad de épocas: 15
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.447772479057312
+        Acierto en la validación promedio: 0.4254574358463287
+        Error en el entrenamiento promedio: 1.556993713868262
+        Error en la validación promedio: 1.534515559891433
+		
+Características de los datos de entrada:
+        Cantidad de ejemplos: 6288
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 300
+        Top de palabras frecuentes utilizadas: 64
+Parámetros:
+        Dropout: 0.5
+        Cantidad de convoluciones y poolings: 1
+        Cantidad de filtros: 8
+        Dimensión de los filtros: 1x3
+        Dimensión del pooling: 1x2
+        Neuronas en la capa oculta: 20
+        Neuronas en la capa de salida: 20
+        Cantidad de épocas: 15
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.4642800271511078
+        Acierto en la validación promedio: 0.45473349690437315
+        Error en el entrenamiento promedio: 1.5258184314627636
+        Error en la validación promedio: 1.571281751034842
+		
+Características de los datos de entrada:
+        Cantidad de ejemplos: 6288
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 3000
+        Top de palabras frecuentes utilizadas: 1500
+Parámetros:
+        Dropout: 0.5
+        Cantidad de convoluciones y poolings: 1
+        Cantidad de filtros: 8
+        Dimensión de los filtros: 1x3
+        Dimensión del pooling: 1x2
+        Neuronas en la capa oculta: 20
+        Neuronas en la capa de salida: 20
+        Cantidad de épocas: 15
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.43317422866821287
+        Acierto en la validación promedio: 0.456165486574173
+        Error en el entrenamiento promedio: 1.6328743228859242
+        Error en la validación promedio: 1.7356177970921132
+		
+Características de los datos de entrada:
+        Cantidad de ejemplos: 6288
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 500
+        Top de palabras frecuentes utilizadas: 103
+Parámetros:
+        Dropout: 0.5
+        Cantidad de convoluciones y poolings: 1
+        Cantidad de filtros: 8
+        Dimensión de los filtros: (1, 3)
+        Dimensión del pooling: (1, 2)
+        Neuronas en la capa oculta: 20
+        Neuronas en la capa de salida: 20
+        Cantidad de épocas: 15
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.47036594748497007
+        Acierto en la validación promedio: 0.5249005675315856
+        Error en el entrenamiento promedio: 1.4704402604459674
+        Error en la validación promedio: 1.3992074688749836
+		
+Características de los datos de entrada:
+        Cantidad de ejemplos: 6288
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 500
+        Top de palabras frecuentes utilizadas: 103
+Parámetros:
+        Dropout: 0.5
+        Cantidad de convoluciones y poolings: 1
+        Cantidad de filtros: 8
+        Dimensión de los filtros: (3, 3)
+        Dimensión del pooling: (2, 2)
+        Neuronas en la capa oculta: 20
+        Neuronas en la capa de salida: 20
+        Cantidad de épocas: 15
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.4719968199729919
+        Acierto en la validación promedio: 0.5032617330551148
+        Error en el entrenamiento promedio: 1.4937168691778524
+        Error en la validación promedio: 1.4088671837046494
+		
+Características de los datos de entrada:
+        Cantidad de ejemplos: 6144
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 500
+        Top de palabras frecuentes utilizadas: 103
+Parámetros: (sin dropouts)
+        Dropout: 0.5
+        Cantidad de convoluciones y poolings: 1
+        Cantidad de filtros: 8
+        Dimensión de los filtros: (1, 3)
+        Dimensión del pooling: (1, 2)
+        Neuronas en la capa oculta: 20
+        Neuronas en la capa de salida: 20
+        Cantidad de épocas: 15
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.8144544005393982
+        Acierto en la validación promedio: 0.7079804539680481
+        Error en el entrenamiento promedio: 0.5870705904663579
+        Error en la validación promedio: 1.5758467780602095
+		
+Características de los datos de entrada:
+        Cantidad de ejemplos: 3144
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 500
+        Top de palabras frecuentes utilizadas: 103
+Parámetros:
+        Dropout: 0.5
+        Cantidad de convoluciones y poolings: 1
+        Cantidad de filtros: 8
+        Dimensión de los filtros: (1, 3)
+        Dimensión del pooling: (1, 2)
+        Neuronas en la capa oculta: 20
+        Neuronas en la capa de salida: 20
+        Cantidad de épocas: 15
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.6039012730121612
+        Acierto en la validación promedio: 0.4901273846626282
+        Error en el entrenamiento promedio: 1.025952261534466
+        Error en la validación promedio: 1.632422042956018
+		
+Características de los datos de entrada:
+        Cantidad de ejemplos: 3144
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 500
+        Top de palabras frecuentes utilizadas: 103
+Parámetros:
+        Dropout: 0.5
+        Cantidad de convoluciones y poolings: 1
+        Cantidad de filtros: 8
+        Dimensión de los filtros: (1, 3)
+        Dimensión del pooling: (1, 2)
+        Neuronas en la capa oculta: 12
+        Neuronas en la capa de salida: 12
+        Cantidad de épocas: 15
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.47141720056533815
+        Acierto en la validación promedio: 0.4222929835319519
+        Error en el entrenamiento promedio: 1.3903996254987776
+        Error en la validación promedio: 1.6906046326752684
+
+Características de los datos de entrada:
+        Cantidad de ejemplos: 6288
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 500
+        Top de palabras frecuentes utilizadas: 103
+Parámetros:
+        Dropout: 0.5
+        Cantidad de convoluciones y poolings: 1
+        Cantidad de filtros: 8
+        Dimensión de los filtros: (1, 3)
+        Dimensión del pooling: (1, 2)
+        Neuronas en la capa oculta: 30
+        Neuronas en la capa de salida: 30
+        Cantidad de épocas: 15
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.9236276865005493
+        Acierto en la validación promedio: 0.7922036528587342
+        Error en el entrenamiento promedio: 0.26206360705324294
+        Error en la validación promedio: 1.5100039358746464
+		
+Características de los datos de entrada:
+        Cantidad de ejemplos: 6288
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 500
+        Top de palabras frecuentes utilizadas: 103
+Parámetros:
+        Dropout: 0.5
+        Cantidad de convoluciones y poolings: 2
+        Cantidad de filtros: 8
+        Dimensión de los filtros: (1, 3)
+        Dimensión del pooling: (1, 2)
+        Neuronas en la capa oculta: 30
+        Neuronas en la capa de salida: 30
+        Cantidad de épocas: 15
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.9440731883049012
+        Acierto en la validación promedio: 0.7984089136123658
+        Error en el entrenamiento promedio: 0.20662380573965827
+        Error en la validación promedio: 1.3686400526676654
+		
+Características de los datos de entrada:
+        Cantidad de ejemplos: 6288
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 500
+        Top de palabras frecuentes utilizadas: 103
+Parámetros:
+        Dropout: 0.5
+        Cantidad de convoluciones y poolings: 2
+        Cantidad de filtros: 8
+        Dimensión de los filtros: (1, 3)
+        Dimensión del pooling: (1, 2)
+        Neuronas en la capa oculta: 90
+        Neuronas en la capa de salida: 30
+        Cantidad de épocas: 15
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.9847653150558472
+        Acierto en la validación promedio: 0.8284805059432984
+        Error en el entrenamiento promedio: 0.06789735203894862
+        Error en la validación promedio: 1.3158979760692584
+		
+Características de los datos de entrada:
+        Cantidad de ejemplos: 6288
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 500
+        Top de palabras frecuentes utilizadas: 103
+Parámetros:
+        Dropout: 0.5
+        Cantidad de convoluciones y poolings: 2
+        Cantidad de filtros: 8
+        Dimensión de los filtros: (1, 3)
+        Dimensión del pooling: (1, 2)
+        Neuronas en la capa oculta: 120
+        Neuronas en la capa de salida: 30
+        Cantidad de épocas: 15
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.9858392953872681
+        Acierto en la validación promedio: 0.8243436694145203
+        Error en el entrenamiento promedio: 0.0630145729329291
+        Error en la validación promedio: 1.351629829428669
+		
+Características de los datos de entrada:
+        Cantidad de ejemplos: 6288
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 500
+        Top de palabras frecuentes utilizadas: 103
+Parámetros:
+        Dropout: 0.5
+        Cantidad de convoluciones y poolings: 2
+        Cantidad de filtros: 8
+        Dimensión de los filtros: (1, 3)
+        Dimensión del pooling: (1, 2)
+        Neuronas en la capa oculta: 60
+        Neuronas en la capa de salida: 30
+        Cantidad de épocas: 15
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.9854017496109009
+        Acierto en la validación promedio: 0.8217979311943054
+        Error en el entrenamiento promedio: 0.06798133847474838
+        Error en la validación promedio: 1.319229131932285
+		
+Características de los datos de entrada:
+        Cantidad de ejemplos: 6288
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 500
+        Top de palabras frecuentes utilizadas: 103
+Parámetros:
+        Dropout: 0.5
+        Cantidad de convoluciones y poolings: 2
+        Cantidad de filtros: 8
+        Dimensión de los filtros: (1, 3)
+        Dimensión del pooling: (1, 2)
+        Neuronas en la capa oculta: 90
+        Neuronas en la capa de salida: 30
+        Cantidad de épocas: 15
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.9863961815834046
+        Acierto en la validación promedio: 0.8233890175819397
+        Error en el entrenamiento promedio: 0.05329862114326552
+        Error en la validación promedio: 1.44472636384156
+		
+Características de los datos de entrada:
+        Cantidad de ejemplos: 6288
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 500
+        Top de palabras frecuentes utilizadas: 103
+Parámetros:
+        Dropout: 0.5
+        Cantidad de convoluciones y poolings: 2
+        Cantidad de filtros: 8
+        Dimensión de los filtros: (1, 3)
+        Dimensión del pooling: (1, 2)
+        Neuronas en la capa oculta: 90
+        Neuronas en la capa de salida: 30
+        Cantidad de épocas: 15
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.9725536942481995
+        Acierto en la validación promedio: 0.8254574418067933
+        Error en el entrenamiento promedio: 0.10349380477105971
+        Error en la validación promedio: 1.172367307034009
+		
+Características de los datos de entrada:
+        Cantidad de ejemplos: 6288
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 500
+        Top de palabras frecuentes utilizadas: 103
+Parámetros:
+        Dropout: 0.2
+        Cantidad de convoluciones y poolings: 2
+        Cantidad de filtros: 8
+        Dimensión de los filtros: (1, 3)
+        Dimensión del pooling: (1, 2)
+        Neuronas en la capa oculta: 90
+        Neuronas en la capa de salida: 30
+        Cantidad de épocas: 15
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.9828162312507629
+        Acierto en la validación promedio: 0.8248210072517395
+        Error en el entrenamiento promedio: 0.07277279715276011
+        Error en la validación promedio: 1.2843703346112085
+		
+Características de los datos de entrada:
+        Cantidad de ejemplos: 6288
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 500
+        Top de palabras frecuentes utilizadas: 103
+Parámetros:
+        Dropout: 0.2
+        Cantidad de convoluciones y poolings: 2
+        Cantidad de filtros: 8
+        Dimensión de los filtros: (1, 3)
+        Dimensión del pooling: (1, 2)
+        Neuronas en la capa oculta: 90
+        Neuronas en la capa de salida: 30
+        Cantidad de épocas: 15
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.9778838515281677
+        Acierto en la validación promedio: 0.8167064309120178
+        Error en el entrenamiento promedio: 0.09249318662827853
+        Error en la validación promedio: 1.3642459097393183
+		
+Características de los datos de entrada:
+        Cantidad de ejemplos: 6288
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 500
+        Top de palabras frecuentes utilizadas: 103
+Parámetros:
+        Dropout: 0.2
+        Cantidad de convoluciones y poolings: 2
+        Cantidad de filtros: 8
+        Dimensión de los filtros: (1, 3)
+        Dimensión del pooling: (1, 2)
+        Neuronas en la capa oculta: 90
+        Neuronas en la capa de salida: 30
+        Cantidad de épocas: 15
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.9679793238639831
+        Acierto en la validación promedio: 0.8098647475242615
+        Error en el entrenamiento promedio: 0.11784288646288768
+        Error en la validación promedio: 1.3796148964194264
+		
+Acierto en el entrenamiento promedio: 0.9779634118080139
+        Acierto en la validación promedio: 0.8197295069694519
+        Error en el entrenamiento promedio: 0.07826277768612519
+        Error en la validación promedio: 1.169252456617953
+		
+Características de los datos de entrada:
+        Cantidad de ejemplos: 6288
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 500
+        Top de palabras frecuentes utilizadas: 103
+Parámetros:
+        Dropout: 0.2
+        Cantidad de convoluciones y poolings: 2
+        Cantidad de filtros: 8
+        Dimensión de los filtros: (1, 3)
+        Dimensión del pooling: (1, 2)
+        Neuronas en la capa oculta: 90
+        Neuronas en la capa de salida: 30
+        Cantidad de épocas: 15
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.961933183670044
+        Acierto en la validación promedio: 0.820525062084198
+        Error en el entrenamiento promedio: 0.11884791923069313
+        Error en la validación promedio: 1.1718253386060966
+		
+Características de los datos de entrada:
+        Cantidad de ejemplos: 6288
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 500
+        Top de palabras frecuentes utilizadas: 103
+Parámetros:
+        Dropout: 0.7
+        Cantidad de convoluciones y poolings: 2
+        Cantidad de filtros: 8
+        Dimensión de los filtros: (1, 3)
+        Dimensión del pooling: (1, 2)
+        Neuronas en la capa oculta: 90
+        Neuronas en la capa de salida: 30
+        Cantidad de épocas: 15
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.5988066911697387
+        Acierto en la validación promedio: 0.6397772431373596
+        Error en el entrenamiento promedio: 1.2003979569498093
+        Error en la validación promedio: 1.1544174982805335
+		
+Características de los datos de entrada:
+        Cantidad de ejemplos: 6288
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 500
+        Top de palabras frecuentes utilizadas: 103
+Parámetros:
+        Dropout: 0.4
+        Cantidad de convoluciones y poolings: 1
+        Cantidad de filtros: 8
+        Dimensión de los filtros: (1, 3)
+        Dimensión del pooling: (1, 2)
+        Neuronas en la capa oculta: 30
+        Neuronas en la capa de salida: 30
+        Cantidad de épocas: 15
+        Dimensión batch: 32
+        Cantidad de particiones: 10
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.5500000059604645
+        Acierto en la validación promedio: 0.5925159186124802
+        Error en el entrenamiento promedio: 1.605037543694347
+        Error en la validación promedio: 1.6229247526758037
+		
+Características de los datos de entrada:
+        Cantidad de ejemplos: 6288
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 500
+        Top de palabras frecuentes utilizadas: 103
+Parámetros:
+        Dropout: 0.4
+        Cantidad de convoluciones y poolings: 1
+        Cantidad de filtros: 8
+        Dimensión de los filtros: (3, 3)
+        Dimensión del pooling: (2, 2)
+        Neuronas en la capa oculta: 30
+        Neuronas en la capa de salida: 30
+        Velocidad de aprendizaje: 1e-05
+        Cantidad de épocas: 15
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+        Particiones con superposición: False
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.42136038541793824
+        Acierto en la validación promedio: 0.551471757888794
+        Error en el entrenamiento promedio: 2.0248103711940795
+        Error en la validación promedio: 1.706677534718692
+		
+Características de los datos de entrada:
+        Cantidad de ejemplos: 6288
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 500
+        Top de palabras frecuentes utilizadas: 103
+Parámetros:
+        Dropout: 0.4
+        Cantidad de convoluciones y poolings: 1
+        Cantidad de filtros: 8
+        Dimensión de los filtros: (1, 3)
+        Dimensión del pooling: (1, 2)
+        Neuronas en la capa oculta: 30
+        Neuronas en la capa de salida: 30
+        Velocidad de aprendizaje: 1e-05
+        Cantidad de épocas: 15
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+        Particiones con superposición: False
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.41288782954216
+        Acierto en la validación promedio: 0.47159904837608335
+        Error en el entrenamiento promedio: 2.0161096477280935
+        Error en la validación promedio: 1.7853107650600546
+		
+Características de los datos de entrada:
+        Cantidad de ejemplos: 6288
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 500
+        Top de palabras frecuentes utilizadas: 103
+Parámetros:
+        Dropout: 0.4
+        Cantidad de convoluciones y poolings: 1
+        Cantidad de filtros: 8
+        Dimensión de los filtros: (1, 3)
+        Dimensión del pooling: (1, 2)
+        Neuronas en la capa oculta: 30
+        Neuronas en la capa de salida: 30
+        Velocidad de aprendizaje: 1e-05
+        Cantidad de épocas: 15
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+        Particiones con superposición: False
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.40163086652755736
+        Acierto en la validación promedio: 0.4793953776359558
+        Error en el entrenamiento promedio: 2.060181221169143
+        Error en la validación promedio: 1.7955559197265
+		
+Características de los datos de entrada:
+        Cantidad de ejemplos: 6288
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 500
+        Top de palabras frecuentes utilizadas: 103
+Parámetros:
+        Dropout: 0.4
+        Cantidad de convoluciones y poolings: 1
+        Cantidad de filtros: 8
+        Dimensión de los filtros: (1, 3)
+        Dimensión del pooling: (1, 2)
+        Neuronas en la capa oculta: 30
+        Neuronas en la capa de salida: 30
+        Velocidad de aprendizaje: 1e-05
+        Cantidad de épocas: 15
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+        Particiones con superposición: False
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.5062450289726257
+        Acierto en la validación promedio: 0.6092283248901367
+        Error en el entrenamiento promedio: 1.7341144904885486
+        Error en la validación promedio: 1.5508169067977626
+		
+Características de los datos de entrada:
+        Cantidad de ejemplos: 6288
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 500
+        Top de palabras frecuentes utilizadas: 103
+Parámetros:
+        Dropout: 0.4
+        Cantidad de convoluciones y poolings: 1
+        Cantidad de filtros: 8
+        Dimensión de los filtros: (1, 3)
+        Dimensión del pooling: (1, 2)
+        Neuronas en la capa oculta: 90
+        Neuronas en la capa de salida: 30
+        Velocidad de aprendizaje: 1e-05
+        Cantidad de épocas: 15
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+        Particiones con superposición: False
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.7070803642272949
+        Acierto en la validación promedio: 0.7035799503326416
+        Error en el entrenamiento promedio: 0.9966762969013994
+        Error en la validación promedio: 1.0176743728733288
+		
+Características de los datos de entrada:
+        Cantidad de ejemplos: 6288
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 500
+        Top de palabras frecuentes utilizadas: 103
+Parámetros:
+        Dropout: 0.4
+        Cantidad de convoluciones y poolings: 2
+        Cantidad de filtros: 8
+        Dimensión de los filtros: (1, 3)
+        Dimensión del pooling: (1, 2)
+        Neuronas en la capa oculta: 90
+        Neuronas en la capa de salida: 30
+        Velocidad de aprendizaje: 1e-05
+        Cantidad de épocas: 15
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+        Particiones con superposición: False
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.5784009456634521
+        Acierto en la validación promedio: 0.6042959332466126
+        Error en el entrenamiento promedio: 1.4246384573343167
+        Error en la validación promedio: 1.3631483444355743
+		
+Características de los datos de entrada:
+        Cantidad de ejemplos: 6288
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 500
+        Top de palabras frecuentes utilizadas: 103
+Parámetros:
+        Dropout: 0.4
+        Cantidad de convoluciones y poolings: 3
+        Cantidad de filtros: 8
+        Dimensión de los filtros: (1, 3)
+        Dimensión del pooling: (1, 2)
+        Neuronas en la capa oculta: 90
+        Neuronas en la capa de salida: 30
+        Velocidad de aprendizaje: 1e-06
+        Cantidad de épocas: 15
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+        Particiones con superposición: False
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.39140811562538147
+        Acierto en la validación promedio: 0.4416865587234497
+        Error en el entrenamiento promedio: 2.207411382647858
+        Error en la validación promedio: 2.1547689770172775
+		
+Características de los datos de entrada:
+        Cantidad de ejemplos: 4275
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 500
+        Top de palabras frecuentes utilizadas: 100
+Parámetros:
+        Dropout: 0
+        Cantidad de convoluciones y poolings: 1
+        Cantidad de filtros: 1
+        Dimensión de los filtros: (1, 3)
+        Dimensión del pooling: (1, 2)
+        Neuronas en la capa oculta: 512
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 30
+        Activación en la capa de salida: softmax
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 20
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+        Particiones con superposición: False
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.9842690110206604
+                Acierto en el entrenamiento en la partición 1: 0.9865497350692749
+                Acierto en el entrenamiento en la partición 2: 0.9526315927505493
+                Acierto en el entrenamiento en la partición 3: 0.9944444298744202
+                Acierto en el entrenamiento en la partición 4: 0.9915204644203186
+                Acierto en el entrenamiento en la partición 5: 0.996198832988739
+        Acierto en la validación promedio: 0.8070175409317016
+                Acierto en la validación en la partición 1: 0.9228070378303528
+                Acierto en la validación en la partición 2: 0.832748532295227
+                Acierto en la validación en la partición 3: 0.7602339386940002
+                Acierto en la validación en la partición 4: 0.722806990146637
+                Acierto en la validación en la partición 5: 0.7964912056922913
+        Error en el entrenamiento promedio: 0.0509917220270686
+                Error en el entrenamiento en la partición 1: 0.04669141495567665
+                Error en el entrenamiento en la partición 2: 0.14568204440786475
+                Error en el entrenamiento en la partición 3: 0.020348259541941315
+                Error en el entrenamiento en la partición 4: 0.02491646330988808
+                Error en el entrenamiento en la partición 5: 0.017320427919972188
+        Error en la validación promedio: 1.1423830416662433
+                Error en la validación en la partición 1: 0.44873387154071914
+                Error en la validación en la partición 2: 0.8136311558254978
+                Error en la validación en la partición 3: 1.3129654774888915
+                Error en la validación en la partición 4: 1.810087832233362
+                Error en la validación en la partición 5: 1.3264968712427463
+				
+Características de los datos de entrada:
+        Cantidad de ejemplos: 4275
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 500
+        Top de palabras frecuentes utilizadas: 100
+Parámetros:
+        Dropout: 0
+        Cantidad de convoluciones y poolings: 1
+        Cantidad de filtros: 1
+        Dimensión de los filtros: (1, 3)
+        Dimensión del pooling: (1, 2)
+        Neuronas en la capa oculta: 512
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 30
+        Activación en la capa de salida: softmax
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 10
+        Dimensión batch: 16
+        Cantidad de particiones: 5
+        Particiones con superposición: False
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.940175449848175
+                Acierto en el entrenamiento en la partición 1: 0.9783625602722168
+                Acierto en el entrenamiento en la partición 2: 0.9786549806594849
+                Acierto en el entrenamiento en la partición 3: 0.9459064602851868
+                Acierto en el entrenamiento en la partición 4: 0.8160818815231323
+                Acierto en el entrenamiento en la partición 5: 0.9818713665008545
+        Acierto en la validación promedio: 0.7819883227348328
+                Acierto en la validación en la partición 1: 0.871345043182373
+                Acierto en la validación en la partición 2: 0.8292397856712341
+                Acierto en la validación en la partición 3: 0.7801169753074646
+                Acierto en la validación en la partición 4: 0.6467836499214172
+                Acierto en la validación en la partición 5: 0.7824561595916748
+        Error en el entrenamiento promedio: 0.22788735579459635
+                Error en el entrenamiento en la partición 1: 0.10622602555007614
+                Error en el entrenamiento en la partición 2: 0.09404932704498196
+                Error en el entrenamiento en la partición 3: 0.20109707141044544
+                Error en el entrenamiento en la partición 4: 0.6399866734331812
+                Error en el entrenamiento en la partición 5: 0.09807768153429729
+        Error en la validación promedio: 1.0072720966143913
+                Error en la validación en la partición 1: 0.6593153798789309
+                Error en la validación en la partición 2: 0.8486717586628875
+                Error en la validación en la partición 3: 1.1377123666785613
+                Error en la validación en la partición 4: 1.4350996513812864
+                Error en la validación en la partición 5: 0.9555613264702914
+				
+Características de los datos de entrada:
+        Cantidad de ejemplos: 4275
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 500
+        Top de palabras frecuentes utilizadas: 100
+Parámetros:
+        Dropout: 0
+        Cantidad de convoluciones y poolings: 1
+        Cantidad de filtros: 34
+        Dimensión de los filtros: (52, 3)
+        Dimensión del pooling: (1, 2)
+        Neuronas en la capa oculta: 90
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 30
+        Activación en la capa de salida: softmax
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 10
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+        Particiones con superposición: False
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.9909356713294983
+                Acierto en el entrenamiento en la partición 1: 0.9859648942947388
+                Acierto en el entrenamiento en la partición 2: 0.9944444298744202
+                Acierto en el entrenamiento en la partición 3: 0.9903509020805359
+                Acierto en el entrenamiento en la partición 4: 0.9918128848075867
+                Acierto en el entrenamiento en la partición 5: 0.99210524559021
+        Acierto en la validación promedio: 0.8093567371368409
+                Acierto en la validación en la partición 1: 0.8959064483642578
+                Acierto en la validación en la partición 2: 0.8315789699554443
+                Acierto en la validación en la partición 3: 0.8023391962051392
+                Acierto en la validación en la partición 4: 0.75789475440979
+                Acierto en la validación en la partición 5: 0.7590643167495728
+        Error en el entrenamiento promedio: 0.05663200675558887
+                Error en el entrenamiento en la partición 1: 0.07558622789182509
+                Error en el entrenamiento en la partición 2: 0.0505946960594309
+                Error en el entrenamiento en la partición 3: 0.06276144120101518
+                Error en el entrenamiento en la partición 4: 0.04155269654641985
+                Error en el entrenamiento en la partición 5: 0.05266497207925334
+        Error en la validación promedio: 1.1572881511707753
+                Error en la validación en la partición 1: 0.6500139835982295
+                Error en la validación en la partición 2: 1.1791066606839498
+                Error en la validación en la partición 3: 1.1069643483524434
+                Error en la validación en la partición 4: 1.4007949260243198
+                Error en la validación en la partición 5: 1.4495608371949336
+				
+Características de los datos de entrada:
+        Cantidad de ejemplos: 3144
+        Dimension del embedding: 52
+        Longitud de los ejemplos: 500
+        Top de palabras frecuentes utilizadas: 100
+Parámetros:
+        Dropout: 0.2
+        Cantidad de convoluciones: 1
+        Cantidad de filtros: 100
+        Dimensión de los kernels: 3
+        Neuronas en la capa oculta: 512
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 30
+        Activación en la capa de salida: softmax
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 100
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+        Particiones con superposición: False
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.9220541477203369
+                Acierto en el entrenamiento en la partición 1: 0.9148089289665222
+                Acierto en el entrenamiento en la partición 2: 0.9231687784194946
+                Acierto en el entrenamiento en la partición 3: 0.912420392036438
+                Acierto en el entrenamiento en la partición 4: 0.9243630766868591
+                Acierto en el entrenamiento en la partición 5: 0.9355095624923706
+        Acierto en la validación promedio: 0.8105095386505127
+                Acierto en la validación en la partición 1: 0.941082775592804
+                Acierto en la validación en la partición 2: 0.8646496534347534
+                Acierto en la validación en la partición 3: 0.8025477528572083
+                Acierto en la validación en la partición 4: 0.7531847357749939
+                Acierto en la validación en la partición 5: 0.691082775592804
+        Error en el entrenamiento promedio: 0.2191023795990048
+                Error en el entrenamiento en la partición 1: 0.2440921114223778
+                Error en el entrenamiento en la partición 2: 0.22196128608504678
+                Error en el entrenamiento en la partición 3: 0.2319533880681369
+                Error en el entrenamiento en la partición 4: 0.21187372031105553
+                Error en el entrenamiento en la partición 5: 0.18563139210840698
+        Error en la validación promedio: 1.0836648964768003
+                Error en la validación en la partición 1: 0.3099375022634579
+                Error en la validación en la partición 2: 0.7362341138587636
+                Error en la validación en la partición 3: 1.1017877465220773
+                Error en la validación en la partición 4: 1.4311874550618944
+                Error en la validación en la partición 5: 1.8391776646778082
