@@ -410,12 +410,9 @@ def procesar_etiquetas(ifg_dgidb,ifg_generadas,salida):
             if contador == 0:
                 escritor_csv.writerow(ifg_g)
 
-if __name__ == "__main__":
-    # if len(sys.argv) != 1:
-    #     print("Forma de uso: {} entrada salida".format(sys.argv[0]))
-    #     exit()
-    
-    # para generar los archivos de ocurrencias: -----------------------------------------------------
+
+def main_generar_ocurrencias():
+    """Para generar los archivos de ocurrencias."""
 
     pmids_etiquetas_completas_csv = "PFC_DGIdb/pmids_etiquetas_completas.csv"
     pmids_lista = cargar_pmids(pmids_etiquetas_completas_csv)
@@ -453,35 +450,8 @@ if __name__ == "__main__":
     ocurrencias(aliases_droga_conjunto, publicaciones_dict, embeddings_dict, repeticiones_drogas_lista, "d")
     print("Listo, se guardaron en archivos.")
 
-    exit()
-    # -----------------------------------------------------------------------------------------------
 
-
-    # ifg_csv_ruta = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/pfc_dgidb_export_ifg.csv"
-    # ifg_lista = cargar_ifg(ifg_csv_ruta)
-    # print(ifg_lista)
-    # print("Interacciones fármaco-gen cargadas")
-
-    # etiquetas_publicacion_gen(pmids_lista,ifg_lista,aliases_gen_lista,"etiquetas_publicaciones_gen.csv")
-    # etiquetas_publicacion_droga(pmids_lista,ifg_lista,aliases_droga_lista,"etiquetas_publicaciones_droga.csv")
-
-    # archivo_ruta = "E:/Descargas/Python/PFC_DGIdb_src/scraping/files/labeled/txt/txt_ungreek/10722.txt"
-    # f = open(archivo_ruta,encoding="utf8")
-    # content = f.read()
-    # print(content)
-    # content_remplazado = preprocesamiento.remplazo_inteligente(content,"s t r u c t u r a l l y to the n a t u r a l catecholamines.","XXXXXXXXXXXXXXX")
-    # s = re.sub("\w+\.",'\0',content)
-    # print(content_remplazado)
-    # f.close()
-  
-    # maxima_longitud = longitud_maxima_alias([aliases_gen_ruta, aliases_droga_ruta])
-    # print(maxima_longitud)
-
-    # lista = preprocesamiento.unir_elementos_lista(["a","b","c","d","e","f","g"],3,2)
-    # print(lista)
-
-    '''---'''
-
+def main_generar_etiquetas():
     publicaciones_directorio = "E:/Descargas/Python/PFC_DGIdb_src/replaced"
     publicaciones_dict = cargar_publicaciones_con_remplazos(publicaciones_directorio)
     print("Publicaciones cargadas.")
@@ -520,3 +490,9 @@ if __name__ == "__main__":
     
     procesar_etiquetas(ifg_dgidb,ifg_generadas,"etiquetas_neural_networks2.csv")
     print("Procesamiento de etiquetas finalizado.")
+
+
+if __name__ == "__main__":
+    # main_generar_ocurrencias()
+    # main_generar_etiquetas()
+    exit()

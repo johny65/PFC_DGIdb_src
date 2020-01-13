@@ -157,28 +157,27 @@ def reemplazar_bme(pmid, contents, output_dir):
 
 
 if __name__ == "__main__":
-    logging.getLogger().setLevel(logging.INFO)
-    logging.basicConfig()
+    logging.basicConfig(logging.INFO)
     # logging.getLogger("datos_preprocesamiento").setLevel(logging.INFO)
 
+    lista_pmid = "PFC_DGIdb/pmids_etiquetas_completas.csv"
+    dir_txt_publicaciones = "scraping/files/labeled/txt_ungreek"
+    ruta_abstracts = "scraping/pmids_titulos_abstracts_keywords.csv"
+    dir_pfc_dgidb = "PFC_DGIdb"
+
     parser = argparse.ArgumentParser()
-    parser.add_argument("lista_pmid", help="Archivo con el listado de PMID para trabajar")
-    parser.add_argument("dir_txt_publicaciones", help="Directorio con los TXT de los papers")
-    parser.add_argument("ruta_abstracts", help="Archivo con los abstracts/títulos/palabras clave")
-    parser.add_argument("dir_pfc_dgidb", help="Directorio PFC_DGIdb para obtener archivos con datos")
     parser.add_argument("output_dir", help="Directorio de salida con los textos reemplazados")
     args = parser.parse_args()
 
     print("Cargando todo...")
 
-    abstracts_dict = cargar_abstracts(args.ruta_abstracts)
-    publicaciones_dict = cargar_publicaciones(args.dir_txt_publicaciones, abstracts_dict,
-                                              cargar_pmids(args.lista_pmid))
+    abstracts_dict = cargar_abstracts(ruta_abstracts)
+    publicaciones_dict = cargar_publicaciones(dir_txt_publicaciones, abstracts_dict,
+                                              cargar_pmids(lista_pmid))
     
     output_dir = pathlib.Path(args.output_dir)
     if not output_dir.exists():
         output_dir.mkdir()
-
 
     dir_pfc_dgidb = pathlib.Path(args.dir_pfc_dgidb)
     alias_gen = cargar_aliases_dict(dir_pfc_dgidb / "alias_gen.csv")
