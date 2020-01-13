@@ -5,6 +5,7 @@ import re
 import os
 import logging
 import tokenizer
+from scraping import parallel
 # import preprocesamiento
 
 logger = logging.getLogger("datos_preprocesamiento")
@@ -193,12 +194,12 @@ def cargar_publicaciones(publicaciones_directorio, abstracts_dict, pmids_lista):
             publicaciones_dict[pmid] = abstracts_dict[pmid]
     return publicaciones_dict
 
-def ocurrencias(entidades, publicaciones, embeddings, repeticiones, tipo):
+def ocurrencias(entidades, publicaciones, embeddings, repeticiones, tipo, index):
     """Busca las ocurrencias de las entidades en las publicaciones."""
 
-    salida_no_embedding_no_repeticiones_csv = open(tipo + "_se_sr.csv", "w", encoding="utf8")
-    salida_no_embedding_con_repeticiones_csv = open(tipo + "_se_cr.csv", "w", encoding="utf8")
-    salida_todas_csv = open(tipo + "_ce_cr.csv", "w", encoding="utf8")
+    salida_no_embedding_no_repeticiones_csv = open("{}_se_sr_{}.csv".format(tipo, index), "w", encoding="utf8")
+    salida_no_embedding_con_repeticiones_csv = open("{}_se_cr_{}.csv".format(tipo, index), "w", encoding="utf8")
+    salida_todas_csv = open("{}_ce_cr_{}.csv".format(tipo, index), "w", encoding="utf8")
 
     escritor_csv1 = csv.writer(salida_no_embedding_no_repeticiones_csv,delimiter=',',lineterminator="\n")
     escritor_csv2 = csv.writer(salida_no_embedding_con_repeticiones_csv,delimiter=',',lineterminator="\n")
@@ -413,6 +414,11 @@ def procesar_etiquetas(ifg_dgidb,ifg_generadas,salida):
 
 def main_generar_ocurrencias():
     """Para generar los archivos de ocurrencias."""
+    global aliases_gen_conjunto
+    global aliases_droga_conjunto
+    global embeddings_dict
+    global repeticiones_genes_lista
+    global repeticiones_drogas_lista
 
     pmids_etiquetas_completas_csv = "PFC_DGIdb/pmids_etiquetas_completas.csv"
     pmids_lista = cargar_pmids(pmids_etiquetas_completas_csv)
@@ -445,10 +451,21 @@ def main_generar_ocurrencias():
     print("publicaciones cargadas")
 
     print("Buscando ocurrencias de genes...")
-    ocurrencias(aliases_gen_conjunto, publicaciones_dict, embeddings_dict, repeticiones_genes_lista, "g")
+    parallel.parallel_map2(g_occs, publicaciones_dict)
+    
     print("Buscando ocurrencias de drogas...")
-    ocurrencias(aliases_droga_conjunto, publicaciones_dict, embeddings_dict, repeticiones_drogas_lista, "d")
+    parallel.parallel_map2(d_occs, publicaciones_dict)
+    
     print("Listo, se guardaron en archivos.")
+
+
+def g_occs(pubs, index):
+    """Para paralelizar ocurrencias de genes."""
+    ocurrencias(aliases_gen_conjunto, pubs, embeddings_dict, repeticiones_genes_lista, "g", index)
+
+def d_occs(pubs, index):
+    """Para paralelizar ocurrencias de drogas."""
+    ocurrencias(aliases_droga_conjunto, pubs, embeddings_dict, repeticiones_drogas_lista, "d", index)
 
 
 def main_generar_etiquetas():
@@ -493,6 +510,5 @@ def main_generar_etiquetas():
 
 
 if __name__ == "__main__":
-    # main_generar_ocurrencias()
+    main_generar_ocurrencias()
     # main_generar_etiquetas()
-    exit()
