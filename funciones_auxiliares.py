@@ -51,36 +51,26 @@ def graficas(registro_entrenamiento):
     
     plt.show()
 
-def kfolding(particiones_numero, x_entrenamiento, superposicion):
+def kfolding(particiones, cantidad_ejemplos, porcentaje_validacion):
     '''
     Retorna un diccionario donde la clave es el número de la partición y el valor una lista de dos elementos.
-    El primero elemento de esta lista son los índices para el conjunto de entrenamiento.
-    El primero elemento de esta lista son los índices para el conjunto de validación.
+    El primer elemento de esta lista son los índices para el conjunto de entrenamiento.
+    El segundo elemento de esta lista son los índices para el conjunto de validación.
     '''
-    ejemplos_cantidad = len(x_entrenamiento)
     folds_dict = dict()
-
-    longitud = 0
-    if (ejemplos_cantidad % particiones_numero) == 0:
-        longitud = len(x_entrenamiento)
-    else:
-        longitud = int(ejemplos_cantidad/particiones_numero)*particiones_numero
-
-    ejemplos_validacion_cantidad = 0
-    if superposicion:
-        ejemplos_validacion_cantidad = longitud/(particiones_numero/2)
-    else:
-        ejemplos_validacion_cantidad = longitud/particiones_numero
-
-    for i in range(0,particiones_numero,1):
-        sup = i
-        if superposicion:
-            sup = i/2
-        indices_validacion = np.arange(int(sup*ejemplos_validacion_cantidad),int(sup*ejemplos_validacion_cantidad+ejemplos_validacion_cantidad))
+    cantidad_ejemplos_validacion = int(porcentaje_validacion*cantidad_ejemplos)
+    paso = 1/(particiones*porcentaje_validacion)
+    indices_entrenamiento = np.arange(cantidad_ejemplos)
+    indices_extra = np.arange(int(cantidad_ejemplos_validacion - (cantidad_ejemplos_validacion*paso)))
+    indices = np.concatenate((indices_entrenamiento, indices_extra))
+    for k in range(0, particiones, 1):
+        inicio = int(paso*k*cantidad_ejemplos_validacion)
+        fin = int(inicio + cantidad_ejemplos_validacion)
+        indices_validacion = indices[inicio:fin]
         indices_entrenamiento = list()
-        for j in range(0,longitud,1):
-            if j not in indices_validacion:
-                indices_entrenamiento.append(j)
+        for i in range(0, cantidad_ejemplos, 1):
+            if i not in indices_validacion:
+                indices_entrenamiento.append(i)
         indices_entrenamiento = np.asarray(indices_entrenamiento)
-        folds_dict[i] = [indices_entrenamiento, indices_validacion]
+        folds_dict[k] = [indices_entrenamiento, indices_validacion]
     return folds_dict

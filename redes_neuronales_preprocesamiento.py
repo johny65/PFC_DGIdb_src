@@ -155,12 +155,22 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
     xs = np.asarray(xs)
     ys = np.asarray(ys)
 
-    # Aleatoriza el orden de los ejemplos:
+    # Aleatoriza el orden de los ejemplos
+    # seed = random.random()
+    # random.seed(seed)
+    # random.shuffle(xs)
+    # random.seed(seed)
+    # random.shuffle(ys)
+
+    # Aleatoriza el orden de los ejemplos
+    print("Aleatorizando los ejemplos de entrenamiento.")
     seed = random.random()
     random.seed(seed)
-    random.shuffle(xs)
-    random.seed(seed)
-    random.shuffle(ys)
+    indices_aleatorios = np.arange(len(xs))
+    random.shuffle(indices_aleatorios)
+    xs = xs[indices_aleatorios]
+    ys = ys[indices_aleatorios]
+    print("Ejemplos de entrenamiento aleatorizados.")
 
     return xs, ys
 

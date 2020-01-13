@@ -60,11 +60,11 @@ NEURONAS_OCULTAS = 512
 NEURONAS_SALIDA = cantidad_clases
 # VELOCIDAD_APRENDIZAJE = 1e-7
 CANTIDAD_EPOCAS = 100
-# PORCENTAJE_VALIDACION = 0.2 # 20% de ejemplos usados para validar. Son tomados desde el final
+PORCENTAJE_VALIDACION = 0.2
 DIMENSION_BACHA = 32
 ''' --------------------- '''
 
-folds_dict = fa.kfolding(k, x_entrenamiento, superposicion=SUPERPOSICION) # Se obtienen las particiones para realizar la validación cruzada
+folds_dict = fa.kfolding(k, cantidad_ejemplos, PORCENTAJE_VALIDACION) # Se obtienen las particiones para realizar la validación cruzada
 
 # Ajuste de la forma de los kernels
 # kernel_tipo = (dimension_embedding, DIMENSION_KERNEL)

@@ -184,12 +184,12 @@ if __name__ == "__main__":
     alias_gen = cargar_aliases_dict(dir_pfc_dgidb / "alias_gen.csv")
     alias_droga = cargar_aliases_dict(dir_pfc_dgidb / "alias_droga.csv")
 
-    ocurrencias_genes_se_sr = cargar_ocurrencias("ocurrencias_genes_se_sr.csv")
-    ocurrencias_genes_se_cr = cargar_ocurrencias("ocurrencias_genes_se_cr.csv")
-    ocurrencias_genes_todas = cargar_ocurrencias("ocurrencias_genes_todas.csv")
-    ocurrencias_drogas_se_sr = cargar_ocurrencias("ocurrencias_drogas_se_sr.csv")
-    ocurrencias_drogas_se_cr = cargar_ocurrencias("ocurrencias_drogas_se_cr.csv")
-    ocurrencias_drogas_todas = cargar_ocurrencias("ocurrencias_drogas_todas.csv")
+    ocurrencias_genes_se_sr = cargar_ocurrencias("g_se_sr.csv")
+    ocurrencias_genes_se_cr = cargar_ocurrencias("g_se_cr.csv")
+    ocurrencias_genes_todas = cargar_ocurrencias("g_ce_cr.csv")
+    ocurrencias_drogas_se_sr = cargar_ocurrencias("d_se_sr.csv")
+    ocurrencias_drogas_se_cr = cargar_ocurrencias("d_se_cr.csv")
+    ocurrencias_drogas_todas = cargar_ocurrencias("d_ce_cr.csv")
 
     etiquetas_genes, etiquetas_drogas = cargar_etiquetas_dict(dir_pfc_dgidb / "pfc_dgidb_export_ifg.csv")
 

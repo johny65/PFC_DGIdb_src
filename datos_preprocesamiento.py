@@ -209,8 +209,8 @@ def ocurrencias(entidades, publicaciones, embeddings, repeticiones, tipo):
         lista2 = [pmid]
         lista3 = [pmid]
         for entidad in entidades:
-            # esta = re.search(r"\b{}\b".format(re.escape(entidad)), pub)
-            esta = entidad in pub
+            esta = re.search(r"\b{}\b".format(re.escape(entidad)), pub)
+            # esta = entidad in pub
             if esta and entidad not in embeddings and entidad not in repeticiones:
                 lista1.append(entidad)
             if esta and entidad not in embeddings:
