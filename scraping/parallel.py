@@ -38,7 +38,7 @@ def process_chunk(func, chunk, chunk_index, outq):
     outq.put((chunk_index, res))
 
 
-def parallel_map2(func, elements):
+def parallel_map2(func, elements, params):
     cant = len(elements)
     cpus = multiprocessing.cpu_count()
     chunksize = int(math.ceil(cant / cpus))
@@ -47,15 +47,15 @@ def parallel_map2(func, elements):
     for i in range(cpus):
         chunk = {e: elements[e] for e in elements_list[chunksize * i:chunksize * (i + 1)]}
         thread = multiprocessing.Process(
-            target=process_chunk2, args=(func, chunk, i))
+            target=process_chunk2, args=(func, chunk, i, params))
         jobs.append(thread)
         thread.start()
     for j in jobs:
         j.join()
 
 
-def process_chunk2(func, chunk, chunk_index):
-    func(chunk, chunk_index)
+def process_chunk2(func, chunk, chunk_index, params):
+    func(chunk, chunk_index, params)
 
 
 def parallel_map_to_file(func, elements, outfile):

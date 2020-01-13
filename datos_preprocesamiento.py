@@ -414,11 +414,6 @@ def procesar_etiquetas(ifg_dgidb,ifg_generadas,salida):
 
 def main_generar_ocurrencias():
     """Para generar los archivos de ocurrencias."""
-    global aliases_gen_conjunto
-    global aliases_droga_conjunto
-    global embeddings_dict
-    global repeticiones_genes_lista
-    global repeticiones_drogas_lista
 
     pmids_etiquetas_completas_csv = "PFC_DGIdb/pmids_etiquetas_completas.csv"
     pmids_lista = cargar_pmids(pmids_etiquetas_completas_csv)
@@ -451,20 +446,22 @@ def main_generar_ocurrencias():
     print("publicaciones cargadas")
 
     print("Buscando ocurrencias de genes...")
-    parallel.parallel_map2(g_occs, publicaciones_dict)
+    parallel.parallel_map2(g_occs, publicaciones_dict, (aliases_gen_conjunto, embeddings_dict, repeticiones_genes_lista))
     
     print("Buscando ocurrencias de drogas...")
-    parallel.parallel_map2(d_occs, publicaciones_dict)
+    parallel.parallel_map2(d_occs, publicaciones_dict, (aliases_droga_conjunto, embeddings_dict, repeticiones_drogas_lista))
     
     print("Listo, se guardaron en archivos.")
 
 
-def g_occs(pubs, index):
+def g_occs(pubs, index, params):
     """Para paralelizar ocurrencias de genes."""
+    aliases_gen_conjunto, embeddings_dict, repeticiones_genes_lista = params
     ocurrencias(aliases_gen_conjunto, pubs, embeddings_dict, repeticiones_genes_lista, "g", index)
 
-def d_occs(pubs, index):
+def d_occs(pubs, index, params):
     """Para paralelizar ocurrencias de drogas."""
+    aliases_droga_conjunto, embeddings_dict, repeticiones_drogas_lista = params
     ocurrencias(aliases_droga_conjunto, pubs, embeddings_dict, repeticiones_drogas_lista, "d", index)
 
 
