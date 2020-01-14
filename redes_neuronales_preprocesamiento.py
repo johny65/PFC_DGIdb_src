@@ -1,6 +1,5 @@
 import os
 import numpy as np
-# from keras.preprocessing import text,sequence
 import datos_preprocesamiento as dp
 import csv
 import re
@@ -9,42 +8,6 @@ import random
 import math
 
 DIMENSION_EMBEDDING = -1 # se autocalcula
-
-# def contenido_estructura(lista_strings):
-#     '''
-#     Devuelve una lista con la estructura del contenido resultante tras haber tokenizado.
-#     La lista guarda la cantidad de top words y genes/drogas consecutivas con su respectivo orden.
-#     Formato: [['TWE', 15], ['XXX', 1], ['TWE', 69], ['XXX', 3], ..., total_twe, total_xxx]
-#     '''
-#     estructura_lista = list()
-#     contador_twe = 0
-#     contador_xxx = 0
-#     total_twe = 0
-#     total_xxx = 0
-#     if lista_strings[0].startswith("xxx") and lista_strings[0].endswith("xxx"):
-#         entidad_xxx = True
-#     else:
-#         entidad_xxx = False
-#     for string in lista_strings:
-#         if string.startswith("xxx") and string.endswith("xxx"):
-#             contador_xxx += 1
-#             if entidad_xxx == False:
-#                 lista = ['TWE', contador_twe]
-#                 estructura_lista.append(lista)
-#                 total_twe += contador_twe
-#                 contador_twe = 0
-#                 entidad_xxx = True
-#         else:
-#             contador_twe += 1
-#             if entidad_xxx == True:
-#                 lista = ['XXX', contador_xxx]
-#                 estructura_lista.append(lista)
-#                 total_xxx += contador_xxx
-#                 contador_xxx = 0
-#                 entidad_xxx = False
-#     estructura_lista.append(total_twe)
-#     estructura_lista.append(total_xxx)
-#     return estructura_lista
 
 def contar_top_words(strings_lista):
     contador = 0
@@ -70,6 +33,7 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
                     max_longitud=500,
                     embeddings_file="glove.6B.50d.txt",
                     sin_interaccion_a_incluir = 3144):
+                    # agregar PROCENTAJE_PRUEBA
     '''
     Carga los ejemplos para las redes neuronales en una lista de listas
     Entradas:

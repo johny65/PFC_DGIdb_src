@@ -415,7 +415,7 @@ def procesar_etiquetas(ifg_dgidb,ifg_generadas,salida):
 def main_generar_ocurrencias():
     """Para generar los archivos de ocurrencias."""
 
-    pmids_etiquetas_completas_csv = "PFC_DGIdb/pmids_etiquetas_completas.csv"
+    pmids_etiquetas_completas_csv = "PFC_DGIdb/pmids_etiquetas_completas_resto.csv"
     pmids_lista = cargar_pmids(pmids_etiquetas_completas_csv)
     print("pmids cargados")
 

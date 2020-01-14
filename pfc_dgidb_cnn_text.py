@@ -1,8 +1,8 @@
 # Paquetes
 from __future__ import absolute_import, division, print_function, unicode_literals # Compatibilidad entre Python 2 y 3
 from redes_neuronales_preprocesamiento import cargar_ejemplos # Carga de ejemplos
-from keras.models import Sequential
-from keras.layers import Conv1D, MaxPooling1D, Concatenate, Dropout, Flatten, Dense # Embedding, Conv2D, MaxPooling2D
+from keras.models import Sequential, Model
+from keras.layers import Conv1D, MaxPooling1D, Concatenate, Dropout, Flatten, Dense, Input # Embedding, Conv2D, MaxPooling2D
 from keras.callbacks import EarlyStopping
 from keras.optimizers import Adam,SGD # SGD: Gradiente descendiente
 import funciones_auxiliares as fa
@@ -50,11 +50,9 @@ cantidad_clases = y_entrenamiento.shape[1]
 
 ''' Parámetros del modelo '''
 k = 5 # Número de particiones para la validación cruzada
-SUPERPOSICION = False
 PORCENTAJE_DROPEO = 0.3 # Pone en 0 el #% de los datos aleatoriamente
-# CANTIDAD_CONVOLUCIONES = 1
 CANTIDAD_FILTROS = 100 # Cantidad de filtro de convolución
-DIMENSION_KERNEL = 3
+DIMENSION_KERNEL = (3, 4, 5)
 # DIMENSION_POOLING = 2
 NEURONAS_OCULTAS = 512
 NEURONAS_SALIDA = cantidad_clases
@@ -81,28 +79,44 @@ for i in range(0,k,1):
     # Red neuronal convolucional (CNN)
     # Una capa de convolución seguida de una capa de polling tantas veces como se desee.
     # Esa es la característica principal de una CNN.
-    
+
     modelo_cnn = Sequential() # Modelo secuencial (una capa detrás de la otra). Perceptrón multicapa (Arquitectura)
 
     formato_entrada = (maxima_longitud_ejemplos, dimension_embedding) # filas, columnas
-    '''
-    Capa Conv1D:
-    Formato de entrada: (maxima_longitud_ejemplos, dimension_embedding)
-    Cantidad de parámetros: (maxima_longitud_ejemplos*DIMENSION_KERNEL*CANTIDAD_FILTROS)+CANTIDAD_FILTROS
-    Formato de salida: (1, maxima_longitud_ejemplos, CANTIDAD_FILTROS)
-    '''
-    modelo_cnn.add(Conv1D(input_shape=formato_entrada,
-                            filters=CANTIDAD_FILTROS,
-                            kernel_size=DIMENSION_KERNEL,
-                            padding='same',
-                            bias_initializer='random_uniform'))
-    '''
-    Capa MaxPooling1D:
-    Formato de entrada: (1, maxima_longitud_ejemplos)
-    Cantidad de parámetros: 0
-    Formato de salida: (1, 1, CANTIDAD_FILTROS)
-    '''
-    modelo_cnn.add(MaxPooling1D(pool_size=maxima_longitud_ejemplos))
+
+    '''Intento de entrenar con kernels de distintos tamaños al mismo tiempo'''
+    submodelos = list()
+    for i in DIMENSION_KERNEL:
+        submodelos[i] = Sequential()
+        submodelos[i].add(Conv1D(input_shape=formato_entrada,
+                          filters=CANTIDAD_FILTROS,
+                          kernel_size=DIMENSION_KERNEL[i],
+                          padding='same',
+                          bias_initializer='random_uniform'))
+        submodelos[i].add(MaxPooling1D(pool_size=maxima_longitud_ejemplos))
+        print(submodelos[i])
+    convoluciones_poolings = Concatenate(submodelos)
+    modelo_cnn.add(convoluciones_poolings)
+    '''Intento de entrenar con kernels de distintos tamaños al mismo tiempo'''
+
+    # '''
+    # Capa Conv1D:
+    # Formato de entrada: (maxima_longitud_ejemplos, dimension_embedding)
+    # Cantidad de parámetros: (maxima_longitud_ejemplos*DIMENSION_KERNEL*CANTIDAD_FILTROS)+CANTIDAD_FILTROS
+    # Formato de salida: (1, maxima_longitud_ejemplos, CANTIDAD_FILTROS)
+    # '''
+    # modelo_cnn.add(Conv1D(input_shape=formato_entrada,
+    #                       filters=CANTIDAD_FILTROS,
+    #                       kernel_size=DIMENSION_KERNEL,
+    #                       padding='same',
+    #                       bias_initializer='random_uniform'))
+    # '''
+    # Capa MaxPooling1D:
+    # Formato de entrada: (1, maxima_longitud_ejemplos)
+    # Cantidad de parámetros: 0
+    # Formato de salida: (1, 1, CANTIDAD_FILTROS)
+    # '''
+    # modelo_cnn.add(MaxPooling1D(pool_size=maxima_longitud_ejemplos))
     
     modelo_cnn.add(Dropout(PORCENTAJE_DROPEO)) # Dropout: se utiliza para evitar el sobreentrenamiento
     modelo_cnn.add(Flatten()) # input_shape = (formato_entrada[0], formato_entrada[1])
