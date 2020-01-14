@@ -2,6 +2,7 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 
 import matplotlib.pyplot as plt
 import numpy as np
+from sklearn.metrics import roc_curve, auc
 
 def mostrar_imagen(imagen,etiqueta):
     plt.figure()
@@ -74,3 +75,28 @@ def kfolding(particiones, cantidad_ejemplos, porcentaje_validacion):
         indices_entrenamiento = np.asarray(indices_entrenamiento)
         folds_dict[k] = [indices_entrenamiento, indices_validacion]
     return folds_dict
+
+def graficar_curva_roc(cantidad_clases, y_prueba, y_prediccion):
+    '''
+    razon_falsos_positivos: eje X en la cuerva ROC.
+    razon_verdaderos_positivos: eje Y en la cuerva ROC.
+    area_bajo_curva_roc: [0 - 1]
+    '''
+    razon_falsos_positivos = dict()
+    razon_verdaderos_positivos = dict()
+    area_bajo_curva_roc = dict()
+    plt.figure()
+    ancho_linea = 2
+    plt.plot([0, 1], [0, 1], color='navy', lw=ancho_linea, linestyle='--')
+    for i in range(cantidad_clases):
+        razon_falsos_positivos[i], razon_verdaderos_positivos[i], _ = roc_curve(y_prueba[:, i], y_prediccion[:, i])
+        area_bajo_curva_roc[i] = auc(razon_falsos_positivos[i], razon_verdaderos_positivos[i])
+        plt.plot(razon_falsos_positivos[i], razon_verdaderos_positivos[i], label='Clase {}: {}'.format(i, area_bajo_curva_roc[i]), lw=ancho_linea)
+        # plt.xlim([0.0, 1.0])
+        # plt.ylim([0.0, 1.05])
+        plt.title('Curvas ROC')
+        plt.xlabel('Razón de falsos positivos')
+        plt.ylabel('Razón de verdaderos positivos')
+        plt.legend()
+        plt.show()
+        plt.clf()
