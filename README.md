@@ -13,8 +13,14 @@ Drogas:             1119            Totales:
 Tipos interacción:    33            Genes:              2440
                                     Drogas:             3568
 Entrenamiento:
-"sin_interaccion":
-Ejemplos totales:
+Ejemplos finales:   3144 (1)
+Sintéticos:        23106 (2)
+Ejemplos totales:  26250
+
+Notas:
+(1): son los casos de ejemplo que quedan de los 10175 después de procesar el artículo, es decir,
+     casos que sirven ya que el gen/droga de interés sí se menciona en el texto.
+(2): son los casos de ejemplo generados de tipo "sin_interacción", explicado más abajo.
 
 
 ## Detalles:
@@ -80,13 +86,28 @@ Las etiquetas de cada ejemplo se exportaron al archivo `PFC_DGIdb/pfc_dgidb_expo
         order by 1, 2, 3, 4
     ) to '/tmp/pfc_dgidb_export_ifg.csv' csv
 
+#### Búsqueda:
+
 Luego se realizó la búsqueda de cada gen y droga en los textos de 3 maneras distintas: dejando de lado alias que tienen embeddings (pueden ser palabras comunes) y dejando de lado alias repetidos (alias que corresponden a más de un gen o droga a la vez); dejando de lado con embedding e incluyendo con repeticiones; y con todo incluido. Estas búsquedas se corresponden a los archivos `ocurrencias_entidad_se_sr.csv`, `ocurrencias_entidad_se_cr.csv` y `ocurrencias_entidad_todas.csv`.
 
-### Reemplazo
+#### Reemplazo:
 
 Para el reemplazo en sí, se reemplazó la aparición de cada alias de gen/droga por una cadena de la forma "xxxidentificadorxxx", primero teniendo en cuenta sólo las ocurrencias SE/SR; si las etiquetas no se encontraron en el texto con estas ocurrencias, entonces se intentó con las SE/CR; si igualmente no se encontraron, entonces se prosiguió con todas.
 
 Luego del proceso de reemplazo se obtuvieron 5115 archivos de texto (los artículos que no poseían documento quedaron con su título/abstract/palabras clave).
 
 ### Generación de ejemplos negativos
+
+
+
+fdssfdsg
+sdgfdgfdgfd
+fgfhgh
+
+
+
+26510944,g1108,d443,agonist
+26510944,g1108,d443,partial agonist
+26510944,g1113,d443,antagonist
+26510944,g1114,d443,antagonis
 
