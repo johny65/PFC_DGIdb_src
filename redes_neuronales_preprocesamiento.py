@@ -95,6 +95,7 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
     ll = len(pmids)
     used_top_words = []
     for i in range(ll):
+        # armar_test_set
         print("Generando matrices: {}/{}".format(i+1, ll))
         contenido = contenido_dict[pmids[i]]
 
@@ -136,7 +137,7 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
     ys = ys[indices_aleatorios]
     print("Ejemplos de entrenamiento aleatorizados.")
 
-    return xs, ys
+    return xs, ys # (x_entrenamiento, y_entrenamiento), (x_prueba, y_prueba)
 
 
 def cargar_interacciones(in_file):
