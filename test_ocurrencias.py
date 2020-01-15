@@ -56,7 +56,7 @@ class Test(unittest.TestCase):
 
         embeddings_ruta = "tests/test_emb"
         embeddings_dict = cargar_embeddings(embeddings_ruta)[0] # devuelve 3 elementos
-        self.assertEqual(6, len(embeddings_dict))
+        self.assertEqual(7, len(embeddings_dict))
         print("Embeddings cargados")
 
         pubs = cargar_publicaciones("tests", {}, pmids_lista)

@@ -111,7 +111,7 @@ def cargar_embeddings(embeddings_ruta):
         for fila in embeddings:
             datos = fila.split()
             palabra = datos[0]
-            embedding = np.asarray(datos[1:] + [0, 0], dtype='float32')
+            embedding = np.asarray(datos[1:] + [0, 0], dtype='float64')
             embeddings_dict[palabra] = embedding
             maximo_vector = max(embedding)
             if maximo_vector > maximo:

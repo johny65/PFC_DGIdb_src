@@ -2,8 +2,6 @@ import os
 import numpy as np
 import datos_preprocesamiento as dp
 import csv
-import re
-import unittest
 import random
 import math
 
@@ -20,11 +18,6 @@ def ass(expression):
     if not expression: raise AssertionError()
 
 
-class Test(unittest.TestCase):
-    def test_uno(self):
-        self.assertTrue(cargar_interacciones("test_emb"))
-
-
 def cargar_ejemplos(etiquetas_neural_networks_ruta,
                     ejemplos_directorio,
                     out_interacciones_ruta,
@@ -33,6 +26,7 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
                     max_longitud=500,
                     embeddings_file="glove.6B.50d.txt",
                     sin_interaccion_a_incluir=3144,
+                    randomize=True,
                     porcentaje_test=0.1):
     """
     Carga los ejemplos para las redes neuronales en una lista de listas
@@ -49,6 +43,8 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
             determina si se cargan los ejemplos sintéticos de "sin_interacción"
         sin_interaccion_a_incluir:
             si se incluyen ejemplos "sin_interacción", determina cuántos se incluyen
+        randomize:
+            indica si se aleatoriza el orden de los ejemplos cargados
         porcentaje_test:
             porcentaje para separar un conjunto de datos para test
     Salidas:
@@ -96,17 +92,17 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
 
     x_training, y_training = _cargar_ejemplos(training, contenido_dict, tokenizer, max_longitud,
                                               embeddings_dict, maximo_valor_embedding, minimo_valor_embedding,
-                                              interacciones_dict)
+                                              interacciones_dict, randomize)
     x_test, y_test = _cargar_ejemplos(test, contenido_dict, tokenizer, max_longitud,
                                       embeddings_dict, maximo_valor_embedding, minimo_valor_embedding,
-                                      interacciones_dict)
+                                      interacciones_dict, randomize)
 
     return (x_training, y_training), (x_test, y_test)
 
 
 def _cargar_ejemplos(etiquetas, contenido_dict, tokenizer, max_longitud,
                      embeddings_dict, maximo_valor_embedding, minimo_valor_embedding,
-                     interacciones_dict):
+                     interacciones_dict, randomize):
     # xs son las matrices de entrada; ys son los vectores de salida:
     xs = []; ys = []
     ll = len(etiquetas)
@@ -140,22 +136,16 @@ def _cargar_ejemplos(etiquetas, contenido_dict, tokenizer, max_longitud,
     xs = np.asarray(xs)
     ys = np.asarray(ys)
 
-    # Aleatoriza el orden de los ejemplos
-    # seed = random.random()
-    # random.seed(seed)
-    # random.shuffle(xs)
-    # random.seed(seed)
-    # random.shuffle(ys)
-
-    # Aleatoriza el orden de los ejemplos
-    print("Aleatorizando los ejemplos de entrenamiento.")
-    seed = random.random()
-    random.seed(seed)
-    indices_aleatorios = np.arange(len(xs))
-    random.shuffle(indices_aleatorios)
-    xs = xs[indices_aleatorios]
-    ys = ys[indices_aleatorios]
-    print("Ejemplos de entrenamiento aleatorizados.")
+    if randomize:
+        # Aleatoriza el orden de los ejemplos
+        print("Aleatorizando los ejemplos de entrenamiento.")
+        seed = random.random()
+        random.seed(seed)
+        indices_aleatorios = np.arange(len(xs))
+        random.shuffle(indices_aleatorios)
+        xs = xs[indices_aleatorios]
+        ys = ys[indices_aleatorios]
+        print("Ejemplos de entrenamiento aleatorizados.")
 
     return xs, ys
 
