@@ -232,7 +232,7 @@ def cargar_ocurrencias(in_file):
         lector_csv = csv.reader(f, delimiter=',', quoting=csv.QUOTE_ALL)
         for linea in lector_csv:
             if linea:
-                ocs[linea[0]] = linea[1:] if linea[1] else []
+                ocs[linea[0]] = linea[1:] if len(linea) > 1 else []
     return ocs
 
 def etiquetas_publicacion_gen(pmids_lista,ifg_lista,aliases_lista,salida):

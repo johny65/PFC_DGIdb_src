@@ -22,11 +22,20 @@ def replace(original_text, search_for_replace, replace_with):
     # reemplazo inteligente con regex:
     return reemplazo_inteligente(original_text, search_for_replace, replace_with)
 
+
 def reemplazar_bme(pmid, contents, output_dir):
+    full_reemplazar_bme(pmid, contents, alias_gen, alias_droga, etiquetas_genes, etiquetas_drogas,
+                        ocurrencias_genes_se_sr, ocurrencias_genes_se_cr, ocurrencias_genes_todas,
+                        ocurrencias_drogas_se_sr, ocurrencias_drogas_se_cr, ocurrencias_drogas_todas,
+                        output_dir, True)
+
+def full_reemplazar_bme(pmid, contents, alias_gen, alias_droga, etiquetas_genes, etiquetas_drogas,
+                        ocurrencias_genes_se_sr, ocurrencias_genes_se_cr, ocurrencias_genes_todas,
+                        ocurrencias_drogas_se_sr, ocurrencias_drogas_se_cr, ocurrencias_drogas_todas,
+                        output_dir, todisk):
     """
     contents: el contenido del paper (puede ser todo el artículo, o el abstract o título o palabras clave)
-    output_dir: directorio de salida
-    Variables disponibles:
+    output_dir: directorio de salida (si todisk = True)
     alias_gen: diccionario alias -> [nombres reales de genes con ese alias]
     alias_droga: diccionario alias -> [nombres reales de drogas con ese alias]
     etiquetas_genes: diccionario pmid -> [genes etiquetados en ese artículo]
@@ -45,9 +54,7 @@ def reemplazar_bme(pmid, contents, output_dir):
             logging.error("Diccionario: %s", str(genes))
         gen = list(genes)[0]
         contents = replace(contents, og, WRAPPER_INI + gen + WRAPPER_FIN)
-        if gen in genes_etiquetados and og == gen:
-            # sólo lo marco como que lo encontré si una de las ocurrencias es el nombre real, sino no así
-            # en otro paso reemplazo el nombre real sí o sí
+        if gen in genes_etiquetados:
             genes_etiquetados_encontrados.add(gen)
     
     if set(genes_etiquetados) != genes_etiquetados_encontrados:
@@ -106,7 +113,7 @@ def reemplazar_bme(pmid, contents, output_dir):
             logging.error("Diccionario: %s", str(drogas))
         droga = list(drogas)[0]
         contents = replace(contents, og, WRAPPER_INI + droga + WRAPPER_FIN)
-        if droga in drogas_etiquetadas and og == droga:
+        if droga in drogas_etiquetadas:
             drogas_etiquetadas_encontradas.add(droga)
     
     if set(drogas_etiquetadas) != drogas_etiquetadas_encontradas:
@@ -151,9 +158,11 @@ def reemplazar_bme(pmid, contents, output_dir):
     if drogas_etiquetadas_no_encontradas:
         logging.info("De las drogas etiquetadas, no se encontró: %s", str(drogas_etiquetadas_no_encontradas))
     
-    with open(output_dir / (pmid + ".txt"), "w") as f:
-        f.write(contents)
-
+    if todisk:
+        with open(output_dir / (pmid + ".txt"), "w") as f:
+            f.write(contents)
+    else:
+        return contents
 
 
 if __name__ == "__main__":
