@@ -8,6 +8,7 @@ import tokenizer
 from scraping import parallel
 Tokenizer = tokenizer.Tokenizer
 
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("datos_preprocesamiento")
 
 
@@ -157,7 +158,6 @@ def cargar_abstracts(pmids_titulos_abstracts_keywords_ruta):
         for linea in lector_csv:
             pmid = linea[0]
             abstract = linea[1]
-            logger.debug("PMID: %s, abstract: len %d", pmid, len(abstract))
             abstracts_dict[pmid] = abstract
     return abstracts_dict
 
@@ -207,10 +207,13 @@ def ocurrencias(entidades, publicaciones, embeddings, repeticiones, tipo, index)
             esta = re.search(r"\b{}\b".format(re.escape(entidad)), pub)
             # esta = entidad in pub
             if esta and entidad not in embeddings and entidad not in repeticiones:
+                logger.debug("Entidad '%s' no tiene embedding ni repetición.", entidad)
                 lista1.append(entidad)
             if esta and entidad not in embeddings:
+                logger.debug("Entidad '%s' no tiene embedding.", entidad)
                 lista2.append(entidad)
             if esta:
+                logger.debug("Entidad '%s' tiene embedding y repetición.", entidad)
                 lista3.append(entidad)
         escritor_csv1.writerow(lista1)
         escritor_csv2.writerow(lista2)
@@ -219,6 +222,7 @@ def ocurrencias(entidades, publicaciones, embeddings, repeticiones, tipo, index)
     salida_no_embedding_no_repeticiones_csv.close()
     salida_no_embedding_con_repeticiones_csv.close()
     salida_todas_csv.close()
+    return lista1, lista2, lista3
 
 def cargar_ocurrencias(in_file):
     """A partir de un archivo de ocurrencias de genes/drogas crea un diccionario con
@@ -409,7 +413,7 @@ def procesar_etiquetas(ifg_dgidb,ifg_generadas,salida):
 def main_generar_ocurrencias():
     """Para generar los archivos de ocurrencias."""
 
-    pmids_etiquetas_completas_csv = "PFC_DGIdb/pmids_etiquetas_completas_resto.csv"
+    pmids_etiquetas_completas_csv = "PFC_DGIdb/pmids_etiquetas_completas.csv"
     pmids_lista = cargar_pmids(pmids_etiquetas_completas_csv)
     print("pmids cargados")
 
@@ -428,7 +432,7 @@ def main_generar_ocurrencias():
     print("repeticiones cargadas")
 
     embeddings_ruta = "glove.6B.50d.txt"
-    embeddings_dict = cargar_embeddings(embeddings_ruta)
+    embeddings_dict = cargar_embeddings(embeddings_ruta)[0] # devuelve 3 elementos
     print("Embeddings cargados")
 
     pmids_titulos_abstracts_keywords_ruta = "scraping/pmids_titulos_abstracts_keywords.csv"

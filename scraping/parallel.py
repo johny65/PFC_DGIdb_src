@@ -38,9 +38,9 @@ def process_chunk(func, chunk, chunk_index, outq):
     outq.put((chunk_index, res))
 
 
-def parallel_map2(func, elements, params):
+def parallel_map2(func, elements, params, cores=None):
     cant = len(elements)
-    cpus = multiprocessing.cpu_count()
+    cpus = cores or multiprocessing.cpu_count()
     chunksize = int(math.ceil(cant / cpus))
     jobs = []
     elements_list = list(elements)

@@ -86,9 +86,9 @@ Las etiquetas de cada ejemplo se exportaron al archivo `PFC_DGIdb/pfc_dgidb_expo
         order by 1, 2, 3, 4
     ) to '/tmp/pfc_dgidb_export_ifg.csv' csv
 
-#### Búsqueda:
+#### Búsqueda de ocurrencias:
 
-Luego se realizó la búsqueda de cada gen y droga en los textos de 3 maneras distintas: dejando de lado alias que tienen embeddings (pueden ser palabras comunes) y dejando de lado alias repetidos (alias que corresponden a más de un gen o droga a la vez); dejando de lado con embedding e incluyendo con repeticiones; y con todo incluido. Estas búsquedas se corresponden a los archivos `ocurrencias_entidad_se_sr.csv`, `ocurrencias_entidad_se_cr.csv` y `ocurrencias_entidad_todas.csv`.
+Luego se realizó la búsqueda de cada gen y droga en los textos de 3 maneras distintas: dejando de lado alias que tienen embeddings (pueden ser palabras comunes) y dejando de lado alias repetidos (alias que corresponden a más de un gen o droga a la vez); dejando de lado con embedding e incluyendo con repeticiones; y con todo incluido. Estas búsquedas se corresponden a los archivos `entidad_se_sr.csv`, `entidad_se_cr.csv` y `entidad_ce_cr.csv`.
 
 #### Reemplazo:
 
