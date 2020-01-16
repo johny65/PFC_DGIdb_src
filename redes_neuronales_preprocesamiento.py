@@ -175,24 +175,15 @@ def generar_matriz_embeddings(contenido, gen, droga, embeddings_dict, maximo_val
     """
     Arma las matrices de entrada para la red. Funciona para un caso de ejemplo por vez.
 
-    [p|p]      [x1|x2]
-    [a|a]  ->  [x1|x2]
-    [l|l]      [x1|x2]
-    [1|2]      [x1|x2]
-               [.....]
+    [p|a|l|1]  ->  [x1|x2|...]
+    [p|a|l|2]      [x1|x2|...]
+
+    Si se quiere intercambiar filas por columnas, usar x.transpose().
 
     Parámetros:
     embeddings_dict: diccionario de embeddings, de la forma [palabra] -> embedding (columna)
     """
 
-    # print("Gen:", gen, " Droga:", droga)
-    # gen_emb = np.zeros((DIMENSION_EMBEDDING, 1))
-    # gen_emb[DIMENSION_EMBEDDING-2] = 1
-    # droga_emb = np.zeros((DIMENSION_EMBEDDING, 1))
-    # droga_emb[DIMENSION_EMBEDDING-1] = 1
-    # arreglo_base = np.zeros((DIMENSION_EMBEDDING, len(contenido)))
-
-    # Modificación: intercambio de filas por columnas para usar el Conv1D y el MaxPooling1D
     gen_emb = np.zeros((1, DIMENSION_EMBEDDING))
     gen_emb[0, DIMENSION_EMBEDDING-2] = 1
     droga_emb = np.zeros((1, DIMENSION_EMBEDDING))
@@ -207,19 +198,6 @@ def generar_matriz_embeddings(contenido, gen, droga, embeddings_dict, maximo_val
     # droga_emb = np.ones((DIMENSION_EMBEDDING, 1))
     # droga_emb[DIMENSION_EMBEDDING - 2] = 0
 
-    # for j in range(len(contenido)):
-    #     palabra = contenido[j]
-    #     if palabra == "xxx" + gen + "xxx":
-    #         arreglo_base[:,j] = gen_emb[:,0]
-    #     elif palabra == "xxx" + droga + "xxx":
-    #         arreglo_base[:,j] = droga_emb[:,0]
-    #     else:
-    #         embedding_vector = embeddings_dict.get(palabra)
-    #         if embedding_vector is not None:
-    #             arreglo_base[:,j] = embedding_vector # - minimo_valor_embedding) / (maximo_valor_embedding - minimo_valor_embedding) # normaliza los embeddings entre 0 y 1
-    # return arreglo_base
-
-    # Modificación: intercambio de filas por columnas para usar el Conv1D y el MaxPooling1D
     for j in range(len(contenido)):
         palabra = contenido[j]
         if palabra == "xxx" + gen + "xxx":

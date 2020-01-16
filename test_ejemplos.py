@@ -64,5 +64,35 @@ class Test(unittest.TestCase):
         self.assertTrue((xe[1] == r1).all())
 
 
+    def test_carga_transpuesta(self):
+        (xe, ye), (xt, yt) = cargar_ejemplos("tests/test_etiquetas_2", "tests",
+                                             "tests/test_int", porcentaje_test=0.0,
+                                             embeddings_file="tests/test_emb",
+                                             max_longitud=15, randomize=False)
+        x = xe[0].transpose()
+        r0 = np.asarray([
+            [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 5.1, 0.0, 1.1, 2.1, 0.7, 0.0, 3.1, 1.0, 0.0],
+            [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 5.2, 0.0, 1.2, 2.2, 0.8, 0.0, 3.2, 2.0, 0.0],
+            [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 5.3, 0.0, 1.3, 2.3, 0.9, 0.0, 3.3, 3.0, 0.0],
+            [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+            [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0]
+            ])
+        print(x.shape, r0.shape)
+        self.assertEqual(x.shape, r0.shape)
+        self.assertTrue((x == r0).all())
+
+        x = xe[1].transpose()
+        r1 = np.asarray([
+            [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 5.1, 0.0, 1.1, 2.1, 0.7, 0.0, 3.1, 1.0, 0.0],
+            [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 5.2, 0.0, 1.2, 2.2, 0.8, 0.0, 3.2, 2.0, 0.0],
+            [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 5.3, 0.0, 1.3, 2.3, 0.9, 0.0, 3.3, 3.0, 0.0],
+            [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+            [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0]
+            ])
+        print(x.shape, r1.shape)
+        self.assertEqual(x.shape, r1.shape)
+        self.assertTrue((x == r1).all())
+
+
 if __name__ == "__main__":
     unittest.main()
