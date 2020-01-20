@@ -161,13 +161,13 @@ def cargar_abstracts(pmids_titulos_abstracts_keywords_ruta):
             abstracts_dict[pmid] = abstract
     return abstracts_dict
 
-def cargar_pmids(pmids_file):
+def cargar_pmids(pmids_file, sep=None):
     """Carga de un archivo un listado de PMID. Cada línea del archivo debe ser de la forma
     [pmid algún texto]."""
     pmids = []
     with open(pmids_file, encoding="utf8") as f:
         for l in f:
-            pmids.append(l.split()[0])
+            pmids.append(l.split(sep)[0].strip())
     return pmids
 
 def cargar_publicaciones(publicaciones_directorio, abstracts_dict, pmids_lista):
@@ -178,7 +178,6 @@ def cargar_publicaciones(publicaciones_directorio, abstracts_dict, pmids_lista):
     files_in_dir = os.listdir(publicaciones_directorio)
     publicaciones_dict = dict()
     for pmid in pmids_lista:
-        logging.info(pmid)
         archivo_nombre = pmid + ".txt"
         if archivo_nombre in files_in_dir:
             archivo_ruta = os.path.join(publicaciones_directorio, archivo_nombre)
