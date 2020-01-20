@@ -413,7 +413,7 @@ def procesar_etiquetas(ifg_dgidb,ifg_generadas,salida):
 def main_generar_ocurrencias():
     """Para generar los archivos de ocurrencias."""
 
-    pmids_etiquetas_completas_csv = "PFC_DGIdb/pmids_etiquetas_completas_pre-resto.csv"
+    pmids_etiquetas_completas_csv = "PFC_DGIdb/pmids_etiquetas_completas.csv"
     pmids_lista = cargar_pmids(pmids_etiquetas_completas_csv)
     print("pmids cargados")
 
@@ -444,7 +444,7 @@ def main_generar_ocurrencias():
     print("publicaciones cargadas")
 
     print("Buscando ocurrencias de genes...")
-    # parallel.parallel_map2(g_occs, publicaciones_dict, (aliases_gen_conjunto, embeddings_dict, repeticiones_genes_lista))
+    parallel.parallel_map2(g_occs, publicaciones_dict, (aliases_gen_conjunto, embeddings_dict, repeticiones_genes_lista))
     
     print("Buscando ocurrencias de drogas...")
     parallel.parallel_map2(d_occs, publicaciones_dict, (aliases_droga_conjunto, embeddings_dict, repeticiones_drogas_lista))
