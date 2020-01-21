@@ -13,8 +13,8 @@ import os
 # os.environ["CUDA_VISIBLE_DEVICES"] = "-1" # Para utilizar CPU en lugar de GPU
 
 ''' Carga de datos '''
-etiquetas_neural_networks_ruta = "etiquetas_neural_networks.csv"
-ejemplos_directorio = "replaced_new"
+etiquetas_neural_networks_ruta = "etiquetas_neural_networks2.csv"
+ejemplos_directorio = "replaced_old"
 out_interacciones_ruta = "interacciones_lista.txt"
 embeddings_file = "glove.6B.50d.txt"
 # embeddings_file = "glove.6B.100d.txt"
@@ -23,7 +23,7 @@ embeddings_file = "glove.6B.50d.txt"
 top_palabras_frecuentes = 100
 maxima_longitud_ejemplos = 500
 longitud_palabras_mayor_a = 3
-cantidad_ejemplos_sin_interaccion = 2944
+cantidad_ejemplos_sin_interaccion = 3144 # old: 3144; new: 2944
 
 # maxima_longitud_ejemplos: 300 -> top_palabras_frecuentes: 64
 # maxima_longitud_ejemplos: 500 -> top_palabras_frecuentes: 103
@@ -37,8 +37,8 @@ cantidad_ejemplos_sin_interaccion = 2944
 k = 10 # Número de particiones para la validación cruzada
 PORCENTAJE_DROPEO = 0.4 # Pone en 0 el #% de los datos aleatoriamente
 CANTIDAD_FILTROS = 10 # Cantidad de filtro de convolución
-DIMENSION_KERNEL = (2, 3)
-CANTIDAD_EPOCAS = 5
+DIMENSION_KERNEL = (3, 5)
+CANTIDAD_EPOCAS = 15
 PORCENTAJE_VALIDACION = 0.2
 PORCENTAJE_PRUEBA = 0.2
 DIMENSION_BACHA = 32
@@ -238,12 +238,14 @@ else: # Análisis del modelo
                                         
         modelo_cnn.summary()
 
+        plot_model(modelo_cnn, to_file="modelo_cnn_{}_arquitectura.png".format(i+1))
+
         print("Particion: {}/{}".format(i+1,k))
 
         registro = modelo_cnn.fit(x=x_entrenamiento[folds_dict[i][0]],
                                   y=y_entrenamiento[folds_dict[i][0]],
                                   epochs = CANTIDAD_EPOCAS,
-                                  callbacks = [parada_temprana],
+                                  callbacks = [parada_temprana, bajar_velocidad],
                                   validation_data = (x_entrenamiento[folds_dict[i][1]], y_entrenamiento[folds_dict[i][1]]),
                                   verbose = 1,
                                   batch_size = DIMENSION_BACHA)
