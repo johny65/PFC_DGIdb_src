@@ -492,17 +492,17 @@ def main_generar_etiquetas():
     ocurrencias_remplazos_drogas_dict = ocurrencias_remplazos(publicaciones_dict,nombres_droga_lista)
     print("Ocurrencias de remplazos de drogas obtenidas.")
 
-    generar_etiquetas(ocurrencias_remplazos_genes_dict,ocurrencias_remplazos_drogas_dict,genes_dict,drogas_dict,genes_lista,drogas_lista,"etiquetas_generadas2.csv")
+    generar_etiquetas(ocurrencias_remplazos_genes_dict,ocurrencias_remplazos_drogas_dict,genes_dict,drogas_dict,genes_lista,drogas_lista,"etiquetas_generadas.csv")
     print("Generación de etiquetas completa.")
 
-    ifg_generadas_ruta = "E:/Descargas/Python/PFC_DGIdb_src/etiquetas_generadas2.csv"
+    ifg_generadas_ruta = "E:/Descargas/Python/PFC_DGIdb_src/etiquetas_generadas.csv"
     ifg_generadas = cargar_ifg(ifg_generadas_ruta)
     print("Interacciones fármaco-gen generadas cargadas.")
     
-    procesar_etiquetas(ifg_dgidb,ifg_generadas,"etiquetas_neural_networks2.csv")
+    procesar_etiquetas(ifg_dgidb,ifg_generadas,"etiquetas_neural_networks.csv")
     print("Procesamiento de etiquetas finalizado.")
 
 
 if __name__ == "__main__":
-    main_generar_ocurrencias()
-    # main_generar_etiquetas()
+    # main_generar_ocurrencias()
+    main_generar_etiquetas()

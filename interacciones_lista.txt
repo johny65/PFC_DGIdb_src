@@ -9,11 +9,21 @@ antibody
 partial agonist
 ligand
 product of
-activator
 multitarget
-modulator
-negative modulator
 potentiator
+modulator
+activator
+negative modulator
 suppressor
 blocker
 stimulator
+allosteric modulator
+unknown
+partial antagonist
+inhibitory immune response
+binding
+inhibitor, competitive
+inverse agonist
+neutralizer
+adduct
+positive allosteric modulator

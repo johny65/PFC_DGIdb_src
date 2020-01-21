@@ -25,7 +25,7 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
                     top_palabras=150,
                     max_longitud=500,
                     embeddings_file="glove.6B.50d.txt",
-                    sin_interaccion_a_incluir=3144,
+                    sin_interaccion_a_incluir=2944,
                     randomize=True,
                     porcentaje_test=0.1):
     """
