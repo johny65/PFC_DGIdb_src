@@ -111,8 +111,8 @@ def balancear_clases(etiquetas_archivo_ruta, # Archivo de etiquetas: pmid, gen, 
                      ejemplos_cantidad, # Cantidad de ejemplos a cargar
                      porcentaje_prueba): # Porcentaje de los ejemplos que se utilizarán para la prueba
     '''
-    Devuelves los conjuntos de interacciones fármaco-gen para entrenamiento y prueba
-    balanceados en cantidad de ejemplos por clase.
+    Devuelve (training, test): los conjuntos de interacciones fármaco-gen para
+    entrenamiento y prueba balanceados en cantidad de ejemplos por clase.
     '''
     ifg_balanceadas_prueba_lista = list()
     ifg_balanceadas_entrenamiento_lista = list()
@@ -142,7 +142,11 @@ def balancear_clases(etiquetas_archivo_ruta, # Archivo de etiquetas: pmid, gen, 
     # Armado de los conjuntos balanceados de entrenamiento y prueba
     interacciones_cantidad_dict = Counter(interacciones_lista)
     cantidad_clases = len(interacciones_cantidad_dict)
-    cantidad_minima_ejemplos = math.ceil(cantidad_clases/porcentaje_prueba)
+    if porcentaje_prueba == 0.0:
+        cantidad_ejemplos_prueba_por_clase = 0
+        cantidad_minima_ejemplos = 0
+    else:
+        cantidad_minima_ejemplos = math.ceil(cantidad_clases/porcentaje_prueba)
     if ejemplos_cantidad < cantidad_minima_ejemplos:
         ejemplos_cantidad = cantidad_minima_ejemplos
     cantidad_ejemplos_prueba_por_clase = int((ejemplos_cantidad*porcentaje_prueba)/cantidad_clases)

@@ -8,8 +8,9 @@ import tokenizer
 from scraping import parallel
 Tokenizer = tokenizer.Tokenizer
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig()
 logger = logging.getLogger("datos_preprocesamiento")
+logger.setLevel(logging.INFO)
 
 
 def cargar_pmids(pmids_etiquetas_completas_csv):
