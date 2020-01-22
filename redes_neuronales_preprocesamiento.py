@@ -1,9 +1,10 @@
 import os
 import numpy as np
-import datos_preprocesamiento as dp
 import csv
 import random
 import math
+import datos_preprocesamiento as dp
+import funciones_auxiliares as ff
 
 DIMENSION_EMBEDDING = -1 # se autocalcula
 
@@ -27,7 +28,8 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
                     embeddings_file="glove.6B.50d.txt",
                     sin_interaccion_a_incluir=2944,
                     randomize=True,
-                    porcentaje_test=0.1):
+                    porcentaje_test=0.1,
+                    ejemplos_cantidad=-1):
     """
     Carga los ejemplos para las redes neuronales en una lista de listas
     Entradas:
@@ -47,6 +49,9 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
             indica si se aleatoriza el orden de los ejemplos cargados
         porcentaje_test:
             porcentaje para separar un conjunto de datos para test
+        ejemplos_cantidad:
+            cantidad de ejemplos a usar (hace oversampling o undersampling según necesite).
+            Si es negativo usa el total que haya.
     Salidas:
         x_training: lista de matrices con los embeddings para servir como entrada a la red
         y_training: lista de vectores de salida
@@ -76,11 +81,16 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
     if interacciones_sin:
         for fila in random.sample(interacciones_sin, k=sin_interaccion_a_incluir):
             etiquetas.append(fila)
-    
+
     interacciones_dict = cargar_interacciones(out_interacciones_ruta)
     # test, training = armar_test_set(etiquetas, interacciones_dict, porcentaje_test)
-
+    if ejemplos_cantidad < 0: ejemplos_cantidad = len(etiquetas)
+    training, test = ff.balancear_clases(etiquetas_neural_networks_ruta,
+                                         out_interacciones_ruta, ejemplos_cantidad,
+                                         porcentaje_test)
+    
     print("Ejemplos (separados en training y test) y diccionario de contenidos armados.")
+    print("Total para entrenamiento:", len(training), "Total para test:", len(test))
 
     tokenizer = dp.Tokenizer(num_words=top_palabras)
     tokenizer.fit_on_texts(contenido_dict.values())
@@ -90,32 +100,31 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
     embeddings_dict, maximo_valor_embedding, minimo_valor_embedding = dp.cargar_embeddings(embeddings_file)
     DIMENSION_EMBEDDING = len(next(iter(embeddings_dict.values())))
 
-    x_training, y_training = _cargar_ejemplos(etiquetas, contenido_dict, tokenizer, max_longitud,
+    x_training, y_training = _cargar_ejemplos(training, contenido_dict, tokenizer, max_longitud,
                                               embeddings_dict, maximo_valor_embedding, minimo_valor_embedding,
-                                              interacciones_dict, randomize)
-    # x_test, y_test = _cargar_ejemplos(test, contenido_dict, tokenizer, max_longitud,
-    #                                   embeddings_dict, maximo_valor_embedding, minimo_valor_embedding,
-    #                                   interacciones_dict, randomize)
+                                              interacciones_dict, randomize, "entrenamiento")
+    x_test, y_test = _cargar_ejemplos(test, contenido_dict, tokenizer, max_longitud,
+                                      embeddings_dict, maximo_valor_embedding, minimo_valor_embedding,
+                                      interacciones_dict, randomize, "test")
 
-    return (x_training, y_training) #, (x_test, y_test)
+    return (x_training, y_training), (x_test, y_test)
 
 
 def _cargar_ejemplos(etiquetas, contenido_dict, tokenizer, max_longitud,
                      embeddings_dict, maximo_valor_embedding, minimo_valor_embedding,
-                     interacciones_dict, randomize):
+                     interacciones_dict, randomize, tipo):
     # xs son las matrices de entrada; ys son los vectores de salida:
-    xs = []; ys = []
     ll = len(etiquetas)
+    # xs = []; ys = []
+    xs = np.empty((ll, max_longitud, DIMENSION_EMBEDDING))
+    ys = np.empty((ll, len(interacciones_dict)))
     used_top_words = []
-
-    file_save_x = open("matriz_x_new", "w+")
-    file_save_y = open("matriz_y_new", "w+")
     for i in range(ll):
         pmid = etiquetas[i][0]
         gen = etiquetas[i][1]
         droga = etiquetas[i][2]
         interaccion = etiquetas[i][3]
-        print("Generando matrices: {}/{}".format(i+1, ll))
+        print("Generando matrices de {}: {}/{}".format(tipo, i+1, ll))
 
         contenido = contenido_dict[pmid]
         # contenido queda como lista sólo con las top words, y padeado en caso de ser necesario
@@ -132,17 +141,14 @@ def _cargar_ejemplos(etiquetas, contenido_dict, tokenizer, max_longitud,
         x = generar_matriz_embeddings(contenido, gen, droga, embeddings_dict, maximo_valor_embedding, minimo_valor_embedding)
         y = np.zeros((len(interacciones_dict)))
         y[interacciones_dict.get(interaccion, len(interacciones_dict)-1)] = 1
-        xs.append(x)
-        ys.append(y)
-        
-        # file_save_x.writelines(str(list(x)))
-        # file_save_y.writelines(str(list(y)))
+        # xs.append(x)
+        # ys.append(y)
+        xs[i] = x
+        ys[i] = y
 
     # print("Promedio de top words usadas:", sum(used_top_words)/len(used_top_words))
-    xs = np.asarray(xs)
-    ys = np.asarray(ys)
-    file_save_x.close()
-    file_save_y.close()
+    # xs = np.asarray(xs)
+    # ys = np.asarray(ys)
 
     if randomize:
         # Aleatoriza el orden de los ejemplos
