@@ -20,11 +20,6 @@ def ass(expression):
     if not expression: raise AssertionError()
 
 
-class Test(unittest.TestCase):
-    def test_uno(self):
-        self.assertTrue(cargar_interacciones("test_emb"))
-
-
 def cargar_ejemplos(etiquetas_neural_networks_ruta,
                     ejemplos_directorio,
                     out_interacciones_ruta,
@@ -32,7 +27,7 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
                     top_palabras=150,
                     max_longitud=500,
                     embeddings_file="glove.6B.50d.txt",
-                    sin_interaccion_a_incluir = 3144):
+                    sin_interaccion_a_incluir=2944):
                     # agregar PROCENTAJE_PRUEBA
     '''
     Carga los ejemplos para las redes neuronales en una lista de listas
@@ -88,9 +83,9 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
 
     # xs son las matrices de entrada; ys son los vectores de salida:
     ll = len(etiquetas)
-    xs = np.empty((ll, max_longitud, DIMENSION_EMBEDDING))
-    ys = np.empty((ll, len(interacciones_dict)))
-    # xs = []; ys = []
+    # xs = np.empty((ll, max_longitud, DIMENSION_EMBEDDING))
+    # ys = np.empty((ll, len(interacciones_dict)))
+    xs = []; ys = []
     used_top_words = []
     for i in range(ll):
         pmid = etiquetas[0]
@@ -115,12 +110,14 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
         x = generar_matriz_embeddings(contenido, gen, droga, embeddings_dict, maximo_valor_embedding, minimo_valor_embedding)
         y = np.zeros((len(interacciones_dict)))
         y[interacciones_dict.get(interaccion, len(interacciones_dict)-1)] = 1
-        xs[i] = x
-        ys[i] = y
+        # xs[i] = x
+        # ys[i] = y
+        xs.append(x)
+        ys.append(y)
 
     print("Promedio de top words usadas:", sum(used_top_words)/len(used_top_words))
-    # xs = np.asarray(xs)
-    # ys = np.asarray(ys)
+    xs = np.asarray(xs)
+    ys = np.asarray(ys)
 
     # Aleatoriza el orden de los ejemplos
     # seed = random.random()
