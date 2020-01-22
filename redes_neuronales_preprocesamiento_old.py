@@ -2,8 +2,11 @@ import os
 import numpy as np
 import datos_preprocesamiento as dp
 import csv
+import re
+import unittest
 import random
 import math
+import funciones_auxiliares as fa
 
 DIMENSION_EMBEDDING = -1 # se autocalcula
 
@@ -18,6 +21,11 @@ def ass(expression):
     if not expression: raise AssertionError()
 
 
+class Test(unittest.TestCase):
+    def test_uno(self):
+        self.assertTrue(cargar_interacciones("test_emb"))
+
+
 def cargar_ejemplos(etiquetas_neural_networks_ruta,
                     ejemplos_directorio,
                     out_interacciones_ruta,
@@ -25,37 +33,26 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
                     top_palabras=150,
                     max_longitud=500,
                     embeddings_file="glove.6B.50d.txt",
-                    sin_interaccion_a_incluir=2944,
-                    randomize=True,
-                    porcentaje_test=0.1):
-    """
+                    sin_interaccion_a_incluir = 3144):
+                    # agregar PROCENTAJE_PRUEBA
+    '''
     Carga los ejemplos para las redes neuronales en una lista de listas
     Entradas:
-        etiquetas_neural_networks_ruta:
-            archivo de interacciones fármaco-gen generadas
-        ejemplos_directorio:
-            directorio de los archivos txt de las publicaciones con los
-            remplazos hechos (xxx<nombre>xxx)
-        out_interacciones_ruta:
-            ruta del archivo con las interacciones de salida existentes, una por línea,
-            en el orden en que se mapeará la salida
-        incluir_sin_interacciones:
-            determina si se cargan los ejemplos sintéticos de "sin_interacción"
-        sin_interaccion_a_incluir:
-            si se incluyen ejemplos "sin_interacción", determina cuántos se incluyen
-        randomize:
-            indica si se aleatoriza el orden de los ejemplos cargados
-        porcentaje_test:
-            porcentaje para separar un conjunto de datos para test
+        etiquetas_neural_networks_ruta: archivo de interacciones fármaco-gen generadas
+        ejemplos_directorio: directorio de los archivos txt de las publicaciones con los
+                             remplazos hechos (xxx<nombre>xxx)
+        out_interacciones: ruta del archivo con las interacciones de salida existentes, una por línea,
+                           en el orden en que se mapeará la salida
     Salidas:
-        x_training: lista de matrices con los embeddings para servir como entrada a la red
-        y_training: lista de vectores de salida
-        x_test: lista de matrices del conjunto de test
-        y_test: lista de vectores de salida correspondientes al conjunto de test
-    """
+        xs: lista de matrices con los embeddings para servir como entrada a la red
+        ys: lista de vectores de salida
+    '''
     global DIMENSION_EMBEDDING
-    etiquetas = []
-    interacciones_sin = []
+    pmids = list()
+    genes = list()
+    drogas = list()
+    interacciones = list()
+    interacciones_sin = list()
     contenido_dict = dict() # tiene un elemento por artículo: pmid -> contenido
     with open(etiquetas_neural_networks_ruta, encoding="utf8") as enn_csv:
         lector_csv = csv.reader(enn_csv, delimiter = ',', quoting = csv.QUOTE_ALL)
@@ -63,24 +60,27 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
             pmid = fila[0]
             if contenido_dict.get(pmid) is None:
                 archivo_nombre = pmid + ".txt"
-                archivo_ruta = os.path.join(ejemplos_directorio, archivo_nombre)
-                with open(archivo_ruta, encoding="utf8") as ejemplo:
+                archivo_ruta = os.path.join(ejemplos_directorio,archivo_nombre)
+                with open(archivo_ruta,encoding="utf8") as ejemplo:
                     data = ejemplo.read()
                     contenido_dict[pmid] = data
             if incluir_sin_interacciones and fila[3] == "sin_interaccion":
                 interacciones_sin.append(fila)
             elif incluir_sin_interacciones or fila[3] != "sin_interaccion":
-                etiquetas.append(fila)
+                pmids.append(pmid)
+                genes.append(fila[1])
+                drogas.append(fila[2])
+                interacciones.append(fila[3])
 
     # tomar sólo x cantidad de sin_interaccion:
     if interacciones_sin:
         for fila in random.sample(interacciones_sin, k=sin_interaccion_a_incluir):
-            etiquetas.append(fila)
-    
-    interacciones_dict = cargar_interacciones(out_interacciones_ruta)
-    # test, training = armar_test_set(etiquetas, interacciones_dict, porcentaje_test)
+            pmids.append(pmid)
+            genes.append(fila[1])
+            drogas.append(fila[2])
+            interacciones.append(fila[3])
 
-    print("Ejemplos (separados en training y test) y diccionario de contenidos armados.")
+    print("Listas pmids, genes, drogas, interacciones y diccionario de contenidos armados.")
 
     tokenizer = dp.Tokenizer(num_words=top_palabras)
     tokenizer.fit_on_texts(contenido_dict.values())
@@ -89,37 +89,22 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
     
     embeddings_dict, maximo_valor_embedding, minimo_valor_embedding = dp.cargar_embeddings(embeddings_file)
     DIMENSION_EMBEDDING = len(next(iter(embeddings_dict.values())))
+    interacciones_dict = cargar_interacciones(out_interacciones_ruta)
 
-    x_training, y_training = _cargar_ejemplos(etiquetas, contenido_dict, tokenizer, max_longitud,
-                                              embeddings_dict, maximo_valor_embedding, minimo_valor_embedding,
-                                              interacciones_dict, randomize)
-    # x_test, y_test = _cargar_ejemplos(test, contenido_dict, tokenizer, max_longitud,
-    #                                   embeddings_dict, maximo_valor_embedding, minimo_valor_embedding,
-    #                                   interacciones_dict, randomize)
-
-    return (x_training, y_training) #, (x_test, y_test)
-
-
-def _cargar_ejemplos(etiquetas, contenido_dict, tokenizer, max_longitud,
-                     embeddings_dict, maximo_valor_embedding, minimo_valor_embedding,
-                     interacciones_dict, randomize):
     # xs son las matrices de entrada; ys son los vectores de salida:
     xs = []; ys = []
-    ll = len(etiquetas)
+    ll = len(pmids)
     used_top_words = []
 
-    file_save_x = open("matriz_x_new", "w+")
-    file_save_y = open("matriz_y_new", "w+")
+    file_save_x = open("matriz_x_old", "w+")
+    file_save_y = open("matriz_y_old", "w+")
     for i in range(ll):
-        pmid = etiquetas[i][0]
-        gen = etiquetas[i][1]
-        droga = etiquetas[i][2]
-        interaccion = etiquetas[i][3]
+        # armar_test_set
         print("Generando matrices: {}/{}".format(i+1, ll))
+        contenido = contenido_dict[pmids[i]]
 
-        contenido = contenido_dict[pmid]
         # contenido queda como lista sólo con las top words, y padeado en caso de ser necesario
-        contenido = tokenizer.texts_to_top_words(contenido, max_longitud, gen, droga)
+        contenido = tokenizer.texts_to_top_words(contenido, max_longitud, genes[i], drogas[i])
         used_top_words.append(tokenizer.used_top_words)
 
         if len(contenido) < max_longitud:
@@ -129,33 +114,41 @@ def _cargar_ejemplos(etiquetas, contenido_dict, tokenizer, max_longitud,
         else:
             contenido = contenido[:max_longitud]
 
-        x = generar_matriz_embeddings(contenido, gen, droga, embeddings_dict, maximo_valor_embedding, minimo_valor_embedding)
+        x = generar_matriz_embeddings(contenido, genes[i], drogas[i], embeddings_dict, maximo_valor_embedding, minimo_valor_embedding)
         y = np.zeros((len(interacciones_dict)))
-        y[interacciones_dict.get(interaccion, len(interacciones_dict)-1)] = 1
+        y[interacciones_dict.get(interacciones[i], len(interacciones_dict)-1)] = 1
         xs.append(x)
         ys.append(y)
-        
+
         # file_save_x.writelines(str(list(x)))
         # file_save_y.writelines(str(list(y)))
 
-    # print("Promedio de top words usadas:", sum(used_top_words)/len(used_top_words))
+    print("Promedio de top words usadas:", sum(used_top_words)/len(used_top_words))
     xs = np.asarray(xs)
     ys = np.asarray(ys)
+
     file_save_x.close()
     file_save_y.close()
 
-    if randomize:
-        # Aleatoriza el orden de los ejemplos
-        print("Aleatorizando los ejemplos de entrenamiento.")
-        seed = random.random()
-        random.seed(seed)
-        indices_aleatorios = np.arange(len(xs))
-        random.shuffle(indices_aleatorios)
-        xs = xs[indices_aleatorios]
-        ys = ys[indices_aleatorios]
-        print("Ejemplos de entrenamiento aleatorizados.")
 
-    return xs, ys
+    # Aleatoriza el orden de los ejemplos
+    # seed = random.random()
+    # random.seed(seed)
+    # random.shuffle(xs)
+    # random.seed(seed)
+    # random.shuffle(ys)
+
+    # Aleatoriza el orden de los ejemplos
+    print("Aleatorizando los ejemplos de entrenamiento.")
+    seed = random.random()
+    random.seed(seed)
+    indices_aleatorios = np.arange(len(xs))
+    random.shuffle(indices_aleatorios)
+    xs = xs[indices_aleatorios]
+    ys = ys[indices_aleatorios]
+    print("Ejemplos de entrenamiento aleatorizados.")
+
+    return xs, ys # (x_entrenamiento, y_entrenamiento), (x_prueba, y_prueba)
 
 
 def cargar_interacciones(in_file):
@@ -183,15 +176,24 @@ def generar_matriz_embeddings(contenido, gen, droga, embeddings_dict, maximo_val
     """
     Arma las matrices de entrada para la red. Funciona para un caso de ejemplo por vez.
 
-    [p|a|l|1]  ->  [x1|x2|...]
-    [p|a|l|2]      [x1|x2|...]
-
-    Si se quiere intercambiar filas por columnas, usar x.transpose().
+    [p|p]      [x1|x2]
+    [a|a]  ->  [x1|x2]
+    [l|l]      [x1|x2]
+    [1|2]      [x1|x2]
+               [.....]
 
     Parámetros:
     embeddings_dict: diccionario de embeddings, de la forma [palabra] -> embedding (columna)
     """
 
+    # print("Gen:", gen, " Droga:", droga)
+    # gen_emb = np.zeros((DIMENSION_EMBEDDING, 1))
+    # gen_emb[DIMENSION_EMBEDDING-2] = 1
+    # droga_emb = np.zeros((DIMENSION_EMBEDDING, 1))
+    # droga_emb[DIMENSION_EMBEDDING-1] = 1
+    # arreglo_base = np.zeros((DIMENSION_EMBEDDING, len(contenido)))
+
+    # Modificación: intercambio de filas por columnas para usar el Conv1D y el MaxPooling1D
     gen_emb = np.zeros((1, DIMENSION_EMBEDDING))
     gen_emb[0, DIMENSION_EMBEDDING-2] = 1
     droga_emb = np.zeros((1, DIMENSION_EMBEDDING))
@@ -206,6 +208,19 @@ def generar_matriz_embeddings(contenido, gen, droga, embeddings_dict, maximo_val
     # droga_emb = np.ones((DIMENSION_EMBEDDING, 1))
     # droga_emb[DIMENSION_EMBEDDING - 2] = 0
 
+    # for j in range(len(contenido)):
+    #     palabra = contenido[j]
+    #     if palabra == "xxx" + gen + "xxx":
+    #         arreglo_base[:,j] = gen_emb[:,0]
+    #     elif palabra == "xxx" + droga + "xxx":
+    #         arreglo_base[:,j] = droga_emb[:,0]
+    #     else:
+    #         embedding_vector = embeddings_dict.get(palabra)
+    #         if embedding_vector is not None:
+    #             arreglo_base[:,j] = embedding_vector # - minimo_valor_embedding) / (maximo_valor_embedding - minimo_valor_embedding) # normaliza los embeddings entre 0 y 1
+    # return arreglo_base
+
+    # Modificación: intercambio de filas por columnas para usar el Conv1D y el MaxPooling1D
     for j in range(len(contenido)):
         palabra = contenido[j]
         if palabra == "xxx" + gen + "xxx":
@@ -219,27 +234,30 @@ def generar_matriz_embeddings(contenido, gen, droga, embeddings_dict, maximo_val
     return arreglo_base
 
 
-def armar_test_set(etiquetas, interacciones_validas, porcentaje_test):
+def armar_test_set(archivo_etiquetas, archivo_interacciones, porcentaje_test):
     """
-    Toma 'porcentaje_test' de ejemplos de manera aleatoria de la lista de etiquetas,
+    Toma 'porcentaje_test' de ejemplos de manera aleatoria del archivo de etiquetas,
     asegurándose de que casa clase (interacción) esté presente ese mismo porcentaje.
-    Las interacciones tenidas en cuenta son las presentes en la lista 'interacciones_validas'
+    Las interacciones tenidas en cuenta son las presentes en el archivo 'archivo_interacciones'
     (sino se cuentan como "other").
 
-    Cada elemento de la lista de etiquetas es de la forma "[pmid, gen, droga, interacción]".
+    Cada línea del archivo es de la forma "pmid,gen,droga,interacción".
     El porcentaje de la forma 0.x.
     Devuelve dos listas: los ejemplos separados para test, y el total sin esos ejemplos.
     El orden del conjunto de test queda aleatorio también.
     """
+    interacciones_validas = cargar_interacciones(archivo_interacciones)
     clases = {}
     test_set = []
     all_set = []
-    for row in etiquetas:
-        interaccion = row[3]
-        if not interaccion in interacciones_validas:
-            interaccion = "other"
-        clases.setdefault(interaccion, []).append(row)
-        all_set.append(row)
+    with open(archivo_etiquetas, encoding="utf8") as f:
+        reader = csv.reader(f)
+        for row in reader:
+            interaccion = row[3]
+            if not interaccion in interacciones_validas:
+                interaccion = "other"
+            clases.setdefault(interaccion, []).append(row)
+            all_set.append(row)
     for interaccion, ejemplos in clases.items():
         cantidad = len(ejemplos)
         # siempre deja al menos un elemento de cada clase (con el ceil)
@@ -257,10 +275,8 @@ if __name__ == "__main__":
     # ejemplos_directorio = "."
     # embeddings_ruta = "E:/Descargas/Python/glove.6B.300d.txt"
     out_interacciones_ruta = "interacciones_lista.txt"
-    (xe, ye), (xt, yt) = cargar_ejemplos(etiquetas_neural_networks_ruta, ejemplos_directorio,
-                                     out_interacciones_ruta, porcentaje_test=0.2,
-                                     sin_interaccion_a_incluir=1)
-    print("Cantidad x entrenamiento:", len(xe))
-    print("Cantidad y entrenamiento:", len(ye))
-    print("Cantidad x test:", len(xt))
-    print("Cantidad y test:", len(yt))
+    cargar_ejemplos(etiquetas_neural_networks_ruta, ejemplos_directorio, out_interacciones_ruta)
+    
+    # t, a = armar_test_set(etiquetas_neural_networks_ruta, out_interacciones_ruta, 0.2)
+    # print("Cantidad en todos:", len(a))
+    # print("Cantidad en test:", len(t))

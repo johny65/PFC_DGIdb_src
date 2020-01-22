@@ -1354,3 +1354,300 @@ Resultados del entrenamiento:
                 Acierto en la prueba en la partición 8: 1.0
                 Acierto en la prueba en la partición 9: 1.0
                 Acierto en la prueba en la partición 10: 1.0
+
+Características de los datos de entrada:
+        Cantidad de ejemplos cargados: 3974
+        Cantidad de ejemplos con la etiqueta sin_interacción: 1030
+        Cantidad de ejemplos utilizados para entrenar: 3180
+        Cantidad de ejemplos utilizados para validar: 794
+        Cantidad de ejemplos utilizados para probar: 0
+        Top de palabras frecuentes utilizadas: 100
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 500
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.4
+        Cantidad de filtros: 100
+        Dimensión de los kernels: (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)
+        Neuronas en la capa oculta: 512
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 20
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 100
+        Dimensión batch: 32
+        Cantidad de particiones: 10
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.6636163651943207
+                Acierto en el entrenamiento en la partición 1: 0.6603773832321167
+                Acierto en el entrenamiento en la partición 2: 0.694654107093811
+                Acierto en el entrenamiento en la partición 3: 0.7292453050613403
+                Acierto en el entrenamiento en la partición 4: 0.6440251469612122
+                Acierto en el entrenamiento en la partición 5: 0.6553459167480469
+                Acierto en el entrenamiento en la partición 6: 0.6531446576118469
+                Acierto en el entrenamiento en la partición 7: 0.647484302520752
+                Acierto en el entrenamiento en la partición 8: 0.6682389974594116
+                Acierto en el entrenamiento en la partición 9: 0.6361635327339172
+                Acierto en el entrenamiento en la partición 10: 0.647484302520752
+        Acierto en la validación promedio: 0.6317380368709564
+                Acierto en la validación en la partición 1: 0.6070529222488403
+                Acierto en la validación en la partición 2: 0.6473551392555237
+                Acierto en la validación en la partición 3: 0.6536523699760437
+                Acierto en la validación en la partición 4: 0.6246851682662964
+                Acierto en la validación en la partición 5: 0.6196473836898804
+                Acierto en la validación en la partición 6: 0.6826196312904358
+                Acierto en la validación en la partición 7: 0.6272040009498596
+                Acierto en la validación en la partición 8: 0.6347606778144836
+                Acierto en la validación en la partición 9: 0.6108312606811523
+                Acierto en la validación en la partición 10: 0.6095718145370483
+
+Características de los datos de entrada:
+        Cantidad de ejemplos cargados: 3974
+        Cantidad de ejemplos con la etiqueta sin_interacción: 1030
+        Cantidad de ejemplos utilizados para entrenar: 3180
+        Cantidad de ejemplos utilizados para validar: 794
+        Cantidad de ejemplos utilizados para probar: 0
+        Top de palabras frecuentes utilizadas: 100
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 500
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.4
+        Cantidad de filtros: 100
+        Dimensión de los kernels: (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)
+        Neuronas en la capa oculta: 512
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 19
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 100
+        Dimensión batch: 32
+        Cantidad de particiones: 10
+Resultados del entrenamiento:
+        Acierto en el entrenamiento promedio: 0.6393396198749542
+                Acierto en el entrenamiento en la partición 1: 0.6198112964630127
+                Acierto en el entrenamiento en la partición 2: 0.6811320781707764
+                Acierto en el entrenamiento en la partición 3: 0.6034591197967529
+                Acierto en el entrenamiento en la partición 4: 0.597169816493988
+                Acierto en el entrenamiento en la partición 5: 0.6113207340240479
+                Acierto en el entrenamiento en la partición 6: 0.6732704639434814
+                Acierto en el entrenamiento en la partición 7: 0.6283018589019775
+                Acierto en el entrenamiento en la partición 8: 0.7075471878051758
+                Acierto en el entrenamiento en la partición 9: 0.6261005997657776
+                Acierto en el entrenamiento en la partición 10: 0.645283043384552
+        Acierto en la validación promedio: 0.6196473479270935
+                Acierto en la validación en la partición 1: 0.6448362469673157
+                Acierto en la validación en la partición 2: 0.6322417855262756
+                Acierto en la validación en la partición 3: 0.5743073225021362
+                Acierto en la validación en la partición 4: 0.5894206762313843
+                Acierto en la validación en la partición 5: 0.6511334776878357
+                Acierto en la validación en la partición 6: 0.6637279391288757
+                Acierto en la validación en la partición 7: 0.6360201239585876
+                Acierto en la validación en la partición 8: 0.6498740315437317
+                Acierto en la validación en la partición 9: 0.5793451070785522
+                Acierto en la validación en la partición 10: 0.5755667686462402
+
+Características de los datos de entrada:
+        Cantidad de ejemplos cargados: 3974
+        Cantidad de ejemplos con la etiqueta sin_interacción: 1030
+        Cantidad de ejemplos utilizados para entrenar: 3180
+        Cantidad de ejemplos utilizados para validar: 794
+        Cantidad de ejemplos utilizados para probar: 0
+        Top de palabras frecuentes utilizadas: 100
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 500
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.4
+        Cantidad de filtros: 100
+        Dimensión de los kernels: (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)
+        Neuronas en la capa oculta: 512
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 18
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 100
+        Dimensión batch: 32
+        Cantidad de particiones: 10
+Resultados del entrenamiento:
+        Acierto en el entrenamiento - media: 0.653364771604538
+        Acierto en el entrenamiento - desvío: 0.04599373968701741
+                Acierto en el entrenamiento en la partición 1: 0.6283018589019775
+                Acierto en el entrenamiento en la partición 2: 0.7188678979873657
+                Acierto en el entrenamiento en la partición 3: 0.6182389855384827
+                Acierto en el entrenamiento en la partición 4: 0.650628924369812
+                Acierto en el entrenamiento en la partición 5: 0.5959119200706482
+                Acierto en el entrenamiento en la partición 6: 0.6606917977333069
+                Acierto en el entrenamiento en la partición 7: 0.7245283126831055
+                Acierto en el entrenamiento en la partición 8: 0.6232704520225525
+                Acierto en el entrenamiento en la partición 9: 0.6034591197967529
+                Acierto en el entrenamiento en la partición 10: 0.7097484469413757
+        Acierto en la validación - media: 0.6134760737419128
+        Acierto en el validación - desvío: 0.028611586927311226
+                Acierto en la validación en la partición 1: 0.6007556915283203
+                Acierto en la validación en la partición 2: 0.6624684929847717
+                Acierto en la validación en la partición 3: 0.5843828916549683
+                Acierto en la validación en la partición 4: 0.6284634470939636
+                Acierto en la validación en la partición 5: 0.5730478763580322
+                Acierto en la validación en la partición 6: 0.6360201239585876
+                Acierto en la validación en la partición 7: 0.6460956931114197
+                Acierto en la validación en la partición 8: 0.6146095991134644
+                Acierto en la validación en la partición 9: 0.5768262147903442
+                Acierto en la validación en la partición 10: 0.6120907068252563
+
+Características de los datos de entrada:
+        Cantidad de ejemplos cargados: 3974
+        Cantidad de ejemplos con la etiqueta sin_interacción: 1030
+        Cantidad de ejemplos utilizados para entrenar: 3180
+        Cantidad de ejemplos utilizados para validar: 794
+        Cantidad de ejemplos utilizados para probar: 0
+        Top de palabras frecuentes utilizadas: 100
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 500
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.4
+        Cantidad de filtros: 100
+        Dimensión de los kernels: (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)
+        Neuronas en la capa oculta: 512
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 17
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 100
+        Dimensión batch: 32
+        Cantidad de particiones: 10
+Resultados del entrenamiento:
+        Acierto en el entrenamiento - media: 0.6481760919094086
+        Acierto en el entrenamiento - desvío: 0.02243343886146766
+                Acierto en el entrenamiento en la partición 1: 0.6669811606407166
+                Acierto en el entrenamiento en la partición 2: 0.6569182276725769
+                Acierto en el entrenamiento en la partición 3: 0.6566037535667419
+                Acierto en el entrenamiento en la partición 4: 0.6355345845222473
+                Acierto en el entrenamiento en la partición 5: 0.647169828414917
+                Acierto en el entrenamiento en la partición 6: 0.6691823601722717
+                Acierto en el entrenamiento en la partición 7: 0.601257860660553
+                Acierto en el entrenamiento en la partición 8: 0.6713836193084717
+                Acierto en el entrenamiento en la partición 9: 0.6606917977333069
+                Acierto en el entrenamiento en la partición 10: 0.6160377264022827
+        Acierto en la validación - media: 0.6210327506065368
+        Acierto en el validación - desvío: 0.01900426539814407
+                Acierto en la validación en la partición 1: 0.6196473836898804
+                Acierto en la validación en la partición 2: 0.6234257221221924
+                Acierto en la validación en la partición 3: 0.6083123683929443
+                Acierto en la validación en la partición 4: 0.6146095991134644
+                Acierto en la validación en la partición 5: 0.6335012316703796
+                Acierto en la validación en la partición 6: 0.6347606778144836
+                Acierto en la validación en la partición 7: 0.6146095991134644
+                Acierto en la validación en la partición 8: 0.6335012316703796
+                Acierto en la validación en la partición 9: 0.6511334776878357
+                Acierto en la validación en la partición 10: 0.5768262147903442
+
+Características de los datos de entrada:
+        Cantidad de ejemplos cargados: 3974
+        Cantidad de ejemplos con la etiqueta sin_interacción: 1030
+        Cantidad de ejemplos utilizados para entrenar: 3180
+        Cantidad de ejemplos utilizados para validar: 794
+        Cantidad de ejemplos utilizados para probar: 0
+        Top de palabras frecuentes utilizadas: 100
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 500
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.4
+        Cantidad de filtros: 100
+        Dimensión de los kernels: (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)
+        Neuronas en la capa oculta: 512
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 16
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 100
+        Dimensión batch: 32
+        Cantidad de particiones: 10
+Resultados del entrenamiento:
+        Acierto en el entrenamiento - media: 0.6540251612663269
+        Acierto en el entrenamiento - desvío: 0.046073157910225794
+                Acierto en el entrenamiento en la partición 1: 0.6150943636894226
+                Acierto en el entrenamiento en la partición 2: 0.6125786304473877
+                Acierto en el entrenamiento en la partición 3: 0.6858490705490112
+                Acierto en el entrenamiento en la partición 4: 0.6801886558532715
+                Acierto en el entrenamiento en la partición 5: 0.6147798895835876
+                Acierto en el entrenamiento en la partición 6: 0.7261006236076355
+                Acierto en el entrenamiento en la partición 7: 0.6399371027946472
+                Acierto en el entrenamiento en la partición 8: 0.5877358317375183
+                Acierto en el entrenamiento en la partición 9: 0.7031446695327759
+                Acierto en el entrenamiento en la partición 10: 0.6748427748680115
+        Acierto en la validación - media: 0.6186398088932037
+        Acierto en el validación - desvío: 0.014624989556348398
+                Acierto en la validación en la partición 1: 0.6234257221221924
+                Acierto en la validación en la partición 2: 0.5843828916549683
+                Acierto en la validación en la partición 3: 0.6309823393821716
+                Acierto en la validación en la partición 4: 0.6196473836898804
+                Acierto en la validación en la partición 5: 0.6171284914016724
+                Acierto en la validación en la partición 6: 0.6158690452575684
+                Acierto en la validación en la partición 7: 0.6272040009498596
+                Acierto en la validación en la partición 8: 0.6146095991134644
+                Acierto en la validación en la partición 9: 0.6397984623908997
+                Acierto en la validación en la partición 10: 0.6133501529693604
+
+Características de los datos de entrada:
+        Cantidad de ejemplos cargados: 3974
+        Cantidad de ejemplos con la etiqueta sin_interacción: 1030
+        Cantidad de ejemplos utilizados para entrenar: 3180
+        Cantidad de ejemplos utilizados para validar: 794
+        Cantidad de ejemplos utilizados para probar: 0
+        Top de palabras frecuentes utilizadas: 100
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 500
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.4
+        Cantidad de filtros: 100
+        Dimensión de los kernels: (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)
+        Neuronas en la capa oculta: 512
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 15
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 100
+        Dimensión batch: 32
+        Cantidad de particiones: 10
+Resultados del entrenamiento:
+        Acierto en el entrenamiento - media: 0.679308170080185
+        Acierto en el entrenamiento - desvío: 0.04860698731364065
+                Acierto en el entrenamiento en la partición 1: 0.6616352200508118
+                Acierto en el entrenamiento en la partición 2: 0.6066038012504578
+                Acierto en el entrenamiento en la partición 3: 0.705974817276001
+                Acierto en el entrenamiento en la partición 4: 0.6198112964630127
+                Acierto en el entrenamiento en la partición 5: 0.649056613445282
+                Acierto en el entrenamiento en la partición 6: 0.7616352438926697
+                Acierto en el entrenamiento en la partición 7: 0.6823899149894714
+                Acierto en el entrenamiento en la partición 8: 0.6933962106704712
+                Acierto en el entrenamiento en la partición 9: 0.6742138266563416
+                Acierto en el entrenamiento en la partición 10: 0.7383647561073303
+        Acierto en la validación - media: 0.6251889169216156
+        Acierto en el validación - desvío: 0.028031576606790853
+                Acierto en la validación en la partición 1: 0.6120907068252563
+                Acierto en la validación en la partición 2: 0.6158690452575684
+                Acierto en la validación en la partición 3: 0.6574307084083557
+                Acierto en la validación en la partición 4: 0.6523929238319397
+                Acierto en la validación en la partición 5: 0.6397984623908997
+                Acierto en la validación en la partición 6: 0.6259445548057556
+                Acierto en la validación en la partición 7: 0.6246851682662964
+                Acierto en la validación en la partición 8: 0.6234257221221924
+                Acierto en la validación en la partición 9: 0.5579345226287842
+                Acierto en la validación en la partición 10: 0.6423173546791077
+

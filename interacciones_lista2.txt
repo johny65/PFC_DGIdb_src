@@ -1,0 +1,30 @@
+sin_interaccion
+inhibitor
+agonist
+antagonist
+cofactor
+binder
+inducer
+antibody
+partial agonist
+ligand
+product of
+multitarget
+potentiator
+modulator
+activator
+negative modulator
+other
+suppressor
+blocker
+stimulator
+allosteric modulator
+unknown
+partial antagonist
+inhibitory immune response
+binding
+inhibitor, competitive
+inverse agonist
+neutralizer
+adduct
+positive allosteric modulator
