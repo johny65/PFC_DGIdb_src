@@ -166,7 +166,7 @@ def _cargar_ejemplos(etiquetas, contenido_dict, tokenizer, max_longitud,
     return xs, ys
 
 
-def cargar_interacciones(in_file):
+def cargar_interacciones(in_file, invertir=False):
     """
     Carga el archivo de interacciones existentes de salida, y devuelve un diccionario
     con el índice de cada una para mapear el vector de salida. Por ejemplo:
@@ -182,8 +182,11 @@ def cargar_interacciones(in_file):
 
     """
     with open(in_file, encoding="utf8") as f:
-        res = {l.strip(): i for i, l in enumerate(f.readlines())}
-    res["other"] = len(res)
+        if invertir:
+            res = [l.strip() for l in f.readlines()]
+        else:
+            res = {l.strip(): i for i, l in enumerate(f.readlines())}
+    # res["other"] = len(res)
     return res
 
 
