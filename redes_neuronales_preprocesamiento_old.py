@@ -6,7 +6,6 @@ import re
 import unittest
 import random
 import math
-import funciones_auxiliares as fa
 
 DIMENSION_EMBEDDING = -1 # se autocalcula
 
@@ -48,11 +47,8 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
         ys: lista de vectores de salida
     '''
     global DIMENSION_EMBEDDING
-    pmids = list()
-    genes = list()
-    drogas = list()
-    interacciones = list()
-    interacciones_sin = list()
+    etiquetas = []
+    interacciones_sin = []
     contenido_dict = dict() # tiene un elemento por artículo: pmid -> contenido
     with open(etiquetas_neural_networks_ruta, encoding="utf8") as enn_csv:
         lector_csv = csv.reader(enn_csv, delimiter = ',', quoting = csv.QUOTE_ALL)
@@ -67,18 +63,17 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
             if incluir_sin_interacciones and fila[3] == "sin_interaccion":
                 interacciones_sin.append(fila)
             elif incluir_sin_interacciones or fila[3] != "sin_interaccion":
-                pmids.append(pmid)
-                genes.append(fila[1])
-                drogas.append(fila[2])
-                interacciones.append(fila[3])
+                etiquetas.append(fila)
 
     # tomar sólo x cantidad de sin_interaccion:
     if interacciones_sin:
         for fila in random.sample(interacciones_sin, k=sin_interaccion_a_incluir):
-            pmids.append(pmid)
-            genes.append(fila[1])
-            drogas.append(fila[2])
-            interacciones.append(fila[3])
+        # for fila in interacciones_sin[:sin_interaccion_a_incluir]:
+            etiquetas.append(fila)
+            # pmids.append(pmid)
+            # genes.append(fila[1])
+            # drogas.append(fila[2])
+            # interacciones.append(fila[3])
 
     print("Listas pmids, genes, drogas, interacciones y diccionario de contenidos armados.")
 
@@ -92,19 +87,22 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
     interacciones_dict = cargar_interacciones(out_interacciones_ruta)
 
     # xs son las matrices de entrada; ys son los vectores de salida:
-    xs = []; ys = []
-    ll = len(pmids)
+    ll = len(etiquetas)
+    xs = np.empty((ll, max_longitud, DIMENSION_EMBEDDING))
+    ys = np.empty((ll, len(interacciones_dict)))
+    # xs = []; ys = []
     used_top_words = []
-
-    file_save_x = open("matriz_x_old", "w+")
-    file_save_y = open("matriz_y_old", "w+")
     for i in range(ll):
-        # armar_test_set
+        pmid = etiquetas[0]
+        gen = etiquetas[1]
+        droga = etiquetas[2]
+        interaccion = etiquetas[3]
+
         print("Generando matrices: {}/{}".format(i+1, ll))
-        contenido = contenido_dict[pmids[i]]
+        contenido = contenido_dict[pmid]
 
         # contenido queda como lista sólo con las top words, y padeado en caso de ser necesario
-        contenido = tokenizer.texts_to_top_words(contenido, max_longitud, genes[i], drogas[i])
+        contenido = tokenizer.texts_to_top_words(contenido, max_longitud, gen, droga)
         used_top_words.append(tokenizer.used_top_words)
 
         if len(contenido) < max_longitud:
@@ -114,22 +112,15 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
         else:
             contenido = contenido[:max_longitud]
 
-        x = generar_matriz_embeddings(contenido, genes[i], drogas[i], embeddings_dict, maximo_valor_embedding, minimo_valor_embedding)
+        x = generar_matriz_embeddings(contenido, gen, droga, embeddings_dict, maximo_valor_embedding, minimo_valor_embedding)
         y = np.zeros((len(interacciones_dict)))
-        y[interacciones_dict.get(interacciones[i], len(interacciones_dict)-1)] = 1
-        xs.append(x)
-        ys.append(y)
-
-        # file_save_x.writelines(str(list(x)))
-        # file_save_y.writelines(str(list(y)))
+        y[interacciones_dict.get(interaccion, len(interacciones_dict)-1)] = 1
+        xs[i] = x
+        ys[i] = y
 
     print("Promedio de top words usadas:", sum(used_top_words)/len(used_top_words))
-    xs = np.asarray(xs)
-    ys = np.asarray(ys)
-
-    file_save_x.close()
-    file_save_y.close()
-
+    # xs = np.asarray(xs)
+    # ys = np.asarray(ys)
 
     # Aleatoriza el orden de los ejemplos
     # seed = random.random()
@@ -148,7 +139,7 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
     ys = ys[indices_aleatorios]
     print("Ejemplos de entrenamiento aleatorizados.")
 
-    return xs, ys # (x_entrenamiento, y_entrenamiento), (x_prueba, y_prueba)
+    return (xs, ys) #, (np.array([]), np.array([])) # (x_entrenamiento, y_entrenamiento), (x_prueba, y_prueba)
 
 
 def cargar_interacciones(in_file):
