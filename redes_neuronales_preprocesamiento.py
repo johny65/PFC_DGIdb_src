@@ -50,7 +50,9 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
         porcentaje_test:
             porcentaje para separar un conjunto de datos para test
         ejemplos_cantidad:
-            cantidad de ejemplos a usar (hace oversampling o undersampling según necesite).
+            si se pasa un valor positivo, se usa esa cantidad de ejemplos para separar en
+            entrenamiento y test balanceando las clases (hace oversampling o undersampling
+            según necesite).
             Si es negativo usa el total que haya.
     Salidas:
         x_training: lista de matrices con los embeddings para servir como entrada a la red
@@ -63,7 +65,7 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
     interacciones_sin = []
     contenido_dict = dict() # tiene un elemento por artículo: pmid -> contenido
     with open(etiquetas_neural_networks_ruta, encoding="utf8") as enn_csv:
-        lector_csv = csv.reader(enn_csv, delimiter = ',', quoting = csv.QUOTE_ALL)
+        lector_csv = csv.reader(enn_csv, delimiter=',', quoting=csv.QUOTE_ALL)
         for fila in lector_csv:
             pmid = fila[0]
             if contenido_dict.get(pmid) is None:
@@ -77,18 +79,23 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
             elif incluir_sin_interacciones or fila[3] != "sin_interaccion":
                 etiquetas.append(fila)
 
-    # tomar sólo x cantidad de sin_interaccion:
-    if interacciones_sin:
-        for fila in random.sample(interacciones_sin, k=sin_interaccion_a_incluir):
-            etiquetas.append(fila)
-
     interacciones_dict = cargar_interacciones(out_interacciones_ruta)
-    # test, training = armar_test_set(etiquetas, interacciones_dict, porcentaje_test)
-    if ejemplos_cantidad < 0: ejemplos_cantidad = len(etiquetas)
-    training, test = ff.balancear_clases(etiquetas_neural_networks_ruta,
-                                         out_interacciones_ruta, ejemplos_cantidad,
-                                         porcentaje_test)
-    
+
+    # si se definió 'ejemplos_cantidad' se balancean las clases:
+    if ejemplos_cantidad > 0:
+        training, test = ff.balancear_clases(etiquetas_neural_networks_ruta,
+                                             out_interacciones_ruta, ejemplos_cantidad,
+                                             porcentaje_test)
+
+    else: # sino se separa en test manteniendo proporción de clases:
+
+        # tomar sólo x cantidad de sin_interaccion:
+        if interacciones_sin:
+            for fila in random.sample(interacciones_sin, k=sin_interaccion_a_incluir):
+                etiquetas.append(fila)
+
+        training, test = armar_test_set(etiquetas, interacciones_dict, porcentaje_test)
+
     print("Ejemplos (separados en training y test) y diccionario de contenidos armados.")
     print("Total para entrenamiento:", len(training), "Total para test:", len(test))
 
@@ -115,7 +122,6 @@ def _cargar_ejemplos(etiquetas, contenido_dict, tokenizer, max_longitud,
                      interacciones_dict, randomize, tipo):
     # xs son las matrices de entrada; ys son los vectores de salida:
     ll = len(etiquetas)
-    # xs = []; ys = []
     xs = np.empty((ll, max_longitud, DIMENSION_EMBEDDING))
     ys = np.empty((ll, len(interacciones_dict)))
     used_top_words = []
@@ -141,25 +147,21 @@ def _cargar_ejemplos(etiquetas, contenido_dict, tokenizer, max_longitud,
         x = generar_matriz_embeddings(contenido, gen, droga, embeddings_dict, maximo_valor_embedding, minimo_valor_embedding)
         y = np.zeros((len(interacciones_dict)))
         y[interacciones_dict.get(interaccion, len(interacciones_dict)-1)] = 1
-        # xs.append(x)
-        # ys.append(y)
         xs[i] = x
         ys[i] = y
 
     # print("Promedio de top words usadas:", sum(used_top_words)/len(used_top_words))
-    # xs = np.asarray(xs)
-    # ys = np.asarray(ys)
 
     if randomize:
         # Aleatoriza el orden de los ejemplos
-        print("Aleatorizando los ejemplos de entrenamiento.")
+        print("Aleatorizando los ejemplos de {}...".format(tipo))
         seed = random.random()
         random.seed(seed)
         indices_aleatorios = np.arange(len(xs))
         random.shuffle(indices_aleatorios)
         xs = xs[indices_aleatorios]
         ys = ys[indices_aleatorios]
-        print("Ejemplos de entrenamiento aleatorizados.")
+        print("Ejemplos de {} aleatorizados.".format(tipo))
 
     return xs, ys
 
@@ -234,8 +236,7 @@ def armar_test_set(etiquetas, interacciones_validas, porcentaje_test):
 
     Cada elemento de la lista de etiquetas es de la forma "[pmid, gen, droga, interacción]".
     El porcentaje de la forma 0.x.
-    Devuelve dos listas: los ejemplos separados para test, y el total sin esos ejemplos.
-    El orden del conjunto de test queda aleatorio también.
+    Devuelve dos listas: (training, test).
     """
     clases = {}
     test_set = []
@@ -252,8 +253,7 @@ def armar_test_set(etiquetas, interacciones_validas, porcentaje_test):
         test_set += random.sample(ejemplos, k=math.ceil(cantidad*porcentaje_test))
     for t in test_set:
         all_set.remove(t)
-    random.shuffle(test_set)
-    return test_set, all_set
+    return all_set, test_set
 
 
 if __name__ == "__main__":
