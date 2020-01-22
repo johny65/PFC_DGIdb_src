@@ -44,6 +44,10 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
     global DIMENSION_EMBEDDING
     etiquetas = []
     interacciones_sin = []
+    pmids = list()
+    genes = list()
+    drogas = list()
+    interacciones = list()
     contenido_dict = dict() # tiene un elemento por artículo: pmid -> contenido
     with open(etiquetas_neural_networks_ruta, encoding="utf8") as enn_csv:
         lector_csv = csv.reader(enn_csv, delimiter = ',', quoting = csv.QUOTE_ALL)
@@ -58,17 +62,21 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
             if incluir_sin_interacciones and fila[3] == "sin_interaccion":
                 interacciones_sin.append(fila)
             elif incluir_sin_interacciones or fila[3] != "sin_interaccion":
+                pmids.append(pmid)
+                genes.append(fila[1])
+                drogas.append(fila[2])
+                interacciones.append(fila[3])
                 etiquetas.append(fila)
 
     # tomar sólo x cantidad de sin_interaccion:
     if interacciones_sin:
         for fila in random.sample(interacciones_sin, k=sin_interaccion_a_incluir):
         # for fila in interacciones_sin[:sin_interaccion_a_incluir]:
+            pmids.append(pmid)
+            genes.append(fila[1])
+            drogas.append(fila[2])
+            interacciones.append(fila[3])
             etiquetas.append(fila)
-            # pmids.append(pmid)
-            # genes.append(fila[1])
-            # drogas.append(fila[2])
-            # interacciones.append(fila[3])
 
     print("Listas pmids, genes, drogas, interacciones y diccionario de contenidos armados.")
 
@@ -82,22 +90,27 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
     interacciones_dict = cargar_interacciones(out_interacciones_ruta)
 
     # xs son las matrices de entrada; ys son los vectores de salida:
-    ll = len(etiquetas)
+    ll = len(pmids)
     # xs = np.empty((ll, max_longitud, DIMENSION_EMBEDDING))
     # ys = np.empty((ll, len(interacciones_dict)))
     xs = []; ys = []
     used_top_words = []
     for i in range(ll):
-        pmid = etiquetas[0]
-        gen = etiquetas[1]
-        droga = etiquetas[2]
-        interaccion = etiquetas[3]
+        pmid = etiquetas[i][0]
+        gen = etiquetas[i][1]
+        droga = etiquetas[i][2]
+        interaccion = etiquetas[i][3]
+
+        ass(pmid == pmids[i])
+        ass(gen == genes[i])
+        ass(droga == drogas[i])
+        ass(interaccion == interacciones[i])
 
         print("Generando matrices: {}/{}".format(i+1, ll))
-        contenido = contenido_dict[pmid]
+        contenido = contenido_dict[pmids[i]]
 
         # contenido queda como lista sólo con las top words, y padeado en caso de ser necesario
-        contenido = tokenizer.texts_to_top_words(contenido, max_longitud, gen, droga)
+        contenido = tokenizer.texts_to_top_words(contenido, max_longitud, genes[i], drogas[i])
         used_top_words.append(tokenizer.used_top_words)
 
         if len(contenido) < max_longitud:
@@ -107,9 +120,9 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
         else:
             contenido = contenido[:max_longitud]
 
-        x = generar_matriz_embeddings(contenido, gen, droga, embeddings_dict, maximo_valor_embedding, minimo_valor_embedding)
+        x = generar_matriz_embeddings(contenido, genes[i], drogas[i], embeddings_dict, maximo_valor_embedding, minimo_valor_embedding)
         y = np.zeros((len(interacciones_dict)))
-        y[interacciones_dict.get(interaccion, len(interacciones_dict)-1)] = 1
+        y[interacciones_dict.get(interacciones[i], len(interacciones_dict)-1)] = 1
         # xs[i] = x
         # ys[i] = y
         xs.append(x)
