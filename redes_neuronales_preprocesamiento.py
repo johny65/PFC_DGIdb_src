@@ -155,6 +155,12 @@ def _cargar_ejemplos(etiquetas, contenido_dict, tokenizer, max_longitud,
     if randomize:
         # Aleatoriza el orden de los ejemplos
         print("Aleatorizando los ejemplos de {}...".format(tipo))
+        # seed = random.random()
+        # random.seed(seed)
+        # random.shuffle(xs)
+        # random.seed(seed)
+        # random.shuffle(ys)
+
         seed = random.random()
         random.seed(seed)
         indices_aleatorios = np.arange(len(xs))

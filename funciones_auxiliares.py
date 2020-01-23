@@ -113,6 +113,7 @@ def balancear_clases(etiquetas_archivo_ruta, # Archivo de etiquetas: pmid, gen, 
     '''
     Devuelve (training, test): los conjuntos de interacciones fármaco-gen para
     entrenamiento y prueba balanceados en cantidad de ejemplos por clase.
+    Se recomienda que al menos haya dos elementos por clase.
     '''
     ifg_balanceadas_prueba_lista = list()
     ifg_balanceadas_entrenamiento_lista = list()
@@ -140,15 +141,18 @@ def balancear_clases(etiquetas_archivo_ruta, # Archivo de etiquetas: pmid, gen, 
                 interacciones_lista.append(linea[3])
 
     # Armado de los conjuntos balanceados de entrenamiento y prueba
-    interacciones_cantidad_dict = Counter(interacciones_lista)
+    interacciones_cantidad_dict = Counter(interacciones_lista) # Clases y cantidad de ejemplos por clases ordenados de mayor a menor
     cantidad_clases = len(interacciones_cantidad_dict)
-    if porcentaje_prueba == 0.0:
+
+    if porcentaje_prueba == 0.0: # Para el caso donde no se desee un conjunto de prueba
         cantidad_ejemplos_prueba_por_clase = 0
         cantidad_minima_ejemplos = 0
     else:
         cantidad_minima_ejemplos = math.ceil(cantidad_clases/porcentaje_prueba)
-    if ejemplos_cantidad < cantidad_minima_ejemplos:
+
+    if ejemplos_cantidad < cantidad_minima_ejemplos: # Ajusta al número de ejemplos mínimo necesario para el armado de los conjuntos en caso de ser necesario
         ejemplos_cantidad = cantidad_minima_ejemplos
+
     cantidad_ejemplos_prueba_por_clase = int((ejemplos_cantidad*porcentaje_prueba)/cantidad_clases)
     cantidad_ejemplos_entrenamiento_por_clase = int((ejemplos_cantidad-(cantidad_ejemplos_prueba_por_clase*cantidad_clases))/cantidad_clases)
     ejemplos_por_clase = int(ejemplos_cantidad/cantidad_clases)
@@ -156,7 +160,7 @@ def balancear_clases(etiquetas_archivo_ruta, # Archivo de etiquetas: pmid, gen, 
     random.seed(seed)
     for interaccion, cantidad in interacciones_cantidad_dict.items():
         ifg_interaccion_lista = list()
-        for i in range(0, len(pmids_lista), 1):
+        for i in range(0, len(pmids_lista), 1): # Agrega a "ifg_interaccion_lista" las ifg con la interacción "interaccion"
             if interacciones_lista[i] == interaccion:
                 ifg_interaccion_lista.append([pmids_lista[i], genes_lista[i], drogas_lista[i], interacciones_lista[i]])
         if cantidad >= ejemplos_por_clase:
@@ -166,17 +170,26 @@ def balancear_clases(etiquetas_archivo_ruta, # Archivo de etiquetas: pmid, gen, 
             for ifg in random.sample(ifg_interaccion_lista, k=cantidad_ejemplos_entrenamiento_por_clase):
                 ifg_balanceadas_entrenamiento_lista.append(ifg)
         else:
-            for ifg in random.choices(ifg_interaccion_lista, k=cantidad_ejemplos_prueba_por_clase):
+            cantidad_ejemplos_prueba_clase_actual = math.ceil(cantidad*porcentaje_prueba)
+            # cantidad_ejemplos_entrenamiento_clase_actual = int(cantidad-cantidad_ejemplos_prueba_clase_actual)
+            ifg_interaccion_prueba_lista = random.sample(ifg_interaccion_lista, k=cantidad_ejemplos_prueba_clase_actual)
+            ifg_interaccion_entrenamiento_lista = list()
+            for ifg in ifg_interaccion_lista:
+                if ifg not in ifg_interaccion_prueba_lista:
+                    ifg_interaccion_entrenamiento_lista.append(ifg)
+            for ifg in random.choices(ifg_interaccion_prueba_lista, k=cantidad_ejemplos_prueba_por_clase):
                 ifg_balanceadas_prueba_lista.append(ifg)
-            for ifg in random.choices(ifg_interaccion_lista, k=cantidad_ejemplos_entrenamiento_por_clase):
+            if ifg_interaccion_entrenamiento_lista == []: # Para cuando solo hay un ejemplo y queda en el conjunto de prueba
+                break
+            for ifg in random.choices(ifg_interaccion_entrenamiento_lista, k=cantidad_ejemplos_entrenamiento_por_clase):
                 ifg_balanceadas_entrenamiento_lista.append(ifg)
 
     return ifg_balanceadas_entrenamiento_lista, ifg_balanceadas_prueba_lista
 
 if __name__ == "__main__":
     etiquetas_archivo_ruta = "E:/Descargas/Python/PFC_DGIdb_src/etiquetas_neural_networks.csv"
-    interacciones_lista_ruta = "E:/Descargas/Python/PFC_DGIdb_src/interacciones_lista2.txt"
-    ifg_balanceadas_entrenamiento_lista, ifg_balanceadas_prueba_lista = balancear_clases(etiquetas_archivo_ruta, interacciones_lista_ruta, 10, 0.2)
+    interacciones_lista_ruta = "E:/Descargas/Python/PFC_DGIdb_src/interacciones_lista.txt"
+    ifg_balanceadas_entrenamiento_lista, ifg_balanceadas_prueba_lista = balancear_clases(etiquetas_archivo_ruta, interacciones_lista_ruta, 1, 0.2)
     for ifg in ifg_balanceadas_entrenamiento_lista:
         print(ifg)
     print("xxxxxxxxxxxxxxxxxxxxxxx")

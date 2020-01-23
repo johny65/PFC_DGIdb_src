@@ -1651,3 +1651,1437 @@ Resultados del entrenamiento:
                 Acierto en la validación en la partición 9: 0.5579345226287842
                 Acierto en la validación en la partición 10: 0.6423173546791077
 
+Características de los datos de entrada:
+        Cantidad de ejemplos cargados: 3974
+        Cantidad de ejemplos con la etiqueta sin_interacción: 1030
+        Cantidad de ejemplos utilizados para entrenar: 3180
+        Cantidad de ejemplos utilizados para validar: 794
+        Cantidad de ejemplos utilizados para probar: 0
+        Top de palabras frecuentes utilizadas: 100
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 500
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.4
+        Cantidad de filtros: 100
+        Dimensión de los kernels: (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)
+        Neuronas en la capa oculta: 512
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 14
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 100
+        Dimensión batch: 32
+        Cantidad de particiones: 10
+Resultados del entrenamiento:
+        Acierto en el entrenamiento - media: 0.6497169733047485
+        Acierto en el entrenamiento - desvío: 0.02960746043197591
+                Acierto en el entrenamiento en la partición 1: 0.6716980934143066
+                Acierto en el entrenamiento en la partición 2: 0.6672955751419067
+                Acierto en el entrenamiento en la partición 3: 0.6682389974594116
+                Acierto en el entrenamiento en la partición 4: 0.649056613445282
+                Acierto en el entrenamiento en la partición 5: 0.6433961987495422
+                Acierto en el entrenamiento en la partición 6: 0.6166666746139526
+                Acierto en el entrenamiento en la partición 7: 0.606918215751648
+                Acierto en el entrenamiento en la partición 8: 0.6676100492477417
+                Acierto en el entrenamiento en la partición 9: 0.694654107093811
+                Acierto en el entrenamiento en la partición 10: 0.6116352081298828
+        Acierto en la validación - media: 0.6127204060554504
+        Acierto en el validación - desvío: 0.0298585643917406
+                Acierto en la validación en la partición 1: 0.6297228932380676
+                Acierto en la validación en la partición 2: 0.6007556915283203
+                Acierto en la validación en la partición 3: 0.6221662759780884
+                Acierto en la validación en la partición 4: 0.6360201239585876
+                Acierto en la validación en la partición 5: 0.5982367992401123
+                Acierto en la validación en la partición 6: 0.6246851682662964
+                Acierto en la validación en la partición 7: 0.5906801223754883
+                Acierto en la validación en la partición 8: 0.6523929238319397
+                Acierto en la validación en la partición 9: 0.6259445548057556
+                Acierto en la validación en la partición 10: 0.5465995073318481
+
+Características de los datos de entrada:
+        Cantidad de ejemplos cargados: 3974
+        Cantidad de ejemplos con la etiqueta sin_interacción: 1030
+        Cantidad de ejemplos utilizados para entrenar: 3180
+        Cantidad de ejemplos utilizados para validar: 794
+        Cantidad de ejemplos utilizados para probar: 0
+        Top de palabras frecuentes utilizadas: 100
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 500
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.4
+        Cantidad de filtros: 100
+        Dimensión de los kernels: (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)
+        Neuronas en la capa oculta: 512
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 13
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 100
+        Dimensión batch: 32
+        Cantidad de particiones: 10
+Resultados del entrenamiento:
+        Acierto en el entrenamiento - media: 0.6541509449481964
+        Acierto en el entrenamiento - desvío: 0.03340735133542255
+                Acierto en el entrenamiento en la partición 1: 0.6462264060974121
+                Acierto en el entrenamiento en la partición 2: 0.6059748530387878
+                Acierto en el entrenamiento en la partición 3: 0.6232704520225525
+                Acierto en el entrenamiento en la partición 4: 0.6610062718391418
+                Acierto en el entrenamiento en la partición 5: 0.6977987289428711
+                Acierto en el entrenamiento en la partición 6: 0.6783018708229065
+                Acierto en el entrenamiento en la partición 7: 0.6289308071136475
+                Acierto en el entrenamiento en la partición 8: 0.7056604027748108
+                Acierto en el entrenamiento en la partición 9: 0.6669811606407166
+                Acierto en el entrenamiento en la partición 10: 0.6273584961891174
+        Acierto en la validación - media: 0.6158690273761749
+        Acierto en el validación - desvío: 0.026571339252598174
+                Acierto en la validación en la partición 1: 0.6234257221221924
+                Acierto en la validación en la partición 2: 0.6007556915283203
+                Acierto en la validación en la partición 3: 0.6020151376724243
+                Acierto en la validación en la partición 4: 0.6196473836898804
+                Acierto en la validación en la partición 5: 0.5717884302139282
+                Acierto en la validación en la partición 6: 0.6020151376724243
+                Acierto en la validación en la partición 7: 0.6549118161201477
+                Acierto en la validación en la partición 8: 0.6586901545524597
+                Acierto en la validación en la partición 9: 0.6259445548057556
+                Acierto en la validación en la partición 10: 0.5994962453842163
+
+Características de los datos de entrada:
+        Cantidad de ejemplos cargados: 3974
+        Cantidad de ejemplos con la etiqueta sin_interacción: 1030
+        Cantidad de ejemplos utilizados para entrenar: 3180
+        Cantidad de ejemplos utilizados para validar: 794
+        Cantidad de ejemplos utilizados para probar: 0
+        Top de palabras frecuentes utilizadas: 100
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 500
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.4
+        Cantidad de filtros: 100
+        Dimensión de los kernels: (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)
+        Neuronas en la capa oculta: 512
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 12
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 100
+        Dimensión batch: 32
+        Cantidad de particiones: 10
+Resultados del entrenamiento:
+        Acierto en el entrenamiento - media: 0.6479559659957885
+        Acierto en el entrenamiento - desvío: 0.040878949490447264
+                Acierto en el entrenamiento en la partición 1: 0.606918215751648
+                Acierto en el entrenamiento en la partición 2: 0.6226415038108826
+                Acierto en el entrenamiento en la partición 3: 0.6355345845222473
+                Acierto en el entrenamiento en la partición 4: 0.6569182276725769
+                Acierto en el entrenamiento en la partición 5: 0.6383647918701172
+                Acierto en el entrenamiento en la partición 6: 0.6327043771743774
+                Acierto en el entrenamiento en la partición 7: 0.7144653797149658
+                Acierto en el entrenamiento en la partición 8: 0.7276729345321655
+                Acierto en el entrenamiento en la partición 9: 0.6270440220832825
+                Acierto en el entrenamiento en la partición 10: 0.6172956228256226
+        Acierto en la validación - media: 0.6319899141788483
+        Acierto en el validación - desvío: 0.03334716864207082
+                Acierto en la validación en la partición 1: 0.5604534149169922
+                Acierto en la validación en la partición 2: 0.6108312606811523
+                Acierto en la validación en la partición 3: 0.6536523699760437
+                Acierto en la validación en la partición 4: 0.6523929238319397
+                Acierto en la validación en la partición 5: 0.6309823393821716
+                Acierto en la validación en la partición 6: 0.6486145853996277
+                Acierto en la validación en la partición 7: 0.6347606778144836
+                Acierto en la validación en la partición 8: 0.6851385235786438
+                Acierto en la validación en la partición 9: 0.6322417855262756
+                Acierto en la validación en la partición 10: 0.6108312606811523
+
+Características de los datos de entrada:
+        Cantidad de ejemplos cargados: 3974
+        Cantidad de ejemplos con la etiqueta sin_interacción: 1030
+        Cantidad de ejemplos utilizados para entrenar: 3840
+        Cantidad de ejemplos utilizados para validar: 960
+        Cantidad de ejemplos utilizados para probar: 0
+        Top de palabras frecuentes utilizadas: 100
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 500
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.4
+        Cantidad de filtros: 10
+        Dimensión de los kernels: (3, 4, 5)
+        Neuronas en la capa oculta: 90
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 30
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 10
+        Dimensión batch: 32
+        Cantidad de particiones: 10
+Resultados del entrenamiento:
+        Acierto en el entrenamiento - media: 0.5268750071525574
+        Acierto en el entrenamiento - desvío: 0.007852711641206806
+                Acierto en el entrenamiento en la partición 1: 0.5177083611488342
+                Acierto en el entrenamiento en la partición 2: 0.5190104246139526
+                Acierto en el entrenamiento en la partición 3: 0.5356770753860474
+                Acierto en el entrenamiento en la partición 4: 0.5234375
+                Acierto en el entrenamiento en la partición 5: 0.5270833373069763
+                Acierto en el entrenamiento en la partición 6: 0.51953125
+                Acierto en el entrenamiento en la partición 7: 0.530468761920929
+                Acierto en el entrenamiento en la partición 8: 0.5317708253860474
+                Acierto en el entrenamiento en la partición 9: 0.5414062738418579
+                Acierto en el entrenamiento en la partición 10: 0.522656261920929
+        Acierto en la validación - media: 0.6558333337306976
+        Acierto en el validación - desvío: 0.014493763546537723
+                Acierto en la validación en la partición 1: 0.6770833134651184
+                Acierto en la validación en la partición 2: 0.6541666388511658
+                Acierto en la validación en la partición 3: 0.6427083611488342
+                Acierto en la validación en la partición 4: 0.6656249761581421
+                Acierto en la validación en la partición 5: 0.668749988079071
+                Acierto en la validación en la partición 6: 0.6489583253860474
+                Acierto en la validación en la partición 7: 0.6354166865348816
+                Acierto en la validación en la partición 8: 0.6625000238418579
+                Acierto en la validación en la partición 9: 0.6364583373069763
+                Acierto en la validación en la partición 10: 0.6666666865348816
+        Acierto en la prueba promedio: 0.6548333287239074
+                Acierto en la prueba en la partición 1: 0.6499999761581421
+                Acierto en la prueba en la partición 2: 0.6725000143051147
+                Acierto en la prueba en la partición 3: 0.6383333206176758
+                Acierto en la prueba en la partición 4: 0.6491666436195374
+                Acierto en la prueba en la partición 5: 0.6491666436195374
+                Acierto en la prueba en la partición 6: 0.6433333158493042
+                Acierto en la prueba en la partición 7: 0.637499988079071
+                Acierto en la prueba en la partición 8: 0.6691666841506958
+                Acierto en la prueba en la partición 9: 0.6775000095367432
+                Acierto en la prueba en la partición 10: 0.6616666913032532
+        Áreas bajo la curva ROC para las distintas clases:
+                Media y desvío AUC ROC de la clase 0: [0.8503103448275862, 0.018897521570533697]
+                Media y desvío AUC ROC de la clase 1: [0.8134461206896552, 0.022214810013356318]
+                Media y desvío AUC ROC de la clase 2: [0.779676724137931, 0.01794517222826302]
+                Media y desvío AUC ROC de la clase 3: [0.8030775862068966, 0.02403837140851217]
+                Media y desvío AUC ROC de la clase 4: [0.9244008620689655, 0.013474169032157316]
+                Media y desvío AUC ROC de la clase 5: [0.856834051724138, 0.009195994110355798]
+                Media y desvío AUC ROC de la clase 6: [0.8675581896551724, 0.014500006299799115]
+                Media y desvío AUC ROC de la clase 7: [0.9508254310344828, 0.012079224096949195]
+                Media y desvío AUC ROC de la clase 8: [0.9447564655172414, 0.0164305449005491]
+                Media y desvío AUC ROC de la clase 9: [0.9596357758620689, 0.012426343839326686]
+                Media y desvío AUC ROC de la clase 10: [0.9720926724137932, 0.008061448909672028]
+                Media y desvío AUC ROC de la clase 11: [0.9737327586206896, 0.013142938860390533]
+                Media y desvío AUC ROC de la clase 12: [0.9506228448275862, 0.016158969427118735]
+                Media y desvío AUC ROC de la clase 13: [0.9229741379310346, 0.01268734703443146]
+                Media y desvío AUC ROC de la clase 14: [0.923532327586207, 0.01842058094254539]
+                Media y desvío AUC ROC de la clase 15: [0.9649461206896551, 0.012971903209037822]
+                Media y desvío AUC ROC de la clase 16: [0.9670646551724138, 0.02427757439442173]
+                Media y desvío AUC ROC de la clase 17: [0.9929698275862069, 0.005660945066749175]
+                Media y desvío AUC ROC de la clase 18: [0.9966896551724138, 0.0032342621024898286]
+                Media y desvío AUC ROC de la clase 19: [0.9998512931034482, 0.00020023653686642435]
+                Media y desvío AUC ROC de la clase 20: [1.0, 0.0]
+                Media y desvío AUC ROC de la clase 21: [1.0, 0.0]
+                Media y desvío AUC ROC de la clase 22: [1.0, 0.0]
+                Media y desvío AUC ROC de la clase 23: [1.0, 3.510833468576701e-17]
+                Media y desvío AUC ROC de la clase 24: [0.9999762931034483, 7.496778935743601e-05]
+                Media y desvío AUC ROC de la clase 25: [1.0, 3.510833468576701e-17]
+                Media y desvío AUC ROC de la clase 26: [1.0, 0.0]
+                Media y desvío AUC ROC de la clase 27: [1.0, 0.0]
+                Media y desvío AUC ROC de la clase 28: [1.0, 0.0]
+                Media y desvío AUC ROC de la clase 29: [1.0, 0.0]
+
+Características de los datos de entrada:
+        Cantidad de ejemplos cargados: 3974
+        Cantidad de ejemplos con la etiqueta sin_interacción: 1030
+        Cantidad de ejemplos utilizados para entrenar: 3836
+        Cantidad de ejemplos utilizados para validar: 958
+        Cantidad de ejemplos utilizados para probar: 0
+        Top de palabras frecuentes utilizadas: 100
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 500
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.4
+        Cantidad de filtros: 10
+        Dimensión de los kernels: (3, 4, 5)
+        Neuronas en la capa oculta: 51
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 17
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 100
+        Dimensión batch: 32
+        Cantidad de particiones: 10
+Resultados del entrenamiento:
+        Acierto en el entrenamiento - media: 0.5200729906558991
+        Acierto en el entrenamiento - desvío: 0.027417604865707112
+                Acierto en el entrenamiento en la partición 1: 0.5278936624526978
+                Acierto en el entrenamiento en la partición 2: 0.5474452376365662
+                Acierto en el entrenamiento en la partición 3: 0.5391032099723816
+                Acierto en el entrenamiento en la partición 4: 0.5380604863166809
+                Acierto en el entrenamiento en la partición 5: 0.5367570519447327
+                Acierto en el entrenamiento en la partición 6: 0.4835766553878784
+                Acierto en el entrenamiento en la partición 7: 0.485401451587677
+                Acierto en el entrenamiento en la partición 8: 0.4887903928756714
+                Acierto en el entrenamiento en la partición 9: 0.5005213618278503
+                Acierto en el entrenamiento en la partición 10: 0.5531803965568542
+        Acierto en la validación - media: 0.6624217092990875
+        Acierto en el validación - desvío: 0.02456023915163381
+                Acierto en la validación en la partición 1: 0.6649269461631775
+                Acierto en la validación en la partición 2: 0.6586638689041138
+                Acierto en la validación en la partición 3: 0.68789142370224
+                Acierto en la validación en la partición 4: 0.6670145988464355
+                Acierto en la validación en la partición 5: 0.650313138961792
+                Acierto en la validación en la partición 6: 0.6179540753364563
+                Acierto en la validación en la partición 7: 0.6336116790771484
+                Acierto en la validación en la partición 8: 0.6889352798461914
+                Acierto en la validación en la partición 9: 0.6597077250480652
+                Acierto en la validación en la partición 10: 0.6951983571052551
+        Acierto en la prueba promedio: 0.677142858505249
+                Acierto en la prueba en la partición 1: 0.6823529601097107
+                Acierto en la prueba en la partición 2: 0.7008403539657593
+                Acierto en la prueba en la partición 3: 0.7042016983032227
+                Acierto en la prueba en la partición 4: 0.6865546107292175
+                Acierto en la prueba en la partición 5: 0.6781512498855591
+                Acierto en la prueba en la partición 6: 0.6487395167350769
+                Acierto en la prueba en la partición 7: 0.6226890683174133
+                Acierto en la prueba en la partición 8: 0.6714285612106323
+                Acierto en la prueba en la partición 9: 0.668067216873169
+                Acierto en la prueba en la partición 10: 0.7084033489227295
+        Áreas bajo la curva ROC para las distintas clases:
+                Media y desvío AUC ROC de la clase 0: [0.8263801020408162, 0.01343980514420925]
+                Media y desvío AUC ROC de la clase 1: [0.8242283163265306, 0.03345778430435453]
+                Media y desvío AUC ROC de la clase 2: [0.822422193877551, 0.02134051819750319]
+                Media y desvío AUC ROC de la clase 3: [0.8354272959183674, 0.01606506466387752]
+                Media y desvío AUC ROC de la clase 4: [0.9667117346938775, 0.008679865005620973]
+                Media y desvío AUC ROC de la clase 5: [0.9021007653061224, 0.027315375910087272]
+                Media y desvío AUC ROC de la clase 6: [0.9614515306122449, 0.01601099568952721]
+                Media y desvío AUC ROC de la clase 7: [0.9573418367346939, 0.01633735468859976]
+                Media y desvío AUC ROC de la clase 8: [0.9858775510204081, 0.0043282221041560905]
+                Media y desvío AUC ROC de la clase 9: [0.9956938775510205, 0.004915319791657975]
+                Media y desvío AUC ROC de la clase 10: [0.989890306122449, 0.008851389763481186]
+                Media y desvío AUC ROC de la clase 11: [0.9978775510204081, 0.001456009781008215]
+                Media y desvío AUC ROC de la clase 12: [0.9975076530612245, 0.0030752654182611807]
+                Media y desvío AUC ROC de la clase 13: [0.9961237244897959, 0.003211914066285475]
+                Media y desvío AUC ROC de la clase 14: [0.9970331632653061, 0.0032448621938943774]
+                Media y desvío AUC ROC de la clase 15: [0.9966760204081633, 0.0028398890886147895]
+                Media y desvío AUC ROC de la clase 16: [0.9182002551020408, 0.012158437014892259]
+
+Características de los datos de entrada:
+        Cantidad de ejemplos cargados: 3974
+        Cantidad de ejemplos con la etiqueta sin_interacción: 1030
+        Cantidad de ejemplos utilizados para entrenar: 3836
+        Cantidad de ejemplos utilizados para validar: 958
+        Cantidad de ejemplos utilizados para probar: 0
+        Top de palabras frecuentes utilizadas: 100
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 500
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.4
+        Cantidad de filtros: 10
+        Dimensión de los kernels: (3, 4, 5)
+        Neuronas en la capa oculta: 256
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 17
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 100
+        Dimensión batch: 32
+        Cantidad de particiones: 10
+Resultados del entrenamiento:
+        Acierto en el entrenamiento - media: 0.6108185589313507
+        Acierto en el entrenamiento - desvío: 0.012490353463424439
+                Acierto en el entrenamiento en la partición 1: 0.6042752861976624
+                Acierto en el entrenamiento en la partición 2: 0.6087070107460022
+                Acierto en el entrenamiento en la partición 3: 0.6248696446418762
+                Acierto en el entrenamiento en la partición 4: 0.5964546203613281
+                Acierto en el entrenamiento en la partición 5: 0.6055787205696106
+                Acierto en el entrenamiento en la partición 6: 0.6115745306015015
+                Acierto en el entrenamiento en la partición 7: 0.6113138794898987
+                Acierto en el entrenamiento en la partición 8: 0.5912408828735352
+                Acierto en el entrenamiento en la partición 9: 0.6246089935302734
+                Acierto en el entrenamiento en la partición 10: 0.6295620203018188
+        Acierto en la validación - media: 0.7022964656352997
+        Acierto en el validación - desvío: 0.015621236602344941
+                Acierto en la validación en la partición 1: 0.6847599148750305
+                Acierto en la validación en la partición 2: 0.7077244520187378
+                Acierto en la validación en la partición 3: 0.7160751819610596
+                Acierto en la validación en la partición 4: 0.6732776761054993
+                Acierto en la validación en la partición 5: 0.7118998169898987
+                Acierto en la validación en la partición 6: 0.7118998169898987
+                Acierto en la validación en la partición 7: 0.7181628346443176
+                Acierto en la validación en la partición 8: 0.6868476271629333
+                Acierto en la validación en la partición 9: 0.7139874696731567
+                Acierto en la validación en la partición 10: 0.6983298659324646
+        Acierto en la prueba - media: 0.7063025295734405
+        Acierto en el prueba - desvío: 0.016704870890059276
+                Acierto en la prueba en la partición 1: 0.7226890921592712
+                Acierto en la prueba en la partición 2: 0.6991596817970276
+                Acierto en la prueba en la partición 3: 0.7235293984413147
+                Acierto en la prueba en la partición 4: 0.6773109436035156
+                Acierto en la prueba en la partición 5: 0.6991596817970276
+                Acierto en la prueba en la partición 6: 0.7008403539657593
+                Acierto en la prueba en la partición 7: 0.7184873819351196
+                Acierto en la prueba en la partición 8: 0.6848739385604858
+                Acierto en la prueba en la partición 9: 0.7243697643280029
+                Acierto en la prueba en la partición 10: 0.7126050591468811
+        Áreas bajo la curva ROC para las distintas clases:
+                Media y desvío AUC ROC de la clase 0: [0.8644419642857143, 0.013811839355611396]
+                Media y desvío AUC ROC de la clase 1: [0.8805178571428571, 0.01746988286922615]
+                Media y desvío AUC ROC de la clase 2: [0.8288227040816326, 0.016113761654668064]
+                Media y desvío AUC ROC de la clase 3: [0.816984056122449, 0.014270226868831584]
+                Media y desvío AUC ROC de la clase 4: [0.9733903061224489, 0.006904575497634601]
+                Media y desvío AUC ROC de la clase 5: [0.9331989795918367, 0.009317279350256774]
+                Media y desvío AUC ROC de la clase 6: [0.9726964285714286, 0.009208860177357217]
+                Media y desvío AUC ROC de la clase 7: [0.9805191326530612, 0.004876795388116541]
+                Media y desvío AUC ROC de la clase 8: [0.9910484693877551, 0.0031215883894931706]
+                Media y desvío AUC ROC de la clase 9: [0.9983214285714286, 0.0018231141803113232]
+                Media y desvío AUC ROC de la clase 10: [0.9987117346938775, 0.0006675305471134501]
+                Media y desvío AUC ROC de la clase 11: [0.9997397959183674, 0.00015390921560203498]
+                Media y desvío AUC ROC de la clase 12: [0.9982959183673469, 0.002130863137481151]
+                Media y desvío AUC ROC de la clase 13: [0.9984515306122449, 0.0022897624704005673]
+                Media y desvío AUC ROC de la clase 14: [0.999640306122449, 0.00042499145908286195]
+                Media y desvío AUC ROC de la clase 15: [0.998640306122449, 0.001216673013891288]
+                Media y desvío AUC ROC de la clase 16: [0.9523979591836735, 0.017070604175648055]
+
+Características de los datos de entrada:
+        Cantidad de ejemplos cargados: 3974
+        Cantidad de ejemplos con la etiqueta sin_interacción: 1030
+        Cantidad de ejemplos utilizados para entrenar: 3836
+        Cantidad de ejemplos utilizados para validar: 958
+        Cantidad de ejemplos utilizados para probar: 0
+        Top de palabras frecuentes utilizadas: 100
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 500
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.4
+        Cantidad de filtros: 100
+        Dimensión de los kernels: (3, 4, 5)
+        Neuronas en la capa oculta: 256
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 17
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 100
+        Dimensión batch: 32
+        Cantidad de particiones: 10
+Resultados del entrenamiento:
+        Acierto en el entrenamiento - media: 0.8496611177921295
+        Acierto en el entrenamiento - desvío: 0.018005757877056817
+                Acierto en el entrenamiento en la partición 1: 0.8558394312858582
+                Acierto en el entrenamiento en la partición 2: 0.8511470556259155
+                Acierto en el entrenamiento en la partición 3: 0.8276851177215576
+                Acierto en el entrenamiento en la partición 4: 0.8381125926971436
+                Acierto en el entrenamiento en la partición 5: 0.8524504899978638
+                Acierto en el entrenamiento en la partición 6: 0.8323774933815002
+                Acierto en el entrenamiento en la partición 7: 0.8667883276939392
+                Acierto en el entrenamiento en la partición 8: 0.8704379796981812
+                Acierto en el entrenamiento en la partición 9: 0.8756517171859741
+                Acierto en el entrenamiento en la partición 10: 0.8261209726333618
+        Acierto en la validación - media: 0.8341336011886596
+        Acierto en el validación - desvío: 0.016856237520946334
+                Acierto en la validación en la partición 1: 0.8277661800384521
+                Acierto en la validación en la partición 2: 0.8141962289810181
+                Acierto en la validación en la partición 3: 0.8308976888656616
+                Acierto en la validación en la partición 4: 0.8350730538368225
+                Acierto en la validación en la partición 5: 0.8350730538368225
+                Acierto en la validación en la partición 6: 0.8058454990386963
+                Acierto en la validación en la partición 7: 0.8475991487503052
+                Acierto en la validación en la partición 8: 0.8601252436637878
+                Acierto en la validación en la partición 9: 0.8549060821533203
+                Acierto en la validación en la partición 10: 0.8298538327217102
+        Acierto en la prueba - media: 0.8344537794589997
+        Acierto en el prueba - desvío: 0.011824578723613541
+                Acierto en la prueba en la partición 1: 0.8436974883079529
+                Acierto en la prueba en la partición 2: 0.8310924172401428
+                Acierto en la prueba en la partición 3: 0.8294117450714111
+                Acierto en la prueba en la partición 4: 0.8235294222831726
+                Acierto en la prueba en la partición 5: 0.8352941274642944
+                Acierto en la prueba en la partición 6: 0.8277310729026794
+                Acierto en la prueba en la partición 7: 0.8436974883079529
+                Acierto en la prueba en la partición 8: 0.853781521320343
+                Acierto en la prueba en la partición 9: 0.8428571224212646
+                Acierto en la prueba en la partición 10: 0.8134453892707825
+        Áreas bajo la curva ROC para las distintas clases:
+                Media y desvío AUC ROC de la clase 0: [0.910924744897959, 0.007317638218843475]
+                Media y desvío AUC ROC de la clase 1: [0.9605140306122449, 0.005363722372781911]
+                Media y desvío AUC ROC de la clase 2: [0.939156887755102, 0.004016038848181516]
+                Media y desvío AUC ROC de la clase 3: [0.9043316326530613, 0.007998917388076711]
+                Media y desvío AUC ROC de la clase 4: [0.9935395408163266, 0.003501023161255068]
+                Media y desvío AUC ROC de la clase 5: [0.9888316326530612, 0.003413955210943921]
+                Media y desvío AUC ROC de la clase 6: [0.9996020408163265, 0.00040624549464069994]
+                Media y desvío AUC ROC de la clase 7: [0.9988456632653061, 0.0007392398117074746]
+                Media y desvío AUC ROC de la clase 8: [0.9984285714285714, 0.00034566091195824576]
+                Media y desvío AUC ROC de la clase 9: [1.0, 0.0]
+                Media y desvío AUC ROC de la clase 10: [0.9999260204081633, 0.0001294920339888943]
+                Media y desvío AUC ROC de la clase 11: [1.0, 0.0]
+                Media y desvío AUC ROC de la clase 12: [1.0, 0.0]
+                Media y desvío AUC ROC de la clase 13: [0.999422193877551, 0.00017060395998340244]
+                Media y desvío AUC ROC de la clase 14: [0.9999885204081632, 3.630165681316882e-05]
+                Media y desvío AUC ROC de la clase 15: [0.9996568877551021, 0.00016116693804738144]
+                Media y desvío AUC ROC de la clase 16: [0.9991288265306122, 0.0007633442824923431]
+
+Características de los datos de entrada:
+        Cantidad de ejemplos cargados: 3974
+        Cantidad de ejemplos con la etiqueta sin_interacción: 1030
+        Cantidad de ejemplos utilizados para entrenar: 3836
+        Cantidad de ejemplos utilizados para validar: 958
+        Cantidad de ejemplos utilizados para probar: 1190
+        Top de palabras frecuentes utilizadas: 100
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 500
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.4
+        Cantidad de filtros: 50
+        Dimensión de los kernels: (3, 4, 5, 6, 7)
+        Neuronas en la capa oculta: 256
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 17
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 100
+        Dimensión batch: 32
+        Cantidad de particiones: 10
+Resultados del entrenamiento:
+        Acierto en el entrenamiento - media: 0.8488269031047821
+        Acierto en el entrenamiento - desvío: 0.02006206633375285
+                Acierto en el entrenamiento en la partición 1: 0.8274244070053101
+                Acierto en el entrenamiento en la partición 2: 0.8819082379341125
+                Acierto en el entrenamiento en la partición 3: 0.8493221998214722
+                Acierto en el entrenamiento en la partición 4: 0.8339415788650513
+                Acierto en el entrenamiento en la partición 5: 0.858967661857605
+                Acierto en el entrenamiento en la partición 6: 0.8532325625419617
+                Acierto en el entrenamiento en la partición 7: 0.8156934380531311
+                Acierto en el entrenamiento en la partición 8: 0.865484893321991
+                Acierto en el entrenamiento en la partición 9: 0.8641814589500427
+                Acierto en el entrenamiento en la partición 10: 0.8381125926971436
+        Acierto en la validación - media: 0.8319415390491486
+        Acierto en el validación - desvío: 0.010565224386894887
+                Acierto en la validación en la partición 1: 0.8131523728370667
+                Acierto en la validación en la partición 2: 0.8475991487503052
+                Acierto en la validación en la partición 3: 0.8235908150672913
+                Acierto en la validación en la partición 4: 0.8434237837791443
+                Acierto en la validación en la partición 5: 0.8288100361824036
+                Acierto en la validación en la partición 6: 0.8288100361824036
+                Acierto en la validación en la partición 7: 0.8308976888656616
+                Acierto en la validación en la partición 8: 0.8444676399230957
+                Acierto en la validación en la partición 9: 0.831941545009613
+                Acierto en la validación en la partición 10: 0.8267223238945007
+        Acierto en la prueba - media: 0.8332773089408875
+        Acierto en el prueba - desvío: 0.010682521606551797
+                Acierto en la prueba en la partición 1: 0.8294117450714111
+                Acierto en la prueba en la partición 2: 0.853781521320343
+                Acierto en la prueba en la partición 3: 0.8327730894088745
+                Acierto en la prueba en la partición 4: 0.8386554718017578
+                Acierto en la prueba en la partición 5: 0.8403361439704895
+                Acierto en la prueba en la partición 6: 0.8369747996330261
+                Acierto en la prueba en la partición 7: 0.8151260614395142
+                Acierto en la prueba en la partición 8: 0.8361344337463379
+                Acierto en la prueba en la partición 9: 0.8218487501144409
+                Acierto en la prueba en la partición 10: 0.8277310729026794
+        Áreas bajo la curva ROC para las distintas clases:
+                Media y desvío AUC ROC de la clase 0: [0.887327806122449, 0.012669353564410398]
+                Media y desvío AUC ROC de la clase 1: [0.9415484693877552, 0.005862875403474666]
+                Media y desvío AUC ROC de la clase 2: [0.9355880102040817, 0.006910112288362308]
+                Media y desvío AUC ROC de la clase 3: [0.9137474489795918, 0.008370001238200303]
+                Media y desvío AUC ROC de la clase 4: [0.9897104591836735, 0.002829384935047107]
+                Media y desvío AUC ROC de la clase 5: [0.9893698979591836, 0.005712979685541353]
+                Media y desvío AUC ROC de la clase 6: [0.9983112244897959, 0.001119646444620568]
+                Media y desvío AUC ROC de la clase 7: [0.9989566326530612, 0.0006688237350594037]
+                Media y desvío AUC ROC de la clase 8: [0.9993596938775511, 0.0002895405041603764]
+                Media y desvío AUC ROC de la clase 9: [1.0, 4.681111291435601e-17]
+                Media y desvío AUC ROC de la clase 10: [0.9996607142857142, 0.00018080478994537613]
+                Media y desvío AUC ROC de la clase 11: [0.9996734693877551, 0.00010959165727108618]
+                Media y desvío AUC ROC de la clase 12: [0.9999566326530612, 6.018822574552906e-05]
+                Media y desvío AUC ROC de la clase 13: [0.9999107142857143, 8.022092799369967e-05]
+                Media y desvío AUC ROC de la clase 14: [1.0, 0.0]
+                Media y desvío AUC ROC de la clase 15: [0.9998801020408163, 8.758916178108732e-05]
+                Media y desvío AUC ROC de la clase 16: [0.9979349489795919, 0.002321696817997079]
+
+Características de los datos de entrada:
+        Cantidad de ejemplos cargados: 3974
+        Cantidad de ejemplos con la etiqueta sin_interacción: 1030
+        Cantidad de ejemplos utilizados para entrenar: 3836
+        Cantidad de ejemplos utilizados para validar: 958
+        Cantidad de ejemplos utilizados para probar: 1190
+        Top de palabras frecuentes utilizadas: 100
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 500
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.4
+        Cantidad de filtros: 25
+        Dimensión de los kernels: (3, 4, 5, 6, 7)
+        Neuronas en la capa oculta: 256
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 17
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 100
+        Dimensión batch: 32
+        Cantidad de particiones: 10
+Resultados del entrenamiento:
+        Acierto en el entrenamiento - media: 0.8161105334758758
+        Acierto en el entrenamiento - desvío: 0.031773606821851826
+                Acierto en el entrenamiento en la partición 1: 0.8269030451774597
+                Acierto en el entrenamiento en la partición 2: 0.7507820725440979
+                Acierto en el entrenamiento en la partición 3: 0.8154327273368835
+                Acierto en el entrenamiento en la partición 4: 0.8506256341934204
+                Acierto en el entrenamiento en la partición 5: 0.8467153310775757
+                Acierto en el entrenamiento en la partición 6: 0.8219499588012695
+                Acierto en el entrenamiento en la partición 7: 0.8237747550010681
+                Acierto en el entrenamiento en la partición 8: 0.769812285900116
+                Acierto en el entrenamiento en la partición 9: 0.8214285969734192
+                Acierto en el entrenamiento en la partición 10: 0.8336809277534485
+        Acierto en la validación - media: 0.8162839233875274
+        Acierto en el validación - desvío: 0.020643554912201992
+                Acierto en la validación en la partición 1: 0.8382046222686768
+                Acierto en la validación en la partición 2: 0.780793309211731
+                Acierto en la validación en la partición 3: 0.8256784677505493
+                Acierto en la validación en la partición 4: 0.8267223238945007
+                Acierto en la validación en la partición 5: 0.81210857629776
+                Acierto en la validación en la partición 6: 0.8027139902114868
+                Acierto en la validación en la partición 7: 0.8204593062400818
+                Acierto en la validación en la partición 8: 0.7870563864707947
+                Acierto en la validación en la partición 9: 0.8256784677505493
+                Acierto en la validación en la partición 10: 0.8434237837791443
+        Acierto en la prueba - media: 0.81470587849617
+        Acierto en el prueba - desvío: 0.020180704423850896
+                Acierto en la prueba en la partición 1: 0.8142856955528259
+                Acierto en la prueba en la partición 2: 0.7663865685462952
+                Acierto en la prueba en la partición 3: 0.8210083842277527
+                Acierto en la prueba en la partición 4: 0.8218487501144409
+                Acierto en la prueba en la partición 5: 0.8285714387893677
+                Acierto en la prueba en la partición 6: 0.8260504007339478
+                Acierto en la prueba en la partición 7: 0.8294117450714111
+                Acierto en la prueba en la partición 8: 0.792436957359314
+                Acierto en la prueba en la partición 9: 0.8285714387893677
+                Acierto en la prueba en la partición 10: 0.8184874057769775
+        Áreas bajo la curva ROC para las distintas clases:
+                Media y desvío AUC ROC de la clase 0: [0.8823992346938775, 0.010795155020105876]
+                Media y desvío AUC ROC de la clase 1: [0.9261619897959184, 0.014314896510430369]
+                Media y desvío AUC ROC de la clase 2: [0.9194081632653062, 0.01562768464603737]
+                Media y desvío AUC ROC de la clase 3: [0.8882461734693877, 0.016591206300011506]
+                Media y desvío AUC ROC de la clase 4: [0.9903494897959184, 0.002722869580747532]
+                Media y desvío AUC ROC de la clase 5: [0.9883992346938775, 0.009512642737445315]
+                Media y desvío AUC ROC de la clase 6: [0.9962155612244898, 0.002566555940323969]
+                Media y desvío AUC ROC de la clase 7: [0.9983239795918367, 0.001626854249874697]
+                Media y desvío AUC ROC de la clase 8: [0.9977117346938775, 0.00017778007353667216]
+                Media y desvío AUC ROC de la clase 9: [1.0, 0.0]
+                Media y desvío AUC ROC de la clase 10: [0.9999744897959184, 8.067034847365778e-05]
+                Media y desvío AUC ROC de la clase 11: [1.0, 3.510833468576701e-17]
+                Media y desvío AUC ROC de la clase 12: [0.999765306122449, 0.00021631088699695865]
+                Media y desvío AUC ROC de la clase 13: [0.9999234693877551, 5.510833927221203e-05]
+                Media y desvío AUC ROC de la clase 14: [0.9999323979591836, 9.752070528206975e-05]
+                Media y desvío AUC ROC de la clase 15: [0.9993890306122449, 0.0002258969823671946]
+                Media y desvío AUC ROC de la clase 16: [0.9952436224489796, 0.004268180010842601]
+
+Características de los datos de entrada:
+        Cantidad de ejemplos cargados: 3974
+        Cantidad de ejemplos con la etiqueta sin_interacción: 1030
+        Cantidad de ejemplos utilizados para entrenar: 3836
+        Cantidad de ejemplos utilizados para validar: 958
+        Cantidad de ejemplos utilizados para probar: 1190
+        Top de palabras frecuentes utilizadas: 100
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 500
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.4
+        Cantidad de filtros: 25
+        Dimensión de los kernels: (3, 4, 5, 6, 7)
+        Neuronas en la capa oculta: 256
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 17
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 100
+        Dimensión batch: 32
+        Cantidad de particiones: 10
+Resultados del entrenamiento:
+        Acierto en el entrenamiento - media: 0.8155109524726868
+        Acierto en el entrenamiento - desvío: 0.0052383909283904555
+                Acierto en el entrenamiento en la partición 1: 0.8110010623931885
+                Acierto en el entrenamiento en la partición 2: 0.81803959608078
+                Acierto en el entrenamiento en la partición 3: 0.8198644518852234
+                Acierto en el entrenamiento en la partición 4: 0.8107403516769409
+                Acierto en el entrenamiento en la partición 5: 0.8177789449691772
+                Acierto en el entrenamiento en la partición 6: 0.8146506547927856
+                Acierto en el entrenamiento en la partición 7: 0.8250781893730164
+                Acierto en el entrenamiento en la partición 8: 0.8068300485610962
+                Acierto en el entrenamiento en la partición 9: 0.8138686418533325
+                Acierto en el entrenamiento en la partición 10: 0.8172575831413269
+        Acierto en la validación - media: 0.8224425852298737
+        Acierto en el validación - desvío: 0.010420420600287097
+                Acierto en la validación en la partición 1: 0.8110647201538086
+                Acierto en la validación en la partición 2: 0.8402922749519348
+                Acierto en la validación en la partición 3: 0.8308976888656616
+                Acierto en la validación en la partición 4: 0.818371593952179
+                Acierto en la validación en la partición 5: 0.8152400851249695
+                Acierto en la validación en la partición 6: 0.8225469589233398
+                Acierto en la validación en la partición 7: 0.8288100361824036
+                Acierto en la validación en la partición 8: 0.818371593952179
+                Acierto en la validación en la partición 9: 0.8068893551826477
+                Acierto en la validación en la partición 10: 0.831941545009613
+        Acierto en la prueba - media: 0.8229411780834198
+        Acierto en el prueba - desvío: 0.005120000899956944
+                Acierto en la prueba en la partición 1: 0.8159663677215576
+                Acierto en la prueba en la partición 2: 0.8201680779457092
+                Acierto en la prueba en la partición 3: 0.8294117450714111
+                Acierto en la prueba en la partición 4: 0.8252100944519043
+                Acierto en la prueba en la partición 5: 0.8226890563964844
+                Acierto en la prueba en la partición 6: 0.8201680779457092
+                Acierto en la prueba en la partición 7: 0.8184874057769775
+                Acierto en la prueba en la partición 8: 0.8184874057769775
+                Acierto en la prueba en la partición 9: 0.8302521109580994
+                Acierto en la prueba en la partición 10: 0.8285714387893677
+        Áreas bajo la curva ROC para las distintas clases:
+                Media y desvío AUC ROC de la clase sin_interaccion: [0.9009323979591836, 0.00758229803695541]
+                Media y desvío AUC ROC de la clase inhibitor: [0.9441645408163265, 0.0045737757759887416]
+                Media y desvío AUC ROC de la clase agonist: [0.9298239795918367, 0.009502976276077074]
+                Media y desvío AUC ROC de la clase antagonist: [0.8915140306122449, 0.010743550510212243]
+                Media y desvío AUC ROC de la clase cofactor: [0.9950395408163266, 0.0014263736586794854]
+                Media y desvío AUC ROC de la clase binder: [0.9704974489795918, 0.009513797580017136]
+                Media y desvío AUC ROC de la clase inducer: [0.9831479591836735, 0.00798664244913057]
+                Media y desvío AUC ROC de la clase antibody: [0.9982321428571428, 0.0015218024052114042]
+                Media y desvío AUC ROC de la clase partial agonist: [0.9994464285714285, 0.0001637263632363549]
+                Media y desvío AUC ROC de la clase ligand: [0.9999923469387755, 2.4201104542132052e-05]
+                Media y desvío AUC ROC de la clase product of: [1.0, 3.510833468576701e-17]
+                Media y desvío AUC ROC de la clase multitarget: [1.0, 3.510833468576701e-17]
+                Media y desvío AUC ROC de la clase potentiator: [0.9990376275510204, 0.00018204156823729478]
+                Media y desvío AUC ROC de la clase modulator: [0.9999502551020408, 6.997891185889797e-05]
+                Media y desvío AUC ROC de la clase activator: [0.9996007653061224, 0.00021436752703426313]
+                Media y desvío AUC ROC de la clase negative modulator: [0.9999885204081632, 2.4387126530108963e-05]
+                Media y desvío AUC ROC de la clase other: [0.9935012755102041, 0.004439301850945114]
+
+Características de los datos de entrada:
+        Cantidad de ejemplos cargados: 3974
+        Cantidad de ejemplos con la etiqueta sin_interacción: 1030
+        Cantidad de ejemplos utilizados para entrenar: 3836
+        Cantidad de ejemplos utilizados para validar: 958
+        Cantidad de ejemplos utilizados para probar: 1190
+        Top de palabras frecuentes utilizadas: 100
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 500
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.4
+        Cantidad de filtros: 25
+        Dimensión de los kernels: (3, 4, 5, 6, 7, 8, 9)
+        Neuronas en la capa oculta: 256
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 17
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 100
+        Dimensión batch: 32
+        Cantidad de particiones: 10
+Resultados del entrenamiento:
+        Acierto en el entrenamiento - media: 0.8069603770971299
+        Acierto en el entrenamiento - desvío: 0.14766407537397
+                Acierto en el entrenamiento en la partición 1: 0.6618874073028564
+                Acierto en el entrenamiento en la partición 2: 0.6934306621551514
+                Acierto en el entrenamiento en la partición 3: 0.880083441734314
+                Acierto en el entrenamiento en la partición 4: 0.9241397380828857
+                Acierto en el entrenamiento en la partición 5: 0.9009384512901306
+                Acierto en el entrenamiento en la partición 6: 0.9147549271583557
+                Acierto en el entrenamiento en la partición 7: 0.9262252449989319
+                Acierto en el entrenamiento en la partición 8: 0.8920750617980957
+                Acierto en el entrenamiento en la partición 9: 0.4893117845058441
+                Acierto en el entrenamiento en la partición 10: 0.7867570519447327
+        Acierto en la validación - media: 0.7509394645690918
+        Acierto en el validación - desvío: 0.1900786443962117
+                Acierto en la validación en la partición 1: 0.6732776761054993
+                Acierto en la validación en la partición 2: 0.756784975528717
+                Acierto en la validación en la partición 3: 0.8204593062400818
+                Acierto en la validación en la partición 4: 0.8757829070091248
+                Acierto en la validación en la partición 5: 0.8611690998077393
+                Acierto en la validación en la partición 6: 0.8716075420379639
+                Acierto en la validación en la partición 7: 0.8663883209228516
+                Acierto en la validación en la partición 8: 0.7776618003845215
+                Acierto en la validación en la partición 9: 0.24321502447128296
+                Acierto en la validación en la partición 10: 0.763047993183136
+        Acierto en la prueba - media: 0.6164706021547317
+        Acierto en el prueba - desvío: 0.08390111412915818
+                Acierto en la prueba en la partición 1: 0.5655462145805359
+                Acierto en la prueba en la partición 2: 0.5764706134796143
+                Acierto en la prueba en la partición 3: 0.6739495992660522
+                Acierto en la prueba en la partición 4: 0.6873949766159058
+                Acierto en la prueba en la partición 5: 0.6487395167350769
+                Acierto en la prueba en la partición 6: 0.6789916157722473
+                Acierto en la prueba en la partición 7: 0.6722689270973206
+                Acierto en la prueba en la partición 8: 0.6260504126548767
+                Acierto en la prueba en la partición 9: 0.4100840389728546
+                Acierto en la prueba en la partición 10: 0.6252101063728333
+        Áreas bajo la curva ROC para las distintas clases:
+                Media y desvío AUC ROC de la clase sin_interaccion: [0.8209126559714796, 0.027139311755796505]
+                Media y desvío AUC ROC de la clase inhibitor: [0.8245979342723004, 0.028669654019641413]
+                Media y desvío AUC ROC de la clase agonist: [0.8508495088196121, 0.04458081752015139]
+                Media y desvío AUC ROC de la clase antagonist: [0.8150320790080738, 0.029858774566273977]
+                Media y desvío AUC ROC de la clase cofactor: [0.9882270297436835, 0.007361101198406952]
+                Media y desvío AUC ROC de la clase binder: [0.8843265430221952, 0.07831563332237584]
+                Media y desvío AUC ROC de la clase inducer: [0.9555681357307017, 0.035914373716624384]
+                Media y desvío AUC ROC de la clase antibody: [0.9899326302499973, 0.015272150096441435]
+                Media y desvío AUC ROC de la clase partial agonist: [0.9701802677029361, 0.061606435748833135]
+                Media y desvío AUC ROC de la clase ligand: [0.9394071914480078, 0.1122544735913477]
+                Media y desvío AUC ROC de la clase product of: [0.9615681029266584, 0.04634299868307763]
+                Media y desvío AUC ROC de la clase multitarget: [0.9370994433579058, 0.11235419069272454]
+                Media y desvío AUC ROC de la clase potentiator: [0.8400760135135136, 0.14760943753915434]
+                Media y desvío AUC ROC de la clase modulator: [0.8029040404040404, 0.10083966830274528]
+                Media y desvío AUC ROC de la clase activator: [0.895411182224369, 0.15170524737326002]
+                Media y desvío AUC ROC de la clase negative modulator: [0.995028293589552, 0.008803507808365583]
+                Media y desvío AUC ROC de la clase other: [0.9624307130259511, 0.05214466223648043]
+
+Características de los datos de entrada:
+        Cantidad de ejemplos cargados: 3974
+        Cantidad de ejemplos con la etiqueta sin_interacción: 1030
+        Cantidad de ejemplos utilizados para entrenar: 3836
+        Cantidad de ejemplos utilizados para validar: 958
+        Cantidad de ejemplos utilizados para probar: 1190
+        Top de palabras frecuentes utilizadas: 100
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 500
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.4
+        Cantidad de filtros: 25
+        Dimensión de los kernels: (3, 4, 5, 6, 7, 8, 9)
+        Neuronas en la capa oculta: 256
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 17
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 100
+        Dimensión batch: 32
+        Cantidad de particiones: 10
+Resultados del entrenamiento:
+        Acierto en el entrenamiento - media: 0.913712203502655
+        Acierto en el entrenamiento - desvío: 0.03924471677451752
+                Acierto en el entrenamiento en la partición 1: 0.8678310513496399
+                Acierto en el entrenamiento en la partición 2: 0.9436913728713989
+                Acierto en el entrenamiento en la partición 3: 0.9134514927864075
+                Acierto en el entrenamiento en la partición 4: 0.905630886554718
+                Acierto en el entrenamiento en la partición 5: 0.9434306621551514
+                Acierto en el entrenamiento en la partición 6: 0.918925940990448
+                Acierto en el entrenamiento en la partición 7: 0.9512513279914856
+                Acierto en el entrenamiento en la partición 8: 0.9496871829032898
+                Acierto en el entrenamiento en la partición 9: 0.8289885520935059
+                Acierto en el entrenamiento en la partición 10: 0.9142335653305054
+        Acierto en la validación - media: 0.8367432177066803
+        Acierto en el validación - desvío: 0.09291061798737875
+                Acierto en la validación en la partición 1: 0.8235908150672913
+                Acierto en la validación en la partición 2: 0.8726513385772705
+                Acierto en la validación en la partición 3: 0.867432177066803
+                Acierto en la validación en la partición 4: 0.8517745137214661
+                Acierto en la validación en la partición 5: 0.8830897808074951
+                Acierto en la validación en la partición 6: 0.8830897808074951
+                Acierto en la validación en la partición 7: 0.8851774334907532
+                Acierto en la validación en la partición 8: 0.8757829070091248
+                Acierto en la validación en la partición 9: 0.5782880783081055
+                Acierto en la validación en la partición 10: 0.8465553522109985
+        Acierto en la prueba - media: 0.650504207611084
+        Acierto en el prueba - desvío: 0.023683791553476382
+                Acierto en la prueba en la partición 1: 0.6563025116920471
+                Acierto en la prueba en la partición 2: 0.6747899055480957
+                Acierto en la prueba en la partición 3: 0.6705882549285889
+                Acierto en la prueba en la partición 4: 0.6369748115539551
+                Acierto en la prueba en la partición 5: 0.6781512498855591
+                Acierto en la prueba en la partición 6: 0.6403361558914185
+                Acierto en la prueba en la partición 7: 0.6378151178359985
+                Acierto en la prueba en la partición 8: 0.6596638560295105
+                Acierto en la prueba en la partición 9: 0.5983193516731262
+                Acierto en la prueba en la partición 10: 0.6521008610725403
+        Áreas bajo la curva ROC para las distintas clases:
+                Media y desvío AUC ROC de la clase sin_interaccion: [0.7913080885070214, 0.01812120060915058]
+                Media y desvío AUC ROC de la clase inhibitor: [0.8771785915492958, 0.016467470446060953]
+                Media y desvío AUC ROC de la clase agonist: [0.8604106915232632, 0.016876384342080063]
+                Media y desvío AUC ROC de la clase antagonist: [0.7874935417204857, 0.031944987107003886]
+                Media y desvío AUC ROC de la clase cofactor: [0.9915796951349055, 0.0027855377598378956]
+                Media y desvío AUC ROC de la clase binder: [0.939383425852498, 0.02990577831757549]
+                Media y desvío AUC ROC de la clase inducer: [0.9617201778969173, 0.020695871542031775]
+                Media y desvío AUC ROC de la clase antibody: [0.9895802148454698, 0.018747758184690797]
+                Media y desvío AUC ROC de la clase partial agonist: [0.9928410636982066, 0.01092256182405796]
+                Media y desvío AUC ROC de la clase ligand: [0.9647828326180257, 0.013537828258499323]
+                Media y desvío AUC ROC de la clase product of: [0.9951007718696399, 0.015430005580180485]
+                Media y desvío AUC ROC de la clase multitarget: [0.9441409058231488, 0.13441482622221093]
+                Media y desvío AUC ROC de la clase potentiator: [0.9372457627118644, 0.1480706743100567]
+                Media y desvío AUC ROC de la clase modulator: [0.7606661045531198, 0.18553385525595006]
+                Media y desvío AUC ROC de la clase activator: [0.9503378378378379, 0.03819771846279999]
+                Media y desvío AUC ROC de la clase negative modulator: [0.9997880033106332, 0.000630634561288207]
+                Media y desvío AUC ROC de la clase other: [0.9845082693229175, 0.011831761158739382]
+
+Características de los datos de entrada:
+        Cantidad de ejemplos cargados: 3974
+        Cantidad de ejemplos con la etiqueta sin_interacción: 1030
+        Cantidad de ejemplos utilizados para entrenar: 3836
+        Cantidad de ejemplos utilizados para validar: 958
+        Cantidad de ejemplos utilizados para probar: 1190
+        Top de palabras frecuentes utilizadas: 100
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 500
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.4
+        Cantidad de filtros: 25
+        Dimensión de los kernels: (3, 4, 5, 6, 7, 8, 9)
+        Neuronas en la capa oculta: 256
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 17
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 100
+        Dimensión batch: 32
+        Cantidad de particiones: 10
+Resultados del entrenamiento:
+        Acierto en el entrenamiento - media: 0.8920490145683289
+        Acierto en el entrenamiento - desvío: 0.009725721235131496
+                Acierto en el entrenamiento en la partición 1: 0.9121480584144592
+                Acierto en el entrenamiento en la partición 2: 0.8925964832305908
+                Acierto en el entrenamiento en la partición 3: 0.8806048035621643
+                Acierto en el entrenamiento en la partición 4: 0.8826903104782104
+                Acierto en el entrenamiento en la partición 5: 0.9001564383506775
+                Acierto en el entrenamiento en la partición 6: 0.8936392068862915
+                Acierto en el entrenamiento en la partición 7: 0.8889468312263489
+                Acierto en el entrenamiento en la partición 8: 0.891032338142395
+                Acierto en el entrenamiento en la partición 9: 0.8975495100021362
+                Acierto en el entrenamiento en la partición 10: 0.8811261653900146
+        Acierto en la validación - media: 0.8491649329662323
+        Acierto en el validación - desvío: 0.01301200953577846
+                Acierto en la validación en la partición 1: 0.8517745137214661
+                Acierto en la validación en la partición 2: 0.8329854011535645
+                Acierto en la validación en la partición 3: 0.8475991487503052
+                Acierto en la validación en la partición 4: 0.8653444647789001
+                Acierto en la validación en la partición 5: 0.8736951947212219
+                Acierto en la validación en la partición 6: 0.8549060821533203
+                Acierto en la validación en la partición 7: 0.8465553522109985
+                Acierto en la validación en la partición 8: 0.8350730538368225
+                Acierto en la validación en la partición 9: 0.8465553522109985
+                Acierto en la validación en la partición 10: 0.8371607661247253
+        Acierto en la prueba - media: 0.8231932640075683
+        Acierto en el prueba - desvío: 0.006075264334123094
+                Acierto en la prueba en la partición 1: 0.8361344337463379
+                Acierto en la prueba en la partición 2: 0.8226890563964844
+                Acierto en la prueba en la partición 3: 0.8176470398902893
+                Acierto en la prueba en la partición 4: 0.8235294222831726
+                Acierto en la prueba en la partición 5: 0.8294117450714111
+                Acierto en la prueba en la partición 6: 0.8159663677215576
+                Acierto en la prueba en la partición 7: 0.8226890563964844
+                Acierto en la prueba en la partición 8: 0.8243697285652161
+                Acierto en la prueba en la partición 9: 0.8226890563964844
+                Acierto en la prueba en la partición 10: 0.8168067336082458
+        Áreas bajo la curva ROC para las distintas clases:
+                Media y desvío AUC ROC de la clase sin_interaccion: [0.8928176020408163, 0.009256651434140397]
+                Media y desvío AUC ROC de la clase inhibitor: [0.9227053571428572, 0.007107323875139962]
+                Media y desvío AUC ROC de la clase agonist: [0.9287015306122449, 0.003975092529303571]
+                Media y desvío AUC ROC de la clase antagonist: [0.8953673469387755, 0.006957359109737737]
+                Media y desvío AUC ROC de la clase cofactor: [0.9929056122448979, 0.0016030298664246325]
+                Media y desvío AUC ROC de la clase binder: [0.9890956632653062, 0.00692193180059074]
+                Media y desvío AUC ROC de la clase inducer: [0.9997984693877551, 0.00032283821479874627]
+                Media y desvío AUC ROC de la clase antibody: [0.9975982142857143, 0.003121460986018702]
+                Media y desvío AUC ROC de la clase partial agonist: [0.998719387755102, 0.00021456981625663264]
+                Media y desvío AUC ROC de la clase ligand: [1.0, 0.0]
+                Media y desvío AUC ROC de la clase product of: [1.0, 3.510833468576701e-17]
+                Media y desvío AUC ROC de la clase multitarget: [0.9999260204081633, 6.242909810535676e-05]
+                Media y desvío AUC ROC de la clase potentiator: [0.9994451530612245, 0.00014244783646045412]
+                Media y desvío AUC ROC de la clase modulator: [0.9999808673469388, 2.0167587118423223e-05]
+                Media y desvío AUC ROC de la clase activator: [1.0, 3.510833468576701e-17]
+                Media y desvío AUC ROC de la clase negative modulator: [1.0, 0.0]
+                Media y desvío AUC ROC de la clase other: [0.9967015306122449, 0.0018445443694228721]
+
+Características de los datos de entrada:
+        Cantidad de ejemplos cargados: 3974
+        Cantidad de ejemplos con la etiqueta sin_interacción: 1030
+        Cantidad de ejemplos utilizados para entrenar: 3836
+        Cantidad de ejemplos utilizados para validar: 958
+        Cantidad de ejemplos utilizados para probar: 1190
+        Top de palabras frecuentes utilizadas: 100
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 500
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.4
+        Cantidad de filtros: 25
+        Dimensión de los kernels: (3, 4, 5, 6, 7, 8, 9)
+        Neuronas en la capa oculta: 128
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 17
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 100
+        Dimensión batch: 32
+        Cantidad de particiones: 10
+Resultados del entrenamiento:
+        Acierto en el entrenamiento - media: 0.8282846689224244
+        Acierto en el entrenamiento - desvío: 0.018012882716325233
+                Acierto en el entrenamiento en la partición 1: 0.8261209726333618
+                Acierto en el entrenamiento en la partición 2: 0.8409801721572876
+                Acierto en el entrenamiento en la partición 3: 0.8498435616493225
+                Acierto en el entrenamiento en la partición 4: 0.8383733034133911
+                Acierto en el entrenamiento en la partición 5: 0.8454118967056274
+                Acierto en el entrenamiento en la partición 6: 0.8039624691009521
+                Acierto en el entrenamiento en la partición 7: 0.8023983240127563
+                Acierto en el entrenamiento en la partición 8: 0.8065693378448486
+                Acierto en el entrenamiento en la partición 9: 0.828206479549408
+                Acierto en el entrenamiento en la partición 10: 0.8409801721572876
+        Acierto en la validación - media: 0.8289144098758697
+        Acierto en el validación - desvío: 0.008181569069873652
+                Acierto en la validación en la partición 1: 0.8110647201538086
+                Acierto en la validación en la partición 2: 0.8277661800384521
+                Acierto en la validación en la partición 3: 0.8402922749519348
+                Acierto en la validación en la partición 4: 0.8361169099807739
+                Acierto en la validación en la partición 5: 0.8246346712112427
+                Acierto en la validación en la partición 6: 0.8329854011535645
+                Acierto en la validación en la partición 7: 0.831941545009613
+                Acierto en la validación en la partición 8: 0.8288100361824036
+                Acierto en la validación en la partición 9: 0.8329854011535645
+                Acierto en la validación en la partición 10: 0.8225469589233398
+        Acierto en la prueba - media: 0.8310924291610717
+        Acierto en el prueba - desvío: 0.010658989089306023
+                Acierto en la prueba en la partición 1: 0.8378151059150696
+                Acierto en la prueba en la partición 2: 0.8327730894088745
+                Acierto en la prueba en la partición 3: 0.8453781604766846
+                Acierto en la prueba en la partición 4: 0.8336134552955627
+                Acierto en la prueba en la partición 5: 0.841176450252533
+                Acierto en la prueba en la partición 6: 0.8210083842277527
+                Acierto en la prueba en la partición 7: 0.8142856955528259
+                Acierto en la prueba en la partición 8: 0.8235294222831726
+                Acierto en la prueba en la partición 9: 0.8201680779457092
+                Acierto en la prueba en la partición 10: 0.841176450252533
+        Áreas bajo la curva ROC para las distintas clases:
+                Media y desvío AUC ROC de la clase sin_interaccion: [0.9021823979591836, 0.006347848775867764]
+                Media y desvío AUC ROC de la clase inhibitor: [0.9486135204081633, 0.006411578863956851]
+                Media y desvío AUC ROC de la clase agonist: [0.9411670918367346, 0.005160367601787232]
+                Media y desvío AUC ROC de la clase antagonist: [0.8864477040816326, 0.005289530034131099]
+                Media y desvío AUC ROC de la clase cofactor: [0.9935982142857143, 0.0019980138926275143]
+                Media y desvío AUC ROC de la clase binder: [0.9817385204081632, 0.009002949937315652]
+                Media y desvío AUC ROC de la clase inducer: [0.9982244897959184, 0.0030516123656929668]
+                Media y desvío AUC ROC de la clase antibody: [0.9975089285714286, 0.0016933520899386917]
+                Media y desvío AUC ROC de la clase partial agonist: [0.9994974489795918, 0.0001991911559154311]
+                Media y desvío AUC ROC de la clase ligand: [0.9997755102040816, 0.0007098990665684202]
+                Media y desvío AUC ROC de la clase product of: [1.0, 0.0]
+                Media y desvío AUC ROC de la clase multitarget: [0.9991428571428571, 0.0001994949428382854]
+                Media y desvío AUC ROC de la clase potentiator: [0.9994770408163266, 0.00025081430618626056]
+                Media y desvío AUC ROC de la clase modulator: [0.9999923469387755, 2.4201104542100848e-05]
+                Media y desvío AUC ROC de la clase activator: [1.0, 0.0]
+                Media y desvío AUC ROC de la clase negative modulator: [1.0, 0.0]
+                Media y desvío AUC ROC de la clase other: [0.9955918367346939, 0.007162351541012407]
+
+Características de los datos de entrada:
+        Cantidad de ejemplos utilizados para entrenar: 3836
+        Cantidad de ejemplos utilizados para validar: 958
+        Cantidad de ejemplos utilizados para probar: 1190
+        Top de palabras frecuentes utilizadas: 500
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 1000
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.0
+        Cantidad de filtros: 10
+        Dimensión de los kernels: (2, 3)
+        Neuronas en la capa oculta: 17
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 17
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 100
+        Dimensión batch: 32
+        Cantidad de particiones: 10
+Resultados del entrenamiento:
+        Acierto en el entrenamiento - media: 0.739650672674179
+        Acierto en el entrenamiento - desvío: 0.032773773584970724
+                Acierto en el entrenamiento en la partición 1: 0.7406152486801147
+                Acierto en el entrenamiento en la partición 2: 0.7450469136238098
+                Acierto en el entrenamiento en la partición 3: 0.7520855069160461
+                Acierto en el entrenamiento en la partición 4: 0.7137643098831177
+                Acierto en el entrenamiento en la partición 5: 0.7176746726036072
+                Acierto en el entrenamiento en la partición 6: 0.7088112831115723
+                Acierto en el entrenamiento en la partición 7: 0.7041188478469849
+                Acierto en el entrenamiento en la partición 8: 0.8031803965568542
+                Acierto en el entrenamiento en la partición 9: 0.7836287617683411
+                Acierto en el entrenamiento en la partición 10: 0.7275807857513428
+        Acierto en la validación - media: 0.6850730657577515
+        Acierto en el validación - desvío: 0.03629357190594886
+                Acierto en la validación en la partición 1: 0.6753653287887573
+                Acierto en la validación en la partición 2: 0.6889352798461914
+                Acierto en la validación en la partición 3: 0.68789142370224
+                Acierto en la validación en la partición 4: 0.6336116790771484
+                Acierto en la validación en la partición 5: 0.6471816301345825
+                Acierto en la validación en la partición 6: 0.6931106448173523
+                Acierto en la validación en la partición 7: 0.6513569951057434
+                Acierto en la validación en la partición 8: 0.7379958033561707
+                Acierto en la validación en la partición 9: 0.7453027367591858
+                Acierto en la validación en la partición 10: 0.6899791359901428
+        Acierto en la prueba - media: 0.6790756285190582
+        Acierto en el prueba - desvío: 0.036999077608537795
+                Acierto en la prueba en la partición 1: 0.6798319220542908
+                Acierto en la prueba en la partición 2: 0.6899159550666809
+                Acierto en la prueba en la partición 3: 0.694957971572876
+                Acierto en la prueba en la partición 4: 0.6445378065109253
+                Acierto en la prueba en la partición 5: 0.6260504126548767
+                Acierto en la prueba en la partición 6: 0.6756302714347839
+                Acierto en la prueba en la partición 7: 0.6336134672164917
+                Acierto en la prueba en la partición 8: 0.7352941036224365
+                Acierto en la prueba en la partición 9: 0.7310924530029297
+                Acierto en la prueba en la partición 10: 0.6798319220542908
+        Áreas bajo la curva ROC para las distintas clases:
+                Media y desvío AUC ROC de la clase sin_interaccion: [0.7620153061224489, 0.028294448632931884]
+                Media y desvío AUC ROC de la clase inhibitor: [0.8109923469387755, 0.03809154617318124]
+                Media y desvío AUC ROC de la clase agonist: [0.7926294642857142, 0.028022284110815185]
+                Media y desvío AUC ROC de la clase antagonist: [0.8041141581632653, 0.01509098571476964]
+                Media y desvío AUC ROC de la clase cofactor: [0.9786977040816327, 0.00766583271548689]
+                Media y desvío AUC ROC de la clase binder: [0.8938584183673469, 0.027400316684582444]
+                Media y desvío AUC ROC de la clase inducer: [0.9379464285714285, 0.02884553095749202]
+                Media y desvío AUC ROC de la clase antibody: [0.985859693877551, 0.008964166575533403]
+                Media y desvío AUC ROC de la clase partial agonist: [0.989048469387755, 0.005834700410999051]
+                Media y desvío AUC ROC de la clase ligand: [0.9972563775510204, 0.002489402154771452]
+                Media y desvío AUC ROC de la clase product of: [0.9961275510204082, 0.0031703446950157714]
+                Media y desvío AUC ROC de la clase multitarget: [0.995985331632653, 0.004431589093636866]
+                Media y desvío AUC ROC de la clase potentiator: [0.9961371173469388, 0.003187124076337993]
+                Media y desvío AUC ROC de la clase modulator: [0.9955535714285714, 0.004879408487959753]
+                Media y desvío AUC ROC de la clase activator: [0.9972117346938776, 0.0030105295473384845]
+                Media y desvío AUC ROC de la clase negative modulator: [0.9980994897959183, 0.0011953556464405172]
+                Media y desvío AUC ROC de la clase other: [0.9269413265306122, 0.02618733747426283]
+
+Características de los datos de entrada:
+        Cantidad de ejemplos utilizados para entrenar: 5440
+        Cantidad de ejemplos utilizados para validar: 1360
+        Cantidad de ejemplos utilizados para probar: 1700
+        Top de palabras frecuentes utilizadas: 500
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 1000
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.0
+        Cantidad de filtros: 10
+        Dimensión de los kernels: (2, 3)
+        Neuronas en la capa oculta: 17
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 17
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 100
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento - media: 0.7590441346168518
+        Acierto en el entrenamiento - desvío: 0.024304149579021897
+                Acierto en el entrenamiento en la partición 1: 0.732536792755127
+                Acierto en el entrenamiento en la partición 2: 0.7810661792755127
+                Acierto en el entrenamiento en la partición 3: 0.7533088326454163
+                Acierto en el entrenamiento en la partición 4: 0.7875000238418579
+                Acierto en el entrenamiento en la partición 5: 0.7408088445663452
+        Acierto en la validación - media: 0.7242647171020508
+        Acierto en el validación - desvío: 0.027369340734293604
+                Acierto en la validación en la partición 1: 0.6985294222831726
+                Acierto en la validación en la partición 2: 0.7455882430076599
+                Acierto en la validación en la partición 3: 0.7066176533699036
+                Acierto en la validación en la partición 4: 0.7610294222831726
+                Acierto en la validación en la partición 5: 0.7095588445663452
+        Acierto en la prueba - media: 0.7211764812469482
+        Acierto en el prueba - desvío: 0.02379991182613423
+                Acierto en la prueba en la partición 1: 0.6947059035301208
+                Acierto en la prueba en la partición 2: 0.7370588183403015
+                Acierto en la prueba en la partición 3: 0.7141176462173462
+                Acierto en la prueba en la partición 4: 0.75352942943573
+                Acierto en la prueba en la partición 5: 0.7064706087112427
+        Áreas bajo la curva ROC para las distintas clases:
+                Media y desvío AUC ROC de la clase sin_interaccion: [0.81644, 0.01771004352342372]
+                Media y desvío AUC ROC de la clase inhibitor: [0.85149, 0.01567976580386527]
+                Media y desvío AUC ROC de la clase agonist: [0.821838125, 0.031133104680247516]
+                Media y desvío AUC ROC de la clase antagonist: [0.81852375, 0.016097569419354522]
+                Media y desvío AUC ROC de la clase cofactor: [0.9731200000000001, 0.008164674050061679]
+                Media y desvío AUC ROC de la clase binder: [0.911115625, 0.017232028965435995]
+                Media y desvío AUC ROC de la clase inducer: [0.9732725, 0.015166326933580509]
+                Media y desvío AUC ROC de la clase antibody: [0.9898100000000001, 0.005526338921474098]
+                Media y desvío AUC ROC de la clase partial agonist: [0.994659375, 0.0017655351193937281]
+                Media y desvío AUC ROC de la clase ligand: [0.9988025, 0.0008536754176793357]
+                Media y desvío AUC ROC de la clase product of: [0.99787625, 0.002148416022619965]
+                Media y desvío AUC ROC de la clase multitarget: [0.99808625, 0.000500515359404656]
+                Media y desvío AUC ROC de la clase potentiator: [0.999340625, 0.00023682057422232342]
+                Media y desvío AUC ROC de la clase modulator: [0.9979162500000001, 0.002554440832892763]
+                Media y desvío AUC ROC de la clase activator: [0.9982362499999999, 0.0017012426524455682]
+                Media y desvío AUC ROC de la clase negative modulator: [0.9993625, 0.0005871508270879171]
+                Media y desvío AUC ROC de la clase other: [0.94809375, 0.016019098708650946]
+
+Características de los datos de entrada:
+        Cantidad de ejemplos utilizados para entrenar: 5440
+        Cantidad de ejemplos utilizados para validar: 1360
+        Cantidad de ejemplos utilizados para probar: 1700
+        Top de palabras frecuentes utilizadas: 400
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 1000
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.1
+        Cantidad de filtros: 10
+        Dimensión de los kernels: (2, 3)
+        Neuronas en la capa oculta: 17
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 17
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 100
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento - media: 0.6808823466300964
+        Acierto en el entrenamiento - desvío: 0.009900055575641817
+                Acierto en el entrenamiento en la partición 1: 0.6928308606147766
+                Acierto en el entrenamiento en la partición 2: 0.6838235259056091
+                Acierto en el entrenamiento en la partición 3: 0.6654411554336548
+                Acierto en el entrenamiento en la partición 4: 0.6801470518112183
+                Acierto en el entrenamiento en la partición 5: 0.6821691393852234
+        Acierto en la validación - media: 0.746470594406128
+        Acierto en el validación - desvío: 0.004832860317274482
+                Acierto en la validación en la partición 1: 0.7455882430076599
+                Acierto en la validación en la partición 2: 0.7485294342041016
+                Acierto en la validación en la partición 3: 0.7529411911964417
+                Acierto en la validación en la partición 4: 0.7455882430076599
+                Acierto en la validación en la partición 5: 0.7397058606147766
+        Acierto en la prueba - media: 0.7470588088035583
+        Acierto en el prueba - desvío: 0.0030281416732490275
+                Acierto en la prueba en la partición 1: 0.748235285282135
+                Acierto en la prueba en la partición 2: 0.751764714717865
+                Acierto en la prueba en la partición 3: 0.7458823323249817
+                Acierto en la prueba en la partición 4: 0.7441176176071167
+                Acierto en la prueba en la partición 5: 0.7452940940856934
+        Áreas bajo la curva ROC para las distintas clases:
+                Media y desvío AUC ROC de la clase sin_interaccion: [0.82972125, 0.017183349271533133]
+                Media y desvío AUC ROC de la clase inhibitor: [0.873833125, 0.014481594528163163]
+                Media y desvío AUC ROC de la clase agonist: [0.8601006250000001, 0.01783597348605659]
+                Media y desvío AUC ROC de la clase antagonist: [0.85046625, 0.01656754395483269]
+                Media y desvío AUC ROC de la clase cofactor: [0.9774537499999999, 0.007957745588026133]
+                Media y desvío AUC ROC de la clase binder: [0.953540625, 0.012772562183311638]
+                Media y desvío AUC ROC de la clase inducer: [0.98110625, 0.0059314080590109185]
+                Media y desvío AUC ROC de la clase antibody: [0.99671, 0.0030392471826917304]
+                Media y desvío AUC ROC de la clase partial agonist: [0.996615, 0.0008528170231649813]
+                Media y desvío AUC ROC de la clase ligand: [0.99980375, 0.00014780952692567523]
+                Media y desvío AUC ROC de la clase product of: [0.9996112500000001, 0.0004925301386717372]
+                Media y desvío AUC ROC de la clase multitarget: [0.998409375, 0.0012305835759914886]
+                Media y desvío AUC ROC de la clase potentiator: [0.999015, 0.0007491740243428437]
+                Media y desvío AUC ROC de la clase modulator: [0.99914375, 0.0004307515235028513]
+                Media y desvío AUC ROC de la clase activator: [0.999915, 0.00010005857659393836]
+                Media y desvío AUC ROC de la clase negative modulator: [0.99980125, 0.00018699933154963026]
+                Media y desvío AUC ROC de la clase other: [0.9403987500000001, 0.01666763104957291]
+
+Características de los datos de entrada:
+        Cantidad de ejemplos utilizados para entrenar: 5440
+        Cantidad de ejemplos utilizados para validar: 1360
+        Cantidad de ejemplos utilizados para probar: 1700
+        Top de palabras frecuentes utilizadas: 300
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 1000
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.1
+        Cantidad de filtros: 10
+        Dimensión de los kernels: (2, 3)
+        Neuronas en la capa oculta: 17
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 17
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 100
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento - media: 0.613860297203064
+        Acierto en el entrenamiento - desvío: 0.024091598027562246
+                Acierto en el entrenamiento en la partición 1: 0.6290441155433655
+                Acierto en el entrenamiento en la partición 2: 0.609375
+                Acierto en el entrenamiento en la partición 3: 0.6461396813392639
+                Acierto en el entrenamiento en la partición 4: 0.5996323823928833
+                Acierto en el entrenamiento en la partición 5: 0.5851103067398071
+        Acierto en la validación - media: 0.7119117736816406
+        Acierto en el validación - desvío: 0.021307022435433722
+                Acierto en la validación en la partición 1: 0.7308823466300964
+                Acierto en la validación en la partición 2: 0.716911792755127
+                Acierto en la validación en la partición 3: 0.7323529124259949
+                Acierto en la validación en la partición 4: 0.6933823823928833
+                Acierto en la validación en la partición 5: 0.6860294342041016
+        Acierto en la prueba - media: 0.7114117741584778
+        Acierto en el prueba - desvío: 0.017854670692668308
+                Acierto en la prueba en la partición 1: 0.729411780834198
+                Acierto en la prueba en la partición 2: 0.7041176557540894
+                Acierto en la prueba en la partición 3: 0.7305882573127747
+                Acierto en la prueba en la partición 4: 0.6899999976158142
+                Acierto en la prueba en la partición 5: 0.7029411792755127
+        Áreas bajo la curva ROC para las distintas clases:
+                Media y desvío AUC ROC de la clase sin_interaccion: [0.8115481250000001, 0.021831549995254912]
+                Media y desvío AUC ROC de la clase inhibitor: [0.838134375, 0.02730146945449998]
+                Media y desvío AUC ROC de la clase agonist: [0.824553125, 0.018561208393616257]
+                Media y desvío AUC ROC de la clase antagonist: [0.8129062499999999, 0.014987146022456606]
+                Media y desvío AUC ROC de la clase cofactor: [0.97475125, 0.010311810014796126]
+                Media y desvío AUC ROC de la clase binder: [0.94469625, 0.015442684858048472]
+                Media y desvío AUC ROC de la clase inducer: [0.9653, 0.01544012249991888]
+                Media y desvío AUC ROC de la clase antibody: [0.99264125, 0.006338158866145593]
+                Media y desvío AUC ROC de la clase partial agonist: [0.99207125, 0.0026477570106601695]
+                Media y desvío AUC ROC de la clase ligand: [0.99894375, 0.0008586076119218164]
+                Media y desvío AUC ROC de la clase product of: [0.99902375, 0.0004537420367758549]
+                Media y desvío AUC ROC de la clase multitarget: [0.99880125, 0.0012624644178153453]
+                Media y desvío AUC ROC de la clase potentiator: [0.9982887500000001, 0.0006086518144637277]
+                Media y desvío AUC ROC de la clase modulator: [0.99712125, 0.0016288691917247299]
+                Media y desvío AUC ROC de la clase activator: [0.9980106249999999, 0.0016185653852253984]
+                Media y desvío AUC ROC de la clase negative modulator: [0.9996025000000001, 0.00041941644728128946]
+                Media y desvío AUC ROC de la clase other: [0.9452675, 0.013402309589908377]
+
+aracterísticas de los datos de entrada:
+        Cantidad de ejemplos utilizados para entrenar: 5440
+        Cantidad de ejemplos utilizados para validar: 1360
+        Cantidad de ejemplos utilizados para probar: 1700
+        Top de palabras frecuentes utilizadas: 300
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 1000
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.1
+        Cantidad de filtros: 100
+        Dimensión de los kernels: (2, 3)
+        Neuronas en la capa oculta: 17
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 17
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 100
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento - media: 0.7094853043556213
+        Acierto en el entrenamiento - desvío: 0.09236392324868484
+                Acierto en el entrenamiento en la partición 1: 0.7512867450714111
+                Acierto en el entrenamiento en la partición 2: 0.7871323823928833
+                Acierto en el entrenamiento en la partición 3: 0.7678309082984924
+                Acierto en el entrenamiento en la partición 4: 0.6803308725357056
+                Acierto en el entrenamiento en la partición 5: 0.5608456134796143
+        Acierto en la validación - media: 0.7861764788627624
+        Acierto en el validación - desvío: 0.07851033213453106
+                Acierto en la validación en la partición 1: 0.8183823823928833
+                Acierto en la validación en la partición 2: 0.841911792755127
+                Acierto en la validación en la partición 3: 0.841176450252533
+                Acierto en la validación en la partición 4: 0.7749999761581421
+                Acierto en la validación en la partición 5: 0.654411792755127
+        Acierto en la prueba - media: 0.7988235235214234
+        Acierto en el prueba - desvío: 0.07214460971909194
+                Acierto en la prueba en la partición 1: 0.8229411840438843
+                Acierto en la prueba en la partición 2: 0.8476470708847046
+                Acierto en la prueba en la partición 3: 0.8535293936729431
+                Acierto en la prueba en la partición 4: 0.792941153049469
+                Acierto en la prueba en la partición 5: 0.6770588159561157
+        Áreas bajo la curva ROC para las distintas clases:
+                Media y desvío AUC ROC de la clase sin_interaccion: [0.8896193750000001, 0.02100107168024407]
+                Media y desvío AUC ROC de la clase inhibitor: [0.940769375, 0.015618622823611953]
+                Media y desvío AUC ROC de la clase agonist: [0.900646875, 0.01681923598796184]
+                Media y desvío AUC ROC de la clase antagonist: [0.9215912500000001, 0.007853336522220988]
+                Media y desvío AUC ROC de la clase cofactor: [0.987110625, 0.022349992309842078]
+                Media y desvío AUC ROC de la clase binder: [0.98994625, 0.009196265588881678]
+                Media y desvío AUC ROC de la clase inducer: [0.9942075, 0.008271047252691139]
+                Media y desvío AUC ROC de la clase antibody: [0.99990125, 0.00018783303756261208]
+                Media y desvío AUC ROC de la clase partial agonist: [0.998911875, 0.0002631910546542432]
+                Media y desvío AUC ROC de la clase ligand: [0.989768125, 0.022879168037280663]
+                Media y desvío AUC ROC de la clase product of: [0.99082, 0.02030015942440483]
+                Media y desvío AUC ROC de la clase multitarget: [0.99886375, 0.002540732239434123]
+                Media y desvío AUC ROC de la clase potentiator: [0.999105, 0.0007359809567848775]
+                Media y desvío AUC ROC de la clase modulator: [0.9959831250000001, 0.007644007303518891]
+                Media y desvío AUC ROC de la clase activator: [0.993595, 0.014276638615453238]
+                Media y desvío AUC ROC de la clase negative modulator: [1.0, 0.0]
+                Media y desvío AUC ROC de la clase other: [0.992396875, 0.010469124993283794]
+
+Características de los datos de entrada:
+        Cantidad de ejemplos utilizados para entrenar: 5440
+        Cantidad de ejemplos utilizados para validar: 1360
+        Cantidad de ejemplos utilizados para probar: 1700
+        Top de palabras frecuentes utilizadas: 300
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 1000
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.1
+        Cantidad de filtros: 100
+        Dimensión de los kernels: (2, 3, 4)
+        Neuronas en la capa oculta: 17
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 17
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 100
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento - media: 0.6600367605686188
+        Acierto en el entrenamiento - desvío: 0.13122795872063994
+                Acierto en el entrenamiento en la partición 1: 0.7395220398902893
+                Acierto en el entrenamiento en la partición 2: 0.6277573704719543
+                Acierto en el entrenamiento en la partición 3: 0.7277573347091675
+                Acierto en el entrenamiento en la partición 4: 0.4439338147640228
+                Acierto en el entrenamiento en la partición 5: 0.7612132430076599
+        Acierto en la validación - media: 0.769705879688263
+        Acierto en el validación - desvío: 0.10517584458204847
+                Acierto en la validación en la partición 1: 0.8345588445663452
+                Acierto en la validación en la partición 2: 0.7227941155433655
+                Acierto en la validación en la partición 3: 0.8404411673545837
+                Acierto en la validación en la partición 4: 0.6051470637321472
+                Acierto en la validación en la partición 5: 0.845588207244873
+        Acierto en la prueba - media: 0.7792941212654114
+        Acierto en el prueba - desvío: 0.10372091124243983
+                Acierto en la prueba en la partición 1: 0.8476470708847046
+                Acierto en la prueba en la partición 2: 0.729411780834198
+                Acierto en la prueba en la partición 3: 0.8458823561668396
+                Acierto en la prueba en la partición 4: 0.6188235282897949
+                Acierto en la prueba en la partición 5: 0.8547058701515198
+        Áreas bajo la curva ROC para las distintas clases:
+                Media y desvío AUC ROC de la clase sin_interaccion: [0.85692125, 0.015399720091815007]
+                Media y desvío AUC ROC de la clase inhibitor: [0.92675875, 0.043989337886086055]
+                Media y desvío AUC ROC de la clase agonist: [0.902725625, 0.030120619202995712]
+                Media y desvío AUC ROC de la clase antagonist: [0.90276375, 0.02930869858079683]
+                Media y desvío AUC ROC de la clase cofactor: [0.99032875, 0.00963896875967546]
+                Media y desvío AUC ROC de la clase binder: [0.9930425, 0.00677008066329349]
+                Media y desvío AUC ROC de la clase inducer: [0.9983625, 0.002768806432833486]
+                Media y desvío AUC ROC de la clase antibody: [0.9982550000000001, 0.0028062061522186625]
+                Media y desvío AUC ROC de la clase partial agonist: [0.96931625, 0.04182723549203616]
+                Media y desvío AUC ROC de la clase ligand: [0.99785, 0.004426623995778231]
+                Media y desvío AUC ROC de la clase product of: [1.0, 0.0]
+                Media y desvío AUC ROC de la clase multitarget: [0.9852075, 0.02160007579648882]
+                Media y desvío AUC ROC de la clase potentiator: [0.99970875, 0.00012512493756240765]
+                Media y desvío AUC ROC de la clase modulator: [0.976339375, 0.036058614500386735]
+                Media y desvío AUC ROC de la clase activator: [0.994380625, 0.012565304491062891]
+                Media y desvío AUC ROC de la clase negative modulator: [0.99620375, 0.007609703663333409]
+                Media y desvío AUC ROC de la clase other: [0.985389375, 0.018450562851340092]
+
