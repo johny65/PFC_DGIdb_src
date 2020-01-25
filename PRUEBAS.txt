@@ -3085,3 +3085,718 @@ Resultados del entrenamiento:
                 Media y desvío AUC ROC de la clase negative modulator: [0.99620375, 0.007609703663333409]
                 Media y desvío AUC ROC de la clase other: [0.985389375, 0.018450562851340092]
 
+Características de los datos de entrada:
+        Cantidad de ejemplos utilizados para entrenar: 5440
+        Cantidad de ejemplos utilizados para validar: 1360
+        Cantidad de ejemplos utilizados para probar: 1700
+        Top de palabras frecuentes utilizadas: 300
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 1000
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.1
+        Cantidad de filtros: 100
+        Dimensión de los kernels: (3, 5, 7, 9, 11, 13, 15)
+        Neuronas en la capa oculta: 17
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 17
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 100
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento - media: 0.39992646798491477
+        Acierto en el entrenamiento - desvío: 0.33647824968550777
+                Acierto en el entrenamiento en la partición 1: 0.4060661792755127
+                Acierto en el entrenamiento en la partición 2: 0.0623161755502224
+                Acierto en el entrenamiento en la partición 3: 0.7299632430076599
+                Acierto en el entrenamiento en la partición 4: 0.7397058606147766
+                Acierto en el entrenamiento en la partición 5: 0.06158088147640228
+        Acierto en la validación - media: 0.46735294759273527
+        Acierto en el validación - desvío: 0.40474104351556095
+                Acierto en la validación en la partición 1: 0.5411764979362488
+                Acierto en la validación en la partición 2: 0.04485294222831726
+                Acierto en la validación en la partición 3: 0.841911792755127
+                Acierto en la validación en la partición 4: 0.8610293865203857
+                Acierto en la validación en la partición 5: 0.04779411852359772
+        Acierto en la prueba - media: 0.17588235586881637
+        Acierto en el prueba - desvío: 0.10763902446763919
+                Acierto en la prueba en la partición 1: 0.23647059500217438
+                Acierto en la prueba en la partición 2: 0.05882352963089943
+                Acierto en la prueba en la partición 3: 0.2523529529571533
+                Acierto en la prueba en la partición 4: 0.2729411721229553
+                Acierto en la prueba en la partición 5: 0.05882352963089943
+        Áreas bajo la curva ROC para las distintas clases:
+                Media y desvío AUC ROC de la clase sin_interaccion: [0.60061625, 0.10028881706414228]
+                Media y desvío AUC ROC de la clase inhibitor: [0.66931875, 0.15501751633636032]
+                Media y desvío AUC ROC de la clase agonist: [0.6627875, 0.1495111019602725]
+                Media y desvío AUC ROC de la clase antagonist: [0.623281875, 0.11266924650674844]
+                Media y desvío AUC ROC de la clase cofactor: [0.75116, 0.230047655966378]
+                Media y desvío AUC ROC de la clase binder: [0.64977875, 0.14386527291184623]
+                Media y desvío AUC ROC de la clase inducer: [0.57786375, 0.08399702054797836]
+                Media y desvío AUC ROC de la clase antibody: [0.73739375, 0.2212322845132181]
+                Media y desvío AUC ROC de la clase partial agonist: [0.7465, 0.22698904550075485]
+                Media y desvío AUC ROC de la clase ligand: [0.7222087500000001, 0.21665868776574598]
+                Media y desvío AUC ROC de la clase product of: [0.7357625, 0.21998473562101983]
+                Media y desvío AUC ROC de la clase multitarget: [0.5313575, 0.06713494214662921]
+                Media y desvío AUC ROC de la clase potentiator: [0.63175625, 0.1229530005797439]
+                Media y desvío AUC ROC de la clase modulator: [0.56077875, 0.1414478623579197]
+                Media y desvío AUC ROC de la clase activator: [0.600025, 0.10614252827492734]
+                Media y desvío AUC ROC de la clase negative modulator: [0.51310625, 0.09322132790602426]
+                Media y desvío AUC ROC de la clase other: [0.533930625, 0.0342695263539407]
+
+Características de los datos de entrada:
+        Cantidad de ejemplos utilizados para entrenar: 218
+        Cantidad de ejemplos utilizados para validar: 54
+        Cantidad de ejemplos utilizados para probar: 68
+        Top de palabras frecuentes utilizadas: 300
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 1000
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.4
+        Cantidad de filtros: 100
+        Dimensión de los kernels: (3, 5, 7, 9, 11, 13, 15)
+        Neuronas en la capa oculta: 128
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 17
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 100
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento - media: 0.06788990870118142
+        Acierto en el entrenamiento - desvío: 0.011873558987375729
+                Acierto en el entrenamiento en la partición 1: 0.06422018259763718
+                Acierto en el entrenamiento en la partición 2: 0.07798165082931519
+                Acierto en el entrenamiento en la partición 3: 0.059633027762174606
+                Acierto en el entrenamiento en la partición 4: 0.08256880939006805
+                Acierto en el entrenamiento en la partición 5: 0.055045872926712036
+        Acierto en la validación - media: 0.040740741044282915
+        Acierto en el validación - desvío: 0.024145194273238857
+                Acierto en la validación en la partición 1: 0.018518518656492233
+                Acierto en la validación en la partición 2: 0.018518518656492233
+                Acierto en la validación en la partición 3: 0.03703703731298447
+                Acierto en la validación en la partición 4: 0.07407407462596893
+                Acierto en la validación en la partición 5: 0.0555555559694767
+        Acierto en la prueba - media: 0.06764706075191498
+        Acierto en el prueba - desvío: 0.01676728646082719
+                Acierto en la prueba en la partición 1: 0.07352941483259201
+                Acierto en la prueba en la partición 2: 0.07352941483259201
+                Acierto en la prueba en la partición 3: 0.04411764815449715
+                Acierto en la prueba en la partición 4: 0.05882352963089943
+                Acierto en la prueba en la partición 5: 0.0882352963089943
+        Áreas bajo la curva ROC para las distintas clases:
+                Media y desvío AUC ROC de la clase sin_interaccion: [0.425, 0.04291544989678834]
+                Media y desvío AUC ROC de la clase inhibitor: [0.4328125, 0.13419546509313382]
+                Media y desvío AUC ROC de la clase agonist: [0.46640625, 0.17023812166023874]
+                Media y desvío AUC ROC de la clase antagonist: [0.5234375, 0.1045606157369076]
+                Media y desvío AUC ROC de la clase cofactor: [0.46953125, 0.17159512013430409]
+                Media y desvío AUC ROC de la clase binder: [0.409375, 0.12689000834876638]
+                Media y desvío AUC ROC de la clase inducer: [0.49453125, 0.10527325631941738]
+                Media y desvío AUC ROC de la clase antibody: [0.40859375, 0.13684703802569587]
+                Media y desvío AUC ROC de la clase partial agonist: [0.62578125, 0.08470349825826262]
+                Media y desvío AUC ROC de la clase ligand: [0.675, 0.1386966307128394]
+                Media y desvío AUC ROC de la clase product of: [0.42421875, 0.10237058331437307]
+                Media y desvío AUC ROC de la clase multitarget: [0.659375, 0.1419856052893215]
+                Media y desvío AUC ROC de la clase potentiator: [0.628125, 0.21758548854236295]
+                Media y desvío AUC ROC de la clase modulator: [0.5953125, 0.0785437993604126]
+                Media y desvío AUC ROC de la clase activator: [0.46484375, 0.15845610560134232]
+                Media y desvío AUC ROC de la clase negative modulator: [0.4640625, 0.06491900753294447]
+                Media y desvío AUC ROC de la clase other: [0.55234375, 0.08711025083640415]
+
+Características de los datos de entrada:
+        Cantidad de ejemplos utilizados para entrenar: 436
+        Cantidad de ejemplos utilizados para validar: 108
+        Cantidad de ejemplos utilizados para probar: 136
+        Top de palabras frecuentes utilizadas: 300
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 1000
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.4
+        Cantidad de filtros: 100
+        Dimensión de los kernels: (3, 5, 7, 9, 11, 13, 15)
+        Neuronas en la capa oculta: 128
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 17
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 100
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento - media: 0.963302743434906
+        Acierto en el entrenamiento - desvío: 0.015471011014599422
+                Acierto en el entrenamiento en la partición 1: 0.9770641922950745
+                Acierto en el entrenamiento en la partición 2: 0.9564220309257507
+                Acierto en el entrenamiento en la partición 3: 0.9403669834136963
+                Acierto en el entrenamiento en la partición 4: 0.9770641922950745
+                Acierto en el entrenamiento en la partición 5: 0.9655963182449341
+        Acierto en la validación - media: 0.5129629731178283
+        Acierto en el validación - desvío: 0.028236955262763243
+                Acierto en la validación en la partición 1: 0.5277777910232544
+                Acierto en la validación en la partición 2: 0.5
+                Acierto en la validación en la partición 3: 0.49074074625968933
+                Acierto en la validación en la partición 4: 0.5555555820465088
+                Acierto en la validación en la partición 5: 0.49074074625968933
+        Acierto en la prueba - media: 0.29705882668495176
+        Acierto en el prueba - desvío: 0.019174128149786134
+                Acierto en la prueba en la partición 1: 0.2867647111415863
+                Acierto en la prueba en la partición 2: 0.2720588147640228
+                Acierto en la prueba en la partición 3: 0.31617647409439087
+                Acierto en la prueba en la partición 4: 0.31617647409439087
+                Acierto en la prueba en la partición 5: 0.29411765933036804
+        Áreas bajo la curva ROC para las distintas clases:
+                Media y desvío AUC ROC de la clase sin_interaccion: [0.506640625, 0.07748271134027658]
+                Media y desvío AUC ROC de la clase inhibitor: [0.660546875, 0.08836838464648597]
+                Media y desvío AUC ROC de la clase agonist: [0.7611328125, 0.060667250550083776]
+                Media y desvío AUC ROC de la clase antagonist: [0.84765625, 0.060408896461767246]
+                Media y desvío AUC ROC de la clase cofactor: [0.88671875, 0.02120512768614108]
+                Media y desvío AUC ROC de la clase binder: [0.6009765625, 0.07243566355051845]
+                Media y desvío AUC ROC de la clase inducer: [0.7025390625, 0.059171145990442556]
+                Media y desvío AUC ROC de la clase antibody: [0.859765625, 0.05659261839486762]
+                Media y desvío AUC ROC de la clase partial agonist: [0.934765625, 0.03930830863114573]
+                Media y desvío AUC ROC de la clase ligand: [0.8326171875, 0.11566516075656401]
+                Media y desvío AUC ROC de la clase product of: [0.6083984375, 0.14423732253616725]
+                Media y desvío AUC ROC de la clase multitarget: [0.809765625, 0.1550404846479874]
+                Media y desvío AUC ROC de la clase potentiator: [0.8486328125, 0.07955538700069328]
+                Media y desvío AUC ROC de la clase modulator: [0.5154296875, 0.10562777363222232]
+                Media y desvío AUC ROC de la clase activator: [0.7109375, 0.15590171143361348]
+                Media y desvío AUC ROC de la clase negative modulator: [0.925390625, 0.06453297610433609]
+                Media y desvío AUC ROC de la clase other: [0.64453125, 0.07467032135238967]
+
+Características de los datos de entrada:
+        Cantidad de ejemplos utilizados para entrenar: 218
+        Cantidad de ejemplos utilizados para validar: 54
+        Cantidad de ejemplos utilizados para probar: 68
+        Top de palabras frecuentes utilizadas: 300
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 1000
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.4
+        Cantidad de filtros: 100
+        Dimensión de los kernels: (3, 5)
+        Neuronas en la capa oculta: 17
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 17
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 40
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento - media: 0.06422018259763718
+        Acierto en el entrenamiento - desvío: 0.011236190999288994
+                Acierto en el entrenamiento en la partición 1: 0.07339449226856232
+                Acierto en el entrenamiento en la partición 2: 0.07798165082931519
+                Acierto en el entrenamiento en la partición 3: 0.05045871436595917
+                Acierto en el entrenamiento en la partición 4: 0.059633027762174606
+                Acierto en el entrenamiento en la partición 5: 0.059633027762174606
+        Acierto en la validación - media: 0.025925926119089126
+        Acierto en el validación - desvío: 0.010143010399741059
+                Acierto en la validación en la partición 1: 0.018518518656492233
+                Acierto en la validación en la partición 2: 0.03703703731298447
+                Acierto en la validación en la partición 3: 0.018518518656492233
+                Acierto en la validación en la partición 4: 0.03703703731298447
+                Acierto en la validación en la partición 5: 0.018518518656492233
+        Acierto en la prueba - media: 0.0735294133424759
+        Acierto en el prueba - desvío: 0.03288335564829188
+                Acierto en la prueba en la partición 1: 0.05882352963089943
+                Acierto en la prueba en la partición 2: 0.05882352963089943
+                Acierto en la prueba en la partición 3: 0.05882352963089943
+                Acierto en la prueba en la partición 4: 0.13235294818878174
+                Acierto en la prueba en la partición 5: 0.05882352963089943
+        Áreas bajo la curva ROC para las distintas clases:
+                Media y desvío AUC ROC de la clase sin_interaccion: [0.45546875, 0.09957490212303752]
+                Media y desvío AUC ROC de la clase inhibitor: [0.48671875, 0.029697777826169083]
+                Media y desvío AUC ROC de la clase agonist: [0.4453125, 0.12228496751951975]
+                Media y desvío AUC ROC de la clase antagonist: [0.53671875, 0.08210562104882041]
+                Media y desvío AUC ROC de la clase cofactor: [0.5390625, 0.08734640537108554]
+                Media y desvío AUC ROC de la clase binder: [0.5171875, 0.03843241836327763]
+                Media y desvío AUC ROC de la clase inducer: [0.515625, 0.034938562148434216]
+                Media y desvío AUC ROC de la clase antibody: [0.53828125, 0.08559947726366382]
+                Media y desvío AUC ROC de la clase partial agonist: [0.575, 0.16770509831248423]
+                Media y desvío AUC ROC de la clase ligand: [0.55625, 0.12577882373436317]
+                Media y desvío AUC ROC de la clase product of: [0.55390625, 0.12053803941209804]
+                Media y desvío AUC ROC de la clase multitarget: [0.4765625, 0.052407843222651324]
+                Media y desvío AUC ROC de la clase potentiator: [0.53125, 0.06987712429686843]
+                Media y desvío AUC ROC de la clase modulator: [0.5265625, 0.059395555652338165]
+                Media y desvío AUC ROC de la clase activator: [0.44375, 0.12577882373436317]
+                Media y desvío AUC ROC de la clase negative modulator: [0.471875, 0.06288941186718158]
+                Media y desvío AUC ROC de la clase other: [0.48984375, 0.02271006539648224]
+
+Características de los datos de entrada:
+        Cantidad de ejemplos utilizados para entrenar: 218
+        Cantidad de ejemplos utilizados para validar: 54
+        Cantidad de ejemplos utilizados para probar: 68
+        Top de palabras frecuentes utilizadas: 300
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 1000
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.4
+        Cantidad de filtros: 500
+        Dimensión de los kernels: (3, 5)
+        Neuronas en la capa oculta: 17
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 17
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 40
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento [media, desvío]: [0.08256880740324656/0.016171642484998743]
+        Acierto en el validación [media, desvío]: [0.016049382835626604/0.01376339552767874]
+        Acierto en el validación [media, desvío]: [0.016049382835626604/0.01376339552767874]
+        Acierto en la prueba - media: 0.06176470673332612
+        Acierto en el prueba - desvío: 0.01860163399549759
+        Áreas bajo la curva ROC para las distintas clases:
+                Media y desvío AUC ROC de la clase sin_interaccion: [0.5255208333333333, 0.07774904892607992]
+                Media y desvío AUC ROC de la clase inhibitor: [0.5154947916666667, 0.10205619903666684]
+                Media y desvío AUC ROC de la clase agonist: [0.512890625, 0.06914724544574698]
+                Media y desvío AUC ROC de la clase antagonist: [0.512890625, 0.08341402053102076]
+                Media y desvío AUC ROC de la clase cofactor: [0.600390625, 0.1499166347814931]
+                Media y desvío AUC ROC de la clase binder: [0.5151041666666667, 0.07604107741434282]
+                Media y desvío AUC ROC de la clase inducer: [0.5274739583333333, 0.05284517680534849]
+                Media y desvío AUC ROC de la clase antibody: [0.5403645833333334, 0.07437156299894138]
+                Media y desvío AUC ROC de la clase partial agonist: [0.5798177083333333, 0.13330983454397546]
+                Media y desvío AUC ROC de la clase ligand: [0.5365885416666667, 0.10488966215606542]
+                Media y desvío AUC ROC de la clase product of: [0.5537760416666667, 0.09353720113509252]
+                Media y desvío AUC ROC de la clase multitarget: [0.5197916666666667, 0.08081942199344268]
+                Media y desvío AUC ROC de la clase potentiator: [0.5600260416666667, 0.10762072369363056]
+                Media y desvío AUC ROC de la clase modulator: [0.528125, 0.054626680146909606]
+                Media y desvío AUC ROC de la clase activator: [0.566796875, 0.13551808566229698]
+                Media y desvío AUC ROC de la clase negative modulator: [0.5216145833333333, 0.04362617668264874]
+                Media y desvío AUC ROC de la clase other: [0.5169270833333334, 0.07382733764382371]
+
+Características de los datos de entrada:
+        Cantidad de ejemplos utilizados para entrenar: 2176
+        Cantidad de ejemplos utilizados para validar: 544
+        Cantidad de ejemplos utilizados para probar: 672
+        Top de palabras frecuentes utilizadas: 300
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 1000
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.5
+        Cantidad de filtros: 10
+        Dimensión de los kernels: (3, 4, 5, 6, 7, 8, 9, 10, 11)
+        Neuronas en la primer capa oculta: 128
+        Neuronas en la segunda capa oculta: 64
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 15
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 50
+        Dimensión batch: 32
+        Cantidad de particiones: 4
+Resultados del entrenamiento:
+        Acierto en el entrenamiento [media, desvío]: [0.8016429245471954 / 0.007622648491536962]
+        Acierto en el validación [media, desvío]: [0.8180147036910057 / 0.01690491498459521]
+        Acierto en el validación [media, desvío]: [0.3262648805975914 / 0.028566001193472898]
+        Áreas bajo la curva ROC para las distintas clases:
+                Media y desvío AUC ROC de la clase sin_interaccion: [0.6938444822373393, 0.02427505661845067]
+                Media y desvío AUC ROC de la clase inhibitor: [0.7747354497354497, 0.03192393756807904]
+                Media y desvío AUC ROC de la clase agonist: [0.766165910808768, 0.03217858215693165]
+                Media y desvío AUC ROC de la clase antagonist: [0.7422430083144369, 0.02294264638108513]
+                Media y desvío AUC ROC de la clase cofactor: [0.9104875283446712, 0.012087769156894978]
+                Media y desvío AUC ROC de la clase binder: [0.7080498866213152, 0.0666869985188242]
+                Media y desvío AUC ROC de la clase inducer: [0.7365693499622071, 0.06367055095125694]
+                Media y desvío AUC ROC de la clase antibody: [0.8381849962207105, 0.04716108083236643]
+                Media y desvío AUC ROC de la clase partial agonist: [0.8821097883597884, 0.07202773373816368]
+                Media y desvío AUC ROC de la clase ligand: [0.9488142479213908, 0.0295806742275126]
+                Media y desvío AUC ROC de la clase product of: [0.8250755857898715, 0.08970136817351392]
+                Media y desvío AUC ROC de la clase multitarget: [0.9078750944822374, 0.05440901187596737]
+                Media y desvío AUC ROC de la clase potentiator: [0.8437145691609977, 0.04255374714328586]
+                Media y desvío AUC ROC de la clase modulator: [0.8189909297052155, 0.07765852304103026]
+                Media y desvío AUC ROC de la clase activator: [0.6769517330741821, 0.03815190478291963]
+
+Características de los datos de entrada:
+        Cantidad de ejemplos utilizados para entrenar: 2176
+        Cantidad de ejemplos utilizados para validar: 544
+        Cantidad de ejemplos utilizados para probar: 672
+        Top de palabras frecuentes utilizadas: 300
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 1000
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.5
+        Cantidad de filtros: 50
+        Dimensión de los kernels: (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11)
+        Neuronas en la primer capa oculta: 128
+        Neuronas en la segunda capa oculta: 64
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 15
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 50
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento [media, desvío]: [0.7153952181339264 / 0.09318259939527412]
+        Acierto en el validación [media, desvío]: [0.7680147111415863 / 0.061798007808568624]
+        Acierto en el validación [media, desvío]: [0.27931548058986666 / 0.015576506028584253]
+        Áreas bajo la curva ROC para las distintas clases:
+                Media y desvío AUC ROC de la clase sin_interaccion: [0.6633919123204838, 0.027207883575312584]
+                Media y desvío AUC ROC de la clase inhibitor: [0.7768480725623583, 0.049368841279745584]
+                Media y desvío AUC ROC de la clase agonist: [0.7529043839758125, 0.03199757278339346]
+                Media y desvío AUC ROC de la clase antagonist: [0.7463718820861678, 0.0345340262060126]
+                Media y desvío AUC ROC de la clase cofactor: [0.9036130007558579, 0.012701101908033696]
+                Media y desvío AUC ROC de la clase binder: [0.732411186696901, 0.062088468070452034]
+                Media y desvío AUC ROC de la clase inducer: [0.5787207105064248, 0.08282709649090832]
+                Media y desvío AUC ROC de la clase antibody: [0.902883597883598, 0.026602482010760913]
+                Media y desvío AUC ROC de la clase partial agonist: [0.9257785336356765, 0.04363669202366752]
+                Media y desvío AUC ROC de la clase ligand: [0.8953212396069539, 0.05888365303665014]
+                Media y desvío AUC ROC de la clase product of: [0.8354686318972033, 0.0633650434169176]
+                Media y desvío AUC ROC de la clase multitarget: [0.7794992441421013, 0.05770160487791273]
+                Media y desvío AUC ROC de la clase potentiator: [0.8545956160241874, 0.06354829601415761]
+                Media y desvío AUC ROC de la clase modulator: [0.623344671201814, 0.13053468477122007]
+                Media y desvío AUC ROC de la clase activator: [0.6502146096533852, 0.037593437941904416]
+
+Características de los datos de entrada:
+        Cantidad de ejemplos utilizados para entrenar: 2176
+        Cantidad de ejemplos utilizados para validar: 544
+        Cantidad de ejemplos utilizados para probar: 672
+        Top de palabras frecuentes utilizadas: 300
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 1000
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.5
+        Cantidad de filtros: 75
+        Dimensión de los kernels: (3, 5, 7, 9, 11)
+        Neuronas en la primer capa oculta: 128
+        Neuronas en la segunda capa oculta: 64
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 15
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 50
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento [media, desvío]: [0.8745404362678528 / 0.010441410810410084]
+        Acierto en el validación [media, desvío]: [0.8325367629528045 / 0.008010342717166712]
+        Acierto en el validación [media, desvío]: [0.30238095223903655 / 0.015397776546339784]
+        Áreas bajo la curva ROC para las distintas clases:
+                Media y desvío AUC ROC de la clase sin_interaccion: [0.7509750566893424, 0.03427036429026356]
+                Media y desvío AUC ROC de la clase inhibitor: [0.8327664399092971, 0.024614830940353622]
+                Media y desvío AUC ROC de la clase antagonist: [0.7705744520030234, 0.02288075483104385]
+                Media y desvío AUC ROC de la clase cofactor: [0.90786470143613, 0.01549251034013504]
+                Media y desvío AUC ROC de la clase binder: [0.6638321995464853, 0.05715953213007475]
+                Media y desvío AUC ROC de la clase inducer: [0.651904761904762, 0.05266772603731872]
+                Media y desvío AUC ROC de la clase antibody: [0.8443953136810279, 0.02452959160614953]
+                Media y desvío AUC ROC de la clase partial agonist: [0.8950377928949358, 0.04189097272039116]
+                Media y desvío AUC ROC de la clase ligand: [0.8551095993953137, 0.044192501866660454]
+                Media y desvío AUC ROC de la clase product of: [0.6396258503401361, 0.07183205189570305]
+                Media y desvío AUC ROC de la clase multitarget: [0.8931934996220711, 0.0872966052778451]
+                Media y desvío AUC ROC de la clase potentiator: [0.8494671201814059, 0.0468299481214064]
+                Media y desvío AUC ROC de la clase modulator: [0.7242290249433107, 0.05004070260317377]
+                Media y desvío AUC ROC de la clase activator: [0.6395347424684159, 0.04921103134166194]
+
+Características de los datos de entrada:
+        Cantidad de ejemplos utilizados para entrenar: 2176
+        Cantidad de ejemplos utilizados para validar: 544
+        Cantidad de ejemplos utilizados para probar: 672
+        Top de palabras frecuentes utilizadas: 300
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 1000
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.5
+        Cantidad de filtros: 60
+        Dimensión de los kernels: (3, 5, 7, 9, 11)
+        Neuronas en la primer capa oculta: 128
+        Neuronas en la segunda capa oculta: 64
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 15
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 50
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento [media, desvío]: [0.8620864152908325 / 0.015825637305566877]
+        Acierto en el validación [media, desvío]: [0.8299632430076599 / 0.021754611125878436]
+        Acierto en el validación [media, desvío]: [0.3126488119363785 / 0.020541340774541762]
+        Áreas bajo la curva ROC para las distintas clases:
+                Media y desvío AUC ROC de la clase sin_interaccion: [0.659421768707483, 0.029821816784340344]
+                Media y desvío AUC ROC de la clase inhibitor: [0.8120483749055177, 0.027149786066769765]
+                Media y desvío AUC ROC de la clase agonist: [0.7652985638699924, 0.021193341338244635]
+                Media y desvío AUC ROC de la clase antagonist: [0.7949319727891156, 0.025529202012410608]
+                Media y desvío AUC ROC de la clase cofactor: [0.8821012849584278, 0.016615881683404395]
+                Media y desvío AUC ROC de la clase binder: [0.6473167044595616, 0.09502553962621162]
+                Media y desvío AUC ROC de la clase inducer: [0.7806462585034013, 0.046412241113380465]
+                Media y desvío AUC ROC de la clase antibody: [0.9256500377928949, 0.050681852033271566]
+                Media y desvío AUC ROC de la clase partial agonist: [0.9466628873771731, 0.018264724366562735]
+                Media y desvío AUC ROC de la clase ligand: [0.7804043839758126, 0.036441803160606315]
+                Media y desvío AUC ROC de la clase product of: [0.8325661375661376, 0.08240304520672688]
+                Media y desvío AUC ROC de la clase multitarget: [0.7343801965230536, 0.08003437696313696]
+                Media y desvío AUC ROC de la clase potentiator: [0.8411281179138322, 0.04411258661579897]
+                Media y desvío AUC ROC de la clase modulator: [0.7103212396069538, 0.11264495295417296]
+                Media y desvío AUC ROC de la clase activator: [0.711175898931001, 0.039615300934228756]
+
+Características de los datos de entrada:
+        Cantidad de ejemplos utilizados para entrenar: 2172
+        Cantidad de ejemplos utilizados para validar: 543
+        Cantidad de ejemplos utilizados para probar: 675
+        Top de palabras frecuentes utilizadas: 300
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 1000
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.5
+        Cantidad de filtros: 50
+        Dimensión de los kernels: (3, 5, 7, 9, 11)
+        Neuronas en la primer capa oculta: 128
+        Neuronas en la segunda capa oculta: 64
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 14
+        Activación en la capa de salida: softmax
+        Velocidad de aprendizaje: 0.001
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 50
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento [media, desvío]: [0.8557550787925721 / 0.005693035413638444]
+        Acierto en el validación [media, desvío]: [0.8222836077213287 / 0.010851855353207795]
+        Acierto en el validación [media, desvío]: [0.3026666671037674 / 0.017723508203178927]
+        Áreas bajo la curva ROC para las distintas clases:
+                Media y desvío AUC ROC de la clase sin_interaccion: [0.6917989417989417, 0.01873470297420058]
+                Media y desvío AUC ROC de la clase inhibitor: [0.793679012345679, 0.02172144489295441]
+                Media y desvío AUC ROC de la clase agonist: [0.7973439153439152, 0.022169417711669206]
+                Media y desvío AUC ROC de la clase antagonist: [0.7661269841269841, 0.014620299977798215]
+                Media y desvío AUC ROC de la clase cofactor: [0.9425361552028219, 0.016765086139617046]
+                Media y desvío AUC ROC de la clase binder: [0.7287936507936508, 0.04728079558556782]
+                Media y desvío AUC ROC de la clase inducer: [0.711721340388007, 0.0632706987626301]
+                Media y desvío AUC ROC de la clase antibody: [0.7557954144620811, 0.03525055033060027]
+                Media y desvío AUC ROC de la clase partial agonist: [0.8805008818342152, 0.045914810369160626]
+                Media y desvío AUC ROC de la clase ligand: [0.7342927689594356, 0.07862717876407445]
+                Media y desvío AUC ROC de la clase product of: [0.847026455026455, 0.03433418211903914]
+                Media y desvío AUC ROC de la clase multitarget: [0.78431569664903, 0.03446761664341301]
+                Media y desvío AUC ROC de la clase potentiator: [0.5017213403880071, 0.06085677347574646]
+                Media y desvío AUC ROC de la clase modulator: [0.6961709401709402, 0.04023773176524572]
+
+Características de los datos de entrada:
+        Cantidad de ejemplos utilizados para entrenar: 2176
+        Cantidad de ejemplos utilizados para validar: 544
+        Cantidad de ejemplos utilizados para probar: 680
+        Top de palabras frecuentes utilizadas: 300
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 1000
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.4
+        Cantidad de filtros: 75
+        Dimensión de los kernels: (3, 5, 7, 9, 11, 13, 15)
+        Neuronas en la primer capa oculta: 128
+        Neuronas en la segunda capa oculta: 64
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 17
+        Activación en la capa de salida: softmax
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 100
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento [media, desvío]: [0.8134191155433654 / 0.017792704984059805]
+        Acierto en el validación [media, desvío]: [0.8459558844566345 / 0.017312631543910946]
+        Acierto en el prueba [media, desvío]: [0.3676470577716827 / 0.011343564968984816]
+        Áreas bajo la curva ROC para las distintas clases:
+                Media y desvío AUC ROC de la clase sin_interaccion: [0.6927109375, 0.021084825224230087]
+                Media y desvío AUC ROC de la clase inhibitor: [0.8434843750000001, 0.009295906593470635]
+                Media y desvío AUC ROC de la clase agonist: [0.858453125, 0.01432786195403304]
+                Media y desvío AUC ROC de la clase antagonist: [0.7459296875, 0.012920992875346895]
+                Media y desvío AUC ROC de la clase cofactor: [0.975421875, 0.0017798960040283677]
+                Media y desvío AUC ROC de la clase binder: [0.8194609375, 0.01601458647547505]
+                Media y desvío AUC ROC de la clase inducer: [0.7722890625000001, 0.0381011047523508]
+                Media y desvío AUC ROC de la clase antibody: [0.97840625, 0.005250340042001151]
+                Media y desvío AUC ROC de la clase partial agonist: [0.9503046875, 0.006696023518255591]
+                Media y desvío AUC ROC de la clase ligand: [0.9237968750000001, 0.010381971843318976]
+                Media y desvío AUC ROC de la clase product of: [0.95553125, 0.015038443574926588]
+                Media y desvío AUC ROC de la clase multitarget: [0.946875, 0.02005854620551813]
+                Media y desvío AUC ROC de la clase potentiator: [0.804171875, 0.07811772622388996]
+                Media y desvío AUC ROC de la clase modulator: [0.6488437499999999, 0.0425355076280945]
+                Media y desvío AUC ROC de la clase activator: [0.6803515625, 0.02510991158710261]
+                Media y desvío AUC ROC de la clase negative modulator: [0.719953125, 0.06269407368324373]
+                Media y desvío AUC ROC de la clase other: [0.8070703125, 0.040792613583810075]
+
+Características de los datos de entrada:
+        Cantidad de ejemplos utilizados para entrenar: 2176
+        Cantidad de ejemplos utilizados para validar: 544
+        Cantidad de ejemplos utilizados para probar: 672
+        Top de palabras frecuentes utilizadas: 300
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 1000
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.4
+        Cantidad de filtros: 75
+        Dimensión de los kernels: (3, 5, 7, 9, 11, 13, 15)
+        Neuronas en la primer capa oculta: 128
+        Neuronas en la segunda capa oculta: 64
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 15
+        Activación en la capa de salida: softmax
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 100
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento [media, desvío]: [0.8052389740943908 / 0.039852530209727406]
+        Acierto en el validación [media, desvío]: [0.8422794103622436 / 0.014439211201833236]
+        Acierto en el prueba [media, desvío]: [0.3386904776096344 / 0.007335574932706795]
+        Áreas bajo la curva ROC para las distintas clases:
+                Media y desvío AUC ROC de la clase sin_interaccion: [0.7349055177626606, 0.0163327320184001]
+                Media y desvío AUC ROC de la clase inhibitor: [0.8082086167800454, 0.015479302655043863]
+                Media y desvío AUC ROC de la clase agonist: [0.8511602418745275, 0.006823077797570783]
+                Media y desvío AUC ROC de la clase antagonist: [0.7179062736205593, 0.011176330971859523]
+                Media y desvío AUC ROC de la clase cofactor: [0.960355253212396, 0.008486587896026321]
+                Media y desvío AUC ROC de la clase binder: [0.8158730158730159, 0.01918172788541585]
+                Media y desvío AUC ROC de la clase inducer: [0.8356084656084656, 0.026112762754434447]
+                Media y desvío AUC ROC de la clase antibody: [0.846832955404384, 0.0287094367537065]
+                Media y desvío AUC ROC de la clase partial agonist: [0.942838246409675, 0.008212892597165799]
+                Media y desvío AUC ROC de la clase ligand: [0.9941118669690098, 0.0015638223167723515]
+                Media y desvío AUC ROC de la clase product of: [0.878896447467876, 0.034718051641488695]
+                Media y desvío AUC ROC de la clase multitarget: [0.8014890400604686, 0.04791346643160924]
+                Media y desvío AUC ROC de la clase potentiator: [0.8738321995464852, 0.026977848610402613]
+                Media y desvío AUC ROC de la clase modulator: [0.686885865457294, 0.08309247332545805]
+                Media y desvío AUC ROC de la clase activator: [0.7430879494655005, 0.03271786032010441]
+
+Características de los datos de entrada:
+        Cantidad de ejemplos utilizados para entrenar: 6221
+        Cantidad de ejemplos utilizados para validar: 1555
+        Cantidad de ejemplos utilizados para probar: 1944
+        Top de palabras frecuentes utilizadas: 300
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 1000
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.4
+        Cantidad de filtros: 75
+        Dimensión de los kernels: (3, 5, 7, 9, 11, 13, 15)
+        Neuronas en la primer capa oculta: 128
+        Neuronas en la segunda capa oculta: 64
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 27
+        Activación en la capa de salida: softmax
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 100
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento [media, desvío]: [0.9193055868148804 / 0.005200072435926308]
+        Acierto en el validación [media, desvío]: [0.9194855332374573 / 0.010745531806800112]
+        Acierto en el prueba [media, desvío]: [0.2364197552204132 / 0.010018326977758747]
+        Áreas bajo la curva ROC para las distintas clases:
+                Media y desvío AUC ROC de la clase sin_interaccion: [0.6782511277302944, 0.027965334751869755]
+                Media y desvío AUC ROC de la clase inhibitor: [0.8190289648622981, 0.01879619711578457]
+                Media y desvío AUC ROC de la clase agonist: [0.821679131054131, 0.00851257575785287]
+                Media y desvío AUC ROC de la clase antagonist: [0.7231778252611586, 0.008082733145003662]
+                Media y desvío AUC ROC de la clase cofactor: [0.9425554962013295, 0.008271980544014753]
+                Media y desvío AUC ROC de la clase binder: [0.7969907407407407, 0.029364985769319913]
+                Media y desvío AUC ROC de la clase inducer: [0.8596658357075023, 0.024662798800157093]
+                Media y desvío AUC ROC de la clase antibody: [0.8299115622032288, 0.013045526472867745]
+                Media y desvío AUC ROC de la clase partial agonist: [0.9658119658119658, 0.004269406248760303]
+                Media y desvío AUC ROC de la clase ligand: [0.9172824667616334, 0.09573233721208352]
+                Media y desvío AUC ROC de la clase product of: [0.8669530508072175, 0.03186722630917119]
+                Media y desvío AUC ROC de la clase multitarget: [0.7721257716049382, 0.024639754495931344]
+                Media y desvío AUC ROC de la clase potentiator: [0.7931980056980057, 0.0967200835229996]
+                Media y desvío AUC ROC de la clase modulator: [0.6430273622981957, 0.03365276105055171]
+                Media y desvío AUC ROC de la clase activator: [0.7390446937321937, 0.034221864927812214]
+                Media y desvío AUC ROC de la clase negative modulator: [0.9021575261158594, 0.048747951400051205]
+                Media y desvío AUC ROC de la clase other: [0.7297987891737892, 0.06453798959547634]
+                Media y desvío AUC ROC de la clase suppressor: [0.9889719848053181, 0.012875930936809955]
+                Media y desvío AUC ROC de la clase blocker: [0.7355413105413106, 0.05166466775265819]
+                Media y desvío AUC ROC de la clase stimulator: [0.6638369539411206, 0.07670455664398039]
+                Media y desvío AUC ROC de la clase allosteric modulator: [1.0, 0.0]
+                Media y desvío AUC ROC de la clase unknown: [0.8113247863247863, 0.15627049869189727]
+                Media y desvío AUC ROC de la clase partial antagonist: [0.685042735042735, 0.23152186394417348]
+                Media y desvío AUC ROC de la clase inhibitory immune response: [0.9299679487179486, 0.04588205676304591]
+                Media y desvío AUC ROC de la clase binding: [0.8866452991452991, 0.17354633900198538]
+                Media y desvío AUC ROC de la clase inhibitor, competitive: [0.6262820512820513, 0.27395139484234327]
+                Media y desvío AUC ROC de la clase inverse agonist: [0.8319444444444444, 0.09115117016560051]
+
+Características de los datos de entrada:
+        Cantidad de ejemplos utilizados para entrenar: 17799
+        Cantidad de ejemplos utilizados para validar: 4449
+        Cantidad de ejemplos utilizados para probar: 5562
+        Top de palabras frecuentes utilizadas: 52
+        Solo palabras con longitud mayor a: 3
+        Longitud de los ejemplos (filas): 52
+        Dimension del embedding (columnas): 52
+Parámetros:
+        Dropout: 0.4
+        Cantidad de filtros: 75
+        Dimensión de los kernels: (3, 5, 7, 9, 11, 13, 15)
+        Neuronas en la primer capa oculta: 128
+        Neuronas en la segunda capa oculta: 64
+        Activación en la capa oculta: relu
+        Neuronas en la capa de salida: 27
+        Activación en la capa de salida: softmax
+        Optimizador: adam
+        Loss function: categorical_crossentropy
+        Cantidad de épocas: 100
+        Dimensión batch: 32
+        Cantidad de particiones: 5
+Resultados del entrenamiento:
+        Acierto en el entrenamiento [media, desvío]: [0.7985055327415467 / 0.0052166281972713625]
+        Acierto en el validación [media, desvío]: [0.8362778186798095 / 0.007228694964145923]
+        Acierto en el prueba [media, desvío]: [0.11244156807661057 / 0.008316789398576217]
+        Áreas bajo la curva ROC para las distintas clases:
+                Media y desvío AUC ROC de la clase sin_interaccion: [0.7080046332214303, 0.014433197493560632]
+                Media y desvío AUC ROC de la clase inhibitor: [0.5150782717141469, 0.013278434201818312]
+                Media y desvío AUC ROC de la clase agonist: [0.47280683309526744, 0.012759922752139405]
+                Media y desvío AUC ROC de la clase antagonist: [0.5656765482137808, 0.009394268634433272]
+                Media y desvío AUC ROC de la clase cofactor: [0.6362344743577658, 0.02246237744548328]
+                Media y desvío AUC ROC de la clase binder: [0.4575991357120587, 0.07557129285658343]
+                Media y desvío AUC ROC de la clase inducer: [0.46814923105926026, 0.05039320348571575]
+                Media y desvío AUC ROC de la clase antibody: [0.6166714400690271, 0.031082636853234244]
+                Media y desvío AUC ROC de la clase partial agonist: [0.5085895864904254, 0.036172252166623085]
+                Media y desvío AUC ROC de la clase ligand: [0.6140315370838982, 0.06314020145448944]
+                Media y desvío AUC ROC de la clase product of: [0.7051810146682425, 0.03213279526546392]
+                Media y desvío AUC ROC de la clase multitarget: [0.9773395411733143, 0.005448764899042437]
+                Media y desvío AUC ROC de la clase potentiator: [0.9892239535372723, 0.008305011640896844]
+                Media y desvío AUC ROC de la clase modulator: [0.5688841839657185, 0.07919335654555347]
+                Media y desvío AUC ROC de la clase activator: [0.18768842854760473, 0.011498285146695613]
+                Media y desvío AUC ROC de la clase negative modulator: [0.653804099567131, 0.05990533342169396]
+                Media y desvío AUC ROC de la clase other: [0.6355616058933996, 0.1005896032747384]
+                Media y desvío AUC ROC de la clase suppressor: [0.5339142382737444, 0.08468519563678449]
+                Media y desvío AUC ROC de la clase blocker: [0.5860903659447348, 0.12870585285440217]
+                Media y desvío AUC ROC de la clase stimulator: [0.8388117490954705, 0.11144800508391113]
+                Media y desvío AUC ROC de la clase allosteric modulator: [0.9990291262135923, 0.0007514791559932137]
+                Media y desvío AUC ROC de la clase unknown: [0.5512322628827483, 0.23247866565194017]
+                Media y desvío AUC ROC de la clase partial antagonist: [0.15948469006721433, 0.025016371546184378]
+                Media y desvío AUC ROC de la clase inhibitory immune response: [0.3728528752800597, 0.17112890566855882]
+                Media y desvío AUC ROC de la clase binding: [0.22541075429424945, 0.16574849719923423]
+                Media y desvío AUC ROC de la clase inhibitor, competitive: [0.8311053024645257, 0.11232002806524584]
+                Media y desvío AUC ROC de la clase inverse agonist: [0.47165795369678865, 0.1484876315925071]
+

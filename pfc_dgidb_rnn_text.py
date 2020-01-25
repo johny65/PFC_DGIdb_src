@@ -3,14 +3,15 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 import numpy as np
 from redes_neuronales_preprocesamiento import cargar_ejemplos, cargar_interacciones # Carga de ejemplos
 from keras.models import Sequential, Model
-from keras.layers import LSTM, Concatenate, Dropout, Flatten, Dense
+from keras.layers import GRU, LSTM, Dropout, Flatten, Dense
 from keras.callbacks import EarlyStopping, ReduceLROnPlateau
-from keras.optimizers import Adam,SGD # SGD: Gradiente descendiente
+from keras.optimizers import Adam
 from keras.utils import plot_model
 from sklearn.metrics import roc_curve, auc
 import statistics
 import funciones_auxiliares as fa
 import math
+import random
 import os
 # os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID" # see issue #152
 # os.environ["CUDA_VISIBLE_DEVICES"] = "-1" # Para utilizar CPU en lugar de GPU
@@ -140,8 +141,14 @@ else: # Análisis del modelo
                             dropout=PORCENTAJE_DROPEO,
                             input_shape=formato_entrada))
 
-        # modelo_rnn.add(Dense(NEURONAS_OCULTAS, activation = ACTIVACION_OCULTA))
-        # modelo_rnn.add(Dropout(PORCENTAJE_DROPEO))
+        # modelo_rnn.GRU(units=UNIDADES_LSTM,
+        #     activation='tanh',
+        #     recurrent_activation='sigmoid',
+        #     dropout=0.0,
+        #     recurrent_dropout=0.0)
+
+        modelo_rnn.add(Dense(NEURONAS_OCULTAS, activation = ACTIVACION_OCULTA))
+        modelo_rnn.add(Dropout(PORCENTAJE_DROPEO))
         modelo_rnn.add(Dense(NEURONAS_OCULTAS, activation = ACTIVACION_OCULTA))
         modelo_rnn.add(Dropout(PORCENTAJE_DROPEO))
         modelo_rnn.add(Dense(NEURONAS_SALIDA, activation = ACTIVACION_SALIDA))
@@ -247,10 +254,9 @@ else: # Análisis del modelo
     print("\tActivación en la capa oculta: {}".format(ACTIVACION_OCULTA))
     print("\tNeuronas en la capa de salida: {}".format(NEURONAS_SALIDA))
     print("\tActivación en la capa de salida: {}".format(ACTIVACION_SALIDA))
-    print("\tVelocidad de aprendizaje: {}".format(VELOCIDAD_APRENDIZAJE))
     print("\tOptimizador: {}".format(OPTIMIZADOR))
     print("\tLoss function: {}".format(FUNCION_ERROR))
-    print("\tDimensión batch: {}".format(DIMENSION_BACHA))
+    print("\tDimensión batch: {}".format(DIMENSION_BATCH))
     
     print("Resultados del entrenamiento:")
     print("\tAcierto en el entrenamiento - media: {}".format(promedio_acierto_entrenamiento))

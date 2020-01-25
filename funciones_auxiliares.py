@@ -113,7 +113,7 @@ def balancear_clases(etiquetas_archivo_ruta, # Archivo de etiquetas: pmid, gen, 
     '''
     Devuelve (training, test): los conjuntos de interacciones fármaco-gen para
     entrenamiento y prueba balanceados en cantidad de ejemplos por clase.
-    Se recomienda que al menos haya dos elementos por clase.
+    Se recomienda que al menos haya dos ejemplos por clase.
     '''
     ifg_balanceadas_prueba_lista = list()
     ifg_balanceadas_entrenamiento_lista = list()
@@ -171,7 +171,6 @@ def balancear_clases(etiquetas_archivo_ruta, # Archivo de etiquetas: pmid, gen, 
                 ifg_balanceadas_entrenamiento_lista.append(ifg)
         else:
             cantidad_ejemplos_prueba_clase_actual = math.ceil(cantidad*porcentaje_prueba)
-            # cantidad_ejemplos_entrenamiento_clase_actual = int(cantidad-cantidad_ejemplos_prueba_clase_actual)
             ifg_interaccion_prueba_lista = random.sample(ifg_interaccion_lista, k=cantidad_ejemplos_prueba_clase_actual)
             ifg_interaccion_entrenamiento_lista = list()
             for ifg in ifg_interaccion_lista:
@@ -189,7 +188,7 @@ def balancear_clases(etiquetas_archivo_ruta, # Archivo de etiquetas: pmid, gen, 
 if __name__ == "__main__":
     etiquetas_archivo_ruta = "E:/Descargas/Python/PFC_DGIdb_src/etiquetas_neural_networks.csv"
     interacciones_lista_ruta = "E:/Descargas/Python/PFC_DGIdb_src/interacciones_lista.txt"
-    ifg_balanceadas_entrenamiento_lista, ifg_balanceadas_prueba_lista = balancear_clases(etiquetas_archivo_ruta, interacciones_lista_ruta, 1, 0.2)
+    ifg_balanceadas_entrenamiento_lista, ifg_balanceadas_prueba_lista = balancear_clases(etiquetas_archivo_ruta, interacciones_lista_ruta, 400, 0.2)
     for ifg in ifg_balanceadas_entrenamiento_lista:
         print(ifg)
     print("xxxxxxxxxxxxxxxxxxxxxxx")
