@@ -29,7 +29,8 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
                     sin_interaccion_a_incluir=2944,
                     randomize=True,
                     porcentaje_test=0.1,
-                    ejemplos_cantidad=-1):
+                    ejemplos_cantidad=-1,
+                    vocabulario_global=True):
     """
     Carga los ejemplos para las redes neuronales en una lista de listas
     Entradas:
@@ -54,6 +55,9 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
             entrenamiento y test balanceando las clases (hace oversampling o undersampling
             según necesite).
             Si es negativo usa el total que haya.
+        vocabulario_global:
+            Si es true se analizan todos los textos y se calculan las top words en base a todos.
+            Si es false se calculan las top words por cada artículo.
     Salidas:
         x_training: lista de matrices con los embeddings para servir como entrada a la red
         y_training: lista de vectores de salida
@@ -92,25 +96,28 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
     print("Ejemplos (separados en training y test) y diccionario de contenidos armados.")
     print("Total para entrenamiento:", len(training), "Total para test:", len(test))
 
-    tokenizer = dp.Tokenizer(num_words=top_palabras)
-    tokenizer.fit_on_texts(contenido_dict.values())
-    print("Listo fit on texts.")
-    # print("Top words:", [tokenizer.index_word[i] for i in range(1, top_palabras)])
+    if vocabulario_global:
+        tokenizer = dp.Tokenizer(num_words=top_palabras)
+        tokenizer.fit_on_texts(contenido_dict.values())
+        print("Listo fit on texts.")
+        # print("Top words:", [tokenizer.index_word[i] for i in range(1, top_palabras)])
+    else:
+        tokenizer = None
     
     embeddings_dict, maximo_valor_embedding, minimo_valor_embedding = dp.cargar_embeddings(embeddings_file)
     DIMENSION_EMBEDDING = len(next(iter(embeddings_dict.values())))
 
-    x_training, y_training = _cargar_ejemplos(training, contenido_dict, tokenizer, max_longitud,
+    x_training, y_training = _cargar_ejemplos(training, contenido_dict, tokenizer, top_palabras, max_longitud,
                                               embeddings_dict, maximo_valor_embedding, minimo_valor_embedding,
                                               interacciones_dict, randomize, "entrenamiento")
-    x_test, y_test = _cargar_ejemplos(test, contenido_dict, tokenizer, max_longitud,
+    x_test, y_test = _cargar_ejemplos(test, contenido_dict, tokenizer, top_palabras, max_longitud,
                                       embeddings_dict, maximo_valor_embedding, minimo_valor_embedding,
                                       interacciones_dict, randomize, "test")
 
     return (x_training, y_training), (x_test, y_test)
 
 
-def _cargar_ejemplos(etiquetas, contenido_dict, tokenizer, max_longitud,
+def _cargar_ejemplos(etiquetas, contenido_dict, tokenizer, top_palabras, max_longitud,
                      embeddings_dict, maximo_valor_embedding, minimo_valor_embedding,
                      interacciones_dict, randomize, tipo):
     # xs son las matrices de entrada; ys son los vectores de salida:
@@ -127,6 +134,9 @@ def _cargar_ejemplos(etiquetas, contenido_dict, tokenizer, max_longitud,
 
         contenido = contenido_dict[pmid]
         # contenido queda como lista sólo con las top words, y padeado en caso de ser necesario
+        if not tokenizer:
+            tokenizer = dp.Tokenizer(num_words=top_palabras)
+            tokenizer.fit_on_texts([contenido])
         contenido = tokenizer.texts_to_top_words(contenido, max_longitud, gen, droga)
         used_top_words.append(tokenizer.used_top_words)
 

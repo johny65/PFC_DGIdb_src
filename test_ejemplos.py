@@ -68,7 +68,7 @@ class Test(unittest.TestCase):
         (xe, ye), (xt, yt) = cargar_ejemplos("tests/test_etiquetas_2", "tests",
                                              "tests/test_int", porcentaje_test=0.0,
                                              embeddings_file="tests/test_emb",
-                                             max_longitud=15, randomize=False)
+                                             max_longitud=15, randomize=False, vocabulario_global=False)
         x = xe[0].transpose()
         r0 = np.asarray([
             [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 5.1, 0.0, 1.1, 2.1, 0.7, 0.0, 3.1, 1.0, 0.0],
