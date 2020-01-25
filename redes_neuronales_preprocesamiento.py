@@ -63,22 +63,15 @@ def cargar_ejemplos(etiquetas_neural_networks_ruta,
     global DIMENSION_EMBEDDING
     etiquetas = []
     interacciones_sin = []
-    contenido_dict = dict() # tiene un elemento por artículo: pmid -> contenido
     with open(etiquetas_neural_networks_ruta, encoding="utf8") as enn_csv:
         lector_csv = csv.reader(enn_csv, delimiter=',', quoting=csv.QUOTE_ALL)
         for fila in lector_csv:
-            pmid = fila[0]
-            if contenido_dict.get(pmid) is None:
-                archivo_nombre = pmid + ".txt"
-                archivo_ruta = os.path.join(ejemplos_directorio, archivo_nombre)
-                with open(archivo_ruta, encoding="utf8") as ejemplo:
-                    data = ejemplo.read()
-                    contenido_dict[pmid] = data
             if incluir_sin_interacciones and fila[3] == "sin_interaccion":
                 interacciones_sin.append(fila)
             elif incluir_sin_interacciones or fila[3] != "sin_interaccion":
                 etiquetas.append(fila)
 
+    contenido_dict = dp.cargar_publicaciones(ejemplos_directorio) # tiene un elemento por artículo: pmid -> contenido
     interacciones_dict = cargar_interacciones(out_interacciones_ruta)
 
     # si se definió 'ejemplos_cantidad' se balancean las clases:

@@ -171,20 +171,23 @@ def cargar_pmids(pmids_file, sep=None):
             pmids.append(l.split(sep)[0].strip())
     return pmids
 
-def cargar_publicaciones(publicaciones_directorio, abstracts_dict, pmids_lista):
+def cargar_publicaciones(publicaciones_directorio, abstracts_dict=None, pmids_lista=None):
     '''
     Carga las publicaciones que ya se encuentran en formato txt.
     Si la publicación no existe carga el titulo_abstract_keywords en su lugar.
+    Si se pasa una lista de PMID, sólo carga esos, sino todos los que se encuentren en el directorio.
     '''
     files_in_dir = os.listdir(publicaciones_directorio)
     publicaciones_dict = dict()
+    if not pmids_lista:
+        pmids_lista = (f.split(".")[0] for f in files_in_dir)
     for pmid in pmids_lista:
         archivo_nombre = pmid + ".txt"
         if archivo_nombre in files_in_dir:
             archivo_ruta = os.path.join(publicaciones_directorio, archivo_nombre)
             with open(archivo_ruta, encoding="utf8") as publicacion:
                 publicaciones_dict[pmid] = publicacion.read()
-        else:
+        elif abstracts_dict:
             publicaciones_dict[pmid] = abstracts_dict[pmid]
     return publicaciones_dict
 
