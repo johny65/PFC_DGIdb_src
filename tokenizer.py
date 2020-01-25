@@ -6,15 +6,11 @@ from collections import OrderedDict
 from collections import defaultdict
 from hashlib import md5
 import json
+import logging
 
 import numpy as np
 from six.moves import range
 from six.moves import zip
-
-if sys.version_info < (3,):
-    maketrans = string.maketrans
-else:
-    maketrans = str.maketrans
 
 
 def text_to_word_sequence(text, lower=True):
@@ -144,22 +140,6 @@ class Tokenizer(object):
         for w, c in list(self.word_docs.items()):
             self.index_docs[self.word_index[w]] = c
 
-    def fit_on_sequences(self, sequences):
-        """Updates internal vocabulary based on a list of sequences.
-
-        Required before using `sequences_to_matrix`
-        (if `fit_on_texts` was never called).
-
-        # Arguments
-            sequences: A list of sequence.
-                A "sequence" is a list of integer word indices.
-        """
-        self.document_count += len(sequences)
-        for seq in sequences:
-            seq = set(seq)
-            for i in seq:
-                self.index_docs[i] += 1
-
 
     def texts_to_top_words(self, text, limit, gen, droga):
         """Devuelve el texto usando sólo las palabras más frecuentes (incluyendo
@@ -188,7 +168,6 @@ class Tokenizer(object):
             Yields individual sequences.
         """
         num_words = self.num_words
-        oov_token_index = self.word_index.get(self.oov_token)
         for text in texts:
             seq = text_to_word_sequence(text, self.lower)
             ready = False
@@ -196,26 +175,25 @@ class Tokenizer(object):
                 vect = []
                 for w in seq:
                     # si es el gen o droga de interés incluir sí o sí
-                    if w.startswith("xxx") and w.endswith("xxx") and (self.gen_interes in w or self.droga_interes in w):
-                        vect.append(w)
+                    if w.startswith("xxx") and (w == "xxx{}xxx".format(self.gen_interes) or w == "xxx{}xxx".format(self.droga_interes)):
+                        if not vect:
+                            vect.append(w)
+                        elif vect and vect[-1] != w:
+                            vect.append(w)
                     else:
                         i = self.word_index.get(w)
-                        if i is not None:
-                            if num_words and i >= num_words:
-                                if oov_token_index is not None:
-                                    vect.append(oov_token_index)
-                            else:
-                                # vect.append(i)
+                        if i is not None and num_words and i < num_words:
+                            if not vect:
                                 vect.append(w)
-                        elif self.oov_token is not None:
-                            vect.append(oov_token_index)
+                            elif vect and vect[-1] != w:
+                                vect.append(w)
                 num_words -= 1
                 seq = vect.copy()
                 if len(vect) <= self.words_limit or num_words < 0:
                     ready = True
                     self.used_top_words = max(num_words, 0)
-                # else:
-                    # print("Palabras: {}/{}, disminuyendo top words: {}".format(len(vect), self.words_limit, num_words))
+                else:
+                    logging.debug("Palabras: {}/{}, disminuyendo top words: {}".format(len(vect), self.words_limit, num_words))
             yield vect
 
     def get_config(self):

@@ -13,7 +13,7 @@ Drogas:             1119            Totales:
 Tipos interacción:    33            Genes:              2440
                                     Drogas:             3568
 Entrenamiento:
-Ejemplos finales:   3144 (1)
+Ejemplos finales:   2944 (1)
 Sintéticos:        23106 (2)
 Ejemplos totales:  26250
 
