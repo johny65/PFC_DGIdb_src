@@ -461,7 +461,7 @@ def otro_cargar_ejemplos(etiquetas_neural_networks_ruta,
                                                                         truncating="post")
     print("Ajuste de longitud de secuencias terminado.")
 
-    return (ejemplos_x_entrenamiento_secuencia_ajustada_lista, np.asarray(ejemplos_y_entrenamiento_lista)), (ejemplos_x_prueba_secuencia_ajustada_lista, np.asarray(ejemplos_y_prueba_lista)), top_palabras_frecuentes
+    return (ejemplos_x_entrenamiento_secuencia_ajustada_lista, np.asarray(ejemplos_y_entrenamiento_lista)), (ejemplos_x_prueba_secuencia_ajustada_lista, np.asarray(ejemplos_y_prueba_lista)), top_palabras_frecuentes, vocabulario
 
 # ------------------------------------------------------------------------------------------
 

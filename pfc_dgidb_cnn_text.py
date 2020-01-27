@@ -26,9 +26,10 @@ embeddings_file = "glove.6B.50d.txt"
 # embeddings_file = "glove.6B.100d.txt"
 # embeddings_file = "glove.6B.200d.txt"
 # embeddings_file = "glove.6B.300d.txt"
-top_palabras_frecuentes = 52
+# top_palabras_frecuentes = 52
+dimension_embedding = 52
 maxima_longitud_ejemplos = 3000 # 1000
-longitud_palabras_mayor_a = 5
+# longitud_palabras_mayor_a = 5
 cantidad_ejemplos_sin_interaccion = 1030 # old: 3144; new: 2944
 ejemplos_cantidad = cantidad_ejemplos_sin_interaccion*27 # 9720 # 340*10 # 8500, 340
 
@@ -36,12 +37,14 @@ ejemplos_cantidad = cantidad_ejemplos_sin_interaccion*27 # 9720 # 340*10 # 8500,
 PARTICIONES = 2 # Número de particiones para la validación cruzada
 REPETICIONES = 1 # Número de repeticiones de la validación cruzada
 PORCENTAJE_DROPEO = 0.4 # Pone en 0 el #% de los datos aleatoriamente
-CANTIDAD_FILTROS = 50 # Cantidad de filtros de convolución
+CANTIDAD_FILTROS = 10 # Cantidad de filtros de convolución
+
 DIMENSION_KERNEL = list()
-for i in range(3, 26, 2):
+for i in range(3, 6, 2):
     DIMENSION_KERNEL.append(i)
 DIMENSION_KERNEL = tuple(DIMENSION_KERNEL)
 print(DIMENSION_KERNEL)
+
 CAPAS_OCULTAS = 2
 CANTIDAD_EPOCAS = 100
 PORCENTAJE_VALIDACION = 0.2
@@ -68,22 +71,47 @@ MODELO_FINAL = False
 #                                                                            vocabulario_global=True)
 
 
-(x_entrenamiento, y_entrenamiento), (x_prueba, y_prueba), top_palabras_frecuentes = otro_cargar_ejemplos(etiquetas_neural_networks_ruta,
-                                                                                                        out_interacciones_ruta,
-                                                                                                        excluir_interacciones_lista,
-                                                                                                        ejemplos_cantidad,
-                                                                                                        PORCENTAJE_PRUEBA,
-                                                                                                        ejemplos_directorio,
-                                                                                                        maxima_longitud_ejemplos)                                                
+(x_entrenamiento, y_entrenamiento), (x_prueba, y_prueba), top_palabras_frecuentes, vocabulario = otro_cargar_ejemplos(etiquetas_neural_networks_ruta,
+                                                                                                                      out_interacciones_ruta,
+                                                                                                                      excluir_interacciones_lista,
+                                                                                                                      ejemplos_cantidad,
+                                                                                                                      PORCENTAJE_PRUEBA,
+                                                                                                                      ejemplos_directorio,
+                                                                                                                      maxima_longitud_ejemplos)                                                
+
+print("Cargando embeddings pre-entrenados.")
+embeddings_dict = dict()
+with open(embeddings_file, encoding="utf8") as embeddings:
+    for linea in embeddings:
+        linea = linea.split()
+        palabra = linea[0]
+        embedding = np.asarray(linea[1:] + [0, 0], dtype='float64')
+        embeddings_dict[palabra] = embedding
+print("Embeddings pre-entrenados cargados.")
+
+print("Generando matriz de embeddings.")
+gen_emb = np.zeros((1, dimension_embedding))
+gen_emb[0, dimension_embedding-2] = 1
+droga_emb = np.zeros((1, dimension_embedding))
+droga_emb[0, dimension_embedding-1] = 1
+embeddings_matriz = np.zeros((top_palabras_frecuentes, dimension_embedding))
+for palabra, secuencia in vocabulario.word_index.items():
+    embedding_vector = embeddings_dict.get(palabra)
+    if embedding_vector is not None:
+        embeddings_matriz[i] = embedding_vector
+    elif palabra.startswith("xxxg") and palabra.endswith("xxx"):
+        embeddings_matriz[i] = gen_emb
+    elif palabra.startswith("xxxd") and palabra.endswith("xxx"):
+        embeddings_matriz[i] = droga_emb
+print("Matriz de embeddings generada.")
 
 cantidad_ejemplos = x_entrenamiento.shape[0]
 cantidad_ejemplos_entrenamiento = 0
 cantidad_ejemplos_validacion = 0
 cantidad_ejemplos_prueba = x_prueba.shape[0]
-dimension_embedding = 8 # x_entrenamiento.shape[2] # Columnas
 cantidad_clases = y_entrenamiento.shape[1]
 NEURONAS_SALIDA = cantidad_clases
-NEURONAS_OCULTAS = int(abs((len(DIMENSION_KERNEL)*CANTIDAD_FILTROS)-NEURONAS_SALIDA)/2)
+NEURONAS_OCULTAS = int(((len(DIMENSION_KERNEL)*CANTIDAD_FILTROS)+NEURONAS_SALIDA)/2)
 interacciones_lista = cargar_interacciones(out_interacciones_ruta, True)
 
 if MODELO_FINAL: # Entrenar modelo final
@@ -177,21 +205,24 @@ else: # Análisis del modelo
     
         folds_dict = fa.kfolding(PARTICIONES, cantidad_ejemplos, PORCENTAJE_VALIDACION) # Se obtienen las particiones para realizar la validación cruzada
 
-        for i in range(0, PARTICIONES, 1):
+        for i in range(0, PARTICIONES, 1): # Para cada partición
             cantidad_ejemplos_entrenamiento = len(x_entrenamiento[folds_dict[i][0]])
             cantidad_ejemplos_validacion = len(x_entrenamiento[folds_dict[i][1]])
 
             ''' Arquitectura del modelo '''
-            # formato_entrada = (maxima_longitud_ejemplos, dimension_embedding,)
-            formato_entrada = (maxima_longitud_ejemplos,) # Para la capa embedding
+            formato_entrada = (maxima_longitud_ejemplos,)
+
+            # Capa de entrada
             entrada = Input(formato_entrada)
 
+            # Capa de embedding
             embedding = Embedding(input_dim=top_palabras_frecuentes,
                                   output_dim=dimension_embedding,
-                                  input_length=maxima_longitud_ejemplos)(entrada)
-                                #   weights=[embedding_matrix],
-                                #   trainable=EMBEDDING_ENTRENABLE)
+                                  input_length=maxima_longitud_ejemplos,
+                                  weights=[embeddings_matriz], # Embeddings de GloVe
+                                  trainable=True)(entrada)
 
+            # Capas de convolución y pooling
             capas = list()
             for j in range(0, len(DIMENSION_KERNEL), 1):
                 convolucion = Conv1D(filters=CANTIDAD_FILTROS,
@@ -204,13 +235,17 @@ else: # Análisis del modelo
                 pooling = MaxPooling1D(pool_size=maxima_longitud_ejemplos)(activacion)
                 dropout = Dropout(PORCENTAJE_DROPEO)(pooling)
                 capas.append(dropout)
+
+            # Concatenación de las convoluciones y poolings
             convoluciones_poolings = concatenate(capas)
 
+            # Capa de aplanado
             flatten = Flatten()(convoluciones_poolings)
             
+            # Capas ocultas
             ultima_capa = 0
             dense = 0
-            for j in range(0, CAPAS_OCULTAS+1, 1):
+            for j in range(0, CAPAS_OCULTAS, 1):
                 if j == 0:
                     dense = Dense(NEURONAS_OCULTAS, use_bias=False)(flatten)
                 else:
@@ -220,6 +255,7 @@ else: # Análisis del modelo
                 dropout = Dropout(PORCENTAJE_DROPEO)(activacion)
                 ultima_capa = dropout
             
+            # Capa de salida
             dense3 = Dense(NEURONAS_SALIDA, activation=ACTIVACION_SALIDA)(ultima_capa)
             modelo_cnn = Model(input=entrada, output=dense3)
 
