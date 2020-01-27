@@ -1,9 +1,9 @@
 # Paquetes
 from __future__ import absolute_import, division, print_function, unicode_literals # Compatibilidad entre Python 2 y 3
 import numpy as np
-from redes_neuronales_preprocesamiento import cargar_ejemplos, cargar_interacciones # Carga de ejemplos
+from redes_neuronales_preprocesamiento import cargar_ejemplos, cargar_interacciones, otro_cargar_ejemplos # Carga de ejemplos
 from keras.models import Sequential, Model, load_model
-from keras.layers import Conv1D, MaxPooling1D, Concatenate, Dropout, Flatten, Dense, concatenate, Input, BatchNormalization, Activation
+from keras.layers import Conv1D, MaxPooling1D, Concatenate, Dropout, Flatten, Dense, concatenate, Input, BatchNormalization, Activation, Embedding
 from keras.callbacks import EarlyStopping, ReduceLROnPlateau, ModelCheckpoint
 from keras.optimizers import Adam,SGD # SGD: Gradiente descendiente
 from keras.utils import plot_model
@@ -19,35 +19,31 @@ import os
 
 ''' Carga de datos '''
 etiquetas_neural_networks_ruta = "etiquetas_neural_networks.csv"
-ejemplos_directorio = "replaced_new"
 out_interacciones_ruta = "interacciones_lista.txt"
+excluir_interacciones_lista = []
+ejemplos_directorio = "replaced_new"
 embeddings_file = "glove.6B.50d.txt"
 # embeddings_file = "glove.6B.100d.txt"
 # embeddings_file = "glove.6B.200d.txt"
 # embeddings_file = "glove.6B.300d.txt"
 top_palabras_frecuentes = 52
-maxima_longitud_ejemplos = 52 # 1000
-longitud_palabras_mayor_a = 3
+maxima_longitud_ejemplos = 3000 # 1000
+longitud_palabras_mayor_a = 5
 cantidad_ejemplos_sin_interaccion = 1030 # old: 3144; new: 2944
-ejemplos_cantidad = 17510 # 9720 # 340*10 # 8500, 340
-
-# maxima_longitud_ejemplos: 300 -> top_palabras_frecuentes: 64
-# maxima_longitud_ejemplos: 500 -> top_palabras_frecuentes: 103
-# maxima_longitud_ejemplos: 1000 -> top_palabras_frecuentes: 552
-# maxima_longitud_ejemplos: 1500 -> top_palabras_frecuentes: 790
-# maxima_longitud_ejemplos: 2000 -> top_palabras_frecuentes: 1112
-# maxima_longitud_ejemplos: 2500 -> top_palabras_frecuentes: 1298
-# maxima_longitud_ejemplos: 3000 -> top_palabras_frecuentes: 1421
+ejemplos_cantidad = cantidad_ejemplos_sin_interaccion*27 # 9720 # 340*10 # 8500, 340
 
 ''' Parámetros del modelo '''
-PARTICIONES = 5 # Número de particiones para la validación cruzada
+PARTICIONES = 2 # Número de particiones para la validación cruzada
 REPETICIONES = 1 # Número de repeticiones de la validación cruzada
 PORCENTAJE_DROPEO = 0.4 # Pone en 0 el #% de los datos aleatoriamente
-CANTIDAD_FILTROS = 75 # Cantidad de filtros de convolución
-DIMENSION_KERNEL = (3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,35,37)
+CANTIDAD_FILTROS = 50 # Cantidad de filtros de convolución
+DIMENSION_KERNEL = list()
+for i in range(3, 26, 2):
+    DIMENSION_KERNEL.append(i)
+DIMENSION_KERNEL = tuple(DIMENSION_KERNEL)
+print(DIMENSION_KERNEL)
+CAPAS_OCULTAS = 2
 CANTIDAD_EPOCAS = 100
-NEURONAS_OCULTAS_1 = 128
-NEURONAS_OCULTAS_2 = 64
 PORCENTAJE_VALIDACION = 0.2
 PORCENTAJE_PRUEBA = 0.2
 DIMENSION_BATCH = 32
@@ -58,25 +54,36 @@ FUNCION_ERROR = 'categorical_crossentropy'
 MODELO_FINAL = False
 ''' --------------------- '''
 
-(x_entrenamiento, y_entrenamiento), (x_prueba, y_prueba) = cargar_ejemplos(etiquetas_neural_networks_ruta,
-                                                                           ejemplos_directorio,
-                                                                           out_interacciones_ruta,
-                                                                           embeddings_file=embeddings_file,
-                                                                           top_palabras=top_palabras_frecuentes,
-                                                                           max_longitud=maxima_longitud_ejemplos,
-                                                                           incluir_sin_interacciones = True,
-                                                                           sin_interaccion_a_incluir = cantidad_ejemplos_sin_interaccion, # 2944
-                                                                           randomize=False,
-                                                                           porcentaje_test=PORCENTAJE_PRUEBA,
-                                                                           ejemplos_cantidad=ejemplos_cantidad)
+# (x_entrenamiento, y_entrenamiento), (x_prueba, y_prueba) = cargar_ejemplos(etiquetas_neural_networks_ruta,
+#                                                                            ejemplos_directorio,
+#                                                                            out_interacciones_ruta,
+#                                                                            embeddings_file=embeddings_file,
+#                                                                            top_palabras=top_palabras_frecuentes,
+#                                                                            max_longitud=maxima_longitud_ejemplos,
+#                                                                            incluir_sin_interacciones = True,
+#                                                                            sin_interaccion_a_incluir = cantidad_ejemplos_sin_interaccion, # 2944
+#                                                                            randomize=False,
+#                                                                            porcentaje_test=PORCENTAJE_PRUEBA,
+#                                                                            ejemplos_cantidad=ejemplos_cantidad,
+#                                                                            vocabulario_global=True)
+
+
+(x_entrenamiento, y_entrenamiento), (x_prueba, y_prueba), top_palabras_frecuentes = otro_cargar_ejemplos(etiquetas_neural_networks_ruta,
+                                                                                                        out_interacciones_ruta,
+                                                                                                        excluir_interacciones_lista,
+                                                                                                        ejemplos_cantidad,
+                                                                                                        PORCENTAJE_PRUEBA,
+                                                                                                        ejemplos_directorio,
+                                                                                                        maxima_longitud_ejemplos)                                                
 
 cantidad_ejemplos = x_entrenamiento.shape[0]
 cantidad_ejemplos_entrenamiento = 0
 cantidad_ejemplos_validacion = 0
 cantidad_ejemplos_prueba = x_prueba.shape[0]
-dimension_embedding = x_entrenamiento.shape[2] # Columnas
+dimension_embedding = 8 # x_entrenamiento.shape[2] # Columnas
 cantidad_clases = y_entrenamiento.shape[1]
 NEURONAS_SALIDA = cantidad_clases
+NEURONAS_OCULTAS = int(abs((len(DIMENSION_KERNEL)*CANTIDAD_FILTROS)-NEURONAS_SALIDA)/2)
 interacciones_lista = cargar_interacciones(out_interacciones_ruta, True)
 
 if MODELO_FINAL: # Entrenar modelo final
@@ -175,14 +182,23 @@ else: # Análisis del modelo
             cantidad_ejemplos_validacion = len(x_entrenamiento[folds_dict[i][1]])
 
             ''' Arquitectura del modelo '''
-            formato_entrada = (maxima_longitud_ejemplos, dimension_embedding,)
+            # formato_entrada = (maxima_longitud_ejemplos, dimension_embedding,)
+            formato_entrada = (maxima_longitud_ejemplos,) # Para la capa embedding
             entrada = Input(formato_entrada)
+
+            embedding = Embedding(input_dim=top_palabras_frecuentes,
+                                  output_dim=dimension_embedding,
+                                  input_length=maxima_longitud_ejemplos)(entrada)
+                                #   weights=[embedding_matrix],
+                                #   trainable=EMBEDDING_ENTRENABLE)
+
             capas = list()
             for j in range(0, len(DIMENSION_KERNEL), 1):
                 convolucion = Conv1D(filters=CANTIDAD_FILTROS,
                                     kernel_size=DIMENSION_KERNEL[j],
                                     padding='same',
-                                    use_bias=False)(entrada)
+                                    # use_bias=False)(entrada)
+                                    use_bias=False)(embedding)
                 batch_normalization = BatchNormalization()(convolucion)
                 activacion = Activation(ACTIVACION_OCULTA)(batch_normalization)
                 pooling = MaxPooling1D(pool_size=maxima_longitud_ejemplos)(activacion)
@@ -192,17 +208,19 @@ else: # Análisis del modelo
 
             flatten = Flatten()(convoluciones_poolings)
             
-            dense1 = Dense(NEURONAS_OCULTAS_1, use_bias=False)(flatten)
-            batch_normalization1 = BatchNormalization()(dense1)
-            activacion1 = Activation(ACTIVACION_OCULTA)(batch_normalization1)
-            dropout1 = Dropout(PORCENTAJE_DROPEO)(activacion1)
+            ultima_capa = 0
+            dense = 0
+            for j in range(0, CAPAS_OCULTAS+1, 1):
+                if j == 0:
+                    dense = Dense(NEURONAS_OCULTAS, use_bias=False)(flatten)
+                else:
+                    dense = Dense(NEURONAS_OCULTAS, use_bias=False)(ultima_capa)
+                batch_normalization = BatchNormalization()(dense)
+                activacion = Activation(ACTIVACION_OCULTA)(batch_normalization)
+                dropout = Dropout(PORCENTAJE_DROPEO)(activacion)
+                ultima_capa = dropout
             
-            dense2 = Dense(NEURONAS_OCULTAS_2, use_bias=False)(dropout1)
-            batch_normalization2 = BatchNormalization()(dense2)
-            activacion2 = Activation(ACTIVACION_OCULTA)(batch_normalization2)
-            dropout2 = Dropout(PORCENTAJE_DROPEO)(activacion2)
-            
-            dense3 = Dense(NEURONAS_SALIDA, activation=ACTIVACION_SALIDA)(dropout2)
+            dense3 = Dense(NEURONAS_SALIDA, activation=ACTIVACION_SALIDA)(ultima_capa)
             modelo_cnn = Model(input=entrada, output=dense3)
 
             # Se guarda la arquitectura del modelo en un archivo de imagen
@@ -259,9 +277,9 @@ else: # Análisis del modelo
             _, acierto_validacion = mejor_modelo_cnn.evaluate(x_entrenamiento[folds_dict[i][1]], y_entrenamiento[folds_dict[i][1]])
             _, acierto_prueba = mejor_modelo_cnn.evaluate(x_prueba, y_prueba)
 
-            print("Acierto en el entrenamiento: {}".format(acierto_entrenamiento))
-            print("Acierto en la validación: {}".format(acierto_validacion))
-            print("Acierto en la prueba: {}".format(acierto_prueba))
+            print("Acierto en el entrenamiento: {}%".format("%.2f" % (acierto_entrenamiento*100)))
+            print("Acierto en la validación: {}%".format("%.2f" % (acierto_validacion*100)))
+            print("Acierto en la prueba: {}%".format("%.2f" % (acierto_prueba*100)))
 
             resultados_finales.append([acierto_entrenamiento,
                                       acierto_validacion,
@@ -317,8 +335,7 @@ else: # Análisis del modelo
     print("\tDropout: {}".format(PORCENTAJE_DROPEO))
     print("\tCantidad de filtros: {}".format(CANTIDAD_FILTROS))
     print("\tDimensión de los kernels: {}".format(DIMENSION_KERNEL))
-    print("\tNeuronas en la primer capa oculta: {}".format(NEURONAS_OCULTAS_1))
-    print("\tNeuronas en la segunda capa oculta: {}".format(NEURONAS_OCULTAS_2))
+    print("\tNeuronas en la capa oculta: {}".format(NEURONAS_OCULTAS))
     print("\tActivación en la capa oculta: {}".format(ACTIVACION_OCULTA))
     print("\tNeuronas en la capa de salida: {}".format(NEURONAS_SALIDA))
     print("\tActivación en la capa de salida: {}".format(ACTIVACION_SALIDA))
@@ -329,15 +346,15 @@ else: # Análisis del modelo
     print("\tCantidad de particiones: {}".format(PARTICIONES))
 
     print("Resultados del entrenamiento:")
-    print("\tAcierto en el entrenamiento [media, desvío]: [{} / {}]".format(promedio_acierto_entrenamiento, desvio_acierto_entrenamiento))
+    print("\tAcierto en el entrenamiento [media, desvío]: [{}% / {}]".format("%.2f" % (promedio_acierto_entrenamiento*100), "%.2f" % (100*desvio_acierto_entrenamiento)))
     # for i in range(0, len(resultados_finales), 1):
     #     print("\t\tAcierto en el entrenamiento en la repeteción {}, partición {}: {}".format(r+1, i+1, resultados_finales[i][0]))
 
-    print("\tAcierto en el validación [media, desvío]: [{} / {}]".format(promedio_acierto_validacion, desvio_acierto_validacion))
+    print("\tAcierto en el validación [media, desvío]: [{}% / {}]".format("%.2f" % (promedio_acierto_validacion*100), "%.2f" % (100*desvio_acierto_validacion)))
     # for i in range(0, len(resultados_finales), 1):
     #     print("\t\tAcierto en la validación en la repeteción {}, partición {}: {}".format(r+1, i+1, resultados_finales[i][1]))
 
-    print("\tAcierto en el prueba [media, desvío]: [{} / {}]".format(promedio_acierto_prueba, desvio_acierto_prueba))
+    print("\tAcierto en el prueba [media, desvío]: [{}% / {}]".format("%.2f" % (promedio_acierto_prueba*100), "%.2f" % (100*desvio_acierto_prueba)))
     # for i in range(0, len(resultados_finales), 1):
     #     print("\t\tAcierto en la prueba en la repeteción {}, partición {}: {}".format(r+1, i+1, resultados_finales[i][2]))
 

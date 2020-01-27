@@ -108,6 +108,7 @@ def graficar_curva_roc(cantidad_clases, y_prueba, y_prediccion):
 
 def balancear_clases(etiquetas_archivo_ruta, # Archivo de etiquetas: pmid, gen, droga, interacción
                      interacciones_lista_ruta, # Lista de etiquetas a considerar
+                     excluir_interacciones_lista, # Lista de interacciones que no se cargarán
                      ejemplos_cantidad, # Cantidad de ejemplos a cargar
                      porcentaje_prueba): # Porcentaje de los ejemplos que se utilizarán para la prueba
     '''
@@ -132,13 +133,14 @@ def balancear_clases(etiquetas_archivo_ruta, # Archivo de etiquetas: pmid, gen, 
     with open(etiquetas_archivo_ruta, encoding="utf8") as etiquetas:
         lector_csv = csv.reader(etiquetas, delimiter=',', quoting=csv.QUOTE_ALL)
         for linea in lector_csv:
-            pmids_lista.append(linea[0])
-            genes_lista.append(linea[1])
-            drogas_lista.append(linea[2])
-            if linea[3] not in interacciones_considerar:
-                interacciones_lista.append("other")
-            else:
-                interacciones_lista.append(linea[3])
+            if linea[3] not in excluir_interacciones_lista:
+                pmids_lista.append(linea[0])
+                genes_lista.append(linea[1])
+                drogas_lista.append(linea[2])
+                if linea[3] not in interacciones_considerar:
+                    interacciones_lista.append("other")
+                else:
+                    interacciones_lista.append(linea[3])
 
     # Armado de los conjuntos balanceados de entrenamiento y prueba
     interacciones_cantidad_dict = Counter(interacciones_lista) # Clases y cantidad de ejemplos por clases ordenados de mayor a menor

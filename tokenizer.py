@@ -27,7 +27,7 @@ def text_to_word_sequence(text, lower=True):
         text = text.lower()
 
     seq = re.findall(r"\b\S+\b", text)
-    return [i for i in seq if (len(i) > 3)] #  or i == 'a')]
+    return [i for i in seq if (len(i) > 0)] #  or i == 'a')]
 
 
 class Tokenizer(object):
