@@ -94,5 +94,33 @@ class Test(unittest.TestCase):
         self.assertTrue((x == r1).all())
 
 
+    def test_acortar_secuencia(self):
+        class Vocabulario:
+            def __init__(self):
+                self.index_word = {1: "hola", 2: "soy", 3: "juan", 4: "xxxgenxxx", 5: "xxxdrogaxxx"}
+        
+        secuencia_lista = [[4, 1, 2, 2, 3, 5, 1, 1]]
+        vocabulario = Vocabulario()
+        ifg_balanceadas_lista = [["pmid", "gen", "droga", "in"]]
+
+        res = acortar_secuencia(secuencia_lista, vocabulario, ifg_balanceadas_lista, 6)
+        self.assertEqual([4, 1, 2, 3, 5, 1], res[0])
+        
+        res = acortar_secuencia(secuencia_lista, vocabulario, ifg_balanceadas_lista, 5)
+        self.assertEqual([4, 1, 2, 5, 1], res[0])
+        
+        res = acortar_secuencia(secuencia_lista, vocabulario, ifg_balanceadas_lista, 4)
+        self.assertEqual([4, 1, 5, 1], res[0])
+        
+        res = acortar_secuencia(secuencia_lista, vocabulario, ifg_balanceadas_lista, 3)
+        self.assertEqual([4, 5], res[0])
+
+        res = acortar_secuencia(secuencia_lista, vocabulario, ifg_balanceadas_lista, 2)
+        self.assertEqual([4, 5], res[0])
+
+        res = acortar_secuencia(secuencia_lista, vocabulario, ifg_balanceadas_lista, 1)
+        self.assertEqual([4, 5], res[0])
+
+
 if __name__ == "__main__":
     unittest.main()
