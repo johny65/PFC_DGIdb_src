@@ -295,58 +295,35 @@ def acortar_secuencia(secuencia_lista, vocabulario, ifg_balanceadas_lista, maxim
     for i in range(0, len(secuencia_lista), 1):
         # print("Reduciendo el ejemplo: {}".format(ifg_balanceadas_lista[i]))
         # print(len(secuencia_lista[i]))
-        suma += len(secuencia_lista[i])
-        ejemplo = compactar_lista(secuencia_lista[i])
+
+        # no hace más falta llamar al compactar, este algoritmo ya evita que queden repetidos secuenciales
+        ejemplo = secuencia_lista[i]
+        suma += len(ejemplo)
         gen = ifg_balanceadas_lista[i][1]
         droga = ifg_balanceadas_lista[i][2]
-        ejemplo_reducido = list()
-        gen_secuencia = ""
-        droga_secuencia = ""
-        for elemento in ejemplo:
-            palabra = vocabulario.index_word[elemento]
-            if palabra.startswith("xxx") and palabra.endswith("xxx"):
-                if palabra == "xxx" + gen + "xxx":
-                    ejemplo_reducido.append(elemento)
-                    gen_secuencia = elemento
-                if palabra == "xxx" + droga + "xxx":
-                    ejemplo_reducido.append(elemento)
-                    droga_secuencia = elemento
-            else:
-                ejemplo_reducido.append(elemento)
-
-        ejemplo_reducido = compactar_lista(ejemplo_reducido)
-
-        ejemplo_acortado = list()
-        for elemento in ejemplo_reducido:
-            if elemento <= maxima_longitud_ejemplos or (elemento == gen_secuencia or elemento == droga_secuencia):
-                ejemplo_acortado.append(elemento)
-
-        ejemplo_reducido = compactar_lista(ejemplo_acortado)
-
-        # ejemplo_ordenado_decreciente = ejemplo_reducido.copy()
-        # ejemplo_ordenado_decreciente.sort(reverse=True)
-        # ejemplo_longitud = len(ejemplo_reducido)
-        # while ejemplo_longitud > maxima_longitud_ejemplos:
-        #     mayor_secuencia = 0
-        #     for elemento in ejemplo_ordenado_decreciente:
-        #         if mayor_secuencia == gen_secuencia or mayor_secuencia == droga_secuencia:
-        #             ejemplo_ordenado_decreciente.remove(elemento)
-        #         else:
-        #             mayor_secuencia = elemento
-        #             ejemplo_ordenado_decreciente.remove(mayor_secuencia)
-        #             break
-
-        #     ejemplo_acortado = list()
-        #     for i in filter(lambda a: a != mayor_secuencia, ejemplo_reducido):
-        #         ejemplo_acortado.append(i)
         
-        #     ejemplo_acortado = compactar_lista(ejemplo_acortado)
+        num_words = maxima_longitud_ejemplos
+        ready = False
+        while not ready:
+            ejemplo_reducido = list()
+            for elemento in ejemplo:
+                palabra = vocabulario.index_word[elemento]
+                if palabra.startswith("xxx") and (palabra == "xxx{}xxx".format(gen) or palabra == "xxx{}xxx".format(droga)):
+                    # gen o droga de interés
+                    if not ejemplo_reducido or (ejemplo_reducido and ejemplo_reducido[-1] != elemento):
+                        ejemplo_reducido.append(elemento)
+                elif elemento <= num_words:
+                    # agregar sólo si está dentro de máxima longitud
+                    if not ejemplo_reducido or (ejemplo_reducido and ejemplo_reducido[-1] != elemento):
+                        ejemplo_reducido.append(elemento)
+            if len(ejemplo_reducido) <= maxima_longitud_ejemplos or num_words < 0:
+                ready = True
+            else:
+                num_words -= 1
+                ejemplo = ejemplo_reducido
 
-        #     ejemplo_reducido = ejemplo_acortado
-        #     ejemplo_longitud = len(ejemplo_reducido)
-        # # Fin del while
-        # print(ejemplo_reducido)
         secuencia_lista[i] = ejemplo_reducido
+
     print("Longitud promedio de los ejemplos: {}".format(suma/len(secuencia_lista)))
     return secuencia_lista
 
@@ -420,8 +397,8 @@ def otro_cargar_ejemplos(etiquetas_neural_networks_ruta,
     # secuencias_dict = dict()
     # for i in range(0, len(publicaciones_pmids), 1):
     #     secuencias_dict[publicaciones_pmids[i]] = secuencias_lista[i]
-    with open("secuencias_dict.pickle", "wb") as handle: # Guardar vocabulario en disco
-        pickle.dump(secuencias_dict, handle, protocol=pickle.HIGHEST_PROTOCOL)
+    # with open("secuencias_dict.pickle", "wb") as handle: # Guardar vocabulario en disco
+        # pickle.dump(secuencias_dict, handle, protocol=pickle.HIGHEST_PROTOCOL)
     print("Secuencias generadas.")
 
     # One hot encoding de la salida
@@ -471,7 +448,7 @@ def otro_cargar_ejemplos(etiquetas_neural_networks_ruta,
     print("Ajustando secuencias a la longitud deseada.")
     ejemplos_x_entrenamiento_secuencia_lista = acortar_secuencia(ejemplos_x_entrenamiento_lista, vocabulario, ifg_balanceadas_entrenamiento_lista, maxima_longitud_ejemplos)
     ejemplos_x_prueba_secuencia_lista = acortar_secuencia(ejemplos_x_prueba_lista, vocabulario, ifg_balanceadas_prueba_lista, maxima_longitud_ejemplos)
-    
+
     ejemplos_x_entrenamiento_secuencia_ajustada_lista = sequence.pad_sequences(sequences=ejemplos_x_entrenamiento_secuencia_lista,
                                                                                maxlen=maxima_longitud_ejemplos,
                                                                                padding="post",
