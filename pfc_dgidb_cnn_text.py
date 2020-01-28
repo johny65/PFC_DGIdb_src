@@ -13,12 +13,13 @@ import statistics
 import funciones_auxiliares as fa
 import math
 import random
+import math
 import os
 # os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID" # see issue #152
 # os.environ["CUDA_VISIBLE_DEVICES"] = "-1" # Para utilizar CPU en lugar de GPU
 
 ''' Carga de datos '''
-etiquetas_neural_networks_ruta = "etiquetas_neural_networks.csv"
+etiquetas_neural_networks_ruta = "etiquetas_neural_networks_3.csv"
 out_interacciones_ruta = "interacciones_lista.txt"
 excluir_interacciones_lista = []
 ejemplos_directorio = "replaced_new"
@@ -27,11 +28,13 @@ embeddings_file = "glove.6B.50d.txt"
 # embeddings_file = "glove.6B.200d.txt"
 # embeddings_file = "glove.6B.300d.txt"
 # top_palabras_frecuentes = 52
-dimension_embedding = 52
-maxima_longitud_ejemplos = 3000 # 1000
+dimension_embedding = 8
+maxima_longitud_ejemplos = 100 # Longitud promedio de los ejemplos: 6500
 # longitud_palabras_mayor_a = 5
-cantidad_ejemplos_sin_interaccion = 1030 # old: 3144; new: 2944
-ejemplos_cantidad = cantidad_ejemplos_sin_interaccion*27 # 9720 # 340*10 # 8500, 340
+# cantidad_ejemplos_sin_interaccion = 1030 # old: 3144; new: 2944
+cantidad_ejemplos_clase_mayor = 1031
+clases = 27
+ejemplos_cantidad = cantidad_ejemplos_clase_mayor*clases # Cantidad total de ejemplos a cargar
 
 ''' Parámetros del modelo '''
 PARTICIONES = 2 # Número de particiones para la validación cruzada
@@ -40,6 +43,7 @@ PORCENTAJE_DROPEO = 0.4 # Pone en 0 el #% de los datos aleatoriamente
 CANTIDAD_FILTROS = 10 # Cantidad de filtros de convolución
 
 DIMENSION_KERNEL = list()
+limite = int(maxima_longitud_ejemplos/math.pow(2,9))
 for i in range(3, 6, 2):
     DIMENSION_KERNEL.append(i)
 DIMENSION_KERNEL = tuple(DIMENSION_KERNEL)
@@ -70,7 +74,6 @@ MODELO_FINAL = False
 #                                                                            ejemplos_cantidad=ejemplos_cantidad,
 #                                                                            vocabulario_global=True)
 
-
 (x_entrenamiento, y_entrenamiento), (x_prueba, y_prueba), top_palabras_frecuentes, vocabulario = otro_cargar_ejemplos(etiquetas_neural_networks_ruta,
                                                                                                                       out_interacciones_ruta,
                                                                                                                       excluir_interacciones_lista,
@@ -79,40 +82,40 @@ MODELO_FINAL = False
                                                                                                                       ejemplos_directorio,
                                                                                                                       maxima_longitud_ejemplos)                                                
 
-print("Cargando embeddings pre-entrenados.")
-embeddings_dict = dict()
-with open(embeddings_file, encoding="utf8") as embeddings:
-    for linea in embeddings:
-        linea = linea.split()
-        palabra = linea[0]
-        embedding = np.asarray(linea[1:] + [0, 0], dtype='float64')
-        embeddings_dict[palabra] = embedding
-print("Embeddings pre-entrenados cargados.")
-
-print("Generando matriz de embeddings.")
-gen_emb = np.zeros((1, dimension_embedding))
-gen_emb[0, dimension_embedding-2] = 1
-droga_emb = np.zeros((1, dimension_embedding))
-droga_emb[0, dimension_embedding-1] = 1
-embeddings_matriz = np.zeros((top_palabras_frecuentes, dimension_embedding))
-for palabra, secuencia in vocabulario.word_index.items():
-    embedding_vector = embeddings_dict.get(palabra)
-    if embedding_vector is not None:
-        embeddings_matriz[i] = embedding_vector
-    elif palabra.startswith("xxxg") and palabra.endswith("xxx"):
-        embeddings_matriz[i] = gen_emb
-    elif palabra.startswith("xxxd") and palabra.endswith("xxx"):
-        embeddings_matriz[i] = droga_emb
-print("Matriz de embeddings generada.")
-
 cantidad_ejemplos = x_entrenamiento.shape[0]
 cantidad_ejemplos_entrenamiento = 0
 cantidad_ejemplos_validacion = 0
 cantidad_ejemplos_prueba = x_prueba.shape[0]
 cantidad_clases = y_entrenamiento.shape[1]
 NEURONAS_SALIDA = cantidad_clases
-NEURONAS_OCULTAS = int(((len(DIMENSION_KERNEL)*CANTIDAD_FILTROS)+NEURONAS_SALIDA)/2)
+NEURONAS_OCULTAS = NEURONAS_SALIDA*3
 interacciones_lista = cargar_interacciones(out_interacciones_ruta, True)
+
+# print("Cargando embeddings pre-entrenados.")
+# embeddings_dict = dict()
+# with open(embeddings_file, encoding="utf8") as embeddings:
+#     for linea in embeddings:
+#         linea = linea.split()
+#         palabra = linea[0]
+#         embedding = np.asarray(linea[1:] + [0, 0], dtype='float64')
+#         embeddings_dict[palabra] = embedding
+# print("Embeddings pre-entrenados cargados.")
+
+# print("Generando matriz de embeddings.")
+# gen_emb = np.zeros((1, dimension_embedding))
+# gen_emb[0, dimension_embedding-2] = 1
+# droga_emb = np.zeros((1, dimension_embedding))
+# droga_emb[0, dimension_embedding-1] = 1
+# embeddings_matriz = np.zeros((top_palabras_frecuentes, dimension_embedding))
+# for palabra, secuencia in vocabulario.word_index.items():
+#     embedding_vector = embeddings_dict.get(palabra)
+#     if embedding_vector is not None:
+#         embeddings_matriz[i] = embedding_vector
+#     elif palabra.startswith("xxxg") and palabra.endswith("xxx"):
+#         embeddings_matriz[i] = gen_emb
+#     elif palabra.startswith("xxxd") and palabra.endswith("xxx"):
+#         embeddings_matriz[i] = droga_emb
+# print("Matriz de embeddings generada.")
 
 if MODELO_FINAL: # Entrenar modelo final
     print("Vacío")
@@ -218,9 +221,9 @@ else: # Análisis del modelo
             # Capa de embedding
             embedding = Embedding(input_dim=top_palabras_frecuentes,
                                   output_dim=dimension_embedding,
-                                  input_length=maxima_longitud_ejemplos,
-                                  weights=[embeddings_matriz], # Embeddings de GloVe
-                                  trainable=True)(entrada)
+                                  input_length=maxima_longitud_ejemplos)(entrada)
+                                #   weights=[embeddings_matriz], # Embeddings de GloVe
+                                #   trainable=True)(entrada)
 
             # Capas de convolución y pooling
             capas = list()
@@ -363,7 +366,7 @@ else: # Análisis del modelo
     print("\tCantidad de ejemplos utilizados para validar: {}".format(cantidad_ejemplos_validacion))
     print("\tCantidad de ejemplos utilizados para probar: {}".format(cantidad_ejemplos_prueba))
     print("\tTop de palabras frecuentes utilizadas: {}".format(top_palabras_frecuentes))
-    print("\tSolo palabras con longitud mayor a: {}".format(longitud_palabras_mayor_a))
+    # print("\tSolo palabras con longitud mayor a: {}".format(longitud_palabras_mayor_a))
     print("\tLongitud de los ejemplos (filas): {}".format(maxima_longitud_ejemplos))
     print("\tDimension del embedding (columnas): {}".format(dimension_embedding))
 
@@ -382,15 +385,15 @@ else: # Análisis del modelo
     print("\tCantidad de particiones: {}".format(PARTICIONES))
 
     print("Resultados del entrenamiento:")
-    print("\tAcierto en el entrenamiento [media, desvío]: [{}% / {}]".format("%.2f" % (promedio_acierto_entrenamiento*100), "%.2f" % (100*desvio_acierto_entrenamiento)))
+    print("\tAcierto en el entrenamiento [media, desvío]: [{}% / {}%]".format("%.2f" % (promedio_acierto_entrenamiento*100), "%.2f" % (100*desvio_acierto_entrenamiento)))
     # for i in range(0, len(resultados_finales), 1):
     #     print("\t\tAcierto en el entrenamiento en la repeteción {}, partición {}: {}".format(r+1, i+1, resultados_finales[i][0]))
 
-    print("\tAcierto en el validación [media, desvío]: [{}% / {}]".format("%.2f" % (promedio_acierto_validacion*100), "%.2f" % (100*desvio_acierto_validacion)))
+    print("\tAcierto en el validación [media, desvío]: [{}% / {}%]".format("%.2f" % (promedio_acierto_validacion*100), "%.2f" % (100*desvio_acierto_validacion)))
     # for i in range(0, len(resultados_finales), 1):
     #     print("\t\tAcierto en la validación en la repeteción {}, partición {}: {}".format(r+1, i+1, resultados_finales[i][1]))
 
-    print("\tAcierto en el prueba [media, desvío]: [{}% / {}]".format("%.2f" % (promedio_acierto_prueba*100), "%.2f" % (100*desvio_acierto_prueba)))
+    print("\tAcierto en el prueba [media, desvío]: [{}% / {}%]".format("%.2f" % (promedio_acierto_prueba*100), "%.2f" % (100*desvio_acierto_prueba)))
     # for i in range(0, len(resultados_finales), 1):
     #     print("\t\tAcierto en la prueba en la repeteción {}, partición {}: {}".format(r+1, i+1, resultados_finales[i][2]))
 
