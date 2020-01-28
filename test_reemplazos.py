@@ -24,7 +24,7 @@ class Test(unittest.TestCase):
                                   ocurrencias_genes_se_sr, ocurrencias_genes_se_cr, ocurrencias_genes_todas,
                                   ocurrencias_drogas_se_sr, ocurrencias_drogas_se_cr, ocurrencias_drogas_todas,
                                   "", False)
-        self.assertEqual("ex xxxg1xxx ut commodo cillum esse commodo aliqua sit pariatur xxxd1xxx ullamco minim, xxxd2xxx.",
+        self.assertEqual("ex  xxxg1xxx  ut commodo cillum esse commodo aliqua sit pariatur  xxxd1xxx  ullamco minim,  xxxd2xxx .",
                          res)
 
 

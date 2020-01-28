@@ -16,7 +16,7 @@
 132355
 136410
 173192,serum albumin,glucocorticoid receptor
-225216
+225216,cyclic nucleotide phosphodiesterase
 236311,tyrosine aminotransferase,serum albumin,ec 2.6.1.5,malate dehydrogenase
 239236,serum albumin
 240743,alcohol dehydrogenase
@@ -54,7 +54,7 @@
 1311390,top1,dna topoisomerase i,top2,topoisomerase ii,a subunit,g1457,dna topoisomerase ii
 1312851,xanthine oxidase,cytochrome c,ceruloplasmin,glutathione reductase
 1314830,s5a,steroid 5 alpha-reductase 1
-1315825,neutral endopeptidase
+1315825,atriopeptidase,guanylate cyclase,enkephalinase,neutral endopeptidase
 1316589
 1320313,thyroid microsomal antigen,beta-tubulin,thyroid peroxidase
 1320691,peripheral benzodiazepine receptor,fnz
@@ -68,7 +68,7 @@
 1332478,serum albumin,progesterone receptor,lzm
 1332684,bal3,mineralocorticoid receptor,oestrogen receptor
 1334399
-1334447,topoisomerase ii,dna topoisomerase ii
+1334447,topoisomerase ii,dna topoisomerase ii,topo ii,serum albumin
 1335254,serum albumin,b2 subunit
 1336744,serum albumin,nac1,dd1
 1336906,vitamin d receptor,bdh
@@ -91,9 +91,9 @@
 1361946
 1375507,factor vii,prostacyclin receptor,tumor necrosis factor,promyelocytic leukemia,interleukin-10,tissue factor,tnf-a,antithrombin iii,lymphokine
 1376313,cytochrome c,nac1,ea2
-1378042,il-3
-1382157,angiotensin-converting enzyme,angiotensin ii
-1382161,angiotensin-converting enzyme,angiotensin ii
+1378042,il-3,serum albumin,cacl,interleukin-3
+1382157,angiotensin ii
+1382161,zyme,angiotensin ii,angiotensin-converting enzyme
 1386491,atriopeptidase,substance p,enkephalinase,neutral endopeptidase 24.11,neutral endopeptidase,ec 3.4.24.11
 1391956,factor ix,factor xa,factor va
 1394620,thioltransferase,serum albumin,thioredoxin reductase,glutathione reductase
@@ -109,7 +109,7 @@
 1460006,carbonic anhydrase i,a subunit
 1468487,aromatic l-amino acid decarboxylase
 1475066
-1486803,neurophysin i,oxt
+1486803,ghrf,oxt,neurophysin i,prodynorphin,growth hormone-releasing factor,growth hormone releasing factor
 1493594,lipoprotein lipase,serum albumin,hepatic lipase,ct a,triacylglycerol hydrolase
 1511344,choline acetyltransferase
 1526623,androgen receptor,vitamin d receptor,lhrh,glucocorticoid receptor
@@ -150,7 +150,7 @@
 1674528,dopamine d1 receptor,dopamine d2 receptor,d1 receptor,d2 receptor
 1676991
 1678274,dd1
-1678430,histamine h1 receptor,h1 receptor
+1678430,cytochrome c,serum albumin
 1678728
 1680053
 1680715,angiotensin ii,cacl
@@ -196,7 +196,7 @@
 1852778
 1860838,bombesin,serum albumin,phospholipase a2,cacl
 1863523,hhd,serum albumin,nac1,m1 receptor,m4 receptor
-1868500,ldl receptor,hmg-coa reductase
+1868500,ldl receptor,hepatic lipase,zyme,cholesteryl ester transfer protein,fibrinopeptide a,hmg coa reductase,hmg-coa reductase
 1885257,adenosine deaminase
 1886988,5-lipoxygenase
 1901209,serum albumin,cytochrome c,carbonic anhydrase ii,neur,ribonuclease a,ca-ii
@@ -204,7 +204,7 @@
 1912125,thyrotropin releasing hormone,neur,histidine decarboxylase
 1944305
 1957124,basic fibroblast growth factor,epidermal growth factor,bfgf
-1962798
+1962798,aiid,neuropeptide y,serum albumin
 1965307,beta-tubulin
 1965892
 1966571,5-ht2 receptor,d1 receptor
@@ -271,7 +271,7 @@
 2424118
 2433905,ec 3.5.4.4,adenosine deaminase,severe combined immunodeficiency,xanthine oxidase
 2439825
-2442519,cardiac troponin c,troponin c
+2442519,cardiac troponin c,cacl,calcium binding protein,parvalbumin,troponin c
 2443243
 2446632,sk2,serum albumin
 2456096,prostacyclin receptor,serum albumin,nac1
@@ -307,11 +307,11 @@
 2568629
 2569356,neurokinin a,bdh
 2570451
-2571203,il-2 receptor
+2571203,tac antigen,lymphokine,interleukin 2,il-2r,il-2 receptor,mt-2
 2571484,dehydropeptidase i
 2573104,d2 receptor
 2573502,adh2,alcohol dehydrogenase
-2575762,angiotensin ii
+2575762,angiotensin i,angiotensin ii,cacl
 2576228,5-ht1a receptor
 2577144,nac1,cacl
 2580269,memb,nac1
@@ -342,7 +342,7 @@
 2847647,topoisomerase ii,dna topoisomerase ii,fcc1,a subunit
 2849655
 2850060,serum albumin,dd1
-2855368,leu5
+2855368,leu5,cacl
 2857046
 2857116,fim2
 2857786
@@ -382,7 +382,7 @@
 2892662
 2895037
 2895614,guanylate cyclase
-2895808
+2895808,cacl
 2897449
 2899826,m2 receptor,d2 receptor
 2901134,serum albumin,substance p,n-terminal fragment,somatostatin-28,gastrin-releasing peptide,somatostatin-14
@@ -390,7 +390,7 @@
 2904117,ph4,m2 receptor,m1 receptor
 2905706
 2906155
-2907348
+2907348,beta-2 adrenoceptor
 2913485
 2922761,serum albumin,appi
 2933041,mlck
@@ -422,7 +422,7 @@
 3047364
 3058238,progesterone receptor,estrogen receptor,androgen receptor
 3060178,factor vii,factor va,factor ix,bone gla protein,protein s,coagulation factor x,factor x
-3071951,lh-rh,prostatic acid phosphatase,androgen receptor
+3071951,lh-rh,prostatic binding protein,prostatic acid phosphatase,tebg,androgen receptor,lhrh,luteinizing hormone receptor,gonadotropin-releasing hormone,hormone receptor
 3124610,t cell growth factor,il-2 receptor,tac antigen,interleukin 2
 3129549
 3134891,calcium binding protein,serum albumin,alpha2,protein s,cytochrome c,cacl
@@ -483,7 +483,7 @@
 4039467,estrogen receptor
 4070383,adenyl cyclase
 4074665,calcium binding protein,mlck,cacl
-4080089
+4080089,substance p,alpha2,zyme,thyrotropin-releasing hormone,growth hormone releasing factor
 4152054
 4156788,dihydropteridine reductase,5-lo,pnmt,phenylethanolamine n-methyltransferase,nerve growth factor,dhpr,tyrosine hydroxylase
 4399738
@@ -530,8 +530,8 @@
 6149771
 6151117,delta receptor,kappa receptor,nac1
 6184384
-6186851
-6202960
+6186851,zyme,serum albumin,cacl,calcium binding protein,cyclic nucleotide phosphodiesterase
+6202960,diaphorase,cacl
 6203844
 6204835
 6206315
@@ -570,7 +570,7 @@
 6621777,tyrosine aminotransferase,phenylalanine hydroxylase,tyrosine hydroxylase
 6645495,progesterone receptor,oestrogen receptor,androgen receptor
 6646243,neur,maoa,monoamine oxidase type a
-6687626,neurophysin i,ot-npi
+6687626,ot-npi,neurophysin i
 6703688,agt 2,ec 1.11.1.6,zyme,glycolate oxidase
 6706930,thyroid peroxidase,serum albumin,lactoperoxidase
 6725552,antithrombin iii
@@ -627,7 +627,7 @@
 7536941,inducible nitric oxide synthase,inducible nos,inducible no synthase,cyp3a,guanylate cyclase,cytochrome c,cacl,guanylyl cyclase
 7539114,cacl
 7540578,catg,gapdh,hormone receptor,thyrotropin-releasing hormone,tumor necrosis factor,estrogen receptor,protein kinase a,nac1
-7542676
+7542676,debrisoquine 4-hydroxylase
 7554708,cyclooxygenase-2,pghs-2,pghs-1
 7556407,serum albumin,substance p,neurokinin a,nk2,substance p receptor,neurokinin b
 7560228,cyclooxygenase 2,zyme,arachidonate 5-lipoxygenase,il1,5-lipoxygenase
@@ -663,7 +663,7 @@
 7670737
 7674815
 7675115,nac1
-7678677
+7678677,cacl
 7680317,calcium-activated potassium channel,phospholipase a2,potassium channel
 7681475,katp channel,potassium channel,ampa receptor
 7683652,myelin basic protein,cytochrome c,cyclic nucleotide phosphodiesterase
@@ -672,7 +672,7 @@
 7692072,basic fibroblast growth factor,k-fgf,htgl
 7700252,pk1,dopamine transporter
 7702639,glutamate receptor,glycine receptor
-7703721,estrogen receptor
+7703721,estrogen receptor,serum albumin,progesterone receptor
 7713167,neur,histamine h1 receptor,glutamate receptor,h1 receptor
 7714410,h2 receptor,histamine h2 receptor,s31
 7723747
@@ -687,10 +687,10 @@
 7751968
 7752578,nppb,nac1
 7755585,rar-beta,retinoic acid receptor beta
-7755615,fsh receptor
+7755615,sa2,plap,qars,lyk,ppy
 7761270,substance p,nicotinic acetylcholine receptor,a subunit,nac1
-7768881,peroxisome proliferator-activated receptor gamma
-7769797
+7768881,adipsin,glyceraldehyde-3-phosphate dehydrogenase,gapdh,tumor necrosis factor,glucocorticoid receptor,pparg,ppara,hormone receptor,glutathione s-transferase
+7769797,angiotensin i,angiotensin ii,angiotensin-converting enzyme
 7773533
 7773620
 7800667,d2 receptor,dopamine d4 receptor,d4 receptor
@@ -706,7 +706,7 @@
 7855217,dopamine d2 receptor,5ht1a,histamine h1 receptor,5-ht2 receptor,5-ht1a receptor,h1 receptor,m3 receptor,d2 receptor,nac1
 7856330,monoamine oxidase type b
 7858879,substance p,eta receptor,neutral endopeptidase,endothelin-1,etb receptor
-7862741
+7862741,cacl
 7865862,dopamine d2 receptor,d2 receptor,nac1,5-ht3 receptor
 7872378,gonadotropin-releasing hormone
 7873420,serum albumin
@@ -731,7 +731,7 @@
 7948825,bfgf,basic fibroblast growth factor,h2 receptor,histamine h2 receptor,epidermal growth factor
 7952157,tsh receptor,thyrotropin-releasing hormone,tsh-r,thyrotropin receptor,thyroperoxidase
 7957034,ct1,mu opiate receptor
-7959748,kappa receptor,mu receptor,kappa opioid receptor,oprk1,oprm
+7959748,oprk1,oprm,c-fms,microtubule associated protein 2,etbr,glutaminase,interleukin 1 receptor,mtap,idh1,fms proto-oncogene,"interleukin 1 receptor, type i",kappa opioid receptor,myb
 7961725,dihydropyrimidine dehydrogenase,thymidylate synthetase,zyme,xanthine dehydrogenase,cytochrome c,xanthine oxidase,histidine decarboxylase
 7961794,sl-3
 7962113,urokinase-type plasminogen activator,serum albumin,plasminogen activator inhibitor 2,tissue-type plasminogen activator,u-pa,serine protease,u-par,pai-2,t-pa
@@ -747,9 +747,9 @@
 7996307,grh,lhrh,gonadotropin-releasing hormone
 8000225,progesterone receptor,estradiol receptor
 8001268
-8003661,ampa receptor
+8003661,ampa receptor,cacl
 8014033,5-ht2 receptor
-8020989,gcgr,glucagon receptor
+8020989,gcgr,glucagon-like peptide 1,glucagon receptor
 8032658,5-ht2 receptor,5-ht4,g396,5-ht2c receptor,g386,alpha2,oct-3,5-ht1c,5-ht2b receptor
 8050463,nac1
 8052854,tnf-a,elam-1,nf-kb,tumor necrosis factor,vcam-1,pa122,eif-2,rps19,ikba
@@ -766,7 +766,7 @@
 8099718,nac1
 8100523,aminopeptidase m,substance p,vasoactive intestinal peptide,dpp-iv,preproglucagon,growth hormone-releasing hormone,serine protease,zyme,growth hormone-releasing factor,ec 3.4.14.5,pacap,dpp iv,dipeptidyl peptidase iv
 8101879,dopamine d2 receptor,d1 receptor,h12,d2 receptor,c4a
-8103596,d1 receptor,d2 receptor,d3 receptor
+8103596,d2 receptor
 8105356
 8106131
 8110752,gcg,gtg,nac1,folate receptor,folate binding protein
@@ -778,13 +778,13 @@
 8141114
 8144028,calcitonin receptor,gcg,growth hormone releasing factor,hormone receptor,vasoactive intestinal peptide,growth hormone releasing hormone receptor,g148,glucagon receptor,adenyl cyclase,growth hormone releasing hormone,ggr,secretin receptor
 8153059
-8161215,carbonic anhydrase iii,protein s
+8161215,prap,melg
 8166240
 8172912,memb,nac1,cacl
 8174605,pgfl
 8182534,cck-a,cck-b,cck-a receptor
 8206619,angiotensinogen,angiotensin ii,kininase ii,angiotensin i,cathepsin d
-8214757
+8214757,zyme,serum albumin,g601
 8223836,ec 3.1.1.8,pseudocholinesterase
 8232788,serum albumin,nicotinic acetylcholine receptor
 8242249,angiotensin ii,serum albumin,ml1,at2,substance p,guanylate cyclase,angiotensin-converting enzyme,angiotensin i,at2 receptor
@@ -794,7 +794,7 @@
 8282004,glucocorticoid receptor,serum albumin,hormone receptor,mineralocorticoid receptor,progesterone receptor,hsp 90
 8289199,alteplase,pgfl,dd1,txa2 receptor
 8294418,serum albumin
-8298083
+8298083,potassium channel,cacl
 8301142,rar-gamma,rar-beta,rar-alpha
 8301582,dopamine d2 receptor,d2 receptor
 8302852,hsert,5ht transporter,dat1,gtg,5htt,dopa decarboxylase,sert1,gat1,dopamine transporter
@@ -822,7 +822,7 @@
 8425287
 8430939
 8441637,serum albumin,thymidylate synthase
-8446367
+8446367,ec 3.1.1.7,ec 3.1.1.8,ec 3.1.1.1
 8466638
 8469910,thyrotropin releasing hormone,vasoactive intestinal peptide,thyrotropin-releasing hormone,phospholipase a2,5-lipoxygenase
 8473318,serum albumin,bone gla protein,nac1
@@ -852,7 +852,7 @@
 8581044
 8583364,substance p,neurotensin,cacl
 8590979,angiotensin ii,ac2
-8593484,dopamine d2 receptor,5-ht2 receptor,d2 receptor
+8593484
 8600944,nf-kappab,t cell growth factor,il-2 receptor,glucocorticoid receptor,serum albumin,interleukin-5,interleukin 2,il-5,nf-kb,il-2r,il2,p64,il2ra,interleukin 5,interferon gamma,immune interferon,ikba
 8606397,5-lo,5-lipoxygenase
 8608784,serum albumin,nac1
@@ -878,7 +878,7 @@
 8697470,von willebrand factor,tissue factor,factor vii,thromboxane a2 receptor
 8700146,romk1,hirk,potassium channel
 8702194,topoisomerase ii,dna topoisomerase ii
-8707165
+8707165,pf4,factor x,factor xa
 8710929,g418
 8723169,nac1,beta3,adenosine deaminase,beta3-adrenoceptor,beta1,beta-3 adrenergic receptor
 8731425,insulin-like growth factor i,nerve growth factor
@@ -888,7 +888,7 @@
 8740147,nac1,catechol-o-methyltransferase,maoa,serum albumin,maob
 8741039,ec 5.4.99,methylmalonyl-coa mutase,cbla,ec 5.4.99.2
 8743744,5-ht2 receptor,5-ht2c receptor,substance p,gtg,h1 receptor,5-ht6,5-ht2b receptor,gcg,5-ht2a receptor,5-ht4
-8748043,d2 receptor
+8748043,jws,d2 receptor
 8755512,tumor necrosis factor,tnf-a,neur
 8760033,vcan
 8760245,angiotensin ii,f52,protein kinase a,pkl
@@ -905,7 +905,7 @@
 8797823,hermes antigen,mannose-binding protein c,tsg-6,tumor necrosis factor,mbp-c,large fibroblast proteoglycan,tumour necrosis factor,rhamm,cartilage link protein,hyaluronate-binding protein,neurocan,serum albumin,e-selectin,versican,aggrecan
 8798723,nicotinic acetylcholine receptor
 8799190,a subunit
-8799949,katp channel
+8799949,potassium channel
 8808167,h2 receptor,pgd2,px1,potassium channel
 8809191,ec 1.14.99.9,ec 1.1.1.51,cytochrome b,ec 5.3.3.1
 8813989
@@ -941,13 +941,13 @@
 8922740,katp channel,serum albumin,memb
 8922878,estrogen receptor,progesterone receptor,mineralocorticoid receptor,androgen receptor,glucocorticoid receptor,g418,hormone receptor
 8925876
-8930006,alpha2
+8930006,hry,5-ht3 receptor
 8930173,alpha-2a adrenoceptor,alpha-2b adrenoceptor,alpha-2c adrenoceptor
 8935801,5-ht1a receptor,substance p,nac1,hhm,d3 receptor,cacl,cck-b,5ht1a,cck-a,d4 receptor,neurotensin,serum albumin,5ht1d,d2 receptor
 8945911
 8946244,fgf-1
-8951172,dopamine d2 receptor,d2 receptor
-8968191,glutamate receptor
+8951172
+8968191,glutamate receptor,cacl
 8968334,mu opioid receptor
 8981065,angiotensin ii,nac1,hp-1,at2,at2 receptor,angiotensin-converting enzyme
 8981483,serum albumin,central cannabinoid receptor,serine protease
@@ -957,7 +957,7 @@
 8997246,g664,g737,g660,adenosine deaminase,g417,alcohol dehydrogenase,g518,g501,h1 histamine receptor,g1030,g1029,g523,g131,g495,g731,g1028,g1033,g134,g1032,g670,g423
 8997630,5-ht2 receptor,5-ht2c receptor,cacl,5-ht6,5-ht6 receptor,dopamine d4 receptor,d4 receptor,5ht6,g418,serum albumin,5-ht1c,5-ht2a receptor
 9007524
-9008235,pghs-2,pghs-1
+9008235,interleukin-18,potassium channel,pghs-2,pghs-1,prostacyclin synthase
 9013583,gapdh,pparg,ppard,ppara,pparg1,ta1,glyceraldehyde-3-phosphate dehydrogenase,hydroxyacyl-coa dehydrogenase
 9014160,pnk,n-terminal fragment,a subunit,intestinal alkaline phosphatase,glycine receptor
 9015372,cytochrome c,katp channel,serum albumin,potassium channel
@@ -1005,7 +1005,7 @@
 9195366,glucocorticoid receptor,serum albumin
 9197279,5-ht2 receptor
 9204085,vitamin d receptor,crabp-ii,tissue-type plasminogen activator,tgase,ornithine decarboxylase,nuclear hormone receptor,np1,hormone receptor,rarc
-9211565,5-ht2 receptor,5-ht4
+9211565,cnt 1,5-ht4,tumor necrosis factor,cnt1,etha,5-ht3 receptor
 9225287,5-ht2 receptor,5-ht2c receptor,g418,5-ht1c,5-ht2a receptor,g-protein coupled receptor
 9226736
 9227834,neuropeptide y,nicotinic acetylcholine receptor
@@ -1020,7 +1020,7 @@
 9272380,txa2 receptor,tar1
 9279507,proton pump,h2 receptor,l15,histamine h2 receptor,l30
 9288901,serum albumin
-9298126,vitamin d receptor,rar alpha
+9298126,ivd,nfar,gapdh,rxra,rarb,crabp-ii
 9299436,severe combined immunodeficiency,synapsin i,g111,insulin receptor,adenosine deaminase,p49,tyrosine kinase,g162,cd26,ade2,grb3-3,pgad,cyc1
 9300315,a2a adenosine receptor,angiotensin-converting enzyme
 9305893,apoferritin,gtg,cytochrome c,dihydrofolate reductase,alcohol dehydrogenase,gcg,thymidylate synthase,serum albumin
@@ -1069,8 +1069,8 @@
 9509999,gmcsf,tumor necrosis factor,vasoactive intestinal peptide,colony-stimulating factor,glucocorticoid receptor,inducible nitric oxide synthase,tnfa,proliferating cell nuclear antigen,type iv phosphodiesterase,protein kinase a,basic fibroblast growth factor,krev
 9515574,rdh,rnase a,serum albumin
 9521275
-9523318
-9523819
+9523318,s5a,glucocorticoid receptor
+9523819,m2 receptor,m3 muscarinic receptor
 9525919,cardiac troponin i,cardiac troponin c,troponin c,ctni
 9530529
 9537821,monoamine transporter,dopamine transporter,serum albumin
@@ -1129,7 +1129,7 @@
 9677387,folate binding protein,formiminotransferase cyclodeaminase,serum albumin,ftcd,folate receptor
 9685234,glutamate receptor,aw-80,ampa receptor,katp channel,potassium channel
 9685354,multidrug resistance protein,mdr1,gsta1-1,mrp2,gsts,gstm1,cmrp,cmoat,gsta1,glutathione s-transferase,gstp1
-9690036,ncct,nkcc2,clc-ka,thiazide-sensitive sodium-chloride cotransporter,romk,potassium channel
+9690036,romk,nephrogenic diabetes insipidus,clcnka,clc-2,thiazide-sensitive sodium-chloride cotransporter,potassium channel,nkcc2,clc-ka,ncct,gclc,glycine receptor,calcium-sensing receptor
 9691225,h1 receptor,histamine h1 receptor,gabab receptor,nk2
 9694935,kv1.5,potassium channel
 9695721
@@ -1158,7 +1158,7 @@
 9808337,p28,p33,dopa decarboxylase,catechol o-methyltransferase,p29,catechol-o-methyltransferase,ec 4.1.1.28,monoamine oxidase type b,ec 2.1.1.6,s-comt
 9808678,dor-1,mor-1,kor-1,kor-3,orl1
 9831331,tumor necrosis factor,cyclooxygenase-1,cyclooxygenase-2,tnf-a,interleukin-1 beta
-9832994,5-ht2 receptor
+9832994,catecholamine receptor
 9835260,scn5a
 9836297
 9846638,a subunit,serum albumin
@@ -1217,13 +1217,13 @@
 10091649,gck,dihydrofolate reductase,l19,hn1
 10092828,cd52
 10094428,gabab receptor
-10095983,pancreatic lipase
+10095983,pancreatic lipase,apolipoprotein b
 10097144,pparg,promyelocytic leukemia,adipsin
 10102370,ap1,promyelocytic leukemia,glutathione reductase,alcohol dehydrogenase,fatty acid synthase,abc transporter,ade2
 10103097,neu differentiation factor,amyloid precursor protein,butyrylcholinesterase,serum albumin,ec 3.1.1.7
 10188761,interleukin 2,tac antigen,il-2 receptor,il-2r,alpha subunit
 10188968,5-ht2 receptor,5-ht1f receptor,5-ht1d,5-ht6,5-ht1e,5-ht1db,ht1da,5-ht2b receptor,5-ht1f,fth,5-ht1d receptor,5ht1d,5-ht5a
-10192655,coagulation factor x,factor x,factor ix,factor vii
+10192655,hemophilia a,factor ix,factor x,coagulation factor ix,protein s,factor vii,coagulation factor x
 10193663,5-ht1a receptor,5-ht1f receptor,5-ht1d,cacl,ct13,5-ht1b receptor,5-ht3 receptor,5-ht1db,5-ht1f,5-ht1d receptor,5-ht5a,5-ht4
 10193776,tissue factor pathway inhibitor,low-density lipoprotein receptor,tissue factor,hmg-coa reductase,fth
 10195585,gaba-t,ssadh
@@ -1242,7 +1242,7 @@
 10208755,p-selectin,substance p,5ht1d
 10209232,tm3,delta subunit,a subunit,5-ht3 receptor,beta subunit,tyrosine kinase,glycine receptor,gaba aminotransferase,somatostatin-14,gamma-2,nicotinic acetylcholine receptor
 10210771,il-1beta,il-1ra
-10210906
+10210906,butyrylcholinesterase
 10212017,h1 receptor,m3 receptor,m5 receptor
 10214744
 10214942,glucocorticoid receptor,nuc1,scd1,faar
@@ -1272,7 +1272,7 @@
 10354277,kir1.1,angiotensin ii,sur2,sur1,ikatp,cystic fibrosis transmembrane conductance regulator,abc transporter,katp channel,stromelysin-1,serum albumin,romk,potassium channel,kir6.2
 10355012
 10357816,gapdh,cmk,cd40l,ifn-gamma-r,lt-alpha,caspase-1,cd95,tumor necrosis factor,cd30,tnfr1,nf-kappab,beta-actin,cytochrome c,sapk,bcl2,tnf-r1,tumour necrosis factor,tnf-r,tumor necrosis factor-alpha,bp50,fadd,jun n-terminal kinase,tnf-r2,g418,ki-1,jun kinase,mort1,bp35,ifn-gamma,g28,lymphokine,tnfr60,tnfr2,cd30 antigen,trail-r1,tnfr80,caspase-8,apo-1,bcl-xl,hck
-10360871
+10360871,bdh,cacl
 10362188,platelet factor 4,antithrombin iii,thrombomodulin,tissue-type plasminogen activator,angiotensin-converting enzyme,alteplase,prothrombinase
 10363282,pseudocholinesterase,butyrylcholinesterase,interleukin 3,epidermal growth factor
 10365684,thyroperoxidase,cytochrome c,thyroid peroxidase,cytochrome b
@@ -1311,9 +1311,9 @@
 10400410,t-pa,von willebrand factor,christmas disease,plasminogen activator inhibitor 1,alpha2,h2 receptor,c1-esterase,factor ix
 10403429,diaphorase,neurotrophin,brain derived neurotrophic factor,neurotrophin-3,nerve growth factor,neurotrophic factor,nt-3,serum albumin,bfgf
 10403635,s182,ec 3.1.1.7,bche,nicotinic acetylcholine receptor
-10405518,tumor necrosis factor
+10405518,tumor necrosis factor-alpha,drb1,c-reactive protein,cachectin,hla-drb1,tumor necrosis factor,tnfa,cyclooxygenase-2
 10406837,angiotensin ii,angiotensin-converting enzyme
-10411647,tyrosine hydroxylase,protein kinase a
+10411647,tyrosine hydroxylase,serum albumin,phenylalanine hydroxylase,dihydropteridine reductase
 10413036,enkephalinase,beta-endorphin
 10418340,phospholipase a2
 10418836,bone gla protein
@@ -1388,8 +1388,8 @@
 10516112
 10518442,5-lipoxygenase
 10518593,sur1,katp channel,potassium channel,kir6.2
-10519994,alad
-10520035,cd52,cd52 molecule
+10519994,g418,alad
+10520035,cd52,cd19,cd55,cd52 molecule
 10522750,endothelin-1,endothelin b receptor,endothelin-3,eta receptor,ns6,phospholipase a2,etb receptor,thromboxane a2 receptor
 10523712
 10525060
@@ -1424,9 +1424,9 @@
 10575283,cannabinoid cb1 receptor,cb1 receptor
 10577279,alas2,glutathione s-transferase
 10579749,angiotensin ii,at1 receptor,angiotensin i,angiotensin i converting enzyme
-10580379
+10580379,monoamine oxidase a,zyme,monoamine oxidase b,serum albumin
 10580458,cyclooxygenase-1,cyclooxygenase-2
-10581306,sur1,katp channel,kir6.2
+10581306,katp channel,sur1,kir6.2,cacl,sur2
 10581996
 10583449,angiotensin ii,angiotensin i
 10585460,10-formyltetrahydrofolate dehydrogenase,formyltetrahydrofolate dehydrogenase,serum albumin
@@ -1541,7 +1541,7 @@
 10773014,sulfonylurea receptor 1,sur1
 10773193
 10781559,fmt1
-10783066,dna topoisomerase ii,topoisomerase ii
+10783066,zyme,topoisomerase ii,dna topoisomerase ii,serum albumin,dna topoisomerase i
 10787442,peroxisome proliferator-activated receptor alpha,pparalpha
 10788610,tumor necrosis factor,tyrosine kinase,jun n-terminal kinase
 10792999,cacl,g418,epidermal growth factor receptor,dr5,glutathione s-transferase,epidermal growth factor,serum albumin,pgl3
@@ -1731,7 +1731,7 @@
 11166283,potassium channel,cacl,herg1,kv1.1,mk-1,rsk2,serum albumin
 11168494,beta-tubulin,annexin v
 11168717,ornithine decarboxylase,arginine decarboxylase,ornithine transcarbamylase
-11169015,methionine synthase
+11169015,fr-alpha,cble,dhfrp1,gamma-glutamyl hydrolase,cblg,methylenetetrahydrofolate reductase,folate receptor,zyme,formiminotransferase cyclodeaminase,dihydrofolate reductase,mthfr,h-y,folate binding protein,methionine synthase,10-formyltetrahydrofolate dehydrogenase,ec 6.3.2.17,formyltetrahydrofolate dehydrogenase,conjugase,methionine synthase reductase
 11171191,lcb2
 11172467,nuc1,p47phox,gapdh,gtg,inducible nos,cyclooxygenase-2,angiotensin ii,hormone receptor,gcg,gat-3
 11180191
@@ -1739,7 +1739,7 @@
 11193006,m4 receptor,m3 receptor
 11196553,scn5a,lqt3,a subunit
 11198050,dopamine d2 receptor,5-ht1a receptor,5-ht2 receptor,d2 receptor,5-ht2c receptor,5-ht1b receptor,5ht1a
-11204352,cnr1,cannabinoid receptor 1
+11204352,cannabinoid receptor 1,cnr1
 11206715
 11207202,tumor necrosis factor,tnfa,cyclooxygenase-2,interleukin-8,cyclooxygenase 2,phospholipase a2,epidermal growth factor
 11207504,g979,5-ht3 receptor,pacap,substance p,fth,g-protein coupled receptor,5-ht4,5-hydroxytryptamine 4 receptor
@@ -1953,7 +1953,7 @@
 11683476,at2,at1 receptor,angiotensin ii,at2 receptor
 11683631,ornithine decarboxylase,thymidylate synthase,ml-1,dihydrofolate reductase,hormone receptor
 11688997,hdac2,mbd1,dnmt3a,e2f1,dna methyltransferase 1,histone deacetylase 2,histone h4
-11689132,potassium channel
+11689132,g418,kv1.1,potassium channel,kv1.4,herg1,lqt
 11689471,tumor necrosis factor,gadd153,cyclin d1,cyclin a,gp160,cyclooxygenase-2,c/ebp-homologous protein,grp78,cyclooxygenase 2,inducible nitric oxide synthase,p105,glutathione s-transferase
 11692072,dopamine d2 receptor,5-ht1a receptor,drd2,d2 receptor,dat1,d3 receptor
 11692087,eotaxin,phosphodiesterase 4b,phosphodiesterase 4,interleukin-1 beta,tumor necrosis factor,romk1,il-5,vcam-1,il-1 beta,pde3,pde4a,phosphodiesterase iii,monocyte chemoattractant protein 1,ifn-gamma,raf-1,phosphodiesterase 3a,cd18,tnfalpha,e-selectin,type iv phosphodiesterase,phosphodiesterase 11a,tnf alpha,cyclic nucleotide phosphodiesterase,pde4d,il-1beta,erk2,protein kinase a,phosphodiesterase 5,cd11b,tumour necrosis factor,kvlqt1,pde7,pde10a,vascular endothelial growth factor,guanylyl cyclase,tumor necrosis factor-alpha,monocyte chemoattractant protein-1,pde4b
@@ -2104,7 +2104,7 @@
 12004250,calreticulin,mcp-1,cd54,monocyte chemoattractant protein-1,epcr,myb,interleukin-8,activated protein c,interferon gamma,endothelial cell protein c receptor,activated protein c receptor,clusterin,apolipoprotein j,nf-kappab,tissue factor,thrombomodulin,endothelial protein c receptor,protein c receptor,annexin v,macrophage migration inhibitory factor,cd11b,factor xa,tumor necrosis factor,thrombin receptor,protein s
 12007529,g612,pancreatic lipase,g620
 12007600,upar,t-pa,urokinase-type plasminogen activator,serine protease,carboxypeptidase b
-12008749,thyrotropin-releasing hormone,d2 receptor,dopamine d2 receptor,igf-i
+12008749,insulin-like growth factor i,igf-i,d2 receptor,dopamine d2 receptor,lhrh,grh,thyrotropin-releasing hormone
 12010185,serum albumin,d2 receptor,5-ht2 receptor,dopamine d2 receptor
 12010562,p38 map kinase,adrenocorticotropic hormone,calreticulin,inducible nitric oxide synthase,sapk,steroid receptor coactivator-1,phospholipase a2,map kinase-activated protein kinase 2,histone deacetylase 2,mitogen-activated protein kinase p38,cytosolic phospholipase a2,alanine aminotransferase,jun n-terminal kinase,hsp56,nf-kappab,activator protein-1,cyclooxygenase-2,tissue factor,glucocorticoid receptor,cyclooxygenase 2,ikappabalpha,tumour necrosis factor,mkp-1,tyrosine aminotransferase,pro-opiomelanocortin,creb-binding protein,histone h4
 12011120,promyelocytic leukemia,sargramostim,p15ink4b,stat5,interleukin-3,beta-globin,il-3,granulocyte-macrophage colony-stimulating factor,erythropoietin receptor,colony-stimulating factor
@@ -2145,7 +2145,7 @@
 12076859,icam1,g1352,g1341,intercellular adhesion molecule 1,endothelin-1,alanine aminotransferase,phosphodiesterase iii,p-selectin
 12079382,pbgs,porphobilinogen synthase
 12080428,nicotinic acetylcholine receptor
-12080538,progesterone receptor,estrogen receptor
+12080538,estrogen receptor,atase,hormone receptor,progesterone receptor
 12082550,erk1,serum albumin,s100a8,epidermal growth factor
 12083499
 12086292,cyclooxygenase-2
@@ -2640,10 +2640,10 @@
 14670645,steroid sulfatase,progesterone receptor,cathepsin d,estrone sulfotransferase,estrogen sulfotransferase,estrogen receptor,epidermal growth factor,androgen receptor,estrone sulfatase
 14672537,kir6.2,sur2,katp channel
 14672731,progesterone receptor,glucocorticoid receptor,estrogen sulfotransferase,estrogen receptor,androgen receptor,igfbp-1
-14674888,epidermal growth factor receptor,epidermal growth factor
+14674888,tyrosine kinase,involucrin,epidermal growth factor,erk1,epidermal growth factor receptor,retinoid x receptor alpha,serum albumin,mek1
 14675103
 14675762,g418,chemokine receptor,c5a anaphylatoxin,adh2,gtg,g-protein coupled receptor,angiotensin ii
-14678021,glp-1 receptor,glucagon-like peptide 1
+14678021
 14680547,neutrophil elastase,p05154,beta subunit,alpha2,serine protease,plasma serine protease inhibitor,protein c inhibitor,leukocyte elastase
 14684331,cdk2,cdc2,cytosolic malate dehydrogenase,cyclin a,malate dehydrogenase
 14684332
@@ -2712,7 +2712,7 @@
 15001679
 15007532,hhm,dopamine d4 receptor,mph1,d4 receptor,d2 receptor,hd4
 15007534,jws,5-ht2 receptor,serum albumin,dopamine d2 receptor,d3 receptor,s31,d2 receptor
-15009644,alpha subunit,alpha6,alpha4
+15009644,alpha2,fnz,alpha subunit,alpha6,gamma1,alpha4,gamma2,alpha3,cacl,beta1
 15011952,dna polymerase beta
 15013161,nm_000914,delta opioid receptor,kappa opioid receptor,mor-1,preprodynorphin
 15016471,kynureninase,glutaminase i,aadat,glutaminase,aminoadipate aminotransferase,alanine-glyoxylate aminotransferase,methylthioadenosine phosphorylase,adenosine a1 receptor,spermine synthase,ccbl1,a1 receptor,kynurenine aminotransferase i,phenylalanine hydroxylase,glutamine transaminase k,tyrosine aminotransferase,s-adenosyl-l-homocysteine hydrolase,bcl2,mta phosphorylase,kynurenine aminotransferase ii
@@ -2737,7 +2737,7 @@
 15046718,capsaicin receptor,anktm1,cacl,trpm8,substance p,b2r,vr1,phospholipase a2
 15051528,serum albumin,ornithine decarboxylase,adometdc,phospholipase a2
 15056048,peroxisome proliferator-activated receptor gamma,apolipoprotein e,ctcl,adipsin,estrogen receptor,raldh2,retinoic acid receptor-alpha,caspase 3,pparalpha,il-2r,vitamin d receptor,atf3,hormone receptor,e-selectin,il-2 receptor,promyelocytic leukemia,alanine aminotransferase,cd30,tyrosine kinase,ifn-alpha,tumor necrosis factor,ppargamma,retinoid x receptor-alpha,elongation factor 2
-15056115,stromelysin-1,mmp-9,mmp-20,enamelysin,decorin,mmp-2,mmp-3
+15056115,enamelysin,serum albumin,cacl,decorin
 15056946
 15059893,glyceraldehyde-3-phosphate dehydrogenase,gapdh,cd38,srb1,l37,promyelocytic leukemia,ml-1
 15063480,estrogen receptor,angiotensinogen,sex hormone binding globulin,progesterone receptor
@@ -2811,7 +2811,7 @@
 15185063,5-ht2 receptor,5-ht1d,alpha2,5-ht1f,angiotensin ii,5-ht1b receptor,5-ht1d receptor,5ht1d,glucose-6-phosphate dehydrogenase,5-ht2a receptor,g6pdh,5-ht1f receptor
 15189743,c-reactive protein,dihydroorotate dehydrogenase,alanine aminotransferase,tyrosine kinase,cyclooxygenase-2,dhodh
 15190109,capsaicin receptor,trek-1,anktm1,potassium channel,trp-p8,trpm8,vr1
-15191400,thioredoxin reductase
+15191400,thioredoxin reductase,cysteine protease,serum albumin,cacl,glutathione reductase
 15196993,serum albumin,glutathione s-transferase
 15198222,cyclooxygenase-1,beta-actin,cyclooxygenase-2,phospholipase a2
 15199473,il6,pgl3,pghs-2,cyclooxygenase-1,cytosolic phospholipase a2,cyclooxygenase 2,inducible nitric oxide synthase,tumor necrosis factor,cyclooxygenase-2,phospholipase a2
@@ -4105,7 +4105,7 @@
 17486443,5ht1a,gabab1,gabab receptor
 17486546,gatm,gamt,ct1,glycine amidinotransferase,creatine transporter
 17487473,cyp11b1,aldosterone synthase,p450scc,adrenocorticotropic hormone,cyp11b2,interleukin 2,cyp11a1,cyp21,p450c11,cyp2e1
-17489948,cacna1a,delta subunit
+17489948,sca6,gamma2,cacna1a
 17491551,epidermal growth factor receptor,farnesoid x-activated receptor,hormone receptor,peroxisome proliferator-activated receptor gamma,d3 receptor,epidermal growth factor,dr5,na+/ca2+ exchanger,ppargamma,thyroid hormone receptor-alpha,src-1,rar alpha,retinoic acid receptor beta,estrogen receptor
 17494858,csfr,ptpn11,c-fms,runx1,flt3,tyrosine kinase,g-csf receptor,colony-stimulating factor,npm1,ela2,nras,granulocyte colony-stimulating factor receptor,csf1r,csf3r,aml1,nucleophosmin
 17496727,impdh2

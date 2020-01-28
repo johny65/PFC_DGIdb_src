@@ -7,15 +7,15 @@ Fuentes para el proyecto final.
 
 Etiquetas:                          Papers:
 Casos de ejemplos: 10175            PDF scrapeados:     4021
-Publicaciones:      5115            Como TXT:           3825
+Publicaciones:      5115            Como TXT:           3910
 Genes:               899
 Drogas:             1119            Totales:
 Tipos interacción:    33            Genes:              2440
                                     Drogas:             3568
 Entrenamiento:
-Ejemplos finales:   2944 (1)
-Sintéticos:        23106 (2)
-Ejemplos totales:  26250
+Ejemplos finales:   2943 (1)
+Sintéticos:        23274 (2)
+Ejemplos totales:  26217
 
 Notas:
 (1): son los casos de ejemplo que quedan de los 10175 después de procesar el artículo, es decir,
@@ -52,7 +52,7 @@ Esta información fue exportada en el archivo `PFC_DGIdb/ejemplos_x_interaccione
 
 ### Scraping
 
-De estas publicaciones se pudieron scrapear 4021 documentos PDF. Convertidos a TXT quedó un total de 3825 archivos, a los cuales se les hizo un proceso de "ungreek" (reemplazar las apariciones de letras griegas por sus nombres).
+De estas publicaciones se pudieron scrapear 4021 documentos PDF. Convertidos a TXT (algunos con proceso de OCR) quedó un total de 3910 archivos, a los cuales se les hizo un proceso de "ungreek" (reemplazar las apariciones de letras griegas por sus nombres).
 
 Además se scrapearon abstracts, títulos y palabras clave de las publicaciones (archivo `scraping/pmids_titulos_abstracts_keywords.csv`). Este archivo también fue "ungreek-ed" y se le limpió el HTML.
 
@@ -98,16 +98,6 @@ Luego del proceso de reemplazo se obtuvieron 5115 archivos de texto (los artícu
 
 ### Generación de ejemplos negativos
 
+Para generar los ejemplos negativos, es decir donde no hay interacción entre genes y drogas, se supuso que si en un artículo se nombran genes y drogas pero en las etiquetas sólo figuran algunas (se sabe que interactúan), entonces las demás no interactúan.
 
-
-fdssfdsg
-sdgfdgfdgfd
-fgfhgh
-
-
-
-26510944,g1108,d443,agonist
-26510944,g1108,d443,partial agonist
-26510944,g1113,d443,antagonist
-26510944,g1114,d443,antagonis
-
+Para esto se cruzaron los genes con las drogas que aparecen en un artículo (sólo genes y drogas que existen en etiquetas, no del universo) y se les asignó la interacción "sin_interacción" (siempre y cuando no exista una etiqueta real que los vincule, aunque sea en otro artículo). Así se generaron 23274 ejemplos sintéticos.

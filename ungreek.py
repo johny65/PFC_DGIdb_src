@@ -59,7 +59,7 @@ def _clean_html(contents):
     return contents
 
 
-if __name__ == "__main__2":
+if __name__ == "__main__":
     if len(sys.argv) < 3:
         exit("Modo de uso: {} dir_entrada dir_salida".format(sys.argv[0]))
     
@@ -70,7 +70,7 @@ if __name__ == "__main__2":
         if p.is_file():
             ungreek(p, out_dir)
 
-if __name__ == "__main__":
+if __name__ == "__main__2":
     if len(sys.argv) < 2:
         exit("Modo de uso: {} in_file".format(sys.argv[0]))
     with open(sys.argv[1]) as f:

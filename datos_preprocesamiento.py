@@ -227,16 +227,26 @@ def ocurrencias(entidades, publicaciones, embeddings, repeticiones, tipo, index)
     salida_todas_csv.close()
     return lista1, lista2, lista3
 
-def cargar_ocurrencias(in_file):
+def cargar_ocurrencias(in_file, ocs=None):
     """A partir de un archivo de ocurrencias de genes/drogas crea un diccionario con
     ese listado para cada pmid."""
-    ocs = {}
+    ocs = ocs or {}
     with open(in_file, encoding="utf8") as f:
         lector_csv = csv.reader(f, delimiter=',', quoting=csv.QUOTE_ALL)
         for linea in lector_csv:
             if linea:
                 ocs[linea[0]] = linea[1:] if len(linea) > 1 else []
     return ocs
+
+def sumar_ocurrencias(existentes_file, nuevas_file):
+    """Suma nuevas ocurrencias a un archivo existente."""
+    ocs = cargar_ocurrencias(existentes_file)
+    ocs = cargar_ocurrencias(nuevas_file, ocs)
+    # ordeno por pmid:
+    with open(existentes_file, "w") as out:
+        writer = csv.writer(out)
+        writer.writerows([[k] + v for k, v in sorted(ocs.items(), key=lambda i: int(i[0]))])
+
 
 def etiquetas_publicacion_gen(pmids_lista,ifg_lista,aliases_lista,salida):
     with open(salida,"w",encoding="utf8") as salida_csv:
@@ -444,7 +454,7 @@ def main_generar_ocurrencias():
 
     publicaciones_directorio = "scraping/files/labeled/txt_ungreek"
     publicaciones_dict = cargar_publicaciones(publicaciones_directorio, abstracts_dict, pmids_lista)
-    print("publicaciones cargadas")
+    print("publicaciones cargadas:", len(publicaciones_dict))
 
     print("Buscando ocurrencias de genes...")
     parallel.parallel_map2(g_occs, publicaciones_dict, (aliases_gen_conjunto, embeddings_dict, repeticiones_genes_lista))
@@ -467,15 +477,14 @@ def d_occs(pubs, index, params):
 
 
 def main_generar_etiquetas():
-    publicaciones_directorio = "E:/Descargas/Python/PFC_DGIdb_src/replaced"
+    publicaciones_directorio = "replaced"
     publicaciones_dict = cargar_publicaciones_con_remplazos(publicaciones_directorio)
     print("Publicaciones cargadas.")
 
-    ifg_dgidb_ruta = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/pfc_dgidb_export_ifg.csv"
+    ifg_dgidb_ruta = "PFC_DGIdb/pfc_dgidb_export_ifg.csv"
     pmids_lista, genes_lista, drogas_lista = cargar_pmids_genes_drogas_unicos(ifg_dgidb_ruta)
     print("Lista de pmids, genes y drogas cargadas.")
 
-    ifg_dgidb_ruta = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/pfc_dgidb_export_ifg.csv"
     ifg_dgidb = cargar_ifg(ifg_dgidb_ruta)
     print("Interacciones fármaco-gen de DGIdb cargadas.")
 
@@ -483,11 +492,11 @@ def main_generar_etiquetas():
     print("Genes en etiquetas cargados")
     print("Drogas en etiquetas cargadas")
 
-    aliases_gen_ruta = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/alias_gen.csv"
+    aliases_gen_ruta = "PFC_DGIdb/alias_gen.csv"
     nombres_gen_lista = cargar_nombres(aliases_gen_ruta)
     print("Nombres de genes cargados.")
     
-    aliases_droga_ruta = "E:/Descargas/Python/PFC_DGIdb_src/PFC_DGIdb/alias_droga.csv"
+    aliases_droga_ruta = "PFC_DGIdb/alias_droga.csv"
     nombres_droga_lista = cargar_nombres(aliases_droga_ruta)
     print("Nombres de drogas cargados.")
     
@@ -496,14 +505,14 @@ def main_generar_etiquetas():
     ocurrencias_remplazos_drogas_dict = ocurrencias_remplazos(publicaciones_dict,nombres_droga_lista)
     print("Ocurrencias de remplazos de drogas obtenidas.")
 
-    generar_etiquetas(ocurrencias_remplazos_genes_dict,ocurrencias_remplazos_drogas_dict,genes_dict,drogas_dict,genes_lista,drogas_lista,"etiquetas_generadas.csv")
+    generar_etiquetas(ocurrencias_remplazos_genes_dict,ocurrencias_remplazos_drogas_dict,genes_dict,drogas_dict,genes_lista,drogas_lista,"etiquetas_generadas_aux.csv")
     print("Generación de etiquetas completa.")
 
-    ifg_generadas_ruta = "E:/Descargas/Python/PFC_DGIdb_src/etiquetas_generadas.csv"
+    ifg_generadas_ruta = "etiquetas_generadas_aux.csv"
     ifg_generadas = cargar_ifg(ifg_generadas_ruta)
     print("Interacciones fármaco-gen generadas cargadas.")
     
-    procesar_etiquetas(ifg_dgidb,ifg_generadas,"etiquetas_neural_networks.csv")
+    procesar_etiquetas(ifg_dgidb,ifg_generadas, "etiquetas_neural_networks.csv")
     print("Procesamiento de etiquetas finalizado.")
 
 

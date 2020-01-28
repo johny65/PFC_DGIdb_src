@@ -7,11 +7,11 @@ import logging
 import random
 import re
 
-WRAPPER_INI = "xxx"
-WRAPPER_FIN = "xxx"
+WRAPPER_INI = " xxx"
+WRAPPER_FIN = "xxx "
 
 
-def reemplazo_inteligente(texto,cadena_a_remplazar,remplazar_con):
+def reemplazo_inteligente(texto, cadena_a_remplazar, remplazar_con):
     return re.sub(r"\b{}\b".format(re.escape(cadena_a_remplazar)), remplazar_con, texto)
 
 def replace(original_text, search_for_replace, replace_with, pmid):

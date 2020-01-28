@@ -16,14 +16,14 @@
 132355,ci,long,prot,for,flame,pr,des,acta,hi,en,per,th,me,pi,as,in,b,had,pz,i,up,to,ph,of,x,mg
 136410,for,all,cell,as,in,at,to,of
 173192,mrs,ro,ci,serum albumin,long,kn,thank,sa,albumin,med,mr,lp,for,all,sch,kd,age,cort,cell,acta,hi,en,per,tn,as,in,acth,at,ars,b,ml,tube,his,ls,had,co,i,to,ph,of,x,mg,farr,glucocorticoid receptor,am
-225216,amp,gmp,as,in,to,of
+225216,of,ks,en,cell,ls,ss,bal,all,to,pp,i,at,ph,mg,gmp,per,had,long,amp,cyclic nucleotide phosphodiesterase,in,as,b,for,age,es
 236311,tyrosine aminotransferase,met,km,ice,serum albumin,long,prot,ec 2.6.1.5,arg,thank,albumin,ko,rg,for,all,ate,age,ec 2.6.1,acta,p1,en,per,pp,aspa,aa,as,in,at,ob,b,ml,his,transaminase a,had,malate dehydrogenase,co,i,to,bars,asp,ph,of,x,mg,net,tyr,farr,am,ec 2.6.1.1,hl
 239236,amp,acetylcholinesterase,met,dec,gc,ir,ice,stat,serum albumin,camp,albumin,med,mr,ko,for,all,ms,ahd,cell,acta,as,in,at,b,ml,lh,his,had,membrane-bound,co,i,up,proc,to,ph,of,x,mg,5b,am
 240743,catalase,for,nadph,as,in,at,sds,up,alcohol dehydrogenase,to,of
 241701,gpt2,dia,phosphoglucose isomerase,gr,alanine aminotransferase,mi,gpt 2,thank,gpt 1,scott,med,for,all,des,age,held,delta,gpt,cell,nadh2,pi,as,in,e1,at,b,gdh,ml,era,tm,had,aim,co,i,up,hrs,to,ch,ph,of,x,mg
 417864,acetylcholinesterase,of
 436795,es,mer,ci,long,progesterone receptor,for,all,cell,acta,en,as,in,at,syn,b,ml,ent,up,to,of,x,mg
-448162,c9,for,in,tyrosinase,up,to,of
+448162,af,of,x,pi,ne,cell,epi,fic,se,cel,ss,mis,all,to,co,pp,sup,up,at,wd,lss,jp,lar,mal,tyrosinase,per,had,in,am,as,b,for
 458448,mrs,sur,amp,spf,mi,hy,ci,af,med,pbs,for,all,glial fibrillary acidic protein,nac1,cell,acta,per,lt,pp,as,in,at,syn,edn,b,ml,ent,cis-1,ss,had,co,i,proc,to,ph,of,x,mg,net,cis,cf
 476986,met,thyroglobulin,cholinesterase,pt,ice,long,pl,for,all,cell,acta,p1,en,per,pp,pi,as,in,at,edn,tpo,ip,b,sera,ml,tube,thyroid peroxidase,had,co,i,to,ph,of,x,mg,tg,am
 477738,cat,pa,monoamine oxidase,long,thank,mr,pl,for,all,ms,age,acta,fell,as,in,at,b,ml,ne,his,had,co,i,to,ch,ph,of,x,mg,atn
@@ -54,7 +54,7 @@
 1311390,top1,met,erm,dna topoisomerase i,gat,aaa,dna gyrase,top2,arg,tgc,gaa,for,all,aat,mop,cell,topoisomerase ii,hi,lf,per,th,a subunit,g1457,as,nos,in,at,b,bp,ml,nat,dna topoisomerase ii,yes,had,i,proc,to,asp,of,x,hl
 1312851,ash,cr,xanthine oxidase,va,pa,catalase,ga,mi,cytochrome c,nag,albumin,trap,med,for,all,ceruloplasmin,ms,cell,en,pp,nadph,as,in,at,b,ml,glutathione reductase,gluc,esr,ns,membrane-bound,co,i,up,to,ph,of,x,mg,tg,tert,5b,am,si
 1314830,r16,cat,ci,ice,lar,thank,sa,a4,med,for,all,r1,s5a,mk,cell,hp,hi,oxidoreductase,en,ung,pp,nadph,erb,as,in,at,syn,ec 1.3.99,b,ml,dut,ent,membrane-bound,steroid 5 alpha-reductase 1,co,i,proc,se,to,ph,of,x,mg,ap-1,chat,am
-1315825,for,in,neutral endopeptidase,to,of
+1315825,af,of,pjs,sa,ml,x,ga,en,tap,pe,ob,ct,uk,ls,med,thank,bal,sp,all,g11,to,co,pp,gd,atriopeptidase,up,i,guanylate cyclase,at,mi,proc,hip,sf,tg,aa,db,enkephalinase,gk,nep,mg,neutral endopeptidase,renin,mb,per,had,flame,sbp,uti,in,gmr,pl,am,fa,as,pep,nn,kali,b,dbp,for,sr,e1,age,acta
 1316589,mrs,met,dynorphin,long,scott,uk,for,all,cox,delta,cell,per,pp,bar,as,in,at,tr,b,oxytocin,mu,aim,co,i,proc,to,of,x,mg,tyr,plc,am
 1320313,er,c-fos,thyroglobulin,dd,fos,ice,jp,long,camp,thank,wd,gd,c-myc,ks,for,all,myeloperoxidase,held,cell,nati,acta,kit,as,cap,in,at,gs,tpo,ip,thyroid microsomal antigen,b,beta-tubulin,bp,ml,ar,myc,bs,thyroid peroxidase,his,had,t3,co,i,proc,to,bars,of,x,mg,pal,am
 1320691,peripheral benzodiazepine receptor,ro,ddc,fnz,in,at,pbr,up,to,of,x
@@ -68,7 +68,7 @@
 1332478,p2,dm,t1,ga,mi,cga,casper,bf,ice,jp,serum albumin,long,camp,rk,progesterone receptor,cd,albumin,elk,dt,for,all,sn,cell,acta,mat,rb,en,per,fell,l3,as,in,acth,at,b,tp,ml,oxytocin,e2,myosin,bsc,p23,had,aim,i,up,hrs,to,ph,of,y2,x,mg,lzm,am
 1332684,p2,cr,hsp90,mi,ir,ci,bal3,long,cg,thank,cd,mineralocorticoid receptor,pbs,ks,for,all,kd,ms,c4,cell,kit,per,fp,tim,pp,aa,as,in,e1,at,b,bp,ml,tm,sds,p40,oestrogen receptor,had,co,i,proc,to,ph,of,x,mg,rar,tg,cis
 1334399,in,ec 3.6.1,to,of,mg
-1334447,long,topoisomerase ii,as,in,at,dna topoisomerase ii,i,to,of
+1334447,of,jms,ml,jun,x,tert,ice,oc,cell,pr,hc,atm,bf,ci,med,topoisomerase ii,sp,all,to,gh,co,ho,ir,i,ak,at,si,proc,sds,dna topoisomerase ii,ph,mg,cdf,dd,topo ii,ch,serum albumin,nbs,had,hpo,ms,long,c3,tube,lh,mes,nb,poc,in,albumin,am,as,dt,nat,b,for,sert,acta
 1335254,cr,spf,m1,pa,ga,gr,tf,coil,gc,ice,serum albumin,long,fas,gd,ak,albumin,scott,uk,pbs,for,all,cell,kit,per,pp,as,iris,in,at,tel,lars,harp,b,ml,b2 subunit,tm,tube,sds,esr,had,co,gl,i,up,proc,to,ph,of,x,tg,tyr
 1336744,es,cat,serum albumin,long,atm,ipt,albumin,mn,mr,pole,csf,for,all,des,nac1,cell,acta,hp,nse,per,th,pp,as,vh,in,at,acl,vat,ip,dd1,b,ho,had,scl,co,i,proc,to,ph,of,x,net,gk
 1336906,ga,mi,gc,pe,sa,uk,rd,dt,for,all,ms,hf,cell,vitamin d receptor,lf,per,lt,pp,osteosarcoma,as,in,tms,at,pci,tr,b,ml,dp,vdr,ns,had,co,sil,i,hep,to,of,x,g2,bdh
@@ -91,9 +91,9 @@
 1361946,for,delta,as,in,at,mu,to,of
 1375507,amp,gmp,pa,fr,ga,thromboplastin,b4,camp,af,factor vii,thank,sa,wd,nb,med,mr,prostacyclin receptor,tumor necrosis factor,cs,for,all,ts,pr,ms,cell,il-1,hi,kit,bar,promyelocytic leukemia,as,tnf,in,at,interleukin-1,interleukin-10,b,tissue factor,ml,hip,tnf-a,dp,e2,c5,interleukin-6,his,antithrombin iii,had,membrane-bound,co,lymphokine,i,up,proc,pgi,se,to,ph,of,x,thp,si,hl
 1376313,scn,pa,ice,thank,cytochrome c,hemoglobin,for,all,nac1,cell,acta,pp,nadph,as,in,at,tel,ca2,b,ml,c5,ent,bs,had,ea2,co,sk,i,up,proc,p450,to,ph,of,x,net,ctx
-1378042,c4,as,in,il-3,had,of
-1382157,pe,delta,renin,ang,as,in,at,ace,angiotensin-converting enzyme,angiotensin ii,had,i,to,of,mg
-1382161,ang,in,ace,angiotensin-converting enzyme,angiotensin ii,of
+1378042,of,c5a,ml,x,en,srs,lf,ot,cell,rd,app,se,ek,ls,med,his,all,tr,to,tra,il-3,i,at,si,mi,aa,gk,ph,fx,mg,me,serum albumin,per,had,cacl,tube,hi,in,albumin,dm,kit,am,as,b,for,interleukin-3,ck
+1382157,of,membrane-bound,sch,bs,ml,pa,x,ao,oc,pe,ns,ne,ot,rd,hy,se,mbp,ss,ahr,all,hl,to,fell,pp,ar,sup,i,at,aa,mg,angiotensin ii,ace,renin,had,ms,sbp,mr,acth,in,bp,as,b,dbp,for,dp,age,ner,ang
+1382161,mor,of,car,ml,x,ga,pah,en,ct,mn,ek,zyme,med,all,sma,to,pp,cna,i,at,proc,tg,mg,angiotensin ii,ace,renin,had,mrs,in,am,as,cs,b,for,angiotensin-converting enzyme,ang
 1386491,cr,vip,coil,long,af,amd,sa,nb,uk,atriopeptidase,lp,substance p,ks,pl,rd,for,all,ngal,age,gmr,ep,mb,renin,enkephalinase,df,me,aa,as,neutral endopeptidase 24.11,in,pap,ant,at,ct,ml,g400,p23,had,i,neutral endopeptidase,ec 3.4.24,to,of,mg,ec 3.4.24.11,am,db
 1391956,va,for,factor ix,cell,as,in,at,factor xa,had,membrane-bound,factor va,to,of,prothrombin,thrombin
 1394620,hexokinase,thioltransferase,mi,serum albumin,albumin,lp,for,all,thioredoxin reductase,cell,acta,per,nadph,as,in,at,b,dieter,ml,glutathione reductase,mal,mai,had,co,i,proc,to,ch,ph,of,x,mg
@@ -109,7 +109,7 @@
 1460006,dd,hy,long,carbonic anhydrase i,sa,med,oc,for,all,ge,acta,hp,lt,pp,a subunit,as,in,ant,at,tel,b,ace,ren,ifi,his,had,membrane-bound,co,i,up,proc,to,ch,ph,of,x,cf,am
 1468487,ice,for,all,aromatic l-amino acid decarboxylase,ms,cell,tap,per,pi,as,in,at,tel,ob,b,bp,ml,his,p50,had,nan,i,up,pc,se,to,ch,of,x,mg,cis,cf,ws
 1475066,acetylcholinesterase,cholinesterase,tc,ach,for,ache,as,in,to,of,mg
-1486803,ndi,neurophysin i,for,as,in,oxytocin,i,to,of,oxt
+1486803,of,neu,ml,x,ga,ghrf,oc,ne,arm,cell,rd,thank,bn,er,all,to,co,oxytocin,ar,i,obs,at,proc,oxt,ph,neurophysin i,mg,per,long,pbs,tc,lt,prodynorphin,in,c-c,pl,growth hormone-releasing factor,as,ndi,nat,b,for,growth hormone releasing factor
 1493594,lpl,sur,lipoprotein lipase,gh,pe,ci,serum albumin,long,tc,thank,ak,albumin,cad,med,pl,gcl,for,all,np,par,ms,des,cell,acta,app,en,per,bar,pi,hepatic lipase,as,ct a,in,at,ct,ip,b,ml,abp,triacylglycerol hydrolase,sf,had,co,i,up,hep,se,to,bars,ph,of,x,mg,tg,insulin,fa,am
 1511344,p2,acetylcholinesterase,cholinesterase,ci,long,ach,bam,thank,mr,ko,uk,for,all,choline acetyltransferase,th,pp,as,in,at,tel,b,ml,tm,fur,had,aim,somatostatin,i,to,ch,ph,of,x,mg,net,chat,lga
 1526623,androgen receptor,ci,long,gac,med,pbs,for,all,sch,kd,pr,cell,vitamin d receptor,acta,per,as,in,acth,at,ct,b,ml,ar,tube,lh,lhrh,had,co,up,se,p450,to,ph,of,x,mg,insulin,fsh,glucocorticoid receptor,nov
@@ -150,14 +150,14 @@
 1674528,dopamine d1 receptor,dopamine d2 receptor,sch,in,d1 receptor,had,d2 receptor,to,of
 1676991,for,as,in,at,ne,to,of
 1678274,p2,long,ck,med,uk,for,all,flame,age,kit,pp,i-1,as,in,at,dd1,b,ml,had,i,up,to,bars,of,x,mg
-1678430,histamine h1 receptor,h1 receptor,all,c4,as,at,to,of
+1678430,af,of,neu,bs,ml,x,ice,ry,ide,srs,cytochrome c,cell,ob,nadph,med,ss,all,to,co,pp,up,i,at,proc,aa,ph,ch,serum albumin,long,atr,lt,in,albumin,kit,am,as,b,for,acta,g6
 1678728,eta,med,for,delta,theta,rb,as,in,at,5-ht1a,b,hip,co,i,to,ph,of,mg
 1680053,es,cr,pa,mi,pso,agt,thank,mn,mr,ko,for,all,h2,ms,hf,aif,hi,ran,df,pi,as,in,sma,at,b,ne,ho,aim,co,sk,i,up,pc,to,bars,ph,of,x,mg
 1680715,es,cr,gmp,kc,km,ik,nn,pe,ir,ice,long,sa,med,oc,dt,for,all,ms,cell,hi,th,as,in,at,ca2,b,ml,ar,tm,ho,angiotensin ii,bi,ot,had,ago,co,i,up,to,bars,ph,of,hpo,cacl,5b,hl
 1680855,nt,cr,er,pa,tf,pt,mi,gh,azi,camp,thank,nb,oc,gi,neuropeptide y,pl,for,all,np,pr,ms,hf,cell,acta,hi,per,ide,pp,pace,as,flg,cp,in,at,tel,tr,ob,ca2,b,dieter,cot,bp,ml,ar,gal,ent,fur,fx,tube,galanin,sds,pam,pep,had,ea2,somatostatin,i,up,proc,to,bars,mst,ph,of,x,mg,insulin,farr,sp,ao,am,db,hl
 1682484,for,in,at,beta-2 adrenoceptor,to,of
 1683559,mrs,ci,serum albumin,long,thank,albumin,med,mr,uk,for,all,par,ml-1,prolactin,age,acta,renin,mbp,kit,per,pp,i-1,as,flg,in,at,b,ml,dp,ne,fur,his,ho,had,co,sk,i,up,sbp,se,to,ch,of,ox,mg,dbp
-1684063,for,in,at,had,to,of
+1684063,of,bs,ml,x,ach,en,tap,cat,se,er,to,sup,up,i,at,ph,mg,ace,had,amp,in,as,b,for,sr,pros,age,ner,tak
 1685013,p2,pa,ga,sr,mi,ice,serum albumin,long,f12,thank,albumin,mn,pl,rg,for,all,kd,ms,nac1,cell,kit,per,pp,as,in,at,b,snap,ml,ls,had,aim,gl,i,yt,to,ph,of,x,mg,am,db
 1686208,mrs,cat,met,5-ht2 receptor,thank,mr,uk,for,all,h2,cox,ate,ct13,task,c4,hi,pp,as,cp,in,at,raf,histidine decarboxylase,ca2,b,bp,ml,dp,lam,sk,i,up,proc,to,ph,of,mg,5b,hl
 1686618,at2,rk,med,cyp,for,all,c3,c4,acta,hi,star,th,pp,me,pi,as,c6,in,at,b,ar,c5,r2,aim,i,to,of,x,cam,boat,ahf,sp,am
@@ -168,7 +168,7 @@
 1696149,ice,for,all,kd,des,cell,nati,i-1,as,in,at,ca2,b,ml,alpha1,had,co,i,up,proc,to,bars,ph,of,x,mg,cis
 1701989,interleukin-3,aa,as,in,at,e2,to,of
 1705137,nt,t1,monoamine oxidase,ro,long,car,eat,cd,med,esa,csf,for,all,age,cell,acta,tap,en,per,th,pi,as,in,at,inn,b,bp,ml,ar,ns,had,co,e3,i,mao-a,up,se,to,t2,ph,of,x,mg,bmdp,arm,cf,t6,mao-b,am
-1705633,renin,in,at,bp,angiotensin ii,angiotensinogen,to,of,mg
+1705633,of,car,ml,pa,reg,ao,en,pe,ob,hy,med,ss,all,to,co,rip,fell,i,at,ph,mg,angiotensin ii,ace,renin,had,dia,in,bp,am,as,nn,ro,b,par,for,age,angiotensinogen,ang,es
 1708834,kfgf,nm23,va,epidermal growth factor receptor,km,nn,ir,hc,thank,med,mr,basic fibroblast growth factor,myb,epidermal growth factor,endothelial cell growth factor,for,all,kd,erba,mb,gastrin-releasing peptide,mk,cell,per,fac,me,as,in,awd,at,dic,b,ml,bfgf,p53,bs,marc,had,c-myb,co,i,up,proc,k-fgf,to,of,x,mg,glyceraldehyde-3-phosphate dehydrogenase,am,hl
 1712335,p2,er,m1,pa,ga,g6,bf,jp,long,car,af,thank,mr,beta-1,rg,for,all,pr,p1,en,pi,as,in,at,beta-2 adrenoceptor,ip,b,ml,angiotensin ii,p23,asl,had,co,pz,i,cava,to,ss1,of,ry,mg
 1718682,es,p2,nt,amp,er,met,pa,ga,monoamine oxidase,tak,atic,sr,ik,long,prot,camp,f12,cg,med,mr,ko,cs,for,all,nts,ts,f3,pr,ssa,des,age,mk,cell,fh,en,fell,tim,th,pp,ros,me,pi,l3,as,in,sma,at,ct,ars,srs,fn,b,adm,ped,era,ent,mal,adenyl cyclase,ho,fb,ot,ns,had,ago,co,hyl,dip,i,up,pc,se,to,ph,of,ry,mg,ced,tg,cf,sp,5b,am,db
@@ -196,7 +196,7 @@
 1852778
 1860838,kc,bombesin,serum albumin,albumin,scott,for,all,par,kd,cell,pp,lag,aa,as,cap,in,at,pkc,pci,ca2,b,ml,at1,ho,had,phospholipase a2,i,proc,to,ph,of,net,cacl,am,hl
 1863523,hhd,mer,m1,mi,ci,ice,serum albumin,af,thank,nb,albumin,pl,for,all,ts,pag,kd,pr,nac1,cell,p1,per,th,l3,as,in,at,b,ml,m1 receptor,had,co,i,up,to,asp,ph,of,x,mg,m4 receptor
-1868500,ldl receptor,as,in,hmg-coa reductase,i,to,of
+1868500,gs,ldl receptor,of,car,ml,pa,x,ent,lpl,ide,hepatic lipase,cell,lac,mn,hy,cetp,se,zyme,med,cr,er,all,gc,to,cholesteryl ester transfer protein,fibrinopeptide a,pp,ar,gd,up,i,at,proc,aim,lar,mal,ph,mg,lp,long,hmg coa reductase,in,hdl,pt,fur,am,as,apy,nn,ro,b,par,for,fac,ago,cir,acta,es,hmg-coa reductase
 1885257,adenosine deaminase,bat,for,in,at,to,of
 1886988,all,as,in,5-lipoxygenase,had,to,of
 1901209,cab,hk,km,dd,ro,gh,mtp,ci,serum albumin,cytochrome c,albumin,l8,carbonic anhydrase ii,carbonic anhydrase b,cs,for,all,kd,age,lysozyme,cell,hp,kit,per,ide,th,pp,pi,as,cp,in,at,tr,neur,b,ml,ribonuclease a,had,membrane-bound,co,i,nat1,up,proc,se,to,ph,ca-ii,of,mg,tg,plc,ws
@@ -204,7 +204,7 @@
 1912125,es,cr,cat,pt,pe,s14,ci,ice,jp,long,thyrotropin releasing hormone,thank,eta,hur,for,all,sch,kd,h2,ner,prolactin,ms,age,ge,hi,dcp,trh,per,ide,bar,tn,as,cp,in,at,bn,ct,neur,inn,histidine decarboxylase,b,ml,nat,ne,tm,fur,sf,ot,ns,had,t9,hal,co,i,up,proc,to,t2,bars,ph,of,mg,net,cis,farr,am,db
 1944305,er,ga,tf,km,pst,mi,hy,gh,pe,hc,mpi,ak,a4,pbs,pl,rd,for,all,ms,age,hf,cell,acta,hp,fh,kit,en,per,fp,pp,me,as,gt,cp,in,acth,at,ek,b,sera,bp,ml,ar,dp,sds,mu,ns,had,t3,co,i,proc,pc,se,p450,to,ch,bars,ph,of,x,mg,sp,gx,am
 1957124,cr,er,sr,med,basic fibroblast growth factor,epidermal growth factor,rd,for,all,kd,h2,cell,acta,egf,per,as,in,at,cbs,bfgf,ss,lam,ls,ago,co,sk,somatostatin,i,up,proc,se,to,ph,of,x,am
-1962798,for,all,kd,in,to,of
+1962798,of,bs,ml,pa,x,ga,reg,ao,ice,en,pe,ns,lf,kd,ot,cell,ob,rd,cat,uk,epi,se,ci,acs,med,ss,eat,thank,cr,aiid,all,hl,to,fell,pp,neuropeptide y,sup,i,at,proc,ph,mg,fp,serum albumin,per,had,ms,tube,gal,dia,lh,in,albumin,pt,fur,pl,am,bax,as,cp,dt,b,par,for,sr,age,prp,gl,ner,acta,farr
 1965307,for,all,cell,as,in,acth,ca2,beta-tubulin,myosin,i,to,of
 1965892,es,dm,pa,ga,long,thank,cd,ak,ko,for,all,f3,age,mb,cell,acta,per,pp,me,as,in,at,b,bp,his,had,i,up,proc,cd1,to,ph,of,x,mg,rar,am,db
 1966571,5-ht2 receptor,for,in,d1 receptor,to,of,mg
@@ -270,8 +270,8 @@
 2404115,to,cell,in,of
 2424118,to,all,in,for,i,of
 2433905,x,ec 3.5.4.4,mg,adenosine deaminase,net,severe combined immunodeficiency,slo,b9,med,pent,to,cell,all,tm,km,as,proc,in,at,ara,had,amp,ci,5'-nucleotidase,for,ph,mr,i,hemoglobin,co,up,k3,ml,b,xanthine oxidase,ada,thank,of,am
-2439825,x,mg,to,in,at,for,of
-2442519,x,to,as,in,at,for,cardiac troponin c,of,troponin c
+2439825,af,of,ml,x,ao,kd,cell,rd,mn,hy,ls,bn,all,to,i,at,aa,ph,mg,me,had,pbs,tube,gal,amp,in,as,b,for,age
+2442519,af,of,ml,pa,x,ca2,en,cell,th,rd,cam,hy,se,tm,sp,all,tr,to,ar,sup,up,i,at,sar,proc,db,cox,bars,ph,tnc,cardiac troponin c,mg,nif,ch,had,long,cacl,calcium binding protein,parvalbumin,in,dm,pl,as,b,for,troponin c,myosin
 2443243,to,cell,as,in,of
 2446632,r2,mg,msa,sk2,hi,pa,serum albumin,kn,fr,med,me,ice,ch,to,cell,cpb,all,acta,pp,kd,farr,tert,as,gl,in,at,mrs,pi,ci,per,se,for,albumin,lad,pt,ph,ks,i,ml,b,ho,ko,of,pkr,gba,am
 2456096,x,mg,prostacyclin receptor,serum albumin,med,ice,to,all,acta,cramp,pp,kd,as,in,at,ms,ci,per,for,albumin,ph,ns,i,co,up,ca2,nac1,ml,b,thank,of
@@ -307,11 +307,11 @@
 2568629,gad,mg,fr,med,oc,f2,to,all,ro,pp,hf,beta-1,tube,as,in,his,at,mi,pi,had,for,lad,ph,mr,i,co,ml,b,vh,thank,of
 2569356,mg,si,hi,pa,sa,f2,to,cell,age,bf,neurokinin a,rg,all,bdh,pp,dm,farr,as,cr,pc2,in,at,gd,had,amp,for,fp,mr,ao,i,co,up,mk,ml,b,of,pc,am
 2570451,to,all,hrs,as,in,for,i,up,long,of
-2571203,csa,il-2 receptor,to,interleukin-2 receptor,il-2,interleukin-2,kd,as,in,at,for,b,of
+2571203,tac antigen,of,ml,x,ent,oc,pe,ns,rb,t11,kd,cell,interleukin-2,ob,fr,cd4,epi,lymphokine,med,ss,va,all,to,up,i,at,mi,proc,pc,jp,sera,mg,me,t3,interleukin-2 receptor,per,had,interleukin 2,pbs,csa,tc,il-2r,il-2 receptor,mt-2,gam,in,dm,pt,astp,ip,am,as,p55,b,par,for,il-2
 2571484,mg,to,as,in,at,had,for,i,dehydropeptidase i,ml,of
 2573104,x,mg,to,df,sch,all,kd,d2 receptor,as,in,his,at,hc,fa,had,ci,per,se,for,ph,i,b,cis,db,of,am
 2573502,to,adh2,km,as,in,at,alcohol dehydrogenase,for,ph,of
-2575762,angiotensin ii,to,in,at,had,for,up,of
+2575762,of,car,sa,angiotensin i,pa,x,ent,pe,dif,ot,cell,ob,pap,se,thank,all,to,co,pp,ar,ho,up,i,at,bars,mg,angiotensin ii,me,ch,had,ms,long,cacl,bi,b1,in,mk,as,b,for,sk,f2,s100,ago,tp
 2576228,x,mg,5-ht1b,c3,prolactin,5-ht1a receptor,med,to,sp,sch,serotonin receptor,bzp,5-ht1a,as,proc,in,his,at,ci,for,aa,mr,i,co,mk,ml,b,bar,cis,of
 2577144,x,mg,pa,c4,to,all,p23,m1,h2,renin,as,in,at,ms,pi,had,for,mer,i,co,up,ca2,mk,nac1,ml,b,pl,long,thank,cacl,of,s100
 2580269,x,pa,ls,med,bs,to,cell,ek,all,pole,sr,acta,cat,tm,kd,memb,as,proc,ob,fell,ak,in,at,bars,ms,adc,had,per,for,ph,gs,pr,i,up,ca2,cf,cd,nac1,b,long,ko,db,of,uk,am
@@ -342,7 +342,7 @@
 2847647,x,mg,topoisomerase ii,pa,med,dna topoisomerase ii,aac,c5,to,cell,fix,all,acta,fcc1,as,proc,in,at,had,ci,per,for,a subunit,ox,i,fic,co,ml,b,thank,dna gyrase,of,amf,am
 2849655,mg,to,as,in,at,had,of
 2850060,x,mg,held,c3,pa,serum albumin,ice,c5,to,cell,5b,all,cat,ro,pp,kd,farr,as,cr,proc,in,at,ms,had,ci,for,albumin,ls2,ph,cda,i,cs,up,dd1,ml,b,ho,cis,vh,sf,of,nati
-2855368,gpi,to,mu,as,leu5,in,at,for,delta,long,of
+2855368,af,of,hua,tyr,dif,leu5,ci,med,thank,all,to,pp,lars,i,at,ph,mg,gpi,mu,per,had,long,cacl,ox,in,as,b,for,acta,delta
 2857046,x,mg,acs,to,ata,pp,kd,as,mai,in,his,at,bp,had,for,ph,i,co,ml,b,thank,of
 2857116,x,th,mg,beta2,phs,pa,rd,cg,ip,hl,to,cell,sp,all,cat,rb,dm,hf,beta-1,kd,as,gl,in,car,at,hc,fa,pi,had,amp,ci,c6,per,se,for,ph,aa,mr,i,co,fim2,c9,cd,nsf,camp,ml,b,lal,jp,of,l3
 2857786,to,acetylcholinesterase,pkb,as,in,at,had,for,of
@@ -382,7 +382,7 @@
 2892662,mg,held,iris,rd,me,dd,ch,to,ge,all,sr,pp,ss,tim,renin,ep,as,in,at,had,for,i,up,cd,b,long,of,tel
 2895037,to,in,for,b,of
 2895614,to,cell,guanylate cyclase,in,had,per,for,up,of
-2895808,x,to,acetylcholinesterase,h2,in,at,for,of
+2895808,of,sch,ml,x,en,dif,ob,hc,acetylcholinesterase,se,ash,thank,all,to,co,pp,i,at,proc,mg,ch,long,cacl,nt,in,mtp,as,b,for
 2897449,x,mg,to,f8,age,all,pkd,pp,kd,as,in,at,had,per,for,i,up,ml,b,bar,fs,of,uk
 2899826,x,mg,m2 receptor,hal,plc,med,ice,hl,to,all,af,pp,d2 receptor,as,ass,in,csf,at,nn,had,arnt,for,ph,i,up,ml,b,thank,of,am
 2901134,x,mg,g25,tfa,ced,prolactin,serum albumin,insulin,substance p,snap,n-terminal fragment,ice,gh,ch,to,glucagon,somatostatin-28,des,prl,all,bi,oxytocin,gastrin-releasing peptide,tube,ss,farr,as,somatostatin-14,in,at,mi,t3,e2,had,for,albumin,ph,b1,i,somatostatin,co,up,ml,b,y2,pl,of
@@ -390,7 +390,7 @@
 2904117,x,cp,ph4,m2 receptor,hi,ga,t1,med,m1 receptor,dd,hl,pam,to,df,all,thp,bi,gr,rb,m1,pp,atr,dm,kd,as,proc,in,at,mi,ms,had,lt,per,for,ph,mr,ks,asv,i,cd,bip,p1,ml,b,rk,of,am
 2905706,x,mg,flame,hi,fr,med,to,cell,des,all,acta,nos,tube,as,in,his,car,at,ms,for,ph,hp,i,ir,gc,ml,b,thank,of
 2906155,x,th,kc,mg,c3,ls,ice,dd,mona,to,age,rg,all,acta,cat,edn,p2,pp,kd,as,proc,in,at,mi,hc,had,ci,for,ph,hp,i,up,mk,cd,p1,ml,b,jp,ne,of
-2907348,to,all,as,in,of
+2907348,af,of,beta-2 adrenoceptor,ml,pa,ga,ice,cell,ob,fr,all,to,beta-1,i,at,tg,pc,jp,ph,mg,fp,had,bi,mr,b1,in,am,flr,as,b,for,sr,age
 2913485,ache,to,acetylcholinesterase,as,in,at,per,for,mr,cd,of
 2922761,pnp,x,mg,lp,pa,serum albumin,med,to,osteocalcin,all,acta,pp,ep,tert,as,proc,in,his,at,mi,bars,appi,had,per,for,albumin,ph,i,co,r4,cd,k3,ml,b,prothrombin,cis,thank,of
 2933041,ca9,mg,sds,hi,pde,mb,plc,ls,med,en,pml,to,cell,mu,all,sr,acta,pp,kd,as,in,his,at,fn,pi,had,amp,se,for,cam,ph,i,membrane-bound,co,up,ca2,cf,mlck,myosin,cd,camp,ml,b,thank,of
@@ -422,7 +422,7 @@
 3047364,m1,as,in,at,of
 3058238,x,mg,rd,med,me,er,to,cell,age,progesterone receptor,stat,all,estrogen receptor,p2,pp,arm,task,as,cr,ob,in,at,had,for,marc,pr,i,hemoglobin,up,b,of,androgen receptor,am
 3060178,x,mg,osteosarcoma,va,ent,ga,factor vii,med,factor va,to,mop,cell,osteocalcin,df,las,age,all,af,tyr,acta,factor ix,asp,bone gla protein,pp,syn,thrombin,kd,km,as,proc,smac,hyp,in,hy,his,at,sk,protein s,had,nan,coagulation factor x,per,for,es,pt,lga,bgp,nat,ns,i,arg,up,cf,cd,ml,b,long,flg,prothrombin,factor x,ntf,thank,rk,sf,of,tn,met,am
-3071951,lh-rh,to,pap,prostatic acid phosphatase,as,in,at,for,long,lh,of,androgen receptor
+3071951,lh-rh,af,of,prostatic binding protein,fh,sch,gnrh,sa,ml,m1,pa,x,cpa,en,pi,ide,pe,prostatic acid phosphatase,kd,arm,scott,cell,th,ob,pr,a4,camp,ran,asp,epi,lad,hy,des,pap,prolactin,tm,syn,med,ss,cr,bal,his,er,all,hl,tebg,to,co,ar,sup,up,i,at,si,mi,proc,net,pc,aa,jp,aim,igm,mg,me,psa,had,androgen receptor,lhrh,fsh,ms,long,luteinizing hormone receptor,gonadotropin-releasing hormone,ox,tc,mr,sur,acth,lh,in,mtp,dm,ste,hormone receptor,mk,fur,am,fa,as,apy,ge,ro,dt,b,for,pros,ago,cir,ts,acta,es,f7,rg,gr
 3124610,t cell growth factor,il-2 receptor,tac antigen,interleukin 2,k12,to,cell,il-2,p55,in,of
 3129549,to,all,monoamine oxidase,tyr,km,in,at,had,for,of
 3134891,x,calcium binding protein,pa,serum albumin,plc,med,mtp,erba,to,cell,all,acta,pp,tube,as,proc,alpha2,in,ct,at,protein s,had,cytochrome c,ci,for,albumin,ph,i,co,pci,ca2,myosin,ml,b,cacl,of
@@ -436,7 +436,7 @@
 3190453,x,ache,cholinesterase,serum albumin,oc,ch,to,mu,acetylcholinesterase,rb,pp,kd,as,gl,buche,in,ec 3.1.1.7,at,nn,had,butyrylcholinesterase,per,for,mll,albumin,ph,i,co,ml,b,ec 3.1.1,of,uk
 3207614,x,mg,a4,pz,med,snap,ice,to,cell,nadph,all,acta,lf,as,in,at,sur,gd,had,par,for,ph,aa,i,ml,b,of,androgen receptor,am
 3207986,x,mg,t1,er,ice,f2,to,pe,cell,all,km,as,proc,in,at,had,for,ph,i,co,up,ml,b,long,ko,of,am
-3247303,of
+3247303,of,cd,jms,ml,pa,en,dif,gx,hy,se,ci,syn,med,to,gh,co,ho,ir,i,at,proc,ph,mg,had,in,fur,pl,as,b,for,acta
 3253717,histamine h1 receptor,h1 receptor,in,for,of
 3258344,to,age,as,in,at,of
 3260648,adenosine deaminase,g1,nucleoside phosphorylase,to,cell,in,ara,for,of,purine nucleoside phosphorylase,tpa
@@ -483,7 +483,7 @@
 4039467,to,estrogen receptor,in,had,per,for,of
 4070383,x,mg,ip,to,all,monoamine oxidase,pp,as,proc,in,adenyl cyclase,at,had,per,for,tp,ns,i,up,ml,b,ne,of,uk
 4074665,calcium binding protein,held,ant,pa,pde,med,oc,ip,to,cell,all,acta,cox,pp,kd,as,proc,ob,in,his,at,had,per,for,cam,ph,i,hemoglobin,co,ca2,mlck,myosin,ml,b,ko,cacl,of,pc,am
-4080089,mg,gh,to,prl,in,at,dbh,epi,somatostatin,ne,of
+4080089,gs,af,of,fh,car,ml,x,nmt,en,substance p,sn,pi,ne,alpha2,somatostatin,glucagon,epi,hy,prolactin,se,tm,zyme,held,thank,va,all,dbh,to,gh,co,pp,lct,sup,i,at,grf,mi,catalase,prl,c4,insulin,ph,mg,per,had,epo,long,tube,ox,acth,thyrotropin-releasing hormone,trh,in,bar,fur,am,as,pep,cin,b,ate,for,fac,ep,age,cir,acta,growth hormone releasing factor,farr
 4152054,x,hi,pa,bs,ch,to,cell,df,sch,all,af,acta,pp,ss,as,cr,proc,gl,ob,in,hy,at,pi,had,amp,par,ci,for,asv,i,co,gk,cf,b,ne,of,am
 4156788,th,dihydropteridine reductase,lag,5-lo,dia,acth,insulin,med,pnmt,to,cell,all,monoamine oxidase,pp,as,cr,proc,in,at,phenylethanolamine n-methyltransferase,dbh,amp,per,for,ph,pr,nat,ns,i,membrane-bound,co,up,camp,b,nerve growth factor,ne,dhpr,of,ros,tyrosine hydroxylase
 4399738,pa,to,cell,sup,all,acta,pp,as,proc,in,his,at,mrs,had,epi,for,ns,i,bar,ne,thank,of,nt,am
@@ -494,7 +494,7 @@
 4861216,to,of
 4887393,in,of
 4889058,in,of
-5284360,as,for,of
+5284360,of,ml,x,ao,ice,srs,cell,ct,inn,lets,syn,med,thank,ant,all,to,thrombin,pgf,up,i,dao,at,sds,cox,ph,mg,mb,per,had,sts,hpo,tube,mr,mse,in,as,cin,b,for,mcs,acta,es
 5431666,x,mg,pa,fr,med,c4,to,all,as,cr,proc,ass,in,at,had,per,for,pt,ph,aa,i,co,up,ml,b,long,ne,of
 5455277,to,as,in,at,for,of
 5692397,succinic dehydrogenase,age,in
@@ -530,11 +530,11 @@
 6149771,to,in,for,ne,of
 6151117,x,delta receptor,kappa receptor,leus,fr,med,en,cg,ice,lif,to,pe,cell,mu,all,sr,acta,ro,tm,pp,hf,kd,as,proc,in,at,mi,had,ci,per,se,for,ph,delta,aa,i,co,up,nac1,ml,b,mn,fs,db,of,am
 6184384,plasma kallikrein,to,as,in,at,for,mr,of
-6186851,ec 3.6.1,ec 3.1.4.17,to,as,in,at,amp,for,ec 3.1.4,of
-6202960,to,as,in,at,for,of
+6186851,of,car,ec 3.1.4,ml,x,reg,ice,en,sn,ne,cell,th,ob,camp,zyme,thank,all,tr,to,hp,co,ar,up,i,at,proc,sds,lar,insulin,bars,ph,mg,ch,mb,serum albumin,had,ms,cacl,calcium binding protein,amp,cyclic nucleotide phosphodiesterase,in,albumin,dm,ec 3.6.1,ec 3.1.4.17,am,as,ro,b,for,dp,farr,myosin
+6202960,apex,of,car,ml,pa,x,en,pe,rb,ob,lac,pr,kpa,hy,pap,se,nadph,med,bn,diaphorase,va,all,to,co,ar,up,i,at,mi,proc,aa,ph,mg,ace,had,gat,ms,emt,long,cacl,tube,cava,ox,mr,in,g1,as,b,par,for,ck,cir
 6203844,x,th,kc,mg,net,pa,med,me,ttg,to,scott,cell,rg,sup,all,mpi,cnr,as,in,his,at,had,amp,se,for,cam,ph,i,membrane-bound,up,apy,cel,ca2,camp,ml,b,tg,of,pc
 6204835,x,dom,th,mg,mgf,ant,hi,whim,med,me,en,ip,ice,ch,to,pe,ge,cell,age,tr,rg,all,sr,acta,pp,h2,sn,as,gl,ob,in,at,adm,t3,had,ci,per,for,ph,i,ir,co,up,peg,cd,b,long,fur,of,uk
-6206315,x,to,in,at,ms,had,for,i,of
+6206315,of,car,k7,ml,x,ao,en,ws,rb,cell,hc,hy,bf,se,tm,ls,med,thank,bn,all,to,co,sup,dec,up,i,at,proc,net,aa,ph,mg,me,ch,per,had,ms,long,dld,mr,amp,in,albumin,dm,am,as,dt,for,dp,cyc,sr,acta,es,gr
 6222739,x,mg,pbs,glucocorticoid receptor,pa,med,en,to,cell,progesterone receptor,all,acta,pp,tube,as,proc,in,at,ms,srbc,had,ci,per,for,ph,i,co,up,nac1,ml,b,sf,of,androgen receptor,am
 6226260,x,mg,ls,er,hare,en,aim,to,cell,maltase,hpo,sera,sp,all,sr,ro,pp,farr,as,in,at,ms,had,nan,per,for,ph,i,co,up,cf,ml,b,long,glucoamylase,of
 6227474,x,mg,aldosterone receptor,held,glucocorticoid receptor,bs,er,mineralocorticoid receptor,ice,dd,to,cell,all,acta,sar,tube,kd,as,in,at,had,ci,per,for,ph,dt,ns,i,co,up,mk,cd,ml,b,flg,jp,thank,of
@@ -570,7 +570,7 @@
 6621777,x,th,mg,pa,pta,med,me,ice,to,pe,cell,all,monoamine oxidase,ro,as,fell,in,his,at,mrs,ms,had,per,for,ph,gs,i,co,gc,ml,b,tyrosine aminotransferase,ne,thank,scot,of,phenylalanine hydroxylase,tyrosine hydroxylase
 6645495,x,kc,mg,hi,sa,med,en,aim,to,cell,tr,progesterone receptor,all,acta,pp,arm,kd,as,in,his,at,t3,nan,oestrogen receptor,ot,per,for,ph,mr,i,co,up,ml,b,y2,long,lh,thank,of,androgen receptor,met,dcr
 6646243,x,neur,mg,med,mao-a,ice,to,maoa,all,monoamine oxidase,acta,tm,pp,tube,as,gl,ak,in,e1,at,monoamine oxidase type a,had,for,es,ph,tp,i,co,up,cf,ar,ml,b,long,thank,of,am
-6687626,to,oxytocin,neurophysin i,as,in,ot-npi,ot,for,mr,i,arg,long,avp,of
+6687626,of,sa,cap,esi,bs,met,pa,x,en,pe,ot,cell,th,pr,ct,avp,ot-npi,ek,ci,med,ss,thank,cr,sp,his,er,all,hl,tr,to,co,oxytocin,ar,rit,i,at,si,proc,aa,lar,pst,neurophysin i,me,ace,cea,ch,per,long,aaa,mer,mrs,mes,in,rar,pt,bp,bar,arg,as,ret,aah,cs,atic,b,for,ago,eta,ts,es,tp
 6703688,x,mg,plp,lag,ec 1.11.1,bs,en,catalase,ice,to,agt 2,all,acta,cat,p2,pp,ec 1.11.1.6,km,zyme,as,proc,in,at,had,per,glycolate oxidase,for,ppt,ph,ec 1.4.1.3,i,co,ec 2.6.1.1,ec 2.6.1,gdh,camp,ml,b,pl,ec 1.4.1,of,ec 2.6.1.44,agt,am
 6706930,x,th,mg,mes,si,lag,yt,thyroid peroxidase,va,ent,ago,pa,thyroglobulin,scn,serum albumin,ate,er,ste,en,catalase,ip,to,cell,df,lactoperoxidase,amt,tpo,all,acta,bn,pp,tube,farr,km,as,proc,ob,in,at,mi,nn,fop,ms,pi,had,ci,ot,lt,per,for,albumin,ph,nat,i,co,ml,b,pl,ho,fur,flg,db,of,uk,lpo,nt,am
 6725552,x,sds,antithrombin iii,to,in,had,for,of
@@ -627,7 +627,7 @@
 7536941,mg,net,pa,ls,inducible nitric oxide synthase,inducible nos,inducible no synthase,ice,dd,to,cell,nadph,rg,cyp3a,all,nos,hf,guanylate cyclase,as,cr,proc,fad,in,at,endothelial nos,had,cytochrome c,ci,for,ph,mr,ks,nat,ns,i,co,pci,ca2,cf,ml,b,pl,jp,cacl,guanylyl cyclase,of
 7539114,x,mg,held,pa,med,me,to,cell,serotonin receptor,all,pp,kd,as,proc,in,at,had,for,ph,i,co,up,ca2,ml,b,bar,ko,cacl,of,am
 7540578,x,kc,mg,catg,sds,lag,interleukin-1,lp,gapdh,er,hormone receptor,en,tnf,gh,il-1,to,cell,5b,age,tr,thyrotropin-releasing hormone,tumor necrosis factor,des,fix,all,estrogen receptor,tm,pp,tube,kd,ep,as,in,at,mi,protein kinase a,e2,pi,bp,ci,for,ph,i,co,up,nac1,trh,ml,b,pl,long,of,tel,am
-7542676,to,as,in,at,for,of
+7542676,prep,of,neu,car,sa,ml,cf,dif,cell,rd,cam,hy,des,cyp2d6,prolactin,held,cr,ant,er,tat,all,to,co,pp,sup,up,i,at,mi,hip,uce,pem,jp,db,tf,mg,me,ch,per,had,long,bi,mr,lt,mes,in,albumin,hal,pt,as,ge,b,par,ate,for,sk,fac,sr,e1,ck,ago,debrisoquine 4-hydroxylase,gl,acta,es,mpi
 7554708,mg,nat1,ga,l8,fr,med,bs,aim,to,pgf,sera,age,all,acta,ro,m1,tm,thrombin,dec,dp,cyclooxygenase-2,as,proc,pghs-2,in,at,had,ci,for,ph,pr,mr,i,co,pghs-1,ar,ml,b,of,pc,am
 7556407,x,mg,cp,dcp,calcitonin,serum albumin,med,substance p,aim,ice,to,cell,sp,neurokinin a,nk2,des,sms,all,tyr,sr,acta,substance p receptor,as,proc,in,his,at,sur,ms,had,ci,per,for,albumin,ph,i,somatostatin,co,ml,b,long,ne,mn,of,neurokinin b,tel,uk,am
 7560228,x,mg,interleukin-1,cyclooxygenase 2,en,ice,est,il-1,to,cell,des,all,acta,farr,fibronectin,km,zyme,as,in,arachidonate 5-lipoxygenase,at,mi,il1,e2,sur,par,per,se,for,es,b4,ph,lum,ecl,i,sls,up,ml,b,jmp,long,kit,of,5-lipoxygenase,tpa
@@ -663,7 +663,7 @@
 7670737,x,coil,mg,tip,cfl,f2,to,sch,all,p2,pp,cava,as,in,at,sk,had,for,i,co,up,cd,ml,b,flg,of,am
 7674815,x,r2,iris,ret,ice,to,cell,all,pp,as,proc,in,at,for,ph,i,alb,ml,b,pl,of,l3,am
 7675115,x,mg,si,lag,dr-1,ga,pa,srs,sa,med,me,cg,aim,atopy,gh,f2,to,cell,df,sp,rg,fix,all,sr,ws,rb,p2,tm,pp,hf,beta-1,ss,pkb,dp,km,as,proc,ak,in,his,car,ct,at,ms,had,par,ci,apex,lam,se,for,fp,ph,tp,i,up,gk,nac1,ar,camp,b,lal,long,fur,bar,ko,tg,of,uk,am
-7678677,x,at,of
+7678677,af,of,car,sa,ml,pa,x,ga,ne,ek,med,sp,all,gc,to,co,i,at,mi,jp,mg,per,had,ms,cacl,in,as,b,for,cir,acta,tp
 7680317,x,mg,tip,pde,med,to,cell,5b,all,acta,cat,as,proc,pla2,calcium-activated potassium channel,myoglobin,in,at,ms,phospholipase a2,had,ci,for,ph,potassium channel,i,ir,co,cd,dieter,ml,b,long,of
 7681475,mg,net,pa,dia,insulin,katp channel,ca1,to,cell,galanin,ide,des,tap,as,cr,proc,in,pkc,at,ms,had,amp,se,for,ph,potassium channel,ox,thio,ca3,ns,i,co,cs,ca2,camp,ml,b,y2,long,lh,ne,mcd,of,ampa receptor
 7683652,x,aromatase,gh,to,cell,all,syn,as,ob,myelin basic protein,in,at,had,cytochrome c,par,ci,per,for,gmp,cam,albumin,ph,tf,ns,i,arg,up,ca2,myosin,camp,p1,ml,b,pl,cyclic nucleotide phosphodiesterase,of,app
@@ -672,7 +672,7 @@
 7692072,x,mg,pa,cvl,basic fibroblast growth factor,med,me,cd4,en,ifn,aim,ch,to,cell,age,sp,k-fgf,all,thromboplastin,pp,dm,thrombin,km,as,proc,fell,in,his,agm,at,p24,had,per,se,for,aa,mr,i,ir,up,cel,mk,htgl,ml,b,long,thank,of,am
 7700252,net,dat,to,cell,all,as,in,pk1,at,for,of,norepinephrine transporter,dopamine transporter
 7702639,x,mg,nat1,gt,phs,glutamate receptor,hi,ga,pa,rd,sa,kn,bs,en,dd,to,ge,cell,ek,all,edn,pp,sn,tube,as,proc,gl,ak,in,at,ms,bp,had,ci,for,marc,ph,glycine receptor,tf,ns,i,co,cs,up,mk,cf,ml,b,pl,fh,of,l3,tel,am
-7703721,mg,to,estrogen receptor,kd,in,for,of
+7703721,af,of,ml,x,ice,kd,cell,estrogen receptor,asp,pap,all,to,pp,ho,i,at,proc,aa,aim,ph,mg,serum albumin,per,had,hpo,in,albumin,mk,am,as,progesterone receptor,b,for,pros,age,acta,farr,tp
 7713167,x,neur,jun,histamine h1 receptor,tip,glutamate receptor,ant,hi,pa,tat,aim,ip,to,h1 receptor,des,sup,oxytocin,asp,h2,as,gl,in,his,at,ms,had,amp,for,gmp,ns,i,co,up,ml,b,bar,vh,of,tel,uk
 7714410,x,mg,pa,hl,to,h2 receptor,stat,all,hrs,histamine h2 receptor,h2,pkb,as,in,at,mi,per,for,b4,ph,i,s31,co,ml,b,of,am
 7723747,mg,gi,to,cell,mu,in,for,thio,membrane-bound,ml,of
@@ -687,10 +687,10 @@
 7751968,to,cell,at,per,for,of
 7752578,aaa,mg,ry,net,na-k-2cl cotransporter,ate,to,cell,sp,h4,all,pp,nppb,as,cr,proc,mai,in,his,at,mi,ms,se,for,ph,dt,nat,i,ir,co,up,ca2,nac1,ml,b,long,fur,bar,jp,thank,kao,of,nati,mat,am
 7755585,rar,rar-beta,to,all,retinoic acid receptor beta,kd,as,in,at,had,for,ml,cis,of
-7755615,prolactin,to,all,as,fsh,in,for,fsh receptor,of
+7755615,gs,e2,of,fh,mae,sa2,pa,x,hse,ao,oc,g2,ks,en,lal,pi,pe,ns,ips,ne,lf,rb,kd,ot,th,plap,pr,hc,gx,hy,se,ek,qars,ls,pad,cel,lph,bal,sp,to,scn,co,msp,por,up,i,at,wd,si,mi,sf,lar,pst,gk,k3,ph,mg,me,lp,psa,pth,per,hi,mse,nb,lyk,fs,ppy,tim,pl,am,nn,ge,cin,ro,dt,b,for,h-b,ep,cg,psf,age,gl,5b,nef,gr
 7761270,x,ga,pa,cap,ach,substance p,aim,ch,to,all,pole,bn,tm,nicotinic acetylcholine receptor,tube,kd,as,gl,in,at,t3,ot,for,a subunit,ph,i,co,nac1,ml,b,bar,jp,vh,fs,sf,of
-7768881,insulin,to,cell,peroxisome proliferator-activated receptor gamma,kd,in,ppar,for,of
-7769797,mg,to,ro,renin,in,at,for,i,ml,of
+7768881,of,adipsin,glyceraldehyde-3-phosphate dehydrogenase,ml,x,ent,en,dif,cell,ob,ppar,cat,fic,ci,med,thank,gapdh,all,to,co,gst,pp,i,at,proc,y2,tumor necrosis factor,mal,insulin,tel,ph,me,had,long,hi,glucocorticoid receptor,pparg,dia,ppara,in,bp,hormone receptor,fur,am,as,b,for,mcs,glutathione s-transferase,gr
+7769797,of,cap,angiotensin i,ml,pa,x,ao,en,ot,ob,fr,epi,hy,plc,med,cel,ss,thank,all,hl,to,tra,i,at,net,jp,aim,mg,angiotensin ii,ace,renin,ch,fhm,had,long,bi,sbp,lh,in,bp,mk,am,as,cs,ro,b,par,dbp,for,aii,pros,ck,angiotensin-converting enzyme,ner,cir,ts,es,dup
 7773533,x,r2,pim,sa,mb,ice,to,cell,5b,all,kd,tim,pkb,as,a1a,ob,in,at,mrs,ts,ci,per,for,ph,ns,i,co,up,ca2,alb,ml,b,mia,long,of,am
 7773620,x,held,nb,yt,e3,c3,ant,lp,ret,sa,mb,mep,med,me,c4,cg,hl,f2,c5,sp3,pam,ch,to,cell,ahr,des,all,bi,cat,rock,ro,p2,pp,syn,h2,sn,hf,sar,f3,dec,cfc,ep,as,cr,proc,ak,in,at,ftl,ms,pi,had,c-c,alp,ci,c6,for,es,ph,ox,i,co,cs,up,boat,cf,camp,toll,ml,b,ho,ko,thank,alpi,of,tn,pc,am
 7800667,mg,net,hi,pars,ice,hl,to,sch,all,acta,cat,pp,tube,npp,d2 receptor,as,cr,proc,in,at,had,dopamine d4 receptor,ci,ot,per,for,ph,d4 receptor,i,membrane-bound,cs,up,mk,cf,ml,b,long,cis,of,am
@@ -706,7 +706,7 @@
 7855217,x,dopamine d2 receptor,mg,5ht1a,histamine h1 receptor,net,5-ht2 receptor,hi,pa,5-ht1a receptor,ls,en,ice,hl,mot,to,cell,h1 receptor,5-ht2a,all,af,m3 receptor,pp,itil,arm,tube,5-ht1a,kd,dp,d2 receptor,as,in,e1,ct,at,had,ci,for,pt,ph,aa,mr,i,co,up,cf,nac1,ml,b,jp,mn,ck,thank,db,of,uk
 7856330,monoamine oxidase,in,at,for,b,monoamine oxidase type b,of
 7858879,x,mg,calcitonin,hi,gi,fr,substance p,eta receptor,to,cell,neutral endopeptidase,tak,endothelin-1,all,cat,dap,ro,pp,etb,tube,as,in,eta,at,had,apex,for,ph,ns,i,co,ml,b,jp,thank,of,etb receptor,am
-7862741,to,cell,all,in,for,of
+7862741,prep,mor,of,cals,neu,sa,cd,ml,x,ga,cis,ao,ca2,ice,ry,pe,ne,kd,dif,cell,ob,cat,des,se,df,er,all,to,ata,co,pp,up,i,at,mi,hip,aim,tf,ph,mg,me,mb,per,ms,cacl,mer,in,dm,gt,mk,bar,pal,am,as,ge,ro,b,for,es,farr
 7865862,dopamine d2 receptor,mg,wd,mb,ls,nts,med,kali,aim,hl,to,all,cat,gr,pp,dm,neu,dp,km,d2 receptor,as,proc,in,at,nn,gd,ms,bp,had,per,se,for,i,up,nac1,ml,b,long,jp,thank,of,5-ht3 receptor,am
 7872378,x,sa,med,to,cell,tr,all,gnrh,sn,km,as,proc,fsh,in,ct,at,hc,e2,fa,had,per,se,for,tp,hcg,hp,ns,i,cs,up,ivf,ml,b,long,jp,lh,of,gonadotropin-releasing hormone,met,am
 7873420,x,mg,va,serum albumin,med,aim,mot,to,cell,all,sr,cox,pp,tube,as,proc,in,his,at,bars,for,albumin,ph,i,co,up,ca2,cd,t2,ml,b,pl,ho,long,of
@@ -731,7 +731,7 @@
 7948825,x,mg,held,ga,bfgf,basic fibroblast growth factor,med,aim,to,cell,egf,h2 receptor,all,bi,histamine h2 receptor,h2,as,in,at,lam,per,for,i,b12,ml,b,ho,long,of,epidermal growth factor,am
 7952157,x,mtc,mg,thyroglobulin,wd,tsh receptor,lars,aim,to,age,thyrotropin-releasing hormone,rg,tpo,all,tsh-r,acta,gr,thyrotropin receptor,dm,kd,thyroperoxidase,as,in,eta,his,at,t3,had,per,for,b1,i,up,trh,b,long,atd,thank,tg,of,pc,uk,am
 7957034,x,mtc,mg,en,to,age,mu,all,ct1,pp,as,in,his,at,mu opiate receptor,pi,had,per,for,delta,ns,i,k3,b,mn,thank,of,tn,pc,uk,nt
-7959748,kappa receptor,mu,as,mu receptor,in,for,kappa opioid receptor,oprk1,of,oprm
+7959748,of,oprk1,x,cell,ob,fms,syn,er,all,to,pp,oprm,i,ape,at,c-fms,pz,pip,mu,microtubule associated protein 2,etbr,glutaminase,in,interleukin 1 receptor,mtap,bp,il-1,idh1,gls,fms proto-oncogene,as,b,for,"interleukin 1 receptor, type i",age,kappa opioid receptor,myb,delta,gr
 7961725,x,mg,si,dihydropyrimidine dehydrogenase,net,hi,pa,thymidylate synthetase,sa,en,catalase,ch,to,all,acta,pp,hf,zyme,as,proc,xanthine dehydrogenase,in,at,hc,gch,pi,had,cytochrome c,ci,per,for,ph,thio,ks,i,co,cf,t2,ml,b,xanthine oxidase,pl,ho,long,ko,lh,thank,of,app,am,histidine decarboxylase
 7961794,x,i-1,pa,scn,sl-3,me,ste,ch,to,cell,all,cat,pp,kd,ep,as,proc,in,at,bars,pi,inn,had,ci,for,ph,tf,i,co,up,mut,ml,b,pl,fur,cis,ne,thank,of,tel,gcl
 7962113,x,mg,urokinase-type plasminogen activator,sds,lag,pbs,pa,akt,upa,serum albumin,sa,aim,plasminogen,ch,to,cell,pais,plasminogen activator inhibitor 2,tissue-type plasminogen activator,5b,all,u-pa,pp,serine protease,thrombin,as,proc,in,his,ct,at,mi,had,par,pst,per,for,albumin,ph,u-par,ao,i,pai,up,pci,p1,ml,b,pai-2,plasmin,lh,of,tpa,t-pa,pai-1
@@ -747,9 +747,9 @@
 7996307,x,mg,tip,grh,aim,to,age,tap,all,gnrh,casper,tuba1,as,fsh,in,at,had,per,for,es,lhrh,i,clip,up,b,ho,long,lets,lh,of,gonadotropin-releasing hormone
 8000225,to,progesterone receptor,gnrh,in,estradiol receptor,pr,of
 8001268,mg,to,in,at,of,ik1
-8003661,ca1,to,in,long,of,ampa receptor
+8003661,of,bs,ml,pa,en,ampa receptor,c5,se,syn,thank,all,to,gd,stat,i,at,proc,hip,pc,bars,ph,seh,ch,had,ms,tau,long,cacl,km,in,nati,bar,am,as,b,for,sr,age,ca1,es
 8014033,th,mg,5-ht2 receptor,med,aim,to,bf,sp,all,acta,ws,gr,aura,tube,as,in,at,for,pr,i,ml,b,pl,ho,long,of
-8020989,to,glucagon,arm,gcgr,in,glucagon receptor,long,of
+8020989,of,gcgr,glucagon-like peptide 1,arm,cell,ct,glucagon,hy,se,all,to,pp,at,phs,proc,insulin,ph,aac,glucagon receptor,mll,had,tc,aaat,in,bp,am,b,for
 8032658,x,mg,g1,5-ht2 receptor,med,me,5-ht4,gam,aim,to,cell,sch,serotonin receptor,5-ht2a,g396,all,monoamine oxidase,cck,gr,cox,pp,cast,cholecystokinin,tim,5-ht2c receptor,as,cr,proc,g386,alpha2,oct-3,in,5-ht2b,ct,at,had,5-ht2c,ci,for,aa,5-ht1c,mr,i,co,ame,up,5-ht4 receptor,5-ht2b receptor,mk,cd,ml,b,thank,of,am
 8050463,x,pa,med,aim,ice,f2,to,cell,age,all,as,in,at,mi,ms,had,for,ph,i,co,cd,nac1,ml,b,of,tel,uk,am
 8052854,x,gt,tnf-a,interleukin-1,elam-1,ga,cap,med,er,tnf,ifn,il-1,nf-kb,il-8,to,cell,p50,tumor necrosis factor,il-6,all,vcam-1,pa122,pp,as,proc,elam,in,ct,at,bars,t3,bp,had,ci,ot,lt,per,for,ph,aa,pr,tc,nat,ns,i,eif-2,mut,camp,p1,ml,b,rps19,long,ikba,kit,thank,of,nati,g5,nt,am,icam-1
@@ -766,7 +766,7 @@
 8099718,x,mga,mg,aim,to,cell,all,acta,cat,ecp,p2,pp,syn,farr,km,as,proc,in,at,pi,amp,ot,for,albumin,ph,nat,i,up,ca2,nac1,toll,p1,ml,b,ho,ne,thank,of
 8100523,x,mg,phi,cholinesterase,nb,ga,aminopeptidase m,aminopeptidase,pz,insulin,me,substance p,vasoactive intestinal peptide,f2,to,cell,glucagon,dpp-iv,ren,sera,des,all,preproglucagon,tyr,acta,asp,growth hormone-releasing hormone,vip,pp,serine protease,cholecystokinin,sar,zyme,as,hyp,in,phm,growth hormone-releasing factor,his,at,pi,had,amp,for,ec 3.4.14.5,ph,ox,grf,pacap,i,arg,membrane-bound,dpp iv,co,up,cd,p1,ml,b,dipeptidyl peptidase iv,pl,glp-1,thank,of,met,gif
 8101879,x,r2,csa,dopamine d2 receptor,d1 receptor,c3,ls,med,er,era,c4,gam,dd,est,f2,c5,to,cell,h12,sch,h4,all,acta,pp,kd,f3,ss,d2 receptor,as,proc,in,at,had,c6,for,c5a,c7,i,co,r4,c9,b,n10,cis,viii,thank,c4a,kao,of,c11,am
-8103596,mg,d1 receptor,to,sch,d2 receptor,in,i,git,of,d3 receptor
+8103596,git,af,of,fh,sch,ml,hua,ks,ns,pr,mn,se,ss,his,all,tr,to,g3,ar,up,i,ak,at,mi,d2 receptor,db,rk,ph,mg,me,had,ms,km,nt,mr,in,dm,bp,ip,pl,as,b,for,hap,gl,acta
 8105356,mg,jun,pa,oc,to,all,pp,as,cr,proc,in,ct,at,amp,ci,se,for,i,co,b,thank,fs,of,am
 8106131,as,in,for,of
 8110752,x,gaa,aaa,gcg,mg,osteosarcoma,acs,held,gpi,gtg,tat,plc,tgc,fr,oc,cg,cml,aac,ice,acc,to,cell,mf1,sp,all,acta,gr,cac,ata,gac,tube,as,proc,cga,in,at,aat,fra,pi,bp,ci,for,atc,gcc,cta,ph,mr,i,rts,nac1,gc,ml,b,pl,folate receptor,thank,of,gat,agt,folate binding protein,am,ggt
@@ -775,16 +775,16 @@
 8132625,x,mg,ent,serum albumin,med,to,cell,fix,all,bi,acta,pp,h2,nicotinic acetylcholine receptor,as,cr,in,at,for,albumin,ks,i,ir,co,up,pci,k3,ml,b,pl,mn,thank,of,ins,tel,b23
 8133056,myeloperoxidase,to,cell,in,at,cytochrome c,ci,ph,lysozyme,b,of
 8139621,x,bzs,mg,mes,sds,c3,a4,serum albumin,sa,b9,plc,bs,ste,c4,b7,ice,c5,to,ptl,scott,cell,5b,b8,all,beta-tubulin,bi,rb,m1,pp,kd,tim,as,proc,gck,in,at,had,amp,ci,c6,per,se,for,albumin,b4,ph,c7,i,b12,co,up,lysozyme,nac1,ml,b,long,kit,ck,tg,of,tel
-8141114,mg,to,serotonin receptor,in,for,i,of
+8141114,of,dtd,pa,cis,ao,cf,ns,dif,cell,ob,se,med,all,to,ata,co,up,at,wd,ph,mg,mut,mb,per,had,nt,in,am,as,apy,b,ate,for,age,es,gr
 8144028,x,calcitonin receptor,gcg,mg,growth hormone releasing factor,si,sds,calcitonin,ry,lag,va,ga,wd,insulin,mbp,hormone receptor,vasoactive intestinal peptide,en,ttg,aim,to,ge,cell,glucagon,growth hormone releasing hormone receptor,g148,sp,all,vav,rdt,tm,vip,kd,dp,as,cr,proc,gl,in,glucagon receptor,adenyl cyclase,at,bars,sk,ms,bp,per,for,growth hormone releasing hormone,ebn,ph,aa,ks,tc,i,pth,co,ca2,camp,ml,b,ggr,secretin receptor,kit,vh,thank,tg,of,tel,nt
 8153059,x,mg,hi,med,me,ais,ice,to,all,acta,p2,kd,farr,as,in,at,per,for,albumin,ph,i,ml,b,pl,of
-8161215,to,in,carbonic anhydrase iii,protein s,had,of
+8161215,gs,e2,of,mae,bs,pis,met,m1,pa,x,ent,ga,sps,ao,ice,oc,g2,en,ws,ry,lhs,sn,pi,pe,ns,rb,kd,ot,ecl,fr,sil,hk,tera,app,t2,hy,bf,se,ceh,lpo,ls,fps,cel,ss,bn,cab,sp,prap,er,tr,to,hp,peg,co,pp,ssa,i,cac,ape,at,wd,phs,si,mi,sf,tg,mep,aa,ass,jp,p18,rk,pst,gk,aps,seh,cea,fp,lp,apel,mu,ms,fn,nt,gi,mse,oes,sfe,lt,nb,in,mtp,bp,ste,sele,ip,fa,as,cs,cpe,cp,ge,cin,b,par,ate,for,dp,ep,cg,psf,ck,age,aws,pais,ts,melg,aik,es,tp,faa,gr
 8166240,x,mg,t1,pz,fr,insulin,hl,mot,to,cell,all,hrs,kd,as,cr,proc,in,at,had,per,se,for,i,up,alb,ar,ml,b,long,ne,of,am
 8172912,x,mg,acs,insulin,med,oc,ice,to,cell,all,acta,tube,memb,as,proc,in,at,mi,t3,ci,per,for,es,cta,ph,ao,i,co,up,peg,ca2,nac1,t2,ml,b,long,ko,cacl,of,uk,am
 8174605,x,mg,pbs,pa,c4,erba,ice,to,cell,all,af,acta,as,in,pgfl,at,ms,had,per,se,for,ph,thio,i,co,up,ca2,mk,gc,ml,b,bar,of,nt,am
 8182534,mg,to,cck-a,all,cck,cholecystokinin,in,at,cck-b,i,co,mk,b,cck-a receptor,of
 8206619,angiotensinogen,angiotensin ii,ace,ik,kininase ii,clg,to,df,all,ro,fhm,dm,cava,tube,renin,as,angiotensin i,hyp,in,ang,at,bars,ms,per,for,ph,cathepsin d,ks,i,co,up,ml,ada,fur,bar,jp,rk,of,am
-8214757,to,cell,as,in,at,ca2,of
+8214757,of,membrane-bound,ml,x,ca2,oc,cf,en,ne,rb,kd,cell,ob,rd,pr,t2,des,zyme,syn,med,thank,va,er,all,to,pp,gd,i,at,proc,jp,bars,ph,mg,dd,serum albumin,had,ms,tube,np,in,g601,albumin,rhodopsin,pl,am,as,b,for,sr,es
 8223836,x,th,mg,cp,cholinesterase,cse,pa,sa,insulin,ch,to,sp,des,all,acta,nos,pia,edn,pp,tube,as,gl,in,csf,ec 3.1.1.8,at,ms,had,per,for,bvr,ph,i,cf,pseudocholinesterase,gc,ml,b,ho,ec 3.1.1,of,am
 8232788,x,mg,i-1,np,serum albumin,kn,ice,to,all,pp,nicotinic acetylcholine receptor,kd,tim,farr,f12,as,proc,in,ct,at,t3,had,ci,per,se,for,albumin,ph,i,co,cf,t2,ml,b,ko,of,am
 8242249,x,mg,protein tyrosine phosphatase,angiotensin ii,pbs,ace,sbp,serum albumin,ml1,at2,med,substance p,en,s7,ice,ch,to,cell,pals,all,tm,prep,pp,lpa,sar,kd,tim,renin,pkb,guanylate cyclase,angiotensin-converting enzyme,as,angiotensin i,in,ct,at,mi,bars,ms,had,ci,per,for,albumin,marc,ph,dup,i,clip,co,cs,up,t2,ml,b,at2 receptor,long,kit,lh,thank,aii,of,am
@@ -794,7 +794,7 @@
 8282004,x,mg,pbs,glucocorticoid receptor,serum albumin,hormone receptor,mineralocorticoid receptor,en,ice,to,cell,progesterone receptor,all,hmr,sar,gx,farr,as,proc,ak,in,at,sk,ms,ci,per,for,albumin,ph,ox,i,co,up,cd,b,hsp 90,lh,thank,of,tel
 8289199,x,r2,vn,th,mg,acs,held,net,hht,cdd,pde,trap,l8,sa,ach,gcs,med,me,oc,pent,ice,dd,hl,ch,to,cell,sch,h4,all,lf,prp,pp,syn,h2,alteplase,thrombin,dec,tert,as,in,e1,his,pgfl,r1,at,ms,had,c-c,amp,ci,for,ph,dt,aa,pr,ns,i,ir,cs,up,dd1,p450,cd,camp,ml,b,pl,ho,long,bar,kit,lh,fh,txa2 receptor,thank,of,mat,l3,am
 8294418,x,held,lag,hi,serum albumin,reg,fr,caf,ice,to,cell,all,pp,as,proc,in,pkc,at,bars,pi,had,amp,per,se,for,albumin,aa,i,ips,pci,alb,ar,ml,b,pl,bar,ne,thank,of,c-fos,tel,fos,am
-8298083,ca1,to,cell,in,of
+8298083,of,ml,cf,ns,dif,cell,mn,uk,held,cr,all,to,co,potassium channel,i,at,mi,insulin,ph,per,had,ms,long,cacl,in,ca3,fa,as,b,for,ca1
 8301142,rar-gamma,rar,rar-beta,il-1,to,cell,rar-alpha,il-6,all,ro,as,in,at,cis,of
 8301582,dopamine d2 receptor,hd3,hd2,to,cell,d2 receptor,as,in,for,cis,of
 8302852,x,rws,si,sds,np,gt,hsert,5ht transporter,sst,dat1,net,dat,va,ga,ik,pa,gtg,gi,tat,sa,er,gli,lif,to,cell,5htt,tr,sp,ddc,rg,net1,all,acta,lf,cox,pp,gac,km,as,dopa decarboxylase,proc,in,at,bars,nn,ts,sk,fn,gd,ms,fa,pi,bp,had,sert1,ci,lt,per,for,atc,es,ph,aa,gs,mr,ks,tc,nat,ns,i,gat1,t2,gc,ml,b,git,long,bar,kit,thank,fs,rk,tg,aii,of,norepinephrine transporter,tn,nati,tel,dopamine transporter,am,gif
@@ -822,7 +822,7 @@
 8425287,to,as,in,for,i,camp,of
 8430939,in,for,long,of
 8441637,x,mg,jun,gsa,sds,lac,hi,trap,serum albumin,me,ice,c5,to,cell,all,hrs,af,thymidylate synthase,pp,ss,as,proc,in,his,at,ts,e2,ci,c6,for,albumin,mer,ph,i,co,up,lysozyme,ml,b,tg,of,mat,fos
-8446367,cholinesterase,to,acetylcholinesterase,all,km,as,in,for,of
+8446367,ec 3.1.1.7,of,car,ml,x,ice,thio,pe,kd,ob,acetylcholinesterase,epi,hy,va,er,tat,all,to,hp,co,ho,i,at,ec 3.1.1.8,lar,ph,me,ace,ch,per,had,sts,ms,cholinesterase,ec 3.1.1.1,km,in,vhl,am,as,b,par,for,hf,age,gl,ner,ec 3.1.1,acta,es
 8466638,to,as,in,for,b,of
 8469910,pa,wd,prolactin,plc,thyrotropin releasing hormone,vasoactive intestinal peptide,lect,ip,gh,to,cell,lar,thyrotropin-releasing hormone,prl,all,acta,ws,vip,dp,km,as,pla2,in,pkc,at,phospholipase a2,had,ci,for,i,co,ca2,trh,camp,ml,b,pl,cis,lh,thank,of,uk,5-lipoxygenase,tpa,am
 8473318,x,mg,ent,serum albumin,sa,catalase,ice,to,mu,all,acta,epp,bone gla protein,pp,km,as,proc,ob,fell,in,car,at,had,se,for,albumin,ph,i,ir,co,up,pci,ca2,nac1,p1,ml,b,pl,prothrombin,ko,of,pc,app,am
@@ -852,7 +852,7 @@
 8581044,to,in,of
 8583364,pa,substance p,aim,to,sera,mu,all,cat,pp,cholecystokinin,tube,as,in,at,neurotensin,ci,per,for,delta,tc,i,somatostatin,co,up,ml,b,pl,cacl,of,uk
 8590979,x,mg,si,angiotensin ii,pa,ac2,c4,aim,to,cell,age,all,pkd,acta,pp,kd,as,proc,in,at,ms,had,ci,per,for,i,co,r4,up,ca2,mk,ml,b,lh,thank,of,tn,uk,am
-8593484,dopamine d2 receptor,5-ht2 receptor,d2 receptor,in,at,i,of
+8593484,mia,of,jun,x,slc,ao,en,hy,to,co,i,ak,at,aa,vn,mg,in,gt,bp,mk,fur,ip,as,dt,nat,b,for,sr
 8600944,x,nf-kappab,th,mg,t cell growth factor,pbs,il-2 receptor,glucocorticoid receptor,serum albumin,interleukin-5,gcs,interleukin 2,opg,med,il-5,cd4,cd28,en,ifn,ice,nf-kb,to,il-2r,pe,cell,bal,all,interleukin-2 receptor,il2,il-2,p64,ifl,interleukin-2,pp,p55,md2,p75,ep,as,proc,il2ra,in,pkc,at,bars,ftl,interleukin 5,cd45,ci,for,albumin,ph,interferon gamma,i,co,immune interferon,ml,b,ifi,cd25,long,ikba,thank,tg,of,uk,am
 8606397,myeloperoxidase,mg,5-lo,aim,to,dec,as,in,i,of,5-lipoxygenase
 8608784,x,th,mg,nb,gpi,e3,hi,pa,rd,serum albumin,med,gpa,aim,ice,to,cell,age,des,all,af,cox,gpt,edn,m1,h2,farr,as,in,at,mi,bars,t3,ms,had,ci,per,for,albumin,ph,ns,i,co,up,nac1,ml,b,ral,jp,cis,thank,wts,of,tel,uk
@@ -878,7 +878,7 @@
 8697470,von willebrand factor,tf,fx,prothrombin,all,mg,at,ata,fix,for,thrombin,i,thromboplastin,tissue factor,ns,of,as,factor vii,in,ap-1,thromboxane a2 receptor,to
 8700146,romk1,hirk,at,for,of,potassium channel,in,to
 8702194,topoisomerase ii,cell,for,i,of,as,dna topoisomerase ii,in,to
-8707165,ml,all,kd,at,for,of,in,to
+8707165,af,of,car,sa,cd,met,ml,x,ent,en,ns,kd,dif,cell,ob,rd,fr,mn,cam,tm,med,bn,sp,thromboplastin,pf4,er,all,hep,to,thrombin,pp,ar,i,at,hip,pc,aa,cli,jp,aim,lar,mg,me,ch,cic,long,tc,factor x,in,factor xa,bar,am,as,b,par,for,dp,age,ner,acta
 8710929,ml,ry,cell,sds,lam,km,all,ph,ne,mg,proc,tm,tn,at,delta,cr2,cf,for,t2,per,pole,i,pp,net,am,b,ns,g418,thank,of,up,hl,ir,x,as,long,f2,in,acta,np,pa,to,ago
 8723169,ar,ml,nac1,beta3,aim,cell,all,ph,ne,ls,ot,mg,tm,pr,at,adenosine deaminase,ch,for,sf,beta3-adrenoceptor,rd,albumin,e1,gl,ent,i,had,uk,pp,b,of,met,up,beta1,ho,x,ip,ice,as,beta2,lh,cp,in,beta-3 adrenergic receptor,pa,asl,to,ga,hage,ms
 8731425,ca2,bars,cd,ml,cell,all,kd,mg,proc,cnr,at,insulin-like growth factor i,nerve growth factor,pi,p21,camp,for,per,i,had,uk,b,tel,thank,iti,igf,of,up,x,as,long,dhp,insulin,ge,in,to,ms
@@ -888,7 +888,7 @@
 8740147,tp,ar,ml,nac1,aim,t3,cell,ro,nn,mao-a,mi,km,all,ot,mg,monoamine oxidase,at,ch,for,catechol-o-methyltransferase,se,albumin,kpa,i,sr,had,uk,pp,am,b,thank,maoa,comt,of,x,serum albumin,as,edn,in,maob,ko,mao-b,to,me
 8741039,ct,hc,gc,ml,ec 5.4.99,methylmalonyl-coa mutase,cell,mi,km,hf,mr,sp,mg,cbp,fa,at,cbl,ch,cr,cf,tg,for,per,his,rd,i,er,uk,age,pp,b,cse,thank,of,up,mut,cbla,mb,b12,as,ec 5.4.99.2,long,med,in,acta,ws,csf,to,ms
 8743744,5-ht2 receptor,ct,5-ht2c receptor,pci,acc,calcitonin,tgc,substance p,ml,gt,db,aac,gtg,all,ph,ttg,ik,ne,pia,mg,h1 receptor,proc,h2,at,ata,serotonin receptor,cr,5-ht6,pkd,tc,bp,atc,tg,pkb,for,per,gr,aat,his,cgrp,aura,p1,i,er,had,pp,am,gcc,agt,b,5-ht2b receptor,thank,ci,gac,of,gcg,5-ht2c,5-ht2b,lif,x,somatostatin,ice,as,pt,edn,gaa,hi,med,5-ht2a,in,cac,acta,aaa,faa,cat,pl,pgf,5-ht7,5-ht2a receptor,cga,5b,gat,to,ga,cta,5-ht4,tat,cg
-8748043,mg,for,of,in,to,d2 receptor
+8748043,of,neu,ml,pa,x,cis,pe,ne,mn,prolactin,jws,er,all,to,pp,ar,up,i,at,pc,aa,jp,d2 receptor,aim,lar,mg,at1,lp,per,had,ms,in,bax,as,arnt,b,for,f2,age,tn,5b,acta
 8755512,cd,ar,ml,cell,sds,tumor necrosis factor,all,ph,mg,proc,tnf,r2,lt,at,mat,tg,for,per,i,pp,tnf-a,am,b,thank,ci,of,up,jun,ho,x,ice,as,s100,med,tci,tube,neur,in,thp,to
 8760033,ca2,bars,ml,cell,l8,all,ph,mg,dp,proc,at,vcan,bp,for,lca,se,bar,i,uk,am,b,nadph,of,up,kc,x,as,long,insulin,in,pa,ls2,5b,to,ms
 8760245,co,pci,angiotensin ii,bars,ar,ml,mct,cell,all,kd,ph,ne,glucagon,mg,proc,f5,at,renin,pi,camp,for,per,pars,se,p1,i,had,pz,am,b,rb,of,f52,x,ice,as,f12,med,insulin,in,protein kinase a,pl,p2,pa,kit,pkl,to,me
@@ -905,7 +905,7 @@
 8797823,si,interleukin-1,il-1,hermes antigen,asp,fs,ml,mannose-binding protein c,tsg-6,cell,coil,tumor necrosis factor,all,ph,mbp-c,mg,cd44,tnf,h2,large fibroblast proteoglycan,at,scott,tumour necrosis factor,b4,rhamm,tyr,for,per,rd,bax,albumin,cartilage link protein,ss,i,had,uk,arg,phi,b,thank,of,hyaluronate-binding protein,up,neurocan,x,lar,g1,farr,serum albumin,aa,as,b1,egf,long,mbp,med,ge,in,acta,e-selectin,b9,5b,plasmin,versican,to,aggrecan,hua,ms
 8798723,co,asp,ml,cell,all,kd,ph,mg,nachr,at,pe,tyr,for,his,rd,ros,i,pp,am,arg,b,thank,of,x,th,as,long,atr,in,acta,to,nicotinic acetylcholine receptor,me
 8799190,cell,all,ph,proc,vh,at,a subunit,amd,for,i,had,pp,am,b,of,up,hl,ss1,as,long,ifi,in,acta,ko,5b,to
-8799949,cell,mg,for,i,katp channel,of,as,in,to
+8799949,of,sa,cd,ml,x,sn,cell,fic,arp,syn,med,all,to,co,potassium channel,pp,i,at,proc,calcitonin,insulin,nos,mg,me,had,mr,in,endothelial nos,am,as,b,for
 8808167,si,hc,nov,p450,es,cell,l8,all,mg,h2,at,inn,ch,pgd,pi,en,dec,cyp3a4,car,bp,for,h2 receptor,pgd2,i,had,pst,age,am,b,of,las,up,jun,x,f3,mb,as,pt,long,px1,hi,med,gi,potassium channel,in,p2,pa,esa,apr,to
 8809191,co,bars,nov,hcg,ml,ec 1.1.1,km,ec 1.14.99.9,all,ttg,mg,at,pe,tg,for,ec 1.1.1.51,i,had,a4,pp,b,thank,app,mrs,ci,of,cytochrome b,up,x,farr,as,ec 1.14.99,ec 5.3.3.1,in,acta,pa,sil,avp,aromatase,cholinesterase,to
 8813989
@@ -941,13 +941,13 @@
 8922740,pkc,ca2,amp,cd,ml,cell,nn,c4,all,ph,mg,tm,at,en,for,per,albumin,i,had,uk,am,b,thank,mf1,katp channel,of,igm,x,serum albumin,as,long,insulin,in,acta,mtg,tim,memb,to
 8922878,estrogen receptor,co,fur,tp,ar,ml,es,aim,cell,snap,progesterone receptor,all,ph,mr,mineralocorticoid receptor,ot,mg,pr,at,renin,en,androgen receptor,tap,glucocorticoid receptor,hmr,for,per,gr,cap,his,se,rar,i,er,had,b,g418,lp,tel,thank,mk,of,l3,x,ep,ice,as,long,hormone receptor,lf,med,tube,in,acta,cat,pl,to,me
 8925876,ml,all,proc,at,ata,for,i,alr,had,rk,am,b,tel,mrs,of,alb,up,x,as,in,pa,to,ms
-8930006,held,cell,alpha2,for,of,as,in,to
+8930006,of,sa,pa,x,en,pe,cell,hk,pr,bf,se,held,thank,va,er,tr,to,hry,gh,ar,up,i,at,gk,mg,me,hhg,long,monoamine oxidase,in,pag,as,ro,b,for,5-ht3 receptor,agt,es,pml
 8930173,alpha-2a adrenoceptor,ar,alpha-2b adrenoceptor,at,for,of,as,alpha-2c adrenoceptor,to
 8935801,cpu,co,cholecystokinin,ca2,ct,hc,5-ht1a receptor,tf,tp,substance p,ar,ml,nac1,hhm,cs,d3 receptor,cell,coil,nn,lam,mi,km,hip,all,kd,ph,cacl,mr,mg,proc,star,r2,tm,pr,tn,fa,at,scott,serotonin receptor,5-ht1a,sert,ch,cck-b,en,zip,cf,cck,cox,5ht1a,tc,c6,hal,for,sch,per,gr,hy,his,pars,rd,se,cck-a,albumin,e1,gl,ss,std,ent,i,sr,er,ach,had,uk,rk,pp,d4 receptor,am,b,tr,ci,par,rb,of,met,up,hl,x,th,mai,neurotensin,serum albumin,aa,ice,af,as,t6,long,membrane-bound,edn,pip,hi,med,bs,fr,in,bi,pc,acta,ko,dip,ws,grl,5ht1d,to,ga,nk1,d2 receptor,ms
 8945911,co,ct,tip,bars,cd,ml,mi,all,ph,ls,mg,dp,at,fell,pi,en,for,rho,se,p1,bar,gl,i,had,pz,uk,am,p6,b,ns,dt,of,hl,x,f3,as,long,sts,in,pl,p2,pa,to
 8946244,cell,all,fgf-1,for,of,as,in,to
-8951172,mg,at,dopamine d2 receptor,for,i,of,long,in,to,d2 receptor
-8968191,glutamate receptor,of
+8951172,of,ml,cis,tap,ne,ot,prolactin,ss,to,co,pp,sup,up,i,at,mal,mg,ch,had,ms,long,lt,in,calm,bar,fur,as,nn,ge,ro,b,par,for,sk,cg,acta,es,farr
+8968191,of,neu,sa,cd,bs,ml,spa,pa,ent,pi,ns,ne,cell,th,ob,rd,glutamate receptor,mn,cat,uk,hy,se,ci,syn,thank,ant,sp,va,all,to,tra,pp,ar,sup,dec,i,at,pals,si,mi,proc,hip,pc,mal,ph,mg,me,dd,mb,had,ms,long,cacl,fn,nt,amp,dia,lh,np,in,hal,dm,fos,ste,sele,ca3,cot,pal,as,b,for,sr,ep,mody,age,gl,ca1,ner,csf,5b,es
 8968334,all,mg,at,delta,for,of,as,mu opioid receptor,in,mu,to
 8981065,co,ca2,angiotensin ii,ml,nac1,t3,coil,all,ang,ph,cam,at,renin,dup,hp-1,for,per,se,at2,i,ach,had,pp,am,cir,b,at2 receptor,tel,of,up,viii,x,angiotensin-converting enzyme,mn,as,lh,hp,med,atr,sar,in,ace,ate,at1,to
 8981483,co,ca2,fur,ml,cell,ks,all,kd,ph,mg,proc,at,cbl,camp,for,rd,albumin,i,sr,uk,b,tel,thank,ci,of,x,farr,serum albumin,ice,central cannabinoid receptor,as,serine protease,cb2,in,mu,ob,cb1,to
@@ -957,7 +957,7 @@
 8997246,co,pad,calcitonin,g664,ml,aim,cell,all,ph,mg,h2,at,g737,g660,adenosine deaminase,for,se,cgrp,i,g417,alcohol dehydrogenase,g518,am,g501,b,h1 histamine receptor,of,g1030,up,x,ip,g1029,g523,as,g131,long,cpa,g495,hi,g731,g1028,g1033,ada,in,bat,g134,g1032,g670,to,g423
 8997630,5-ht2 receptor,5-ht2c receptor,held,ml,cell,all,ph,cacl,mg,at,serotonin receptor,5-ht1a,5-ht6,for,5-ht6 receptor,marc,albumin,i,had,dopamine d4 receptor,d4 receptor,am,5ht6,b,g418,tel,thank,of,5-ht2c,serum albumin,ice,as,long,edn,5-ht1c,med,5-ht2a,in,ko,5-ht7,5-ht2a receptor,kit,to
 9007524,bars,ml,cell,mi,all,mr,mg,at,sri,cf,for,per,i,had,age,am,b,tel,of,th,as,in,pc,pa,to,ms
-9008235,pghs-2,for,of,as,in,pghs-1
+9008235,e2,of,sa,interleukin-18,cd,ml,x,ga,ice,cb1,cf,en,pi,pe,kd,cell,fr,pr,ct,mn,uk,ec 1.14.99,ec 1.14.99.1,tm,mbp,med,cox-1,thank,pgd,er,to,co,potassium channel,daf,up,pghs-2,i,at,mi,pc,interleukin-1,pgi,jp,cox-2,cox,ph,pghs-1,mg,me,had,bi,c6,mr,prostacyclin synthase,gal,in,fos,vegf,bar,pl,am,arg,as,cs,ro,b,for,dp,sr,tek,hf,c-fos,gl,ts,acta
 9013583,gapdh,cox-1,pparg,ml,cell,mi,all,ph,mg,proc,at,cox,ppard,for,ppar,i,had,ppara,pp,am,b,tel,thank,ci,pparg1,of,ta1,as,long,glyceraldehyde-3-phosphate dehydrogenase,insulin,in,acta,cat,pa,tim,kit,5b,hydroxyacyl-coa dehydrogenase,to,cox-2
 9014160,co,bars,bzs,cd,pnk,ml,cell,n-terminal fragment,all,ph,proc,at,a subunit,for,per,i,had,ca1,pp,intestinal alkaline phosphatase,am,b,thank,tr,glycine receptor,of,up,x,mb,aa,as,long,f12,in,pa,kit,to,ago
 9015372,co,amp,ml,cell,sds,all,kd,ph,mg,proc,cytochrome c,at,for,albumin,i,uk,am,b,ci,katp channel,of,up,sur,x,serum albumin,as,insulin,potassium channel,in,acta,pl,kit,to
@@ -973,7 +973,7 @@
 9056052,5-ht1d,mk,of,in
 9056643,sp-a,afgf,kgfr,sp,at,fgf-1,b,of,fgfr-2,as,fgfr-4,sp-b,in,to
 9059856,calcitonin,angiotensin ii,ml,es,aim,cell,all,ph,mg,proc,at,for,per,his,albumin,i,uk,age,b,tel,thank,of,up,choline acetyltransferase,x,farr,serum albumin,ice,af,as,med,fr,in,pc,acta,epidermal growth factor,to
-9066316,for,of,in,mu
+9066316,of,neu,ml,pa,ent,oc,en,ide,pe,dif,epi,ci,med,ss,all,gc,to,co,tra,lam,sup,ache,up,i,at,gelb,cox,lar,ph,mg,me,psa,per,had,long,fn,ox,sbp,mr,in,mk,pl,am,fa,as,ro,b,for,sk,ck,age,ts,tak
 9067327,cell,at,for,of,in,to,ms
 9074840,pkc,si,co,nts,apolipoprotein b,p450,cd,ant,tp,ar,nos,yt,ry,es,ret,nt,aim,cell,ro,nn,xr,mi,ack,all,rara,ren,ph,ne,mr,sp,mg,dp,proc,tnf,pr,mtp,era,at,akt,acn,ch,cr,crabp-ii,pe,en,ced,car,parathyroid hormone,reg,camp,s31,tg,topi,for,sch,per,gr,cap,his,se,rar,rxra,gl,ss,atic,ent,i,sr,er,fac,hk,had,aro,age,ts,ak,sms,am,tra,b,ns,dt,tr,par,rb,of,lcam,interferon alpha,up,hl,l3,dif,ho,fos,x,abp,ep,mb,th,lar,ifn,hdl,y2,as,involucrin,pt,gd,egf,long,sts,hi,lh,crbp,ck,med,f9,jp,ge,in,tyrosinase,pc,mu,acta,alp,ap-1,pl,ate,pa,des,protein s,erb,dm,epidermal growth factor receptor,sup,sk,mis,cis,epidermal growth factor,to,ga,gh,c-fos,apy,ago,me,psoriasin,iger
 9079657,ct,factor xa,asp,ml,prothrombin,endothelial cell growth factor,cell,sds,all,ph,mg,epr,proc,at,activation peptide,scott,activated protein c,tap,for,per,thrombin,se,mac-1,albumin,i,had,factor x,tissue factor,pp,net,arg,b,g418,tel,thank,va,of,ho,epr-1,x,serum albumin,as,factor ix,egf,med,insulin,in,anticoagulant protein c,to,prothrombinase
@@ -1005,7 +1005,7 @@
 9195366,co,ct,fx,ml,prothrombin,yt,cell,all,mg,proc,stat,pr,at,cr,ced,glucocorticoid receptor,pai,for,gr,his,albumin,i,had,age,ts,am,afp,b,thank,of,up,ho,x,serum albumin,as,edn,lh,med,in,dm,to,me,ms
 9197279,5-ht2 receptor,co,m1,ml,all,mg,at,for,per,i,had,uk,k3,am,tau,b,tel,of,ho,as,long,med,in,mu,to
 9204085,cd,ears,ml,cell,all,kd,odc,at,vitamin d receptor,crabp-ii,ache,tissue-type plasminogen activator,for,per,rar,tgase,i,had,age,ornithine decarboxylase,am,c31,b,of,met,x,nuclear hormone receptor,np1,as,acs,long,hormone receptor,plasminogen,s100,hi,med,f9,in,cat,ap-1,des,rarc,cis,to
-9211565,5-ht2 receptor,mg,for,of,in,to,5-ht4
+9211565,gs,mor,of,sa,bs,ml,hua,x,ice,cnt 1,en,tap,ry,pe,dif,ct,epi,hy,se,med,ss,bal,sp,his,er,all,to,5-ht4,co,pp,por,ho,i,at,r4,mi,proc,sf,aim,tumor necrosis factor,cnt1,lar,c4,mal,ph,mg,me,dd,ch,mu,per,had,long,nt,sur,lt,etha,in,dm,kit,ip,am,as,ro,nat,b,for,5-ht3 receptor,ck,acta,farr
 9225287,5-ht2 receptor,5-ht2c receptor,bars,ml,oxytocin,cell,all,ph,mg,at,serotonin receptor,mia,dec,gmp,trail,for,sch,r1,i,had,pp,net,b,g418,tel,of,5-ht2c,up,5-ht2b,x,as,5-ht1c,hi,5-ht2a,in,5-ht2a receptor,5b,g-protein coupled receptor,to
 9226736,si,co,rg,ml,all,mr,mg,proc,at,ek,for,his,rd,ss,i,er,had,ts,b,thank,of,met,ip,as,med,jp,fr,in,mu,dd,pl,pent,to,ga,me
 9227834,cd,ml,aim,cell,all,monoamine oxidase,at,ch,for,per,i,ett,had,pp,b,tr,ci,of,neuropeptide y,jun,ice,as,long,med,fr,in,cat,prat,to,nicotinic acetylcholine receptor,ms
@@ -1020,7 +1020,7 @@
 9272380,co,bars,ml,cell,mi,all,ph,mg,h2,lt,at,renin,en,cox,for,ao,per,thrombin,bar,i,txa2 receptor,er,ach,had,pp,clip,am,p6,tar1,b,tel,of,up,x,lar,af,as,bf,med,in,lad,kit,to,cox-2
 9279507,co,ct,nts,gc,nov,p450,cd,ant,arm,kn,proton pump,rg,ml,cs,gt,ry,es,cli,nt,cell,est,c3,abo,sma,all,kd,ph,ne,ls,mg,ahc,h2,pr,tn,era,at,ata,scott,nb,atm,oes,ch,pe,en,dec,cyp3a4,reg,bp,tap,ste,tg,oc,for,per,gr,h2 receptor,cap,rd,cob,se,tsa,gl,ss,ent,i,ran,er,had,a4,uk,t1,age,ts,ak,ars,ame,pep,am,incl,b,ns,tr,ci,va,of,met,up,jun,cyp2d6,ho,x,th,prot,l15,af,ins,as,pt,gd,long,wd,upd,hp,histamine h2 receptor,ck,med,gi,cyp1a2,tube,jp,fr,e2,ge,in,cyp2c9,bi,pc,mu,pl,ate,pa,ws,des,ecl,l30,apr,mach,to,ga,lap,mtr,gh,apy,me,mep,cyp2c,gs,ms
 9288901,fur,bars,ml,cell,ro,cph,all,ph,mg,proc,at,ata,cr,for,albumin,p1,i,had,hpo,pp,b,thank,dt,of,x,serum albumin,lysozyme,as,edn,in,pl,des,kit,to,ago
-9298126,all,at,vitamin d receptor,for,rar,rar alpha,of,x,in,to
+9298126,af,of,sa,c7,iti,jms,ml,m1,pa,x,cis,ry,pi,pe,arm,ot,fr,sil,mn,cat,ivd,nfar,xo,se,syn,df,mot,sp,va,gapdh,all,rxra,to,co,vdr,ar,sup,ho,up,i,at,sar,si,sty,mos,aa,ung,insulin,rara,pz,dd,pip,shh,aaa,rarb,amp,in,rar,hal,gt,g1,pal,am,fa,as,apy,cp,cin,dt,b,p6,for,sri,s14,g7,cg,age,prp,gl,acta,tp,ame,tpo,crabp-ii
 9299436,severe combined immunodeficiency,ml,db,synapsin i,cell,sds,ggt,all,g111,ph,insulin receptor,mg,proc,at,adenosine deaminase,p49,src,for,per,gr,rho,tyrosine kinase,bar,i,had,uk,rac,age,pp,gst,am,gcc,gal1,b,trp1,thank,vav,dt,grf,of,sur,g162,cd26,x,bcl-2,ip,irs,grb2,ade2,as,gale,grb3-3,pgad,insulin,ada,in,mu,cyc1,ara,pl,ecl,kit,to,gh
 9300315,a2a adenosine receptor,mg,renin,i,of,angiotensin-converting enzyme,as,in,ace,to
 9305893,apoferritin,acc,cd,ml,cell,aac,mer,plp,km,gtg,all,kd,ph,mg,cytochrome c,at,dihydrofolate reductase,tyr,bp,for,per,aat,his,albumin,i,had,alcohol dehydrogenase,uk,pp,am,arg,b,tel,ci,of,gcg,up,x,thymidylate synthase,serum albumin,as,h4,in,cac,acta,sup,kit,prep,gat,to,shmt
@@ -1069,8 +1069,8 @@
 9509999,interleukin-1,il-6,gmcsf,c-myc,ry,cell,tumor necrosis factor,all,myc,proc,gm-csf,vasoactive intestinal peptide,colony-stimulating factor,camp,glucocorticoid receptor,for,creb,pcna,bar,i,inducible nitric oxide synthase,tnfa,b,proliferating cell nuclear antigen,of,cyclin,type iv phosphodiesterase,hl,g1,as,b1,jp,e2,in,inos,protein kinase a,acta,csf,to,basic fibroblast growth factor,krev
 9515574,co,ct,pci,gc,bars,cd,ant,cel,ml,rdh,cell,sds,xr,all,sn,ph,hf,mr,sp,pbs,mg,proc,dld,fa,at,cr,sera,ek,for,per,gr,his,se,marc,albumin,gl,i,had,nat1,ak,pp,net,am,b,rnase a,tel,thank,tr,ci,of,up,ho,x,farr,serum albumin,ice,mn,icrf,as,wd,g2,med,jp,in,pl,cea,ate,5b,sk,to,ga,gh,sa,cg,ms
 9521275,of,e2,in,aromatase,to
-9523318,for,of,as,in
-9523819,cell,for,of,as,in,to
+9523318,gm-csf,of,s5a,ml,x,ao,oc,g25,cell,pci,med,tpa,all,gc,to,sup,ho,up,i,at,proc,sds,aim,mal,ph,hrs,mg,ace,fp,mu,had,pbs,glucocorticoid receptor,in,bar,ip,pl,am,as,cs,nn,ge,b,for,il-6,ago,csf
+9523819,af,of,neu,sa,ml,x,pi,rb,cell,ct,se,ci,acs,ls,pad,ss,ant,all,to,co,ar,i,at,si,kc,net,lar,ph,mg,had,hpo,ms,in,am,as,ais,cp,m2 receptor,m3 muscarinic receptor,b,for,5b,rg
 9525919,m1,esr,ml,cardiac troponin i,all,ph,mg,at,scott,for,t2,per,tnc,cardiac troponin c,i,had,t1,pp,b,tel,thank,of,met,x,as,troponin c,med,in,acta,des,to,ctni,nat,ms
 9530529,hc,ml,all,kd,ph,mr,sp,ot,mg,star,at,for,his,i,age,pp,b,ci,of,up,sur,x,ip,farr,as,long,in,pc,to,me
 9537821,co,ct,ml,t3,cell,s7,mi,all,ph,proc,monoamine oxidase,tn,at,monoamine transporter,dopamine transporter,for,albumin,i,had,pp,am,b,tel,thank,va,of,x,norepinephrine transporter,farr,serum albumin,ice,as,tube,in,pa,to
@@ -1129,7 +1129,7 @@
 9677387,co,tls,folate binding protein,ml,cell,sds,km,formiminotransferase cyclodeaminase,all,ph,ne,mr,mg,proc,p60,at,pem,for,per,albumin,i,had,uk,pp,am,b,tel,thank,of,serum albumin,ice,as,in,acta,ftcd,to,folate receptor
 9685234,glutamate receptor,co,dba,hc,cd,ml,db,19a,cell,all,ph,mg,proc,r2,aw-80,at,delta,ch,ampa receptor,for,r4,i,age,ca1,b,dt,mrs,katp channel,of,up,sur,ir,x,ip,as,long,med,bs,insulin,potassium channel,sar,ge,in,acta,dd,task,erba,to
 9685354,multidrug resistance protein,co,ct,m1,bars,mrp1,p-glycoprotein,mdr1,ml,cell,km,all,ph,mg,proc,at,sri,gsta1-1,pi,for,per,mrp2,p1,i,had,pp,gst,gsts,b,tel,gstm1,cmrp,of,x,multidrug resistance protein 1,ice,lysozyme,cmoat,as,gsta1,gst2,glutathione s-transferase,in,mu,mrp,to,gstp1
-9690036,ncct,nkcc2,clc-ka,of,clcs,as,thiazide-sensitive sodium-chloride cotransporter,clc,romk,potassium channel,in,to
+9690036,clcs,of,sa,ml,pa,x,romk,nephrogenic diabetes insipidus,chat,clcnka,ry,ide,cell,th,clg,uk,hy,ko,se,clc-2,med,all,gc,to,thiazide-sensitive sodium-chloride cotransporter,lam,potassium channel,up,i,at,nkcc2,proc,tg,db,cftr,tel,clc-ka,mg,ncct,me,clc,cic,gclc,adr,mrs,amp,in,cls,cot,am,fa,as,b,glycine receptor,for,cg,age,ts,calcium-sensing receptor
 9691225,co,ar,ml,mi,all,ph,mg,h1 receptor,proc,at,nb,histamine h1 receptor,gabab receptor,ch,fb,for,per,gr,cap,ss,i,sr,nk2,had,pp,am,b,tel,ci,of,up,ppd,x,mb,as,long,med,in,pc,cat,pa,to,ga,cg
 9694935,kv1.5,cell,at,cardiac potassium channel,for,of,herg,long,potassium channel,in,to
 9695721,ml,mg,inn,interleukin-2 receptor,for,interleukin-2,of,as,long,in,cd25,to
@@ -1158,7 +1158,7 @@
 9808337,hc,cd,p28,rg,fs,ml,p25,cs,p33,db,ec 4.1.1,p32,ro,km,p27,dopa decarboxylase,catechol o-methyltransferase,mg,monoamine oxidase,tn,at,ch,cr,p29,for,ao,catechol-o-methyltransferase,i,ec 4.1.1.28,uk,monoamine oxidase type b,pp,am,s14,ddc,b,ns,tel,ec 2.1.1,comt,of,up,ep,th,aa,as,pt,long,membrane-bound,cic,ck,med,ec 2.1.1.6,jp,s-comt,in,acta,mao-b,to,me
 9808678,dor-1,mor-1,kor,dor,mor,kor-1,kor-3,of,as,orl1,in,mu,to,ms
 9831331,srs,interleukin-1,cox-1,il-6,cd,cell,tumor necrosis factor,all,sp,proc,tnf,cyclooxygenase-1,aho,at,dic,cox2,cox,cyclooxygenase-2,for,i,had,tnf-a,il-2,ns,thank,of,interleukin-1 beta,lag,aa,as,pt,med,gi,bs,jp,e2,in,to,cox-2,ms
-9832994,5-ht2 receptor,prolactin,all,mg,at,for,i,of,5-ht2c,acth,as,5-ht2a,in,to
+9832994,of,ml,pa,x,ga,ice,tap,lal,ne,catecholamine receptor,rb,edn,ob,serotonin receptor,hy,prolactin,se,all,tr,to,co,oxytocin,pp,ar,ir,up,i,at,mi,aa,db,tf,gk,ph,mg,per,had,long,dir,ox,km,mr,acth,lh,in,dm,5-ht2c,ip,pl,am,as,apy,cs,nn,ro,dt,b,for,rg,gr
 9835260,all,cast,mg,scd,at,ch,for,per,his,se,i,had,uk,pp,am,pace,b,ci,scn5a,of,up,as,long,hi,med,in,cat,pa,to,me
 9836297,all,at,for,had,of,as,in,to
 9846638,co,ca2,p50,ml,aim,cell,all,kd,ph,proc,vh,at,a subunit,bp,for,his,albumin,i,er,had,uk,pp,b,thank,ci,of,x,farr,serum albumin,as,dhp,in,to,ms
@@ -1217,13 +1217,13 @@
 10091649,gck,co,ct,p50,ar,ml,cell,all,ph,mr,mg,dp,proc,r2,fa,at,c5,ch,cr,pe,dihydrofolate reductase,zip,tmp,dhfr,tc,bp,c6,src,dss,for,t2,sf,bax,se,r1,i,had,uk,t1,pp,am,phi,asv,b,ns,thank,ngl,nadph,of,up,c9,x,ip,hd2,hd1,as,pt,l19,long,hn1,wd,lf,med,jp,in,pc,dd,n10,dm,csa,5b,ec 1.5.1.3,to,nat,sa,cg,ms
 10092828,cell,cd52,of,long,in,to
 10094428,co,bars,ml,cell,mi,all,mg,at,gabab receptor,for,his,p1,bar,i,ca3,had,ca1,pp,b,ns,tel,thank,of,up,as,long,rock,in,p2,to,ms
-10095983,mg,at,for,per,of,up,long,insulin,in,to,pancreatic lipase
+10095983,of,cd,ml,pa,ent,en,lf,se,ek,med,s12,sp,er,all,to,pancreatic lipase,up,i,at,proc,net,pc,mal,insulin,mg,per,had,long,mr,in,hdl,fs,am,as,ro,b,for,ck,acta,apolipoprotein b,task
 10097144,tsp,cin,pparg,tls,promyelocytic leukemia,cell,all,pbs,mg,adipsin,proc,at,p11,for,t2,per,ppar,i,had,pp,net,am,b,thank,of,x,as,long,med,insulin,in,pc,5b,to,chop,nat
 10102370,ap1,rg,ar,ml,cs,promyelocytic leukemia,es,cell,fp,all,kd,ph,ne,mg,proc,par1,at,scott,delta,for,per,gr,gal,his,glutathione reductase,r1,i,er,had,alcohol dehydrogenase,fatty acid synthase,rotamase,abc transporter,gst,am,b,trp1,tel,g12,nadph,of,up,jun,x,fas,ice,ade2,as,long,ge,in,pc,faa,dd,ap-1,pa,ws,kit,to,ms
 10103097,tip,cell,sds,adm,mi,all,ph,g4,pbs,mg,proc,pr,fa,at,neu,neu differentiation factor,pe,cf,ec 3.1.1,ache,for,per,albumin,i,ach,had,pp,amyloid precursor protein,b,thank,app,of,up,butyrylcholinesterase,x,serum albumin,as,long,ec 3.1.1.7,membrane-bound,in,mu,acta,5b,acetylcholinesterase,cholinesterase,to,nat,me
 10188761,co,nov,astp,ml,cell,mi,all,mg,proc,pr,at,delta,interleukin-2 receptor,dec,for,interleukin 2,per,i,interleukin-2,t1,age,il-2,b,tac antigen,il-2 receptor,il-2r,of,jun,x,as,long,wd,med,in,cd25,pl,alpha subunit,apr,to
 10188968,5-ht2 receptor,co,dap,p50,5-ht1f receptor,ml,all,5-ht1d,ph,mr,mg,proc,at,renin,serotonin receptor,5-ht1a,5-ht6,pkd,5-ht1e,5-ht1db,for,per,gr,bax,5-ht1b,i,ht1da,had,uk,pp,net,b,5-ht2b receptor,thank,alpha1,of,5-ht2c,up,p23,5-ht2b,ho,as,long,5-ht1f,fth,5-ht2a,tube,in,kao,5-ht1d receptor,cat,cava,erg,5ht1d,5-ht7,5-ht5a,to
-10192655,coagulation factor x,at,gamma-glutamyl carboxylase,had,factor x,of,x,as,factor ix,factor vii,in,to
+10192655,af,of,car,hemophilia a,pa,x,ga,ks,pe,prothrombin,ob,rd,ct,thank,thromboplastin,all,gc,to,gh,co,thrombin,pp,i,at,hema,lar,mal,tel,ph,mg,me,per,had,factor ix,km,factor x,in,coagulation factor ix,bar,am,as,viii,b,for,protein s,dp,fac,factor vii,coagulation factor x,gr
 10193663,co,5-ht1a receptor,5-ht1f receptor,ml,cell,all,5-ht1d,ph,ne,cacl,pbs,ls,mg,at,scott,serotonin receptor,5-ht1a,5-ht4 receptor,ct13,5-ht1b receptor,c6,5-ht3 receptor,5-ht1db,for,5-ht1b,i,obs,had,uk,pp,cir,b,tel,ci,of,5-ht2c,up,5-ht2b,ho,as,gale,5-ht1f,med,5-ht2a,in,5-ht1d receptor,cat,5-ht7,kit,5-ht5a,to,5-ht4
 10193776,co,bars,p50,aim,cell,all,sp,mg,proc,tissue factor pathway inhibitor,at,for,per,cap,his,low-density lipoprotein receptor,i,er,had,uk,age,tissue factor,b,lp,of,as,hmg-coa reductase,plasminogen,fth,ahr,med,jp,in,acta,kit,to
 10195585,ml,nt,aim,coil,ro,c3,c4,s7,all,gaba-t,mr,proc,at,ch,for,t2,i,had,t1,age,pp,b,tr,mrs,of,up,dieter,x,gad,as,acs,med,in,acta,csf,to,ms,ssadh
@@ -1242,7 +1242,7 @@
 10208755,co,ct,hc,p-selectin,substance p,ml,myeloperoxidase,cell,est,asc,all,mg,proc,vh,at,cr,cf,mat,tc,for,his,i,had,of,df,hl,x,slc,as,med,tube,in,np,cava,pa,5ht1d,sk,to
 10209232,pkc,co,ca2,ant,held,rg,t3,tm3,cell,delta subunit,ro,lam,mi,all,g4,ls,mg,mal,proc,r2,at,delta,a subunit,en,tyr,cox,camp,5-ht3 receptor,for,per,gr,beta subunit,his,pars,rho,tyrosine kinase,r1,ss,i,ca3,a4,age,ca1,pp,am,arg,pace,b,thank,glycine receptor,of,met,up,ho,x,g1,somatostatin,as,b1,long,g2,med,insulin,gaba aminotransferase,in,acta,somatostatin-14,gamma-2,p18,task,5b,cis,to,nicotinic acetylcholine receptor,ms
 10210771,interleukin-1,il-1,il-6,ml,for,interleukin-2,il-2,of,il-1beta,membrane-bound,in,il-1ra,to
-10210906,all,ache,for,of,in,acetylcholinesterase,to
+10210906,of,pa,x,ach,fr,pr,app,acetylcholinesterase,des,ls,med,thank,er,all,to,lum,co,pp,ache,i,at,si,pc,aim,lar,tel,mg,cea,ch,per,cholinesterase,long,sra,in,am,as,cs,mena,t1,b,for,butyrylcholinesterase,cg,age
 10212017,co,m1,ml,cell,ks,all,ph,ls,mg,h1 receptor,proc,at,m3 receptor,for,had,am,b,tr,ci,of,x,ice,as,m5 receptor,membrane-bound,hi,f12,med,in,acta,to,aars
 10214744,cd,db,all,mr,mg,at,for,per,pole,his,gl,ss,had,age,am,b,thank,mrs,of,up,ho,as,pt,long,bs,jp,fr,in,pa,erg,to,gh,cg
 10214942,co,ml,cell,ro,sds,mi,all,ph,ne,pbs,proc,at,bp,camp,sera,glucocorticoid receptor,for,nuc1,ppar,i,er,b,thank,ci,of,scd1,x,peg,as,g2,faar,insulin,sar,in,to,glut4
@@ -1272,7 +1272,7 @@
 10354277,co,kir1.1,angiotensin ii,p-glycoprotein,tp,rg,fs,nos,ml,cs,ry,cell,snap,km,mcs,all,kd,ph,mr,sur2,ls,mg,proc,sur1,cam,stat,pr,at,cf,kir6.1,camp,ek,for,per,rho,se,albumin,i,ikatp,cftr,cystic fibrosis transmembrane conductance regulator,abc transporter,ak,pp,net,vimentin,am,b,tel,ci,katp channel,va,stromelysin-1,of,df,up,hl,sur,viii,ho,x,mb,desmin,lar,serum albumin,ice,as,long,lh,cp,med,romk,insulin,potassium channel,jp,in,pc,acta,cat,pa,kir6.2,p-gp,dm,to,ga,gs,cg
 10355012,of
 10357816,co,gapdh,cmk,bars,cd40l,ifn-gamma-r,lt-alpha,tnf-alpha,caspase-1,ml,cd95,cell,tumor necrosis factor,cd30,jnk,all,kd,ph,tnfr1,nf-kappab,mg,proc,tnf,r2,lt,beta-actin,p60,cytochrome c,sapk,bcl2,tnf-r1,at,tumour necrosis factor,tnf-r,tumor necrosis factor-alpha,p80,bp50,bp,fadd,trail,for,per,gr,se,r1,i,had,uk,t1,htr,caspase-3,pp,jun n-terminal kinase,tnf-r2,b,g418,thank,ki-1,jun kinase,mort1,of,bp35,jun,p55,igm,x,bcl-2,ifn-gamma,g28,ifn,fas,cd40,ice,lymphokine,tnfr60,mn,as,c-jun,hint,membrane-bound,p75,tnfr2,med,cd30 antigen,trail-r1,tnfr80,in,mu,dd,ap-1,caspase-8,apo-1,kit,5b,mach,bcl-xl,hck,to
-10360871,of,in,to
+10360871,af,of,neu,ml,jun,x,cis,bdh,cf,en,ws,thio,pe,ns,ne,cell,pr,uk,se,ek,ci,held,syn,ss,thank,cr,er,all,to,pai,pp,ar,i,at,mi,proc,sf,pc,y2,db,aim,rk,lar,gk,bars,ph,mg,pz,mb,ms,long,cacl,tube,aaa,mer,mr,np,in,dm,pole,era,mk,bar,as,cs,ge,b,for,dp,sr,ep,cg,mody,gl,ca1,5b,acta,es
 10362188,sbp,platelet factor 4,bars,antithrombin iii,mi,tpa,all,ik,mg,yrs,thrombomodulin,at,ch,pe,tc,tissue-type plasminogen activator,for,facc,per,thrombin,gl,thromboplastin,hk,had,age,am,va,of,met,up,viii,mb,angiotensin-converting enzyme,aa,alteplase,as,plasminogen,cp,med,bs,in,lad,pa,to,hemoglobin,prothrombinase
 10363282,co,ml,aim,cell,all,ph,mr,pbs,mg,at,scott,cr,pseudocholinesterase,ache,for,per,i,had,pp,b,lp,tel,of,l3,ho,butyrylcholinesterase,interleukin 3,as,egf,long,f12,insulin,fr,in,mu,acetylcholinesterase,epidermal growth factor,to,me,sa
 10365684,thyroperoxidase,co,i-1,il-6,cd,fs,ml,tpo,cell,mi,all,ph,pbs,mg,cytochrome c,at,en,camp,interleukin-6,for,per,rd,i,er,pp,b,ns,thyroid peroxidase,nadph,va,of,cytochrome b,up,x,as,med,in,pc,mu,acta,pl,pa,thyroglobulin,kit,cis,to
@@ -1311,9 +1311,9 @@
 10400410,t-pa,co,von willebrand factor,christmas disease,nov,cd,fs,ar,plasminogen activator inhibitor 1,ml,prothrombin,gt,db,es,cell,mi,all,kd,mg,h2,at,nb,ch,cr,dec,cox,tc,alpha2,pai,for,per,h2 receptor,thrombin,rd,c1-esterase,i,thromboplastin,had,age,ak,am,tra,b,ns,cpb,ci,of,mae,df,pai-1,up,jun,viii,iris,x,ep,as,factor ix,pt,gd,long,plasminogen,hp,med,gi,jp,fr,in,pc,acta,dip,pl,pa,des,epsilon,apr,plasmin,csf,cis,to,ago,sa,crh
 10403429,pad,gfap,diaphorase,ml,nt,aim,cell,neurotrophin,all,ph,brain derived neurotrophic factor,mg,at,neurotrophin-3,nerve growth factor,bp,for,per,albumin,p1,r1,neurotrophic factor,i,er,had,uk,ts,pp,b,bdnf,tel,dt,tek,nadph,of,up,x,nt-3,serum albumin,ice,as,long,in,kit,ngf,to,bfgf
 10403635,ca2,eat,s182,ml,cell,all,ph,mg,at,ec 3.1.1,ache,for,sf,albumin,i,had,pp,am,b,of,up,pam,x,ice,as,long,ec 3.1.1.7,hi,med,in,bche,acta,acetylcholinesterase,cholinesterase,to,nicotinic acetylcholine receptor
-10405518,tumor necrosis factor,for,etanercept,of,as,in,to
+10405518,gs,dip,of,tumor necrosis factor-alpha,drb1,ml,pa,ga,lag,ws,ry,lf,rb,dif,c-reactive protein,tnf,cell,etanercept,bf,esr,syn,med,crp,cachectin,er,all,hep,to,co,pp,up,i,at,wd,hip,dr4,interleukin-1,hla-drb1,tumor necrosis factor,cox,mal,p75,pip,per,had,tnfa,long,hi,lh,in,mtp,dm,pt,cyclooxygenase-2,fur,am,as,apy,dt,b,for,fac,ep,pros,age,task
 10406837,angiotensin ii,tip,ml,hyp,ry,cell,ro,fp,all,ang,ph,mg,proc,at,renin,cr,tap,camp,for,per,rd,bar,i,had,age,ts,ca1,am,b,rcc,of,up,angiotensin-converting enzyme,as,long,lh,med,in,pc,at1,to,ms
-10411647,km,at,for,tyrosine hydroxylase,of,th,as,in,protein kinase a,to
+10411647,of,ml,x,cis,pah,tyr,pi,lysozyme,cell,th,camp,mct,gcc,all,to,co,i,spr,at,sds,catalase,tyrosine hydroxylase,ph,mg,serum albumin,mu,per,tau,phenylalanine hydroxylase,in,albumin,as,b,for,gac,5b,delta,dihydropteridine reductase,caf
 10413036,si,co,tf,cd,ar,all,mr,mg,mal,proc,syn,tn,at,en,bp,oc,for,sch,per,rd,gl,i,sr,enkephalinase,had,k3,age,pp,net,beta-endorphin,b,thank,rb,of,up,l3,ir,x,aa,af,as,med,jp,in,pc,mu,dd,ob,pa,sk,to,ga,gh,me
 10418340,co,ar,ml,cell,all,ang,ph,mr,mg,star,at,phospholipase a2,for,his,se,bar,ent,i,c-c,pp,b,thank,of,ho,x,ip,as,med,in,to,nat
 10418836,bone gla protein,sera,for,had,of,as,long,in,to
@@ -1388,8 +1388,8 @@
 10516112,pti,ca2,ct,cd2,bars,p-glycoprotein,ml,cell,sds,mi,all,kd,ph,mg,at,tc,for,se,i,age,net,am,b,ns,of,up,as,long,in,cat,sup,to,ga
 10518442,aim,mg,dec,5-lipoxygenase,i,of,in,to,hemoglobin
 10518593,bars,cell,all,ph,ne,sur1,at,for,i,had,am,b,katp channel,of,sur,x,mn,as,insulin,potassium channel,fr,in,acta,cea,des,kir6.2,kit,to
-10519994,arm,all,at,delta,for,had,alad,alpha1,of,in,to
-10520035,cell,at,gpi,for,cd52,of,as,cd52 molecule,in,to
+10519994,g418,of,alad,ml,x,arm,cell,ecl,ct,se,tm,all,to,i,at,phs,sds,ph,per,had,ms,long,alpha1,in,kit,as,dt,b,for,age,delta
+10520035,of,cd52,cell,cd19,tm,cd55,thank,sp,all,to,up,i,at,chop,aa,mg,gpi,per,had,nt,amp,in,cd52 molecule,bp,fs,kit,as,b,for,cd34
 10522750,endothelin-1,held,asp,ml,endothelin b receptor,aim,endothelin-3,ph,proc,at,scott,eta receptor,ns6,tyr,phospholipase a2,gmp,etb receptor,for,gr,his,albumin,i,had,b,of,eta,x,as,long,etb,med,in,acta,thromboxane a2 receptor,to
 10523712,of,as,in,to
 10525060,all,at,for,of,as,in,to
@@ -1401,7 +1401,7 @@
 10541376,cell,for,i,b,cd20 antigen,of,as,cd20,in,to
 10541475,acc,cell,aac,of,in,to
 10543618,co,pad,aadc,gc,ml,es,cell,all,ph,fibronectin,ne,cacl,pbs,mg,proc,monoamine oxidase,at,oncostatin m,ch,monoamine oxidase a,for,per,pars,albumin,i,had,uk,age,pp,am,gtp cyclohydrolase i,tyrosine hydroxylase,b,g418,va,of,up,x,th,ice,as,long,med,in,pa,esa,to,ga,ide
-10545129,cell,at,for,net,of,as,in,to
+10545129,of,cell,to,at,net,in,as,for
 10548525,co,nr1c3,pparg,ucp2,asp,ml,glut,aim,cell,tumor necrosis factor,lipoprotein lipase,ucp,leptin,all,ph,ne,insulin receptor,mg,proc,fa,at,hsl,lpl,g3,irs-1,camp,pai,for,fatty acid-binding protein,irs1,per,se,albumin,ppar,i,had,age,am,b,hormone-sensitive lipase,pparg1,of,pai-1,x,g1,serum albumin,irs,as,pparg2,plasminogen,dr-1,g2,med,angiotensinogen,insulin,tube,fr,ge,in,acta,ob,kit,cis,to,me
 10553165,of,as,in,to
 10555149,cox-1,bars,pparg,apc,ml,c-myc oncogene,c-myc,cell,all,rara,adenomatous polyposis coli,ne,myc,mg,proc,cyclooxygenase-1,smad4,at,fra,connective tissue growth factor,cox2,cox,phospholipase a2,5-lipoxygenase,bp,ppard,cyclooxygenase-2,for,cyclin d1,gal,spla2,nuc1,rxra,ppar,i,had,ppara,gst,b,mom1,thank,tcf,va,of,cyclin,fap,up,jun,mut,cyclooxygenase 2,x,pparb,aa,as,c-jun,bn,hormone receptor,fra-1,smad3,matrilysin,hppar,med,faar,e2,in,np,cga,to,cox-2,nat,crt
@@ -1424,9 +1424,9 @@
 10575283,fur,hc,cb2 receptor,rg,db,es,cell,cannabinoid cb1 receptor,km,all,sp,ls,mg,dp,at,delta,pe,cf,camp,for,sf,rd,tars,gl,i,sr,uk,rk,ak,pp,am,b,tel,dt,of,up,hl,mb,as,long,wd,bf,cb2,med,gi,cb1 receptor,in,ko,ob,cb1,des,to,me,gs
 10577279,nt,cell,plp,all,sn,ph,mg,proc,at,bp,for,his,alas,am,b,thank,of,df,up,x,as,alas2,glutathione s-transferase,in,kit,mis,to,sa
 10579749,angiotensin ii,at1 receptor,all,angiotensin i,angiotensin i converting enzyme,at,renin,i,of,as,long,in,at1,to
-10580379,mao-a,all,monoamine oxidase,at,for,b,of,in,mao-b,to
+10580379,of,mao-a,membrane-bound,ml,x,fad,en,ws,pe,monoamine oxidase a,xo,se,zyme,mao-b,all,to,i,at,jp,gk,ph,mg,monoamine oxidase b,serum albumin,per,long,monoamine oxidase,in,albumin,as,nn,ge,b,for,farr
 10580458,co,cox-1,cell,hip,all,mr,mg,proc,cyclooxygenase-1,stat,at,cox,cyclooxygenase-2,for,per,i,had,age,pp,am,b,lp,thank,mk,ci,of,met,b15,up,x,as,bf,med,gi,in,pa,cis,to,cox-2,ms
-10581306,cell,sur1,at,for,katp channel,of,sur,x,as,insulin,in,kir6.2,to
+10581306,of,myc,ml,x,ga,cell,uk,katp channel,all,to,phhi,sur1,pbk,up,i,at,sds,kir6.2,insulin,bars,ph,mg,mb,mu,per,had,ms,long,cacl,tc,sur,in,bp,kit,sur2,as,b,for,kir6.1,hyp,gaa
 10581996,of,plasminogen,in,plasmin,to
 10583449,angiotensin ii,rg,ml,cli,ro,fhm,km,sma,all,ang,mr,mg,dp,angiotensin i,at,renin,fell,cr,pe,bp,tg,for,per,rd,i,had,age,net,am,b,ns,tel,thank,mrs,rb,of,gk,as,pt,long,hp,med,jp,in,ace,np,dm,kit,to,gh
 10585460,ct,asp,ml,fh,nt,cell,sds,all,kd,ph,mg,fmt,proc,at,10-formyltetrahydrofolate dehydrogenase,aicar,for,formyltetrahydrofolate dehydrogenase,albumin,i,had,pp,p6,b,tel,nadph,of,x,serum albumin,ice,lysozyme,as,lf,hp,fdh,in,acta,kit,prep,to
@@ -1439,7 +1439,7 @@
 10596852,cholecystokinin,ml,cell,all,5-ht1d,ips,at,5-ht1a,cck,gpi,for,at2,i,had,arg,b,tel,of,neuropeptide y,up,eta,cyclooxygenase 2,x,lar,neurotensin,angiotensin-converting enzyme,cyslt1,as,b1,long,lf,etb,fr,in,acta,des,at1,kit,to,5-ht4
 10597865,ca2,lqt1,ik1,db,lqt3,lqt2,cell,c3,c4,all,mme,ik,h1 receptor,dp,at,histamine h1 receptor,for,beta subunit,kvlqt1,i,net,am,b,h1 histamine receptor,thank,dt,rb,scn5a,of,up,jun,sur,dif,herg,as,long,med,in,alpha subunit,erg,des,na+/ca2+ exchanger,lqt5,dm,to,cantu
 10597866,amp,aim,cell,all,mg,h1 receptor,proc,h2,at,histamine h1 receptor,car,s31,for,h2 receptor,i,had,am,b,dt,of,up,sur,x,as,in,cat,des,to
-10598217,all,for,uk,of,as,in,to
+10598217,of,uk,his,all,to,co,fell,pp,up,i,at,cease,mg,per,had,long,in,as,b,for
 10598555,cell,dihydrofolate reductase,of,thymidylate synthase,in,to
 10598601,cd,ml,mi,all,ph,mr,mg,dp,at,dec,for,per,rd,i,had,pp,am,b,thank,of,up,kc,mn,af,as,long,med,in,pc,pa,dm,m3 muscarinic receptor,to,ms
 10601100,ml,cell,progesterone receptor,all,ph,mr,pbs,oestrogen receptor,pr,at,for,per,his,albumin,bar,i,er,had,uk,age,pp,am,b,thank,eralpha,va,of,up,vascular permeability factor,x,serum albumin,as,egf,long,cb2,vascular endothelial growth factor,in,vegf,cd34,epidermal growth factor,to
@@ -1541,7 +1541,7 @@
 10773014,at,had,for,cell,of,aim,sulfonylurea receptor 1,sur1,in,to
 10773193,for,ne,of,as,in,to
 10781559,lag,fmt1,for,met,of,as,in,to
-10783066,up,at,for,i,dna topoisomerase ii,of,topoisomerase ii,in,to
+10783066,of,jms,ml,m1,en,ne,cell,cat,trap,zyme,med,topoisomerase ii,sp,all,to,co,dec,ir,up,i,at,mi,proc,sds,dna topoisomerase ii,ph,mg,me,dd,ch,scd,serum albumin,ms,long,dna topoisomerase i,lh,gam,in,albumin,fur,am,as,nat,b,for
 10787442,peroxisome proliferator-activated receptor alpha,at,for,long,all,pparalpha,mte,i,of,as,in,to
 10788610,gst,5b,ecl,acta,p50,nadph,at,x,tumor necrosis factor,er,for,naf,tnf,med,all,co,tyrosine kinase,ap-1,h2,per,ros,ml,eck,jp,pbs,ice,proteasome,jun,c-jun,p38,cell,i,of,proc,net,as,b,sds,ph,catalase,myc,jnk,jun n-terminal kinase,in,fos,to,c-fos
 10792999,gst,acta,up,at,x,cin,had,for,cacl,med,sp,sk,scott,c-myc,all,co,bp,albumin,g418,ns,per,epidermal growth factor receptor,ho,ml,mi,ci,pbs,ice,dr1,dr5,kit,cell,i,of,as,b,am,cap,sds,ar,ph,thank,glutathione s-transferase,egf,epidermal growth factor,myc,rar,ro,pp,serum albumin,insulin,in,to,pgl3,prb
@@ -1731,7 +1731,7 @@
 11166283,held,up,herg,at,x,had,for,potassium channel,cacl,long,sk,all,co,bp,albumin,herg1,ms,ns,mrs,per,ml,cast,tel,kv1.1,ach,ca1,cell,i,of,ezrin,proc,mg,as,b,am,f12,mk-1,rsk2,mk,f11,ph,thank,pa,erg,tube,serum albumin,in,uk,to
 11168494,5b,mr,fell,at,chop,had,for,p-glycoprotein,vimentin,all,co,beta-tubulin,epi,h2,ml,tel,mi,ci,pbs,ice,interleukin-6,kit,cell,pc,i,annexin v,of,task,mg,as,b,rg,age,vim,g1,pl,cd5,in,uk,to
 11168717,ornithine decarboxylase,arginine decarboxylase,at,had,for,long,ml,ornithine transcarbamylase,i,of,mg,as,b,aim,ar,ph,in,to
-11169015,for,cell,of,as,in,to,methionine synthase
+11169015,fr-alpha,gs,mia,mor,of,fh,cble,sa,ml,pa,x,fad,oc,ks,en,dhfrp1,ws,ry,ren,ec 6.3.2,kn,saa,gamma-glutamyl hydrolase,kd,cob,cell,fr,ct,cblg,hy,des,methylenetetrahydrofolate reductase,se,folate receptor,zyme,ci,formiminotransferase cyclodeaminase,glycine hydroxymethyltransferase,syn,nadph,med,cr,his,er,all,to,prot,co,dihydrofolate reductase,pp,por,i,mthfr,at,wd,proc,mtr,net,pc,sty,aa,h-y,rk,lar,ph,fmt,mg,folate binding protein,me,fp,lp,ch,per,ms,long,bi,methionine synthase,km,gi,mr,lh,np,in,albumin,s7,dm,10-formyltetrahydrofolate dehydrogenase,cblc,am,as,cs,cp,nat,b,par,for,dp,fac,hf,ec 6.3.2.17,age,formyltetrahydrofolate dehydrogenase,conjugase,ts,csf,acta,plp,rg,methionine synthase reductase
 11171191,lcb2,ec 2.3.1.50,for,of,ec 2.3.1,in,to
 11172467,nuc1,ecl,acta,cac,aaa,nadph,at,x,had,acc,p47phox,cd,for,ppar,med,gapdh,all,ap-1,gt,gat,kd,viii,delta,dt,gcc,gtg,ttg,ros,stat,inducible nos,ml,cyclooxygenase-2,cox2,rb2,ggt,plasminogen,angiotensin ii,kit,cell,i,gad,rk,of,proc,inos,mg,as,b,am,cs,atc,sa,sds,endothelial nitric oxide synthase,pr,aa,rho,nos,aac,aat,cox,catalase,cox-2,gac,pp,cox-1,insulin,tm,hormone receptor,in,uk,to,b4,gcg,gat-3
 11180191,mach,up,at,i,of,as,in,to
@@ -1739,7 +1739,7 @@
 11193006,iris,up,at,m1,m4 receptor,cr,had,for,pkb,all,m3 receptor,ml,of,as,b,am,ced,camp,in,uk,to
 11196553,5b,fdx,up,at,x,er,gx,t6,had,aps,cd,for,apex,hi,long,dp,sk,iff,all,co,fb,sr,ms,th,scn5a,ett,per,lqt3,ge,ml,jp,mis,ci,pi,i,pe,ss,of,pace,net,mg,as,b,am,ant,aim,sa,mb,age,ph,ga,me,st2,flt,hk,a subunit,purl,rb,pp,se,ass,in,ir,to,ot,va
 11198050,held,5-ht1b,at,cr,had,db,for,dopamine d2 receptor,long,5-ht1a receptor,all,co,5-ht2a,ns,per,ml,5-ht2 receptor,edn,d2 receptor,5-ht2c receptor,i,of,mg,as,b,am,5-ht1b receptor,aim,aa,5-ht2c,arm,5ht1a,ph,5-ht1a,bi,bar,ro,pp,tap,in,uk,to
-11204352,for,delta,of,cnr1,aat,cannabinoid receptor 1,in,to
+11204352,of,cannabinoid receptor 1,x,aat,ao,ws,pi,rb,ls,syn,df,er,to,pai,ar,up,i,jp,cnr1,mr,in,dm,bp,am,fa,as,for,age,acta,es,rg,delta
 11206715,bnp,for,all,np,ml,of,mg,as,in,to
 11207202,acta,up,at,tumor necrosis factor,bars,er,c5a,for,med,sp,long,sk,pla2,all,co,gr,ms,kd,ls,mrs,tnfa,ml,il-8,cyclooxygenase-2,rd,interleukin-8,ci,pbs,plc,cyclooxygenase 2,cell,pc,i,mlp,of,mg,phospholipase a2,as,b,am,pr,oxytocin,gd,ak,f12,ph,me,cox,pa,epidermal growth factor,cox-2,sera,amp,carp,ep,pl,tube,dm,in,uk,to
 11207504,up,herg,cholecystokinin,at,er,had,for,g979,med,all,calcitonin,5-ht3 receptor,kd,delta,mrs,per,ge,ml,5-ht4 receptor,pacap,pc,i,p450,rk,of,cyp2d6,dif,mg,as,b,am,sn,ar,substance p,gi,age,arm,ph,fth,tf,camp,g-protein coupled receptor,5-ht4,af,cyp1,mn,5-hydroxytryptamine 4 receptor,dm,in,to,vip
@@ -1953,7 +1953,7 @@
 11683476,s19,ang,at2,mr,at,at1,for,at1 receptor,med,long,all,bp,gt,pml,th,ip,per,ho,tel,jp,angiotensin ii,cell,pc,i,at2 receptor,of,yes,dif,mg,as,b,am,t1,dup,aim,ace,me,renin,af,dd,in,to
 11683631,ornithine decarboxylase,up,at,x,cr,had,for,long,all,thymidylate synthase,kd,per,ml,tel,plp,ml-1,pi,cell,i,of,task,proc,as,b,xli,his,dihydrofolate reductase,ph,thank,odc,bi,erg,pp,hormone receptor,in,uk,to,km
 11688997,hdac2,mbd1,at,x,nat,bars,had,for,dnmt3a,long,e2f1,all,co,si,dna methyltransferase 1,mot,ml,jp,pbs,acs,cell,i,of,proc,as,b,thank,histone deacetylase 2,hdac1,wd,rb,h4,nan,dnmt1,histone h4,in,to,es
-11689132,herg,had,for,potassium channel,all,of,as,rb,to
+11689132,g418,mink,of,ml,pa,x,reg,kv1.1,cis,en,sn,pe,rb,cell,ob,cardiac potassium channel,se,syn,all,to,co,erg,potassium channel,up,i,at,mi,kv1.4,star,jp,cox,ph,herg1,per,had,long,tc,in,pt,kit,mk,am,as,b,for,lqt,cg,ts,herg,acta,dbs
 11689471,gst,5b,ecl,hsp60,acta,up,hba,at,x,tumor necrosis factor,chop,er,had,for,c-myc,gadd153,cyclin d1,cyclin a,kd,hsp70,gp160,ns,p40,per,prot,ebp,ml,cyclooxygenase-2,mi,hl,pcna,p85,c/ebp-homologous protein,ci,grp78,cyclooxygenase 2,pi,kit,cell,i,inducible nitric oxide synthase,of,ago,proc,p105,mg,bark,as,b,cyclin,sa,sds,ph,thank,glutathione s-transferase,bip,cox,catalase,thrombin,myc,cox-2,bar,in,to
 11692072,up,at,scl,cr,hf,had,for,dopamine d2 receptor,med,sk,5-ht1a receptor,all,lal,bp,gr,hep,drd2,r1,per,ml,tel,hy,rd,gk,d2 receptor,t2,dat1,i,ss,of,mg,as,b,am,t1,sa,d3 receptor,ar,age,thank,5-ht1a,af,ep,aws,gh,se,dd,in,to,rac
 11692087,eotaxin,phosphodiesterase 4b,cd28,up,ob,phosphodiesterase 4,icam-1,interleukin-1 beta,at,x,coil,tumor necrosis factor,gm-csf,romk1,il-5,er,tr,cr,hf,cd4,cd,for,cp,tnf,vcam-1,med,il-1 beta,dp,csf,sk,pde3,scott,pde4a,des,co,phosphodiesterase iii,isk,il-6,c4,hc,sr,cga,ms,kd,dpd,ls,beta2,monocyte chemoattractant protein 1,ifn-gamma,dt,lt,raf-1,n/a,pde,ml,phosphodiesterase 3a,il-2,il-8,cd18,e2,tnfalpha,e-selectin,ks,hl,jp,type iv phosphodiesterase,phosphodiesterase 11a,tnf alpha,ci,acs,interleukin-2,cyclic nucleotide phosphodiesterase,lp,tp,p38,pde4d,kit,cell,i,pe,of,proc,il-15,mg,as,b,am,cs,raf,sa,pt,il-1beta,pde4,erk2,protein kinase a,interleukin-1,il-1,cak,phosphodiesterase 5,gmp,cd11b,ak,tumour necrosis factor,creb,kvlqt1,mk,his,il-10,epsilon,pde7,thank,me,wd,pa,gl,gs,tf,glucagon,amp,ifn,mai,tnf-alpha,ca2,camp,ro,rb,pl,pde10a,vascular endothelial growth factor,pde5,guanylyl cyclase,c-kit,arg,dm,tumor necrosis factor-alpha,gc,tm,lf,in,monocyte chemoattractant protein-1,mep,to,pde4b,b4,es,ck,km
@@ -2104,7 +2104,7 @@
 12004250,p38,ifn,hla-b,calreticulin,interleukin-1,i,pars,mcp-1,tr,ct,of,cd54,monocyte chemoattractant protein-1,bcl-2,epcr,rb,myb,myeloperoxidase,interleukin-8,bs,b,activated protein c,par,thrombin,thp,apc,in,proc,interferon gamma,gr,at,am,endothelial cell protein c receptor,par-1,activated protein c receptor,caspase-3,yes,il-8,cd1,clusterin,va,tnf,nat,icam-1,apolipoprotein j,sn,nf-kappab,fh,survivin,cell,as,sr,all,tissue factor,thrombomodulin,p50,had,endothelial protein c receptor,for,protein c receptor,annexin v,macrophage migration inhibitory factor,kn,cd14,cd11b,hla-a,factor xa,p52,to,ss,fb,rd,tumor necrosis factor,gt,ca2,plasminogen,dt,thrombin receptor,protein s,tnf-alpha,cd25,bn,dic,interleukin-6,med
 12007529,cholecystokinin,db,mds,i,x,ch,of,b,in,co,at,am,pace,m1,tel,e1,g612,pancreatic lipase,uk,s12,insulin,as,all,mg,g620,long,had,for,to,asal,ns,ml,up,med
 12007600,upar,i,pa,of,t-pa,t2,egf,urokinase-type plasminogen activator,b,cpb,in,serine protease,acta,net,ga,at,plasmin,er,uk,thank,ph,ste,as,all,had,for,erba,carboxypeptidase b,to,pr,plasminogen,km,kd,epsilon
-12008749,prl,i,of,thyrotropin-releasing hormone,his,in,prolactin,trh,insulin,cell,as,d2 receptor,igf,had,for,gh,to,dopamine d2 receptor,igf-i
+12008749,of,ml,x,insulin-like growth factor i,igf-i,rb,cell,pr,prolactin,se,pad,med,his,er,all,to,gh,co,lam,ho,i,at,phs,prl,d2 receptor,mal,insulin,mg,dopamine d2 receptor,per,had,lhrh,fsh,grh,igf,pbs,bi,acth,thyrotropin-releasing hormone,lh,trh,in,kit,am,as,b,for,crh
 12010185,rg,i,pa,serum albumin,aim,of,per,farr,dci,gif,b,pc,in,co,at,age,tert,uk,ph,ago,cell,as,all,mg,sch,d2 receptor,spa,for,5-ht2 receptor,to,ss,tek,albumin,dp,mr,camp,ca2,dopamine d2 receptor,kd,ice,mrs
 12010562,p38 map kinase,p38,h4,adrenocorticotropic hormone,calreticulin,inducible nitric oxide synthase,i,sapk,ch,of,creb,acth,ar,cpla2,ak,b,pc,his,in,steroid receptor coactivator-1,proc,co,phospholipase a2,jun,c-fos,map kinase-activated protein kinase 2,gr,at,prolactin,histone deacetylase 2,atf,cox-2,mitogen-activated protein kinase p38,tel,cytosolic phospholipase a2,il-8,hf,alanine aminotransferase,tnf,gm-csf,jun n-terminal kinase,jnk,tp,hsp56,hl,nf-kappab,activator protein-1,uk,c-jun,ap-1,ago,cyclooxygenase-2,cell,gl,as,mg,tissue factor,erk,cox,had,me,for,glucocorticoid receptor,cyclooxygenase 2,ck,fos,ikappabalpha,cbp,to,tumour necrosis factor,mkp-1,tyrosine aminotransferase,pro-opiomelanocortin,camp,creb-binding protein,km,csf,tnf-alpha,histone h4,il-1,hsp90,mrs,interleukin-6
 12011120,mds,i,las,x,nos,ara,af,of,promyelocytic leukemia,per,sargramostim,jp,fs,p15ink4b,dm,b,in,tc,ash,proc,co,stat5,gc,acta,kit,at,interleukin-3,am,age,p15,erythropoietin,acs,ci,m1,fr,gm-csf,cis,hl,arm,cell,as,hp,all,mg,beta-globin,il-3,cox,long,had,pp,for,granulocyte-macrophage colony-stimulating factor,cr,erythropoietin receptor,lh,colony-stimulating factor,to,pr,stat,csf,t1,mi,met,hemoglobin,fell,ml,up,med,casper
@@ -2145,7 +2145,7 @@
 12076859,icam1,clip,gac,i,tf,g1352,amp,pa,ct,of,g1341,per,jp,tat,intercellular adhesion molecule 1,ak,myeloperoxidase,b,in,co,kit,ga,at,am,gaa,endothelin-1,tel,e1,cac,alanine aminotransferase,membrane-bound,icam-1,sa,gat,ph,ms,cell,gl,as,pad,all,atc,mg,had,for,dd,lh,pe,to,ss,pr,cat,camp,stat,plasminogen,phosphodiesterase iii,p-selectin,p23,ice,ml,up,aa,med
 12079382,b12,of,in,c-c,at,pbgs,as,all,for,to,porphobilinogen synthase
 12080428,db,i,gd,ge,of,per,fs,b,in,proc,co,at,trap,am,sf,hf,hk,mb,tp,ms,as,pl,th,all,mg,ace,long,had,for,mdc,to,nachr,pr,rd,sp,ach,es,mi,fell,ml,nicotinic acetylcholine receptor,up,aa,med
-12080538,of,progesterone receptor,in,at,as,all,for,estrogen receptor,aromatase,to
+12080538,of,aro,ml,dor,pe,ns,estrogen receptor,pr,hpa,uk,se,tm,med,cr,er,all,gc,to,aromatase,atase,ar,ho,up,i,at,proc,kc,yes,mg,lp,ch,had,long,in,hormone receptor,am,as,apy,ge,progesterone receptor,b,for,ep,pgr,ck,cir
 12082550,db,cs,erk1,rg,i,x,scc,pa,serum albumin,se,of,creb,per,jp,ep,dm,s100a8,bs,b,ptk,in,proc,gc,acta,kit,gr,at,am,atf,wd,tube,gi,ks,hai,nat,cdc25,dbi,myosin,myc,insulin,thank,ms,mrp8,cell,as,all,mg,erk,had,pp,for,cr,hc,gh,rhoa,to,ss,epidermal growth factor,pr,ls,rac,albumin,g2,mr,cat,camp,rho,km,5b,pbs,ml,raf,sds,mif,med
 12083499
 12086292,of,in,cox-2,gi,cyclooxygenase-2,as,cox,long,had,for,to
@@ -2626,7 +2626,7 @@
 14646100,l-serine dehydratase,i,serine dehydratase,x,of,per,tat,b,in,ash,proc,plp,acta,at,gaa,hai,arg,thank,ph,cell,as,eld,all,mg,for,to,cga,sdh,ttg,acc,ml,l-threonine dehydratase,sds,up
 14646172,db,fp,i,x,amp,of,jp,ip,afp,bs,b,pc,in,co,acta,at,am,iris,r4,f10,thank,cell,as,all,mg,fp receptor,long,had,pp,for,r1,to,dp,cat,mi,pbs,r2,ml
 14647959,5-ht1a receptor,db,5-ht2a receptor,hhg,fp,5-ht2c,5-ht2a,i,tf,lt,pa,ct,of,ep,cp,rb,dm,bs,b,in,co,ga,at,5-ht6,prolactin,am,ho,ci,tel,fr,hf,mb,tp,hl,5ht1a,task,ph,ms,as,sr,all,mg,d2 receptor,5-ht2b,serotonin receptor,had,lum,me,for,5-ht7,sk,to,5-ht1a,tyrosine hydroxylase,cd,h1 histamine receptor,dopamine d2 receptor,kd,dopamine d3 receptor,ml,a1a,up,d3 receptor,hy,med,scott
-14651650,i,of,in,at,for,to
+14651650,apex,of,ml,cis,ns,held,thank,all,to,co,up,i,at,bars,mg,hi,in,as,b,for
 14654525,erk1,i,x,akt,of,p450,per,ip,cyp3a4,b,flk2,his,in,proc,stat5,erk2,egfr,kit,c-kit,at,vegf,age,fms-related tyrosine kinase 3,m1,mek,tel,va,vegfr,n-ras,epidermal growth factor receptor,pdgfr,arm,ne,tyr,thank,ph,cell,bcr,as,mek1,all,mg,cml,erk,il-3,rar,had,for,abl,naf,gale,to,mll,bcr-abl,epidermal growth factor,pr,flt3,vegfr1,mr,stat,tyrosine kinase,vegfr2,ice,jak2,r2,pml,ml,vascular endothelial growth factor,raf,sds,up,fms,flt3 tyrosine kinase
 14656380,beta2,cs,fp,gd,x,amp,pa,beta2ar,serum albumin,of,bar,per,kc,rb,egf,dm,b,par,pc,viii,in,proc,co,at,am,ci,glial cell line-derived neurotrophic factor,tube,factor ix,bark,mb,cftr,cis,uk,hrs,cg,sa,asp,ph,cell,as,gdnf,all,mg,long,had,cap,for,dd,sk,beta-adrenergic receptor kinase 1,pe,guanine nucleotide regulatory protein,to,albumin,dp,neurotrophic factor,mr,camp,tyrosine kinase,mk,rock,kd,pbs,ice,ml,up,med
 14658934,orexin,of,b,in,at,dopamine transporter,as,to,hypocretin
@@ -2640,10 +2640,10 @@
 14670645,ts,i,pa,e2,of,jp,steroid sulfatase,progesterone receptor,b,e2dh,in,hme,cathepsin d,at,est,estrone sulfotransferase,gs,am,en,tel,e1,fr,c3,mb,er,hl,tert,ph,cell,as,all,mg,had,for,nadph,estrogen sulfotransferase,estrogen receptor,aromatase,gh,to,epidermal growth factor,pr,es,androgen receptor,bi,estrone sulfatase,med
 14672537,kir6.2,of,in,co,at,sur2,cell,katp channel,for,ctb,cta,sur
 14672731,cpa,i,e2,of,per,ar,pgr,bcl-2,progesterone receptor,b,c6,in,co,acta,net,at,am,en,caspase-3,tel,er,insulin,cell,as,all,mg,long,had,des,for,glucocorticoid receptor,bax,estrogen sulfotransferase,estrogen receptor,aromatase,to,oc,delta,androgen receptor,kd,igfbp-1,up,med
-14674888,of,in,epidermal growth factor receptor,cell,to,epidermal growth factor
-14675103,of,in,at,sert,ph,had,for,to
+14674888,tyrosine kinase,of,involucrin,ml,jun,x,mek,ice,jnk,epidermal growth factor,cell,ecl,raf,thank,all,to,erk1,epidermal growth factor receptor,co,src,at,retinoid x receptor alpha,sds,insulin,ph,serum albumin,had,ms,long,egf,in,albumin,mek1,erk,ip,as,b,for,p38,grb2,egfr
+14675103,of,ml,ice,uk,ci,va,all,to,up,i,at,ph,had,in,as,for,sert
 14675762,tfa,c5,g418,i,f12,x,aim,of,per,esi,gk,chemokine receptor,b,prot,in,pcl,tc,co,gc,ccr5,at,am,gcc,c5a anaphylatoxin,er,c4,thank,g protein-coupled receptor,ph,ms,cell,as,all,mg,ace,rar,mal,des,adh2,pp,for,gtg,tig1,to,c5a,g-protein coupled receptor,gt,bp,ml,mu,sds,up,angiotensin ii,aa,med
-14678021,glp-1 receptor,of,glucagon-like peptide 1,in,glucagon,cell,glp-1,long,for
+14678021,of,x,ry,arm,cell,glucagon,thank,all,to,at,ins,db,gk,insulin,ph,mg,per,had,long,in,as,b,for
 14680547,tfa,neutrophil elastase,i,p05154,of,per,beta subunit,ivf,alpha2,b,his,in,cf,serine protease,plasma serine protease inhibitor,at,wd,tel,hcg,uk,c4,ph,fsh,ms,cell,protein c inhibitor,as,hp,gnrh,all,mg,pp,for,lh,to,pi,leukocyte elastase,kd,pbs,ice,ml,sds,up
 14684331,g1,snap,i,x,cdk2,of,si,cdc2,jp,b,pc,his,hhc,in,cytosolic malate dehydrogenase,proc,co,acta,at,tel,cyclin a,p53,b1,membrane-bound,er,ca9,ph,cell,as,all,mg,mes,long,malate dehydrogenase,for,cyclin,vhl,to,g2,p21,prb,up,med
 14684332,i,of,esi,b,in,acta,at,tel,c3,ir,ec 4.2.1.1,ph,ms,as,all,long,for,ec 4.2.1,to,ret,ml,up,med,dcp
@@ -2712,7 +2712,7 @@
 15001679,for,to,of,in,as,mu
 15007532,r2,frt,ci,mg,thio,for,to,long,sr,of,prolactin,i,edn,ice,mr,hhm,dopamine d4 receptor,hd3,er,per,ml,rk,tube,5b,bar,b,thank,m1,ch,5-ht2a,ms,5-ht1a,f2,hy,f3,mph1,hc,ar,db,in,hal,ho,f11,at,as,tel,lh,had,ph,d4 receptor,f7,d2 receptor,5-ht2c,all,alpha1,up,held,hd4,tip,arnt,med,hd2
 15007534,lars,aa,ne,jws,5-ht2 receptor,ci,serum albumin,mg,pp,sp,rb,for,to,long,sr,of,prolactin,i,edn,mr,df,fa,per,ml,rk,b,cs,jp,hf,am,bp,aim,tr,acta,albumin,in,at,as,tel,lh,dopamine d2 receptor,d3 receptor,had,s31,ct,d2 receptor,all,age,se,t2,med
-15009644,for,to,of,beta2,alpha subunit,co,in,alpha6,alpha4,at,alpha1
+15009644,of,ml,nan,ice,pi,alpha2,cell,beta2,theta,hpa,uk,ci,fnz,all,to,co,alpha subunit,alpha6,i,gamma1,at,bam,alpha4,gamma2,ph,mg,alpha3,had,cacl,mer,hi,alpha1,in,as,b,for,beta1,delta
 15011952,epsilon,thio,for,to,of,in,as,delta,dna polymerase beta,fac
 15013161,nm_000914,mg,pp,crt,for,to,long,of,i,x,ice,beta2,hip,hyp,per,ml,co,b,mor,kit,ms,bp,mor1,delta opioid receptor,cox,in,ho,at,as,kappa opioid receptor,tel,mor-1,delta,proc,mu,had,ph,cell,gc,preprodynorphin,all,up,age
 15016471,aa,insulin,epsilon,kynureninase,mg,pp,glutaminase i,e2,aadat,scott,glutaminase,for,to,of,e3,km,i,x,mut,mtr,mr,membrane-bound,aminoadipate aminotransferase,alanine-glyoxylate aminotransferase,c6,cf,per,co,b,thank,methylthioadenosine phosphorylase,sch,ch,pku,ago,aldehyde reductase,adenosine a1 receptor,gtk,hf,met,spermine synthase,f2,ccbl1,clc,am,c4,e1,acta,a1 receptor,neu,in,net,kynurenine aminotransferase i,g2,phenylalanine hydroxylase,glutamine transaminase k,at,as,tel,proc,csf,had,plp,ph,mtp,cell,es,tyrosine aminotransferase,s-adenosyl-l-homocysteine hydrolase,ck,all,bcl2,mta phosphorylase,up,kynurenine aminotransferase ii,age,se,kati,h2,med
@@ -2737,7 +2737,7 @@
 15046718,capsaicin receptor,aa,r2,frt,for,to,long,mes,of,i,ngf,anktm1,trpa1,ml,ca2,bar,b,sn,pox,thank,trpv1,cacl,cgrp,cis,uk,clove,in,trpm8,tim,substance p,at,as,proc,b2r,ph,cell,vr1,nat,all,g protein-coupled receptor,phospholipase a2,plc,age
 15051528,serum albumin,pp,sp,scott,for,to,long,ro,gmp,of,i,x,ice,pao,cd,des,per,ml,ca2,co,ornithine decarboxylase,b,mrs,odc,thank,sds,albumin,in,at,as,tel,ph,cell,farr,adometdc,all,held,phospholipase a2,sur,med
 15056048,peroxisome proliferator-activated receptor gamma,va,par,apolipoprotein e,ctcl,adipsin,p55,si,mg,estrogen receptor,cr,for,to,long,pa,of,km,i,x,raldh2,mi,arm,retinoic acid receptor-alpha,survivin,er,caspase 3,interleukin-2,per,ml,pparalpha,b,interleukin-2 receptor,prothrombin,il-2r,ppar,vitamin d receptor,atf3,tnf-alpha,t3,p75,hormone receptor,his,e-selectin,il-2 receptor,il-2,cis,erbb2,am,rar,ifn,tnf,in,ap-1,promyelocytic leukemia,alanine aminotransferase,cd30,tyrosine kinase,at,as,ifn-alpha,tel,tumor necrosis factor,proc,pr,had,ppargamma,cell,pe,retinoid x receptor-alpha,ns,elongation factor 2,ip,all,up,t1,age,t2,med
-15056115,for,to,of,stromelysin-1,mmp-9,mmp-20,enamelysin,decorin,in,mmp-2,at,had,ct,mmp-3
+15056115,of,ml,x,ice,lf,cell,ct,uk,b8,all,to,i,at,mi,pam,sds,net,mt1,enamelysin,aim,ph,mg,serum albumin,per,had,dcn,cacl,pbs,decorin,in,albumin,kit,as,b,for
 15056946,mg,cr,rb,for,to,of,serotonin receptor,per,ml,monoamine oxidase,b,mao-a,rg,ls,cgrp,hc,in,ate,at,as,mao-b,mal,cell,camp,all,up,gl
 15059893,tsa,pp,fp,cr,rb,for,to,pa,of,cp,x,mi,glyceraldehyde-3-phosphate dehydrogenase,mr,gapdh,cd38,kd,des,ml,co,b,tig1,pc,hl,kit,jp,srb1,cml,l37,am,bp,rar,sds,in,msp,promyelocytic leukemia,ho,src,g1,at,as,ml-1,proc,mb,had,cell,sk,ct,sa,all,up,bs,med
 15063480,ek,mg,estrogen receptor,cpa,for,to,long,of,ak,i,x,gr,mr,dsg,c6,er,b,angiotensinogen,sex hormone binding globulin,tat,hdl,ms,gs,progesterone receptor,am,ss,ar,acta,in,ep,net,shbg,at,as,renin,tel,pr,had,bn,sa,oc,lp,all,up,age
@@ -2811,7 +2811,7 @@
 15185063,aa,dt,5-ht2 receptor,pp,aac,bars,for,bax,to,long,of,tc,5-ht1d,i,x,mi,mr,mn,c6,serotonin receptor,alpha2,tgc,ml,ca2,ttg,b,5-ht1f,5-ht7,thank,rg,angiotensin ii,ga,pkb,gaa,5-ht1b receptor,apa,jp,5-ht1b,5-ht2a,ms,5-ht2b,am,bp,aim,5-ht1d receptor,djs,me,uk,in,tg,5ht1d,dic,gcc,ho,glucose-6-phosphate dehydrogenase,gat,at,as,proc,pr,mb,had,ph,cta,5-ht2a receptor,gc,acc,ct,g6pdh,sa,5-ht1f receptor,all,alpha1,up,g6pd,se,h2,med
 15189743,c-reactive protein,dt,ci,mg,scott,rb,for,to,of,dihydroorotate dehydrogenase,p450,i,x,gh,ml,b,sf,rg,tnf-alpha,ga,en,interleukin-1,il-2,kao,met,gs,am,tnf,acta,me,uk,albumin,in,net,alanine aminotransferase,cg,g2,tyrosine kinase,etanercept,g1,at,as,cyp,hemoglobin,anakinra,proc,had,crp,cyclooxygenase-2,cell,hk,sk,dhodh,lp,all,up,esr,med
 15190109,capsaicin receptor,ins,trek-1,lf,pp,sp,bars,for,to,long,sr,mes,of,i,anktm1,trpa1,trek,phi,ml,ca2,tube,5b,b,potassium channel,thank,hl,trpv1,ms,cgrp,am,bp,tr,trp-p8,uk,in,trpm8,hp,p8,at,as,pti,lag,proc,had,ph,cell,sk,gc,vr1,all,up,tip,dd,se,med
-15191400,mg,to,of,thioredoxin reductase,in,as,caspase-3
+15191400,of,ml,tert,ice,thio,cell,tm,nadph,thioredoxin reductase,all,to,co,i,obs,at,insulin,ph,cysteine protease,mg,serum albumin,per,had,cacl,tube,in,albumin,glutathione reductase,kit,as,b,for,age
 15196993,ne,serum albumin,mg,scott,for,to,long,of,dm,km,i,x,gst,kd,per,ml,tube,co,5b,b,kit,albumin,thrombin,in,at,as,plp,ph,cell,sa,nat,cbs,all,glutathione s-transferase,up,saa,dd,med
 15198222,va,cox-1,mg,mk,e2,for,to,pa,of,km,rd,i,x,mr,kd,pbs,per,ml,co,b,sf,thank,cyclooxygenase-1,ch,ms,am,sds,ar,db,me,cox,in,pt,beta-actin,src,at,as,cox-2,proc,had,cyclooxygenase-2,ph,cell,cox1,cat,cox2,all,phospholipase a2,bs,med
 15199473,aa,cox-1,insulin,rb,il6,for,pgl3,to,sr,of,i,x,il-1,pghs-2,ebp,np,mn,b,p38,pc,rg,cyclooxygenase-1,amp,en,ago,interleukin-1,cis,am,bp,tnf,acta,cox,in,ap-1,cytosolic phospholipase a2,cyclooxygenase 2,inducible nitric oxide synthase,at,as,cox-2,tel,tumor necrosis factor,proc,had,cyclooxygenase-2,ph,cell,cox1,sk,pe,cox2,all,phospholipase a2,bark,se,bs,h2,med
@@ -4105,7 +4105,7 @@
 17486443,in,ss,gl,mg,b,5ht1a,uk,csf,er,rb,at,co,gk,ml,kd,gabab1,gabab receptor,ren,i,mr,all,esra,mk,aim,age,med,for,had,am,as,up,of,task,long,tip,to,per,ph
 17486546,in,gatm,at,gamt,ct1,glycine amidinotransferase,agat,all,creatine transporter,for,as,up,of,to
 17487473,tap,acc,kit,in,pbs,gr,cyp11b1,mg,asp,acta,b,x,fh,at,dd,aldosterone synthase,co,lt,se,cyp,p450scc,np,es,ml,sds,tube,camp,i,adrenocorticotropic hormone,cyp11b2,proc,bp,p450,cr,all,gd,ap-1,cell,scc,ms,interleukin 2,cyp11a1,aim,cyp21,ar,med,for,had,as,mink,of,p450c11,acth,bars,to,per,ph,cyp2e1
-17489948,in,cacna1a,delta subunit,delta,of,to
+17489948,of,sca6,a1a,cell,held,snap,to,co,i,at,aim,gamma2,mg,fhm,long,proteasome,mr,in,cacna1a,as,b,for,acta,delta
 17491551,dec,epidermal growth factor receptor,farnesoid x-activated receptor,in,des,hormone receptor,ca2,peroxisome proliferator-activated receptor gamma,b,af-1,x,at,d3 receptor,lp,egfr,epidermal growth factor,rar,dr5,thank,cis,af,insulin,nn,fa,pai,ts,i,ct,mb,src,na+/ca2+ exchanger,ppargamma,all,cell,thyroid hormone receptor-alpha,bn,src-1,tf,jun,apr,rar alpha,fxr,for,had,am,as,up,nov,of,retinoic acid receptor beta,hk,bcl-2,to,rg,sk,beta2,estrogen receptor
 17494858,km,csfr,kit,in,braf,tp53,mg,acta,b,nat,ptpn11,c-fms,uk,nos,csf,at,runx1,dp,cs,c-kit,ins,np,ml,lh,af,pa,fms,gale,i,flt3,cd,jp,proc,bp,rk,me,all,tyrosine kinase,fr,g-csf receptor,cell,colony-stimulating factor,kras,npm1,aa,ns,ash,mds,mk,ip,mia,ela2,age,med,nras,for,had,fb,dt,granulocyte colony-stimulating factor receptor,m1,am,as,csf1r,csf3r,of,long,jak2,aml1,to,rg,pe,per,scn,nucleophosmin
 17496727,in,impdh2,for,of,to
