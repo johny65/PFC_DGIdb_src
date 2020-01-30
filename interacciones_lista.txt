@@ -25,3 +25,6 @@ inhibitory immune response
 binding
 inhibitor, competitive
 inverse agonist
+neutralizer
+adduct
+positive allosteric modulator

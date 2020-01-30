@@ -23,41 +23,50 @@ etiquetas_neural_networks_ruta = "etiquetas_neural_networks_3.csv"
 out_interacciones_ruta = "interacciones_lista.txt"
 excluir_interacciones_lista = []
 ejemplos_directorio = "replaced_new"
-embeddings_file = "glove.6B.50d.txt"
+# embeddings_file = "glove.6B.50d.txt"
 # embeddings_file = "glove.6B.100d.txt"
 # embeddings_file = "glove.6B.200d.txt"
 # embeddings_file = "glove.6B.300d.txt"
 # top_palabras_frecuentes = 52
-dimension_embedding = 8
-maxima_longitud_ejemplos = 100 # Longitud promedio de los ejemplos: 6500
-# longitud_palabras_mayor_a = 5
+dimension_embedding = 8 # Recomendado: 8
+maxima_longitud_ejemplos = 50000 # Longitud promedio de los ejemplos: 6500
+top_palabras_considerar = 100
+longitud_palabras_mayor_a = 0
 # cantidad_ejemplos_sin_interaccion = 1030 # old: 3144; new: 2944
 cantidad_ejemplos_clase_mayor = 1031
 clases = 27
 ejemplos_cantidad = cantidad_ejemplos_clase_mayor*clases # Cantidad total de ejemplos a cargar
+balancear = False
+vocabulario_bool = False
+secuencias_bool = False
+particiones_bool = True
+embeddings_bool = False
 
 ''' Parámetros del modelo '''
-PARTICIONES = 2 # Número de particiones para la validación cruzada
+PARTICIONES = 5 # Número de particiones para la validación cruzada
 REPETICIONES = 1 # Número de repeticiones de la validación cruzada
-PORCENTAJE_DROPEO = 0.4 # Pone en 0 el #% de los datos aleatoriamente
-CANTIDAD_FILTROS = 10 # Cantidad de filtros de convolución
-
-DIMENSION_KERNEL = list()
-limite = int(maxima_longitud_ejemplos/math.pow(2,9))
-for i in range(3, 6, 2):
-    DIMENSION_KERNEL.append(i)
-DIMENSION_KERNEL = tuple(DIMENSION_KERNEL)
-print(DIMENSION_KERNEL)
-
-CAPAS_OCULTAS = 2
+PORCENTAJE_DROPEO = 0.4 # Recomendado: 0.4
 CANTIDAD_EPOCAS = 100
 PORCENTAJE_VALIDACION = 0.2
 PORCENTAJE_PRUEBA = 0.2
-DIMENSION_BATCH = 32
-ACTIVACION_OCULTA = 'relu'
-ACTIVACION_SALIDA = 'softmax'
+# Perceptrón
+CAPAS_OCULTAS = 2
+ACTIVACION_OCULTA = "relu"
+ACTIVACION_SALIDA = "softmax"
+# Convolución
+CANTIDAD_FILTROS = 10 # Recomendado: 35
+DIMENSION_KERNEL = list()
+for i in range(3, 4, 1):
+    DIMENSION_KERNEL.append(i)
+DIMENSION_KERNEL = tuple(DIMENSION_KERNEL)
+print(DIMENSION_KERNEL)
+# Parámetros de compilación
 OPTIMIZADOR = "adam"
-FUNCION_ERROR = 'categorical_crossentropy'
+FUNCION_ERROR = "categorical_crossentropy"
+METRICA = "categorical_accuracy" # categorical_accuracy
+# Parámetros de entrenamiento
+DIMENSION_BATCH = 32
+
 MODELO_FINAL = False
 ''' --------------------- '''
 
@@ -74,13 +83,20 @@ MODELO_FINAL = False
 #                                                                            ejemplos_cantidad=ejemplos_cantidad,
 #                                                                            vocabulario_global=True)
 
-(x_entrenamiento, y_entrenamiento), (x_prueba, y_prueba), top_palabras_frecuentes, vocabulario = otro_cargar_ejemplos(etiquetas_neural_networks_ruta,
-                                                                                                                      out_interacciones_ruta,
-                                                                                                                      excluir_interacciones_lista,
-                                                                                                                      ejemplos_cantidad,
-                                                                                                                      PORCENTAJE_PRUEBA,
-                                                                                                                      ejemplos_directorio,
-                                                                                                                      maxima_longitud_ejemplos)                                                
+(x_entrenamiento, y_entrenamiento), (x_prueba, y_prueba), top_palabras_frecuentes, vocabulario, embeddings_dict = otro_cargar_ejemplos(etiquetas_neural_networks_ruta,
+                                                                                                                                        out_interacciones_ruta,
+                                                                                                                                        excluir_interacciones_lista,
+                                                                                                                                        ejemplos_cantidad,
+                                                                                                                                        PORCENTAJE_PRUEBA,
+                                                                                                                                        ejemplos_directorio,
+                                                                                                                                        maxima_longitud_ejemplos,
+                                                                                                                                        top_palabras_considerar,
+                                                                                                                                        longitud_palabras_mayor_a,
+                                                                                                                                        balancear,
+                                                                                                                                        vocabulario_bool,
+                                                                                                                                        secuencias_bool,
+                                                                                                                                        particiones_bool,
+                                                                                                                                        embeddings_bool)
 
 cantidad_ejemplos = x_entrenamiento.shape[0]
 cantidad_ejemplos_entrenamiento = 0
@@ -90,6 +106,10 @@ cantidad_clases = y_entrenamiento.shape[1]
 NEURONAS_SALIDA = cantidad_clases
 NEURONAS_OCULTAS = NEURONAS_SALIDA*3
 interacciones_lista = cargar_interacciones(out_interacciones_ruta, True)
+
+interacciones_pesos_dict = fa.generar_pesos_clases(etiquetas_neural_networks_ruta,
+                                                   excluir_interacciones_lista,
+                                                   interacciones_lista)
 
 # print("Cargando embeddings pre-entrenados.")
 # embeddings_dict = dict()
@@ -117,79 +137,16 @@ interacciones_lista = cargar_interacciones(out_interacciones_ruta, True)
 #         embeddings_matriz[i] = droga_emb
 # print("Matriz de embeddings generada.")
 
+# print("Generando matriz de embeddings.")
+# embeddings_matriz = np.zeros((top_palabras_frecuentes, dimension_embedding))
+# for palabra, secuencia in vocabulario.word_index.items():
+#     embedding_vector = embeddings_dict.wv[palabra]
+#     if embedding_vector is not None:
+#         embeddings_matriz[i] = embedding_vector
+# print("Matriz de embeddings generada.")
+
 if MODELO_FINAL: # Entrenar modelo final
     print("Vacío")
-    # print("Entrenando modelo final...")
-    # x_entrenamiento = np.concatenate((x_entrenamiento, x_prueba))
-    # y_entrenamiento = np.concatenate((y_entrenamiento, y_prueba))
-
-    # modelo_cnn = Sequential()
-    # formato_entrada = (maxima_longitud_ejemplos, dimension_embedding)
-
-    # '''Intento de entrenar con kernels de distintos tamaños al mismo tiempo'''
-    # submodelos = list()
-    # for i in range(0, len(DIMENSION_KERNEL), 1):
-    #     submodelos.append(Sequential())
-    #     submodelos[i].add(Conv1D(input_shape=formato_entrada,
-    #                       filters=CANTIDAD_FILTROS,
-    #                       kernel_size=DIMENSION_KERNEL[i],
-    #                       padding='same',
-    #                       bias_initializer='random_uniform'))
-    #     submodelos[i].add(MaxPooling1D(pool_size=maxima_longitud_ejemplos))
-    # convoluciones_poolings = Concatenate(submodelos, input_shape=(len(DIMENSION_KERNEL), 1))
-    # modelo_cnn.add(convoluciones_poolings)
-    # '''Intento de entrenar con kernels de distintos tamaños al mismo tiempo'''
-
-    # '''
-    # Capa Conv1D:
-    # Formato de entrada: (maxima_longitud_ejemplos, dimension_embedding)
-    # Cantidad de parámetros: (maxima_longitud_ejemplos*DIMENSION_KERNEL*CANTIDAD_FILTROS)+CANTIDAD_FILTROS
-    # Formato de salida: (1, maxima_longitud_ejemplos, CANTIDAD_FILTROS)
-    # '''
-    # modelo_cnn.add(Conv1D(input_shape=formato_entrada,
-    #                       filters=CANTIDAD_FILTROS,
-    #                       kernel_size=DIMENSION_KERNEL,
-    #                       padding='same',
-    #                       bias_initializer='random_uniform'))
-    # '''
-    # Capa MaxPooling1D:
-    # Formato de entrada: (1, maxima_longitud_ejemplos)
-    # Cantidad de parámetros: 0
-    # Formato de salida: (1, 1, CANTIDAD_FILTROS)
-    # '''
-    # modelo_cnn.add(MaxPooling1D(pool_size=maxima_longitud_ejemplos))
-    
-    # modelo_cnn.add(Dropout(PORCENTAJE_DROPEO))
-    # modelo_cnn.add(Flatten())
-
-    # modelo_cnn.add(Dropout(PORCENTAJE_DROPEO))
-    # modelo_cnn.add(Dense(NEURONAS_OCULTAS, activation = ACTIVACION_OCULTA))
-
-    # modelo_cnn.add(Dropout(PORCENTAJE_DROPEO))
-    # modelo_cnn.add(Dense(NEURONAS_SALIDA, activation = ACTIVACION_SALIDA))
-
-    # modelo_cnn.compile(optimizer = OPTIMIZADOR,
-    #                 loss = FUNCION_ERROR,
-    #                 metrics = ['accuracy'])
-
-    # if CALLBACK_PARADA:
-    #     parada_temprana = [EarlyStopping(monitor = 'loss',
-    #                                     patience = 0,
-    #                                     verbose = 2,
-    #                                     mode = 'auto')]
-    # else:
-    #     parada_temprana = None
-                                    
-    # modelo_cnn.summary()
-
-    # registro = modelo_cnn.fit(x=x_entrenamiento,
-    #                           y=y_entrenamiento,
-    #                           epochs=CANTIDAD_EPOCAS,
-    #                           callbacks=parada_temprana,
-    #                           verbose=1,
-    #                           batch_size=DIMENSION_BACHA,
-    #                           shuffle=True)
-
     # # Guardado del modelo
     # modelo_ruta = "cnn.h5"
     # modelo_cnn.save(modelo_ruta)
@@ -197,16 +154,16 @@ if MODELO_FINAL: # Entrenar modelo final
 else: # Análisis del modelo
     areas_roc = list()
     resultados_finales = list()
+
+    folds_dict = fa.kfolding(PARTICIONES, cantidad_ejemplos, PORCENTAJE_VALIDACION) # Se obtienen las particiones para realizar la validación cruzada
+
     for r in range(0, REPETICIONES, 1): # Número de veces que se repite la validación cruzada
         # Aleatoriza los ejemplos
         seed = random.random()
         random.seed(seed)
-        indices_aleatorios = np.arange(len(x_entrenamiento))
-        random.shuffle(indices_aleatorios)
-        x_entrenamiento = x_entrenamiento[indices_aleatorios]
-        y_entrenamiento = y_entrenamiento[indices_aleatorios]
-    
-        folds_dict = fa.kfolding(PARTICIONES, cantidad_ejemplos, PORCENTAJE_VALIDACION) # Se obtienen las particiones para realizar la validación cruzada
+        random.shuffle(x_entrenamiento)
+        random.seed(seed)
+        random.shuffle(y_entrenamiento)
 
         for i in range(0, PARTICIONES, 1): # Para cada partición
             cantidad_ejemplos_entrenamiento = len(x_entrenamiento[folds_dict[i][0]])
@@ -225,6 +182,8 @@ else: # Análisis del modelo
                                 #   weights=[embeddings_matriz], # Embeddings de GloVe
                                 #   trainable=True)(entrada)
 
+            dropout_embedding = Dropout(PORCENTAJE_DROPEO)(embedding)
+
             # Capas de convolución y pooling
             capas = list()
             for j in range(0, len(DIMENSION_KERNEL), 1):
@@ -232,7 +191,7 @@ else: # Análisis del modelo
                                     kernel_size=DIMENSION_KERNEL[j],
                                     padding='same',
                                     # use_bias=False)(entrada)
-                                    use_bias=False)(embedding)
+                                    use_bias=False)(dropout_embedding)
                 batch_normalization = BatchNormalization()(convolucion)
                 activacion = Activation(ACTIVACION_OCULTA)(batch_normalization)
                 pooling = MaxPooling1D(pool_size=maxima_longitud_ejemplos)(activacion)
@@ -240,7 +199,10 @@ else: # Análisis del modelo
                 capas.append(dropout)
 
             # Concatenación de las convoluciones y poolings
-            convoluciones_poolings = concatenate(capas)
+            if len(DIMENSION_KERNEL) > 1:
+                convoluciones_poolings = concatenate(capas)
+            else:
+                convoluciones_poolings = capas[0]
 
             # Capa de aplanado
             flatten = Flatten()(convoluciones_poolings)
@@ -263,31 +225,31 @@ else: # Análisis del modelo
             modelo_cnn = Model(input=entrada, output=dense3)
 
             # Se guarda la arquitectura del modelo en un archivo de imagen
-            plot_model(modelo_cnn, to_file="modelo_cnn_{}_arquitectura.png".format(i+1))
+            plot_model(modelo_cnn, to_file="modelo_cnn_arquitectura.png")
             ''' Arquitectura del modelo '''
 
             modelo_cnn.compile(optimizer=OPTIMIZADOR,
                                loss=FUNCION_ERROR,
-                               metrics=['accuracy'])
+                               metrics=[METRICA])
 
             # Callbacks
             bajar_velocidad = ReduceLROnPlateau(monitor='val_loss',
                                                 factor=0.1,
                                                 patience=2, # 10
                                                 verbose=1,
-                                                mode='min',
+                                                mode='auto',
                                                 min_delta=0.0001,
                                                 cooldown=0,
                                                 min_lr=0)
 
             parada_temprana_val_loss = EarlyStopping(monitor='val_loss',
                                                      patience=4,
-                                                     mode='min',
+                                                     mode='auto',
                                                      verbose=1)                                                     
 
             modelo_punto_de_control = ModelCheckpoint("mejor_modelo_cnn_{}.h5".format((r+1)*(i+1)),
-                                                      monitor="val_accuracy",
-                                                      mode="max",
+                                                      monitor="val_loss",
+                                                      mode="auto",
                                                       save_best_only=True,
                                                       verbose=1)
 
@@ -298,9 +260,10 @@ else: # Análisis del modelo
             registro = modelo_cnn.fit(x=x_entrenamiento[folds_dict[i][0]],
                                       y=y_entrenamiento[folds_dict[i][0]],
                                       epochs=CANTIDAD_EPOCAS,
-                                      callbacks=[parada_temprana_val_loss, bajar_velocidad, modelo_punto_de_control],
+                                      callbacks=[parada_temprana_val_loss, bajar_velocidad, modelo_punto_de_control], #
                                       validation_data=(x_entrenamiento[folds_dict[i][1]], y_entrenamiento[folds_dict[i][1]]),
                                       verbose=1,
+                                      class_weight=interacciones_pesos_dict,
                                       batch_size=DIMENSION_BATCH)
 
             # pplt.plot(registro.history["loss"], label="Error entrenamiento")
