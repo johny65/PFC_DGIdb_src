@@ -10,7 +10,6 @@ import statistics
 import random
 import math
 import os
-from keras.preprocessing import text, sequence
 
 def mostrar_imagen(imagen,etiqueta):
     plt.figure()
@@ -233,7 +232,8 @@ def generar_pesos_clases(etiquetas_neural_networks_ruta,
     pesos = compute_class_weight("balanced", clases_unicas, interaccion_por_etiqueta)
     pesos = dict(zip(clases_unicas, pesos))
     for i, interaccion in enumerate(interacciones_considerar):
-        interacciones_pesos_dict[i] = pesos[interaccion]
+        if interaccion not in excluir_interacciones_lista:
+            interacciones_pesos_dict[i] = pesos[interaccion]
     # print(interacciones_pesos_dict)
     # Normalización de los pesos
     # mayor_peso = max(interacciones_pesos_dict.values())
@@ -278,8 +278,58 @@ def ifg_entrenamiento_prueba_sin_reejemplificacion(etiquetas_archivo_ruta, # Arc
                 else:
                     interacciones_lista.append(linea[3])
 
+    pmids_cantidad_dict = Counter(pmids_lista)
     interacciones_cantidad_dict = Counter(interacciones_lista) # Clases y cantidad de ejemplos por clases ordenados de mayor a menor
 
+    # ifg_nueva_lista = list()
+    # for pmid, cantidad in pmids_cantidad_dict.items():
+    #     ifg_pmids_lista = list()
+    #     for i in range(0, len(pmids_lista), 1): # Interacciones por pmid
+    #         if pmids_lista[i] == pmid:
+    #             ifg_pmids_lista.append([pmids_lista[i], genes_lista[i], drogas_lista[i], interacciones_lista[i]])
+        
+    #     contador = 0
+    #     for ifg in ifg_pmids_lista:
+    #         if ifg[3] == "sin_interaccion":
+    #             contador += 1
+    #             ifg_nueva_lista.append(ifg)
+    #             ifg_pmids_lista.remove(ifg)
+    #     if contador == 0:
+    #         for ifg in ifg_pmids_lista:
+    #             ifg_nueva_lista.append(ifg)
+    #     elif len(ifg_pmids_lista) != 0:
+    #         for ifg in random.choices(ifg_pmids_lista, k=contador):
+    #             ifg_nueva_lista.append(ifg)
+        
+        # if len(ifg_pmids_lista) != 0:
+        #     if len(ifg_pmids_lista) < contador:
+        #         for ifg in random.choices(ifg_pmids_lista, k=contador):
+        #             ifg_nueva_lista.append(ifg)
+        #     else:
+        #         for ifg in random.sample(ifg_pmids_lista, k=contador):
+        #             ifg_nueva_lista.append(ifg)
+    # print(len(ifg_nueva_lista))
+    # nuevas_interacciones_lista = list()
+    # for ifg in ifg_nueva_lista:
+    #     nuevas_interacciones_lista.append(ifg[3])
+
+    # interacciones_nueva_cantidad_dict = Counter(nuevas_interacciones_lista)
+    # print(interacciones_nueva_cantidad_dict)
+
+    # for interaccion, cantidad in interacciones_nueva_cantidad_dict.items():
+    #     ifg_interacciones_lista = list()
+    #     for ifg in ifg_nueva_lista:
+    #         if ifg[3] == interaccion:
+    #             ifg_interacciones_lista.append(ifg)
+        
+    #     cantidad_ejemplos_prueba_clase_actual = int(cantidad*porcentaje_prueba) # ceil
+    #     for ifg in random.sample(ifg_interacciones_lista, k=cantidad_ejemplos_prueba_clase_actual):
+    #         ifg_prueba_lista.append(ifg)
+    #         ifg_interacciones_lista.remove(ifg)
+    #     for ifg in ifg_interacciones_lista:
+    #         ifg_entrenamiento_lista.append(ifg)
+
+    # Esto es lo que estaba antes
     for interaccion, cantidad in interacciones_cantidad_dict.items():
         ifg_interaccion_lista = list()
         for i in range(0, len(pmids_lista), 1): # Agrega a "ifg_interaccion_lista" las ifg con la interacción "interaccion"
@@ -289,7 +339,7 @@ def ifg_entrenamiento_prueba_sin_reejemplificacion(etiquetas_archivo_ruta, # Arc
             for ifg in ifg_interaccion_lista:
                 ifg_entrenamiento_lista.append(ifg)
         else:
-            cantidad_ejemplos_prueba_clase_actual = int(cantidad*porcentaje_prueba)
+            cantidad_ejemplos_prueba_clase_actual = int(cantidad*porcentaje_prueba) # ceil
             for ifg in random.sample(ifg_interaccion_lista, k=cantidad_ejemplos_prueba_clase_actual):
                 ifg_prueba_lista.append(ifg)
                 ifg_interaccion_lista.remove(ifg)
@@ -310,20 +360,19 @@ def grafica_longitud_publicaciones(publicaciones_directorio):
         archivo_ruta = os.path.join(publicaciones_directorio, archivo)
         with open(archivo_ruta, encoding="utf8") as publicacion:
             texto = publicacion.read()
-            publicaciones_dict[pmid] = texto
+            publicaciones_dict[pmid] = len(texto)
 
-    vocabulario = text.Tokenizer()
-    publicaciones_lista = list(publicaciones_dict.values())
-    vocabulario.fit_on_texts(publicaciones_lista)
-    secuencias_lista = vocabulario.texts_to_sequences(publicaciones_lista)
-    # secuencias_dict = dict()
-    # for pmid in publicaciones_dict.keys():
-    #     secuencias_dict[pmid] = 
-    for i, pmid in enumerate(publicaciones_dict.keys()):
-        publicaciones_dict[pmid] = secuencias_lista[i]
-
-    # print("Diccionario de publicaciones cargado.")
-    plt.plot(publicaciones_dict.values())
+    longitudes = list(publicaciones_dict.values())
+    longitudes.sort(reverse=True)
+    media = statistics.mean(longitudes)
+    print(media)
+    # print(sum(longitudes)/len(longitudes))
+    # x = [i for i in range(len(longitudes))]
+    plt.plot([50000]*len(longitudes))
+    plt.plot([media]*len(longitudes))
+    plt.plot(longitudes)
+    plt.legend()
+    plt.show()
 
 if __name__ == "__main__":
     etiquetas_archivo_ruta = "E:/Descargas/Python/PFC_DGIdb_src/etiquetas_neural_networks_3.csv"

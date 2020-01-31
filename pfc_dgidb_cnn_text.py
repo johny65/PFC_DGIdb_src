@@ -3,10 +3,11 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 import numpy as np
 from redes_neuronales_preprocesamiento import cargar_ejemplos, cargar_interacciones, otro_cargar_ejemplos # Carga de ejemplos
 from keras.models import Sequential, Model, load_model
-from keras.layers import Conv1D, MaxPooling1D, Concatenate, Dropout, Flatten, Dense, concatenate, Input, BatchNormalization, Activation, Embedding
+from keras.layers import Conv1D, MaxPooling1D, Concatenate, Dropout, Flatten, Dense, concatenate, Input, BatchNormalization, Activation, Embedding, GlobalMaxPooling1D
 from keras.callbacks import EarlyStopping, ReduceLROnPlateau, ModelCheckpoint
 from keras.optimizers import Adam,SGD # SGD: Gradiente descendiente
 from keras.utils import plot_model
+from keras import backend as K
 from sklearn.metrics import roc_curve, auc
 import matplotlib.pyplot as pplt
 import statistics
@@ -17,6 +18,8 @@ import math
 import os
 # os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID" # see issue #152
 # os.environ["CUDA_VISIBLE_DEVICES"] = "-1" # Para utilizar CPU en lugar de GPU
+
+K.set_floatx('float32')
 
 ''' Carga de datos '''
 etiquetas_neural_networks_ruta = "etiquetas_neural_networks_3.csv"
@@ -29,14 +32,14 @@ ejemplos_directorio = "replaced_new"
 # embeddings_file = "glove.6B.300d.txt"
 # top_palabras_frecuentes = 52
 dimension_embedding = 8 # Recomendado: 8
-maxima_longitud_ejemplos = 50000 # Longitud promedio de los ejemplos: 6500
+maxima_longitud_ejemplos = 100 # Longitud promedio de los ejemplos: 6500
 top_palabras_considerar = 100
 longitud_palabras_mayor_a = 0
 # cantidad_ejemplos_sin_interaccion = 1030 # old: 3144; new: 2944
-cantidad_ejemplos_clase_mayor = 1031
+cantidad_ejemplos_clase_mayor = 23274
 clases = 27
 ejemplos_cantidad = cantidad_ejemplos_clase_mayor*clases # Cantidad total de ejemplos a cargar
-balancear = False
+balancear = True
 vocabulario_bool = False
 secuencias_bool = False
 particiones_bool = True
@@ -50,11 +53,11 @@ CANTIDAD_EPOCAS = 100
 PORCENTAJE_VALIDACION = 0.2
 PORCENTAJE_PRUEBA = 0.2
 # Perceptrón
-CAPAS_OCULTAS = 2
+CAPAS_OCULTAS = 1
 ACTIVACION_OCULTA = "relu"
 ACTIVACION_SALIDA = "softmax"
 # Convolución
-CANTIDAD_FILTROS = 10 # Recomendado: 35
+CANTIDAD_FILTROS = 35 # Recomendado: 35
 DIMENSION_KERNEL = list()
 for i in range(3, 4, 1):
     DIMENSION_KERNEL.append(i)
@@ -110,6 +113,7 @@ interacciones_lista = cargar_interacciones(out_interacciones_ruta, True)
 interacciones_pesos_dict = fa.generar_pesos_clases(etiquetas_neural_networks_ruta,
                                                    excluir_interacciones_lista,
                                                    interacciones_lista)
+print(interacciones_pesos_dict)
 
 # print("Cargando embeddings pre-entrenados.")
 # embeddings_dict = dict()
@@ -190,11 +194,13 @@ else: # Análisis del modelo
                 convolucion = Conv1D(filters=CANTIDAD_FILTROS,
                                     kernel_size=DIMENSION_KERNEL[j],
                                     padding='same',
+                                    # padding='valid',
                                     # use_bias=False)(entrada)
                                     use_bias=False)(dropout_embedding)
                 batch_normalization = BatchNormalization()(convolucion)
                 activacion = Activation(ACTIVACION_OCULTA)(batch_normalization)
                 pooling = MaxPooling1D(pool_size=maxima_longitud_ejemplos)(activacion)
+                # pooling = GlobalMaxPooling1D()(activacion)
                 dropout = Dropout(PORCENTAJE_DROPEO)(pooling)
                 capas.append(dropout)
 
@@ -248,7 +254,7 @@ else: # Análisis del modelo
                                                      verbose=1)                                                     
 
             modelo_punto_de_control = ModelCheckpoint("mejor_modelo_cnn_{}.h5".format((r+1)*(i+1)),
-                                                      monitor="val_loss",
+                                                      monitor="val_categorical_accuracy",
                                                       mode="auto",
                                                       save_best_only=True,
                                                       verbose=1)
@@ -263,7 +269,7 @@ else: # Análisis del modelo
                                       callbacks=[parada_temprana_val_loss, bajar_velocidad, modelo_punto_de_control], #
                                       validation_data=(x_entrenamiento[folds_dict[i][1]], y_entrenamiento[folds_dict[i][1]]),
                                       verbose=1,
-                                      class_weight=interacciones_pesos_dict,
+                                    #   class_weight=interacciones_pesos_dict,
                                       batch_size=DIMENSION_BATCH)
 
             # pplt.plot(registro.history["loss"], label="Error entrenamiento")

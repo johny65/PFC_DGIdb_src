@@ -299,19 +299,16 @@ def acortar_secuencia(secuencia_lista,
                       top_palabras_considerar,
                       longitud_palabras_mayor_a,
                       top_palabras_frecuentes):
-    suma = 0
     cache = dict()
     for i in range(0, len(secuencia_lista), 1):
         print("Reduciendo el ejemplo: {}/{}".format(i,len(secuencia_lista)))
         clave = ",".join(ifg_balanceadas_lista[i])
         if cache.get(clave) is not None:
-            suma += len(cache[clave])
             secuencia_lista[i] = cache[clave]
             continue
 
         # No hace más falta llamar al compactar, este algoritmo ya evita que queden repetidos secuenciales
         ejemplo = secuencia_lista[i]
-        suma += len(ejemplo)
         gen = ifg_balanceadas_lista[i][1]
         droga = ifg_balanceadas_lista[i][2]
 
@@ -348,12 +345,11 @@ def acortar_secuencia(secuencia_lista,
                 num_words -= 1
                 ejemplo = ejemplo_reducido
 
-        maxima_longitud_ejemplos_truncada = 50000
-        secuencia_lista[i] = ejemplo_reducido[:maxima_longitud_ejemplos_truncada]
+        # maxima_longitud_ejemplos_truncada = 3000
+        # secuencia_lista[i] = ejemplo_reducido[:maxima_longitud_ejemplos_truncada]
         cache[clave] = ejemplo_reducido
         secuencia_lista[i] = ejemplo_reducido
 
-    print("Longitud promedio de los ejemplos: {}".format(suma/len(secuencia_lista)))
     return secuencia_lista
 
 def otro_cargar_ejemplos(etiquetas_neural_networks_ruta,
@@ -419,7 +415,7 @@ def otro_cargar_ejemplos(etiquetas_neural_networks_ruta,
 
         top_palabras_frecuentes += 2
 
-        maxima_longitud_ejemplos = len(vocabulario.index_word)
+        # maxima_longitud_ejemplos = len(vocabulario.index_word)
 
         print("Vocabulario generado.")
     else: # Cargar vocabulario pre-guardado
@@ -434,7 +430,7 @@ def otro_cargar_ejemplos(etiquetas_neural_networks_ruta,
 
         top_palabras_frecuentes += 2
 
-        maxima_longitud_ejemplos = len(vocabulario.index_word)
+        # maxima_longitud_ejemplos = len(vocabulario.index_word)
 
         print("Vocabulario pre-guardado cargado.")
 
@@ -501,16 +497,16 @@ def otro_cargar_ejemplos(etiquetas_neural_networks_ruta,
 
         # Se cargan en dos lista las interacciones fármaco-gen para entrenamiento y prueba
         print("Cargando listas de interacciones fármaco-gen para entrenamiento y prueba.")
-        # ifg_balanceadas_entrenamiento_lista, ifg_balanceadas_prueba_lista = ff.balancear_clases(etiquetas_neural_networks_ruta, # Archivo de etiquetas: pmid, gen, droga, interacción
-        #                                                                                         interacciones_lista_ruta, # Lista de etiquetas a considerar
-        #                                                                                         excluir_interacciones_lista, # Lista de interacciones que no se cargarán
-        #                                                                                         ejemplos_cantidad, # Cantidad de ejemplos a cargar
-        #                                                                                         porcentaje_prueba, # Porcentaje de los ejemplos que se utilizarán para la prueba
-        #                                                                                         balancear)
-        ifg_balanceadas_entrenamiento_lista, ifg_balanceadas_prueba_lista = ff.ifg_entrenamiento_prueba_sin_reejemplificacion(etiquetas_neural_networks_ruta, # Archivo de etiquetas: pmid, gen, droga, interacción
-                                                                                                                              interacciones_lista_ruta, # Lista de etiquetas a considerar
-                                                                                                                              excluir_interacciones_lista, # Lista de interacciones que no se cargarán
-                                                                                                                              porcentaje_prueba)
+        ifg_balanceadas_entrenamiento_lista, ifg_balanceadas_prueba_lista = ff.balancear_clases(etiquetas_neural_networks_ruta, # Archivo de etiquetas: pmid, gen, droga, interacción
+                                                                                                interacciones_lista_ruta, # Lista de etiquetas a considerar
+                                                                                                excluir_interacciones_lista, # Lista de interacciones que no se cargarán
+                                                                                                ejemplos_cantidad, # Cantidad de ejemplos a cargar
+                                                                                                porcentaje_prueba, # Porcentaje de los ejemplos que se utilizarán para la prueba
+                                                                                                balancear)
+        # ifg_balanceadas_entrenamiento_lista, ifg_balanceadas_prueba_lista = ff.ifg_entrenamiento_prueba_sin_reejemplificacion(etiquetas_neural_networks_ruta, # Archivo de etiquetas: pmid, gen, droga, interacción
+        #                                                                                                                       interacciones_lista_ruta, # Lista de etiquetas a considerar
+        #                                                                                                                       excluir_interacciones_lista, # Lista de interacciones que no se cargarán
+        #                                                                                                                       porcentaje_prueba)
         print("Listas de interacciones fármaco-gen para entrenamiento y prueba cargadas.")
 
         # Se generan las listas de ejemplos
@@ -549,7 +545,7 @@ def otro_cargar_ejemplos(etiquetas_neural_networks_ruta,
         ejemplos_x_prueba_secuencia_lista = np.asarray(ejemplos_x_prueba_secuencia_lista)
         ejemplos_y_prueba_lista = np.asarray(ejemplos_y_prueba_lista)
 
-        maxima_longitud_ejemplos = 50000
+        # maxima_longitud_ejemplos = 3000
 
         ejemplos_x_entrenamiento_secuencia_ajustada_lista = sequence.pad_sequences(sequences=ejemplos_x_entrenamiento_secuencia_lista,
                                                                                    maxlen=maxima_longitud_ejemplos,
