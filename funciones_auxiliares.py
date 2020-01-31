@@ -242,6 +242,25 @@ def generar_pesos_clases(etiquetas_neural_networks_ruta,
 
     return interacciones_pesos_dict
 
+
+def evaluar(modelo, x, y_real):
+    """Evalúa el modelo dado calculando la precisión teniendo en cuenta si acierta o no
+    la clase predicha con la real.
+    
+    Devuelve el porcentaje de precisión y la salida predicha.
+    """
+
+    pred_orig = modelo.predict(x)
+    pred = [np.asarray([1 if i == max(p1) else 0 for i in p1]) for p1 in pred_orig]
+
+    if len(pred) != len(y_real):
+        exit("La longitud de la salida deseada es distinta a la longitud de la salida de la red.")
+    
+    res = [any(p & y) for (p, y) in zip(pred, y_real)]
+    acc = np.count_nonzero(res) / len(res) * 100.0
+    return acc, pred_orig
+
+
 # ----------------------------------------------------------------------------------
 
 def ifg_entrenamiento_prueba_sin_reejemplificacion(etiquetas_archivo_ruta, # Archivo de etiquetas: pmid, gen, droga, interacción
