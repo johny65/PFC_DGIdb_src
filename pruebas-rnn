@@ -1,0 +1,57 @@
+model = Sequential()
+model.add(Embedding(max_words, EMB_SIZE, input_length=MAXIMA_LONGITUD_EJEMPLOS))
+model.add(Dropout(0.1))
+model.add(LSTM(units=UNIDADES_LSTM, dropout=0.1)) #, input_shape=formato_entrada))
+model.add(Dense(num_classes))
+model.add(Activation('sigmoid'))
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['categorical_accuracy'])
+
+UNIDADES_LSTM = 100
+
+MODELO_RNN = "rnn-16clases-500x4"
+~40
+
+MODELO_RNN = "rnn-16clases-500x3"
+Acc: 37.20538720538721
+
+
+MODELO_RNN = "rnn-16clases-500x5"
+Acc: 37.20538720538721
+
+
+MODELO_RNN = "rnn-16clases-1000x4-100u"
+Acc: 33.33333333333333
+------------------------------------
+
+UNIDADES_LSTM = 200
+
+MODELO_RNN = "rnn-16clases-500x4-200u"
+Acc: 35.35353535353536
+
+
+MODELO_RNN = "rnn-16clases-1000x4-200u"
+Acc: 38.88888888888889
+
+
+
+
+
+------------------------------
+top palabras 1000
+
+
+MODELO_RNN = "rnn-16clases-500x4-100u_v2"
+Acc: 49.158249158249156
+
+MODELO_RNN = "rnn-16clases-750x4-100u"
+Acc: 47.474747474747474
+
+MODELO_RNN = "rnn-16clases-500x4-50u"
+Acc: 34.84848484848485
+
+
+MODELO_RNN = "rnn-16clases-500x4-100u-50emb"
+Acc: 34.84848484848485
+
+MODELO_RNN = "rnn-16clases-750x4-200u-20emb"
+Acc: 37.878787878787875
