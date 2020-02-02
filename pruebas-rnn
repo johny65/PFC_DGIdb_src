@@ -42,6 +42,7 @@ top palabras 1000
 
 MODELO_RNN = "rnn-16clases-500x4-100u_v2"
 Acc: 49.158249158249156
+PROBAR MÁS ÉPOCAS
 
 MODELO_RNN = "rnn-16clases-750x4-100u"
 Acc: 47.474747474747474
@@ -55,3 +56,38 @@ Acc: 34.84848484848485
 
 MODELO_RNN = "rnn-16clases-750x4-200u-20emb"
 Acc: 37.878787878787875
+
+
+
+-----------------------------------------------------------------------------------------------------
+model.add(Embedding(input_dim=max_words, output_dim=UNIDADES_LSTM, input_length=MAXIMA_LONGITUD_EJEMPLOS))
+model.add(Dropout(0.1))
+model.add(LSTM(units=UNIDADES_LSTM, dropout=0.1)) #, input_shape=formato_entrada))
+model.add(Dense(num_classes))
+model.add(Activation('softmax'))
+model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['categorical_accuracy'])
+
+
+
+MODELO_RNN = "rnn/rnn-16clases-500x4-100ue"
+Acc: 52.02020202020202
+PROBAR MÁS ÉPOCAS
+
+
+
+
+------------------------------------------------------------------------------------------------------------
+model.add(Embedding(input_dim=max_words, output_dim=UNIDADES_LSTM, input_length=MAXIMA_LONGITUD_EJEMPLOS))
+model.add(SpatialDropout1D(0.3))
+model.add(LSTM(units=UNIDADES_LSTM, dropout=0.3, recurrent_dropout=0.3))
+model.add(Dense(UNIDADES_LSTM, activation='relu'))
+model.add(Dropout(0.3))
+model.add(Dense(num_classes, activation='softmax'))
+model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['categorical_accuracy'])
+
+
+MODELO_RNN = "rnn/rnnv2-16clases-500x4-100ue"
+Acc: 49.831649831649834
+
+MODELO_RNN = "rnn/rnnv2-16clases-500x4-100ue-01do"
+Acc: 47.81144781144781

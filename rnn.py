@@ -10,7 +10,7 @@ from redes_neuronales_preprocesamiento import cargar_interacciones, armar_test_s
 from funciones_auxiliares import evaluar
 
 from keras.models import Sequential, load_model
-from keras.layers import Dense, Embedding, GlobalMaxPool1D, Dropout, Conv1D, Activation, LSTM
+from keras.layers import Dense, Embedding, GlobalMaxPool1D, Dropout, Conv1D, Activation, LSTM, SpatialDropout1D
 from keras.optimizers import Adam
 from keras.callbacks import ReduceLROnPlateau, EarlyStopping, ModelCheckpoint
 from keras.preprocessing.text import Tokenizer
@@ -25,16 +25,15 @@ EJEMPLOS_DIRECTORIO = "replaced4"
 INTERACCIONES_RUTA = "interacciones_lista.txt"
 ETIQUETAS_RUTA = "etiquetas_neural_networks_4.csv"
 TOP_PALABRAS = 1000
-MAXIMA_LONGITUD_EJEMPLOS = 750
+MAXIMA_LONGITUD_EJEMPLOS = 500
 LONGITUD_PALABRAS = 4
-ARCHIVO_X = "x4_{}x{}.pickle".format(MAXIMA_LONGITUD_EJEMPLOS, LONGITUD_PALABRAS)
+ARCHIVO_X = "xs/x4_{}x{}.pickle".format(MAXIMA_LONGITUD_EJEMPLOS, LONGITUD_PALABRAS)
 INCLUIR_SIN_INTERACCION = False
 MODELO_SIMPLE = "model-simple.h5"
 MODELO_CONV = "model-conv.h5"
-MODELO_RNN = "rnn-16clases-750x4-200u-20emb"
+MODELO_RNN = "rnn/rnnv2-16clases-500x4-100ue-01do"
 EPOCAS = 20
-UNIDADES_LSTM = 200
-EMB_SIZE = 20
+UNIDADES_LSTM = 100
 
 
 def get_tokenizer():
@@ -242,14 +241,14 @@ def entrenar(entrenar_simple, entrenar_conv, entrenar_rnn, modelo=None):
     if entrenar_rnn:
         modelo = MODELO_RNN
         model = Sequential()
-        model.add(Embedding(max_words, EMB_SIZE, input_length=MAXIMA_LONGITUD_EJEMPLOS))
+        model.add(Embedding(input_dim=max_words, output_dim=UNIDADES_LSTM, input_length=MAXIMA_LONGITUD_EJEMPLOS))
+        model.add(SpatialDropout1D(0.1))
+        model.add(LSTM(units=UNIDADES_LSTM, dropout=0.1, recurrent_dropout=0.1))
+        model.add(Dense(UNIDADES_LSTM, activation='relu'))
         model.add(Dropout(0.1))
-        model.add(LSTM(units=UNIDADES_LSTM, dropout=0.1)) #, input_shape=formato_entrada))
-        # model.add(GlobalMaxPool1D())
-        model.add(Dense(num_classes))
-        model.add(Activation('sigmoid'))
-
-        model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['categorical_accuracy'])
+        model.add(Dense(num_classes, activation='softmax'))
+    
+        model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['categorical_accuracy'])
         model.summary()
 
         callbacks = [
@@ -265,6 +264,8 @@ def entrenar(entrenar_simple, entrenar_conv, entrenar_rnn, modelo=None):
                             validation_split=0.1,
                             callbacks=callbacks)
 
+        with open(MODELO_RNN + ".history", "wb") as f:
+            pickle.dump(history, f)
 
     loaded_model = load_model(modelo)
     acc, pred = evaluar(loaded_model, x_test, y_test)
