@@ -10,6 +10,9 @@ from keras.utils import np_utils
 import pickle
 from imblearn.over_sampling import SMOTE
 from gensim.models import Word2Vec
+import statistics
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
 
 DIMENSION_EMBEDDING = -1 # se autocalcula
 
@@ -292,21 +295,13 @@ def compactar_lista(lista):
             elemento_anterior = elemento
     return lista_compactada
 
-def acortar_secuencia(secuencia_lista,
-                      vocabulario,
-                      ifg_balanceadas_lista,
-                      maxima_longitud_ejemplos,
-                      top_palabras_considerar,
-                      longitud_palabras_mayor_a,
-                      top_palabras_frecuentes):
-    cache = dict()
-    for i in range(0, len(secuencia_lista), 1):
-        print("Reduciendo el ejemplo: {}/{}".format(i,len(secuencia_lista)))
-        clave = ",".join(ifg_balanceadas_lista[i])
-        if cache.get(clave) is not None:
-            secuencia_lista[i] = cache[clave]
-            continue
+def marcar_entidad_en_secuencia(secuencia_lista,
+                                vocabulario,
+                                ifg_balanceadas_lista,
+                                top_palabras_frecuentes):
 
+    for i in range(0, len(secuencia_lista), 1):
+        print("Procesando el ejemplo: {}/{}".format(i,len(secuencia_lista)))
         # No hace más falta llamar al compactar, este algoritmo ya evita que queden repetidos secuenciales
         ejemplo = secuencia_lista[i]
         gen = ifg_balanceadas_lista[i][1]
@@ -314,40 +309,17 @@ def acortar_secuencia(secuencia_lista,
 
         secuencia_gen = top_palabras_frecuentes+1
         secuencia_droga = top_palabras_frecuentes+2
+    
+        ejemplo_reducido = list()
+        for elemento in ejemplo:
+            palabra = vocabulario.index_word[elemento]
+            if palabra.startswith("xxx") and palabra.endswith("xxx"):
+                if palabra == "xxx{}xxx".format(gen):
+                    elemento = secuencia_gen
+                if palabra == "xxx{}xxx".format(droga):
+                    elemento = secuencia_droga
+            ejemplo_reducido.append(elemento)
 
-        num_words = top_palabras_considerar
-        ready = False
-        while not ready:
-            ejemplo_reducido = list()
-            for elemento in ejemplo:
-                if elemento == secuencia_gen:
-                    palabra = "xxx" + gen + "xxx"
-                elif elemento == secuencia_droga:
-                    palabra = "xxx" + droga + "xxx"
-                else:
-                    palabra = vocabulario.index_word[elemento]
-                # if palabra.startswith("xxx") and (palabra == "xxx{}xxx".format(gen) or palabra == "xxx{}xxx".format(droga)):
-                if palabra.startswith("xxx") and palabra.endswith("xxx"):
-                    if palabra == "xxx{}xxx".format(gen):
-                        elemento = secuencia_gen
-                    if palabra == "xxx{}xxx".format(droga):
-                        elemento = secuencia_droga
-                    # gen o droga de interés
-                    if not ejemplo_reducido or (ejemplo_reducido and ejemplo_reducido[-1] != elemento):
-                        ejemplo_reducido.append(elemento)
-                elif elemento <= num_words and len(palabra) > longitud_palabras_mayor_a:
-                    # agregar sólo si está dentro de máxima longitud
-                    if not ejemplo_reducido or (ejemplo_reducido and ejemplo_reducido[-1] != elemento):
-                        ejemplo_reducido.append(elemento)
-            if len(ejemplo_reducido) <= maxima_longitud_ejemplos or num_words < 0:
-                ready = True
-            else:
-                num_words -= 1
-                ejemplo = ejemplo_reducido
-
-        # maxima_longitud_ejemplos_truncada = 3000
-        # secuencia_lista[i] = ejemplo_reducido[:maxima_longitud_ejemplos_truncada]
-        cache[clave] = ejemplo_reducido
         secuencia_lista[i] = ejemplo_reducido
 
     return secuencia_lista
@@ -355,19 +327,17 @@ def acortar_secuencia(secuencia_lista,
 def otro_cargar_ejemplos(etiquetas_neural_networks_ruta,
                          interacciones_lista_ruta,
                          excluir_interacciones_lista,
-                         ejemplos_cantidad,
                          porcentaje_prueba,
                          publicaciones_directorio,
                          maxima_longitud_ejemplos,
-                         top_palabras_considerar,
-                         longitud_palabras_mayor_a,
-                         balancear,
                          vocabulario_bool,
                          secuencias_bool,
                          particiones_bool,
-                         embeddings_bool):
+                         padtrunc_where="post"):
 
     ''' Vocabulario '''
+    if not porcentaje_prueba:
+        porcentaje_prueba = 0.0
     top_palabras_frecuentes = 0
     vocabulario = text.Tokenizer()
     if vocabulario_bool: # Generar el vocabulario
@@ -435,20 +405,20 @@ def otro_cargar_ejemplos(etiquetas_neural_networks_ruta,
         print("Vocabulario pre-guardado cargado.")
 
     ''' Embeddings '''
-    embeddings_dict = dict()
-    if embeddings_bool: # Generar vectores de embedding
-        print("Generando diccionario de embeddings.")
-        palabras_lista = list()
-        for palabra, _ in vocabulario.word_index.items():
-            palabras_lista.append(palabra)
-        embeddings_dict = Word2Vec([palabras_lista], size=8, min_count=1, workers=8)
-        with open("embeddings_dict.pickle", "wb") as handle: # Guardar vocabulario en disco
-            pickle.dump(embeddings_dict, handle, protocol=pickle.HIGHEST_PROTOCOL)
-        print("Diccionario de embeddings generado.")
-    else: # Cargar vectores de embedding pre-guardados
-        with open("embeddings_dict.pickle", "rb") as handle:
-            embeddings_dict = pickle.load(handle)
-        print("Embeddings pre-guardados cargados.")
+    # embeddings_dict = dict()
+    # if embeddings_bool: # Generar vectores de embedding
+    #     print("Generando diccionario de embeddings.")
+    #     palabras_lista = list()
+    #     for palabra, _ in vocabulario.word_index.items():
+    #         palabras_lista.append(palabra)
+    #     embeddings_dict = Word2Vec([palabras_lista], size=8, min_count=1, workers=8)
+    #     with open("embeddings_dict.pickle", "wb") as handle: # Guardar vocabulario en disco
+    #         pickle.dump(embeddings_dict, handle, protocol=pickle.HIGHEST_PROTOCOL)
+    #     print("Diccionario de embeddings generado.")
+    # else: # Cargar vectores de embedding pre-guardados
+    #     with open("embeddings_dict.pickle", "rb") as handle:
+    #         embeddings_dict = pickle.load(handle)
+    #     print("Embeddings pre-guardados cargados.")
 
     ''' Secuencias '''
     secuencias_dict = dict()
@@ -470,16 +440,21 @@ def otro_cargar_ejemplos(etiquetas_neural_networks_ruta,
         with open("secuencias_dict.pickle", "rb") as handle: # Cargar vocabulario desde el disco
             secuencias_dict = pickle.load(handle)
         print("Secuencias pre-guardadas cargadas.")
+        lista = list()
+        for pmid, secuencia in secuencias_dict.items():
+            lista.append(len(secuencia))
+        # print("Máxima longitud de publicación: {}".format(max(lista)))
+        # print("Promedio de longitud de publicaciones: {}".format(statistics.mean(lista)))
+        # plt.hist(lista, bins=128)
+        # plt.show()
     # maxima_longitud_ejemplos = max([len(i) for i in secuencias_dict.values()])
-    print(maxima_longitud_ejemplos)
+    # print(maxima_longitud_ejemplos)
     # maxima_longitud_ejemplos_truncada = 6500*2
     # top_palabras_considerar = top_palabras_frecuentes+2
 
     ''' Generación particular de particiones '''
     ejemplos_x_entrenamiento_secuencia_ajustada_lista = list()
     ejemplos_y_entrenamiento_lista = list()
-    ejemplos_x_prueba_secuencia_ajustada_lista = list()
-    ejemplos_y_prueba_lista = list()
     if particiones_bool:
         # One hot encoding de la salida
         interacciones_lista = list()
@@ -497,139 +472,116 @@ def otro_cargar_ejemplos(etiquetas_neural_networks_ruta,
 
         # Se cargan en dos lista las interacciones fármaco-gen para entrenamiento y prueba
         print("Cargando listas de interacciones fármaco-gen para entrenamiento y prueba.")
-        ifg_balanceadas_entrenamiento_lista, ifg_balanceadas_prueba_lista = ff.balancear_clases(etiquetas_neural_networks_ruta, # Archivo de etiquetas: pmid, gen, droga, interacción
-                                                                                                interacciones_lista_ruta, # Lista de etiquetas a considerar
-                                                                                                excluir_interacciones_lista, # Lista de interacciones que no se cargarán
-                                                                                                ejemplos_cantidad, # Cantidad de ejemplos a cargar
-                                                                                                porcentaje_prueba, # Porcentaje de los ejemplos que se utilizarán para la prueba
-                                                                                                balancear)
-        # ifg_balanceadas_entrenamiento_lista, ifg_balanceadas_prueba_lista = ff.ifg_entrenamiento_prueba_sin_reejemplificacion(etiquetas_neural_networks_ruta, # Archivo de etiquetas: pmid, gen, droga, interacción
+        ifg_entrenamiento, _ = ff.balancear_clases(etiquetas_neural_networks_ruta, # Archivo de etiquetas: pmid, gen, droga, interacción
+                                                    interacciones_lista_ruta, # Lista de etiquetas a considerar
+                                                    excluir_interacciones_lista, # Lista de interacciones que no se cargarán
+                                                    0, # Cantidad de ejemplos a cargar
+                                                    0.0, # Porcentaje de los ejemplos que se utilizarán para la prueba
+                                                    False)
+# ifg_balanceadas_entrenamiento_lista, ifg_balanceadas_prueba_lista = ff.ifg_entrenamiento_prueba_sin_reejemplificacion(etiquetas_neural_networks_ruta, # Archivo de etiquetas: pmid, gen, droga, interacción
         #                                                                                                                       interacciones_lista_ruta, # Lista de etiquetas a considerar
         #                                                                                                                       excluir_interacciones_lista, # Lista de interacciones que no se cargarán
-        #                                                                                                                       porcentaje_prueba)
-        print("Listas de interacciones fármaco-gen para entrenamiento y prueba cargadas.")
+        #                                                                                                                       porcentaje_prueba,
+        #                                                                                                                       cantidad_ejemplos_sin_interaccion)
+        # print("Listas de interacciones fármaco-gen para entrenamiento y prueba cargadas.")
 
         # Se generan las listas de ejemplos
         print("Generando listas de ejemplos.")
         ejemplos_x_entrenamiento_lista = list()
-        ejemplos_x_prueba_lista = list()
-        for i in range(0, len(ifg_balanceadas_entrenamiento_lista), 1):
-            secuencia = secuencias_dict[ifg_balanceadas_entrenamiento_lista[i][0]]
+
+        for i in range(0, len(ifg_entrenamiento), 1):
+            secuencia = secuencias_dict[ifg_entrenamiento[i][0]]
             ejemplos_x_entrenamiento_lista.append(secuencia)
-            ejemplos_y_entrenamiento_lista.append(interacciones_numeros_dict[ifg_balanceadas_entrenamiento_lista[i][3]])
-        for i in range(0, len(ifg_balanceadas_prueba_lista), 1):
-            secuencia = secuencias_dict[ifg_balanceadas_prueba_lista[i][0]]
-            ejemplos_x_prueba_lista.append(secuencia)
-            ejemplos_y_prueba_lista.append(interacciones_numeros_dict[ifg_balanceadas_prueba_lista[i][3]])
+            ejemplos_y_entrenamiento_lista.append(interacciones_numeros_dict[ifg_entrenamiento[i][3]])
         print("Listas de ejemplos generadas.")
 
         # Se ajustan las secuencias a la longitud deseada
-        print("Ajustando secuencias a la longitud deseada.")
-        ejemplos_x_entrenamiento_secuencia_lista = acortar_secuencia(ejemplos_x_entrenamiento_lista,
+        ejemplos_x_entrenamiento_lista = marcar_entidad_en_secuencia(ejemplos_x_entrenamiento_lista,
                                                                      vocabulario,
-                                                                     ifg_balanceadas_entrenamiento_lista,
-                                                                     maxima_longitud_ejemplos,
-                                                                     top_palabras_considerar,
-                                                                     longitud_palabras_mayor_a,
+                                                                     ifg_entrenamiento,
                                                                      top_palabras_frecuentes)
-        ejemplos_x_prueba_secuencia_lista = acortar_secuencia(ejemplos_x_prueba_lista,
-                                                              vocabulario,
-                                                              ifg_balanceadas_prueba_lista,
-                                                              maxima_longitud_ejemplos,
-                                                              top_palabras_considerar,
-                                                              longitud_palabras_mayor_a,
-                                                              top_palabras_frecuentes)
 
-        ejemplos_x_entrenamiento_secuencia_lista = np.asarray(ejemplos_x_entrenamiento_secuencia_lista)
+        ejemplos_x_entrenamiento_secuencia_lista = np.asarray(ejemplos_x_entrenamiento_lista)
         ejemplos_y_entrenamiento_lista = np.asarray(ejemplos_y_entrenamiento_lista)
-        ejemplos_x_prueba_secuencia_lista = np.asarray(ejemplos_x_prueba_secuencia_lista)
-        ejemplos_y_prueba_lista = np.asarray(ejemplos_y_prueba_lista)
 
-        # maxima_longitud_ejemplos = 3000
+        # maxima_longitud_ejemplos = 10400
 
         ejemplos_x_entrenamiento_secuencia_ajustada_lista = sequence.pad_sequences(sequences=ejemplos_x_entrenamiento_secuencia_lista,
                                                                                    maxlen=maxima_longitud_ejemplos,
-                                                                                   padding="post",
-                                                                                   truncating="post")
-        ejemplos_x_prueba_secuencia_ajustada_lista = sequence.pad_sequences(sequences=ejemplos_x_prueba_secuencia_lista,
-                                                                            maxlen=maxima_longitud_ejemplos,
-                                                                            padding="post",
-                                                                            truncating="post")
-        print("Ajuste de longitud de secuencias terminado.")
+                                                                                   padding=padtrunc_where,
+                                                                                   truncating=padtrunc_where)
+        print("Marcado de entidades y ajuste de longitud de secuencias terminado.")
 
-        # if not balancear:
-        #     smote = SMOTE(sampling_strategy="auto", k_neighbors=1)
-        #     ejemplos_x_entrenamiento_secuencia_ajustada_lista, ejemplos_y_entrenamiento_lista = smote.fit_sample(ejemplos_x_entrenamiento_secuencia_ajustada_lista, ejemplos_y_entrenamiento_lista)
-        #     ejemplos_x_prueba_secuencia_ajustada_lista, ejemplos_y_prueba_lista = smote.fit_sample(ejemplos_x_prueba_secuencia_ajustada_lista, ejemplos_y_prueba_lista)
+        
+        x = ejemplos_x_entrenamiento_secuencia_ajustada_lista
+        y = ejemplos_y_entrenamiento_lista
+        x_entrenamiento, x_prueba, y_entrenamiento, y_prueba = train_test_split(x, y, test_size=porcentaje_prueba)
 
         # Guardado de una generación de particiones para agilizar
-        with open("x_entrenamiento.pickle", "wb") as handle:
-            pickle.dump(ejemplos_x_entrenamiento_secuencia_ajustada_lista, handle, protocol=pickle.HIGHEST_PROTOCOL)
-        with open("y_entrenamiento.pickle", "wb") as handle:
-            pickle.dump(ejemplos_y_entrenamiento_lista, handle, protocol=4)
-        with open("x_prueba.pickle", "wb") as handle:
-            pickle.dump(ejemplos_x_prueba_secuencia_ajustada_lista, handle, protocol=pickle.HIGHEST_PROTOCOL)
-        with open("y_prueba.pickle", "wb") as handle:
-            pickle.dump(ejemplos_y_prueba_lista, handle, protocol=4)
+        with open("x_entrenamiento_{}.pickle".format(padtrunc_where), "wb") as handle:
+            pickle.dump(x_entrenamiento, handle, protocol=pickle.HIGHEST_PROTOCOL)
+        with open("y_entrenamiento_{}.pickle".format(padtrunc_where), "wb") as handle:
+            pickle.dump(y_entrenamiento, handle, protocol=pickle.HIGHEST_PROTOCOL)
+        with open("x_prueba_{}.pickle".format(padtrunc_where), "wb") as handle:
+            pickle.dump(x_prueba, handle, protocol=pickle.HIGHEST_PROTOCOL)
+        with open("y_prueba_{}.pickle".format(padtrunc_where), "wb") as handle:
+            pickle.dump(y_prueba, handle, protocol=pickle.HIGHEST_PROTOCOL)
+    
     else:
         # Carga de una generación de particiones para agilizar
-        with open("x_entrenamiento.pickle", "rb") as handle:
-            ejemplos_x_entrenamiento_secuencia_ajustada_lista = pickle.load(handle)
-        with open("y_entrenamiento.pickle", "rb") as handle:
-            ejemplos_y_entrenamiento_lista = pickle.load(handle)
-        with open("x_prueba.pickle", "rb") as handle:
-            ejemplos_x_prueba_secuencia_ajustada_lista = pickle.load(handle)
-        with open("y_prueba.pickle", "rb") as handle:
-            ejemplos_y_prueba_lista = pickle.load(handle)
+        with open("x_entrenamiento_{}.pickle".format(padtrunc_where), "rb") as handle:
+            x_entrenamiento = pickle.load(handle)
+        with open("y_entrenamiento_{}.pickle".format(padtrunc_where), "rb") as handle:
+            y_entrenamiento = pickle.load(handle)
+        with open("x_prueba_{}.pickle".format(padtrunc_where), "rb") as handle:
+            x_prueba = pickle.load(handle)
+        with open("y_prueba_{}.pickle".format(padtrunc_where), "rb") as handle:
+            y_prueba = pickle.load(handle)
         # print("Particiones pre-guardadas cargadas.")
         # np.load("x_entrenamiento", ejemplos_x_entrenamiento_secuencia_ajustada_lista)
         # np.load("y_entrenamiento", ejemplos_y_entrenamiento_lista)
         # np.load("x_prueba", ejemplos_x_prueba_secuencia_ajustada_lista)
         # np.load("x_prueba", ejemplos_y_prueba_lista)
 
-    return (ejemplos_x_entrenamiento_secuencia_ajustada_lista, ejemplos_y_entrenamiento_lista), (ejemplos_x_prueba_secuencia_ajustada_lista, ejemplos_y_prueba_lista), top_palabras_frecuentes, vocabulario, embeddings_dict
+    return (x_entrenamiento, y_entrenamiento), (x_prueba, y_prueba), vocabulario
 
 # ------------------------------------------------------------------------------------------
 
 if __name__ == "__main__":
-    etiquetas_neural_networks_ruta = "etiquetas_neural_networks.csv"
+    etiquetas_neural_networks_ruta = "etiquetas_neural_networks_4.csv"
     interacciones_lista_ruta = "interacciones_lista.txt"
     excluir_interacciones_lista = []
-    ejemplos_cantidad = 50
     porcentaje_prueba = 0.2
-    publicaciones_directorio = "replaced_new"
-    maxima_longitud_ejemplos = 100
-    top_palabras_considerar = 50
-    balancear = False
+    publicaciones_directorio = "replaced4"
+    maxima_longitud_ejemplos = 10000
+    vocabulario_bool = True
+    secuencias_bool = True
+    particiones_bool = True
+    padtrunc_where = "post"
+
+    (x_entrenamiento, y_entrenamiento), (x_prueba, y_prueba), vocabulario = otro_cargar_ejemplos(etiquetas_neural_networks_ruta,
+                                                                                                 interacciones_lista_ruta,
+                                                                                                 excluir_interacciones_lista,
+                                                                                                 porcentaje_prueba,
+                                                                                                 publicaciones_directorio,
+                                                                                                 maxima_longitud_ejemplos,
+                                                                                                 vocabulario_bool,
+                                                                                                 secuencias_bool,
+                                                                                                 particiones_bool,
+                                                                                                 padtrunc_where)
+
     vocabulario_bool = False
     secuencias_bool = False
-    particiones_bool = False
-    # etiquetas_neural_networks_ruta = "test_etiquetas"
-    # ejemplos_directorio = "."
-    # embeddings_ruta = "E:/Descargas/Python/glove.6B.300d.txt"
-
-    # (xe, ye), (xt, yt) = cargar_ejemplos(etiquetas_neural_networks_ruta, ejemplos_directorio,
-    #                                  out_interacciones_ruta, porcentaje_test=0.2,
-    #                                  sin_interaccion_a_incluir=1)
-    # print("Cantidad x entrenamiento:", len(xe))
-    # print("Cantidad y entrenamiento:", len(ye))
-    # print("Cantidad x test:", len(xt))
-    # print("Cantidad y test:", len(yt))
-
-    (x_entrenamiento, y_entrenamiento), (x_prueba, y_prueba) = otro_cargar_ejemplos(etiquetas_neural_networks_ruta,
-                                                                                    interacciones_lista_ruta,
-                                                                                    excluir_interacciones_lista,
-                                                                                    ejemplos_cantidad,
-                                                                                    porcentaje_prueba,
-                                                                                    publicaciones_directorio,
-                                                                                    maxima_longitud_ejemplos,
-                                                                                    top_palabras_considerar,
-                                                                                    balancear,
-                                                                                    vocabulario_bool,
-                                                                                    secuencias_bool,
-                                                                                    particiones_bool)
-
-    # print(x_entrenamiento[0])                                                                    
-    # print(y_entrenamiento[0])
-    # print(x_prueba[15])
-    # print(y_prueba[15])
+    particiones_bool = True
+    padtrunc_where = "pre"
+    (x_entrenamiento, y_entrenamiento), (x_prueba, y_prueba), vocabulario = otro_cargar_ejemplos(etiquetas_neural_networks_ruta,
+                                                                                                 interacciones_lista_ruta,
+                                                                                                 excluir_interacciones_lista,
+                                                                                                 porcentaje_prueba,
+                                                                                                 publicaciones_directorio,
+                                                                                                 maxima_longitud_ejemplos,
+                                                                                                 vocabulario_bool,
+                                                                                                 secuencias_bool,
+                                                                                                 particiones_bool,
+                                                                                                 padtrunc_where)
+    

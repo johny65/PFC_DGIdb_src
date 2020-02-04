@@ -266,7 +266,8 @@ def evaluar(modelo, x, y_real):
 def ifg_entrenamiento_prueba_sin_reejemplificacion(etiquetas_archivo_ruta, # Archivo de etiquetas: pmid, gen, droga, interacción
                                                     interacciones_lista_ruta, # Lista de etiquetas a considerar
                                                     excluir_interacciones_lista, # Lista de interacciones que no se cargarán
-                                                    porcentaje_prueba): # Porcentaje de los ejemplos que se utilizarán para la prueba
+                                                    porcentaje_prueba, # Porcentaje de los ejemplos que se utilizarán para la prueba
+                                                    cantidad_ejemplos_sin_interaccion): 
     '''
     Devuelve los conjuntos de interacciones fármaco-gen para entrenamiento y prueba.
     No se cargan ifg sin_interaccion en el conjunto de prueba.
@@ -297,68 +298,32 @@ def ifg_entrenamiento_prueba_sin_reejemplificacion(etiquetas_archivo_ruta, # Arc
                 else:
                     interacciones_lista.append(linea[3])
 
-    pmids_cantidad_dict = Counter(pmids_lista)
+    # otra_lista = list()
+    # for pmid_unico in dict.fromkeys(pmids_lista):
+    #     genes_por_pmid = list()
+    #     drogas_por_pmid = list()
+    #     for i in range(0, len(pmids_lista), 1):
+    #         if pmid_unico == pmids_lista[i] and interacciones_lista[i] != "sin_interaccion":
+    #             genes_por_pmid.append(genes_lista[i])
+    #             drogas_por_pmid.append(drogas_lista[i])
+    #         interacciones_genes = list()
+    #         interacciones_drogas = list()
+    #         for 
+
+
+    # pmids_cantidad_dict = Counter(pmids_lista)
     interacciones_cantidad_dict = Counter(interacciones_lista) # Clases y cantidad de ejemplos por clases ordenados de mayor a menor
 
-    # ifg_nueva_lista = list()
-    # for pmid, cantidad in pmids_cantidad_dict.items():
-    #     ifg_pmids_lista = list()
-    #     for i in range(0, len(pmids_lista), 1): # Interacciones por pmid
-    #         if pmids_lista[i] == pmid:
-    #             ifg_pmids_lista.append([pmids_lista[i], genes_lista[i], drogas_lista[i], interacciones_lista[i]])
-        
-    #     contador = 0
-    #     for ifg in ifg_pmids_lista:
-    #         if ifg[3] == "sin_interaccion":
-    #             contador += 1
-    #             ifg_nueva_lista.append(ifg)
-    #             ifg_pmids_lista.remove(ifg)
-    #     if contador == 0:
-    #         for ifg in ifg_pmids_lista:
-    #             ifg_nueva_lista.append(ifg)
-    #     elif len(ifg_pmids_lista) != 0:
-    #         for ifg in random.choices(ifg_pmids_lista, k=contador):
-    #             ifg_nueva_lista.append(ifg)
-        
-        # if len(ifg_pmids_lista) != 0:
-        #     if len(ifg_pmids_lista) < contador:
-        #         for ifg in random.choices(ifg_pmids_lista, k=contador):
-        #             ifg_nueva_lista.append(ifg)
-        #     else:
-        #         for ifg in random.sample(ifg_pmids_lista, k=contador):
-        #             ifg_nueva_lista.append(ifg)
-    # print(len(ifg_nueva_lista))
-    # nuevas_interacciones_lista = list()
-    # for ifg in ifg_nueva_lista:
-    #     nuevas_interacciones_lista.append(ifg[3])
-
-    # interacciones_nueva_cantidad_dict = Counter(nuevas_interacciones_lista)
-    # print(interacciones_nueva_cantidad_dict)
-
-    # for interaccion, cantidad in interacciones_nueva_cantidad_dict.items():
-    #     ifg_interacciones_lista = list()
-    #     for ifg in ifg_nueva_lista:
-    #         if ifg[3] == interaccion:
-    #             ifg_interacciones_lista.append(ifg)
-        
-    #     cantidad_ejemplos_prueba_clase_actual = int(cantidad*porcentaje_prueba) # ceil
-    #     for ifg in random.sample(ifg_interacciones_lista, k=cantidad_ejemplos_prueba_clase_actual):
-    #         ifg_prueba_lista.append(ifg)
-    #         ifg_interacciones_lista.remove(ifg)
-    #     for ifg in ifg_interacciones_lista:
-    #         ifg_entrenamiento_lista.append(ifg)
-
-    # Esto es lo que estaba antes
     for interaccion, cantidad in interacciones_cantidad_dict.items():
         ifg_interaccion_lista = list()
         for i in range(0, len(pmids_lista), 1): # Agrega a "ifg_interaccion_lista" las ifg con la interacción "interaccion"
             if interacciones_lista[i] == interaccion:
                 ifg_interaccion_lista.append([pmids_lista[i], genes_lista[i], drogas_lista[i], interacciones_lista[i]])
         if interaccion == "sin_interaccion":
-            for ifg in ifg_interaccion_lista:
+            for ifg in random.sample(ifg_interaccion_lista, k=cantidad_ejemplos_sin_interaccion) :
                 ifg_entrenamiento_lista.append(ifg)
         else:
-            cantidad_ejemplos_prueba_clase_actual = int(cantidad*porcentaje_prueba) # ceil
+            cantidad_ejemplos_prueba_clase_actual = math.ceil(cantidad*porcentaje_prueba) # ceil
             for ifg in random.sample(ifg_interaccion_lista, k=cantidad_ejemplos_prueba_clase_actual):
                 ifg_prueba_lista.append(ifg)
                 ifg_interaccion_lista.remove(ifg)
@@ -384,14 +349,54 @@ def grafica_longitud_publicaciones(publicaciones_directorio):
     longitudes = list(publicaciones_dict.values())
     longitudes.sort(reverse=True)
     media = statistics.mean(longitudes)
+    print(longitudes[0])
     print(media)
     # print(sum(longitudes)/len(longitudes))
     # x = [i for i in range(len(longitudes))]
-    plt.plot([50000]*len(longitudes))
+    # plt.plot([50000]*len(longitudes))
     plt.plot([media]*len(longitudes))
     plt.plot(longitudes)
+    plt.savefig("distribucion_longitudes.png")
     plt.legend()
     plt.show()
+
+# ------------------------------------------------------------------------------------------------------------------------------------
+
+def prueba_publicaciones(etiquetas_neural_networks_ruta,
+                         publicaciones_directorio):
+
+    # Se cargan las publicaciones en un diccionario: publicaciones_dict[pmid] = contenido
+    print("Cargando diccionario de publicaciones.")
+    publicaciones_dict = dict()
+    publicaciones_en_directorio = os.listdir(publicaciones_directorio)
+    for archivo in publicaciones_en_directorio:
+        pmid = archivo.split(".")[0]
+        archivo_ruta = os.path.join(publicaciones_directorio, archivo)
+        with open(archivo_ruta, encoding="utf8") as publicacion:
+            texto = publicacion.read()
+            publicaciones_dict[pmid] = texto.split()
+    print("Diccionario de publicaciones cargado.")
+
+    # Se cargan las interacciones fármaco-gen en una lista
+    print("Cargando las interacciones fármaco-gen en una lista.")
+    pmids_lista = list()
+    genes_lista = list()
+    drogas_lista = list()
+    interaccion_lista = list()
+    with open(etiquetas_neural_networks_ruta, encoding="utf8") as etiquetas_neural_networks:
+        lector_csv = csv.reader(etiquetas_neural_networks, delimiter=',', quoting=csv.QUOTE_ALL)
+        for ifg in lector_csv:
+            if ifg[3] != "sin_interaccion":
+                pmids_lista.append(ifg[0])
+                genes_lista.append(ifg[1])
+                drogas_lista.append(ifg[2])
+                interaccion_lista.append(ifg[3])
+    print("Lista de interacciones fármaco-gen cargadas.")
+
+    longitudes_lista = list()
+    for pmid, contenido in publicaciones_dict.items():
+        longitudes_lista.append(len(contenido))
+    print(max(longitudes_lista))
 
 if __name__ == "__main__":
     etiquetas_archivo_ruta = "E:/Descargas/Python/PFC_DGIdb_src/etiquetas_neural_networks_3.csv"
@@ -403,6 +408,12 @@ if __name__ == "__main__":
 
     publicaciones_directorio = "replaced_new"
     grafica_longitud_publicaciones(publicaciones_directorio)
+
+    ifg_dgidb_ruta = "PFC_DGIdb/pfc_dgidb_export_ifg.csv"
+    ejemplos_directorio = "replaced_new"
+
+    # prueba_publicaciones(etiquetas_archivo_ruta,
+    #                      ejemplos_directorio)
 
     # ifg_balanceadas_entrenamiento_lista, ifg_balanceadas_prueba_lista = balancear_clases(etiquetas_archivo_ruta, # Archivo de etiquetas: pmid, gen, droga, interacción
     #                                                                                      interacciones_lista_ruta, # Lista de etiquetas a considerar

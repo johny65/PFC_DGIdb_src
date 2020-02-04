@@ -15,13 +15,3 @@ modulator
 activator
 negative modulator
 other
-suppressor
-blocker
-stimulator
-allosteric modulator
-unknown
-partial antagonist
-inhibitory immune response
-binding
-inhibitor, competitive
-inverse agonist

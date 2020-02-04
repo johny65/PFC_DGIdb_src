@@ -9,6 +9,7 @@ from keras.optimizers import Adam,SGD # SGD: Gradiente descendiente
 from keras.utils import plot_model
 from keras import backend as K
 from sklearn.metrics import roc_curve, auc
+from sklearn.model_selection import StratifiedKFold
 import matplotlib.pyplot as pplt
 import statistics
 import funciones_auxiliares as fa
@@ -16,34 +17,28 @@ import math
 import random
 import math
 import os
+import pathlib
+import pickle
 # os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID" # see issue #152
 # os.environ["CUDA_VISIBLE_DEVICES"] = "-1" # Para utilizar CPU en lugar de GPU
 
 K.set_floatx('float32')
 
 ''' Carga de datos '''
-etiquetas_neural_networks_ruta = "etiquetas_neural_networks_3.csv"
+etiquetas_neural_networks_ruta = "etiquetas_neural_networks_4.csv"
 out_interacciones_ruta = "interacciones_lista.txt"
 excluir_interacciones_lista = []
-ejemplos_directorio = "replaced_new"
+ejemplos_directorio = "replaced4"
 # embeddings_file = "glove.6B.50d.txt"
 # embeddings_file = "glove.6B.100d.txt"
 # embeddings_file = "glove.6B.200d.txt"
 # embeddings_file = "glove.6B.300d.txt"
-# top_palabras_frecuentes = 52
-dimension_embedding = 8 # Recomendado: 8
-maxima_longitud_ejemplos = 100 # Longitud promedio de los ejemplos: 6500
-top_palabras_considerar = 100
-longitud_palabras_mayor_a = 0
-# cantidad_ejemplos_sin_interaccion = 1030 # old: 3144; new: 2944
-cantidad_ejemplos_clase_mayor = 23274
-clases = 27
-ejemplos_cantidad = cantidad_ejemplos_clase_mayor*clases # Cantidad total de ejemplos a cargar
-balancear = True
+dimension_embedding = 128 # Recomendado: 8
+maxima_longitud_ejemplos = 10000 # Máxima: 157170; Promedio: 5201.110850439883
 vocabulario_bool = False
 secuencias_bool = False
-particiones_bool = True
-embeddings_bool = False
+particiones_bool = False
+padtrunc_where = "post"
 
 ''' Parámetros del modelo '''
 PARTICIONES = 5 # Número de particiones para la validación cruzada
@@ -51,15 +46,14 @@ REPETICIONES = 1 # Número de repeticiones de la validación cruzada
 PORCENTAJE_DROPEO = 0.4 # Recomendado: 0.4
 CANTIDAD_EPOCAS = 100
 PORCENTAJE_VALIDACION = 0.2
-PORCENTAJE_PRUEBA = 0.2
 # Perceptrón
 CAPAS_OCULTAS = 1
 ACTIVACION_OCULTA = "relu"
 ACTIVACION_SALIDA = "softmax"
 # Convolución
-CANTIDAD_FILTROS = 35 # Recomendado: 35
+CANTIDAD_FILTROS = 100 # Recomendado: 35
 DIMENSION_KERNEL = list()
-for i in range(3, 4, 1):
+for i in range(3, 10, 2):
     DIMENSION_KERNEL.append(i)
 DIMENSION_KERNEL = tuple(DIMENSION_KERNEL)
 print(DIMENSION_KERNEL)
@@ -68,38 +62,21 @@ OPTIMIZADOR = "adam"
 FUNCION_ERROR = "categorical_crossentropy"
 METRICA = "categorical_accuracy" # categorical_accuracy
 # Parámetros de entrenamiento
-DIMENSION_BATCH = 32
+DIMENSION_BATCH = 8
 
 MODELO_FINAL = False
 ''' --------------------- '''
 
-# (x_entrenamiento, y_entrenamiento), (x_prueba, y_prueba) = cargar_ejemplos(etiquetas_neural_networks_ruta,
-#                                                                            ejemplos_directorio,
-#                                                                            out_interacciones_ruta,
-#                                                                            embeddings_file=embeddings_file,
-#                                                                            top_palabras=top_palabras_frecuentes,
-#                                                                            max_longitud=maxima_longitud_ejemplos,
-#                                                                            incluir_sin_interacciones = True,
-#                                                                            sin_interaccion_a_incluir = cantidad_ejemplos_sin_interaccion, # 2944
-#                                                                            randomize=False,
-#                                                                            porcentaje_test=PORCENTAJE_PRUEBA,
-#                                                                            ejemplos_cantidad=ejemplos_cantidad,
-#                                                                            vocabulario_global=True)
-
-(x_entrenamiento, y_entrenamiento), (x_prueba, y_prueba), top_palabras_frecuentes, vocabulario, embeddings_dict = otro_cargar_ejemplos(etiquetas_neural_networks_ruta,
-                                                                                                                                        out_interacciones_ruta,
-                                                                                                                                        excluir_interacciones_lista,
-                                                                                                                                        ejemplos_cantidad,
-                                                                                                                                        PORCENTAJE_PRUEBA,
-                                                                                                                                        ejemplos_directorio,
-                                                                                                                                        maxima_longitud_ejemplos,
-                                                                                                                                        top_palabras_considerar,
-                                                                                                                                        longitud_palabras_mayor_a,
-                                                                                                                                        balancear,
-                                                                                                                                        vocabulario_bool,
-                                                                                                                                        secuencias_bool,
-                                                                                                                                        particiones_bool,
-                                                                                                                                        embeddings_bool)
+(x_entrenamiento, y_entrenamiento), (x_prueba, y_prueba), vocabulario = otro_cargar_ejemplos(etiquetas_neural_networks_ruta,
+                                                                                            out_interacciones_ruta,
+                                                                                            excluir_interacciones_lista,
+                                                                                            None,
+                                                                                            ejemplos_directorio,
+                                                                                            maxima_longitud_ejemplos,
+                                                                                            vocabulario_bool,
+                                                                                            secuencias_bool,
+                                                                                            particiones_bool,
+                                                                                            padtrunc_where)
 
 cantidad_ejemplos = x_entrenamiento.shape[0]
 cantidad_ejemplos_entrenamiento = 0
@@ -159,149 +136,144 @@ else: # Análisis del modelo
     areas_roc = list()
     resultados_finales = list()
 
-    folds_dict = fa.kfolding(PARTICIONES, cantidad_ejemplos, PORCENTAJE_VALIDACION) # Se obtienen las particiones para realizar la validación cruzada
+    kfold = StratifiedKFold(n_splits=PARTICIONES, shuffle=True)
+    # folds_dict = fa.kfolding(PARTICIONES, cantidad_ejemplos, PORCENTAJE_VALIDACION) # Se obtienen las particiones para realizar la validación cruzada
 
-    for r in range(0, REPETICIONES, 1): # Número de veces que se repite la validación cruzada
-        # Aleatoriza los ejemplos
-        seed = random.random()
-        random.seed(seed)
-        random.shuffle(x_entrenamiento)
-        random.seed(seed)
-        random.shuffle(y_entrenamiento)
+    y_para_split = [y.tolist().index(1) for y in y_entrenamiento]
+    i = 0
+    for train_index, val_index in kfold.split(x_entrenamiento, y_para_split):
+        i += 1
+        cantidad_ejemplos_entrenamiento = len(train_index)
+        cantidad_ejemplos_validacion = len(val_index)
 
-        for i in range(0, PARTICIONES, 1): # Para cada partición
-            cantidad_ejemplos_entrenamiento = len(x_entrenamiento[folds_dict[i][0]])
-            cantidad_ejemplos_validacion = len(x_entrenamiento[folds_dict[i][1]])
+        ''' Arquitectura del modelo '''
+        formato_entrada = (maxima_longitud_ejemplos,)
 
-            ''' Arquitectura del modelo '''
-            formato_entrada = (maxima_longitud_ejemplos,)
+        # Capa de entrada
+        entrada = Input(formato_entrada)
 
-            # Capa de entrada
-            entrada = Input(formato_entrada)
+        # Capa de embedding
+        embedding = Embedding(input_dim=len(vocabulario.index_word),
+                                output_dim=dimension_embedding,
+                                input_length=maxima_longitud_ejemplos)(entrada)
+                            #   weights=[embeddings_matriz], # Embeddings de GloVe
+                            #   trainable=True)(entrada)
 
-            # Capa de embedding
-            embedding = Embedding(input_dim=top_palabras_frecuentes,
-                                  output_dim=dimension_embedding,
-                                  input_length=maxima_longitud_ejemplos)(entrada)
-                                #   weights=[embeddings_matriz], # Embeddings de GloVe
-                                #   trainable=True)(entrada)
+        # dropout_embedding = Dropout(PORCENTAJE_DROPEO)(embedding)
 
-            dropout_embedding = Dropout(PORCENTAJE_DROPEO)(embedding)
+        # Capas de convolución y pooling
+        capas = list()
+        for j in range(0, len(DIMENSION_KERNEL), 1):
+            convolucion = Conv1D(filters=CANTIDAD_FILTROS,
+                                kernel_size=DIMENSION_KERNEL[j],
+                                padding='same',
+                                # padding='valid',
+                                # use_bias=False)(entrada)
+                                use_bias=False)(embedding) # dropout_embedding
+            batch_normalization = BatchNormalization()(convolucion)
+            activacion = Activation(ACTIVACION_OCULTA)(batch_normalization)
+            # pooling = MaxPooling1D(pool_size=maxima_longitud_ejemplos)(activacion)
+            pooling = GlobalMaxPooling1D()(activacion)
+            dropout = Dropout(PORCENTAJE_DROPEO)(pooling)
+            capas.append(dropout)
 
-            # Capas de convolución y pooling
-            capas = list()
-            for j in range(0, len(DIMENSION_KERNEL), 1):
-                convolucion = Conv1D(filters=CANTIDAD_FILTROS,
-                                    kernel_size=DIMENSION_KERNEL[j],
-                                    padding='same',
-                                    # padding='valid',
-                                    # use_bias=False)(entrada)
-                                    use_bias=False)(dropout_embedding)
-                batch_normalization = BatchNormalization()(convolucion)
-                activacion = Activation(ACTIVACION_OCULTA)(batch_normalization)
-                pooling = MaxPooling1D(pool_size=maxima_longitud_ejemplos)(activacion)
-                # pooling = GlobalMaxPooling1D()(activacion)
-                dropout = Dropout(PORCENTAJE_DROPEO)(pooling)
-                capas.append(dropout)
+        # Concatenación de las convoluciones y poolings
+        if len(DIMENSION_KERNEL) > 1:
+            convoluciones_poolings = concatenate(capas)
+        else:
+            convoluciones_poolings = capas[0]
 
-            # Concatenación de las convoluciones y poolings
-            if len(DIMENSION_KERNEL) > 1:
-                convoluciones_poolings = concatenate(capas)
+        # Capa de aplanado
+        # flatten = Flatten()(convoluciones_poolings)
+        
+        # Capas ocultas
+        ultima_capa = 0
+        dense = 0
+        for j in range(0, CAPAS_OCULTAS, 1):
+            if j == 0:
+                dense = Dense(NEURONAS_OCULTAS, use_bias=False)(convoluciones_poolings) # flatten
             else:
-                convoluciones_poolings = capas[0]
+                dense = Dense(NEURONAS_OCULTAS, use_bias=False)(ultima_capa)
+            batch_normalization = BatchNormalization()(dense)
+            activacion = Activation(ACTIVACION_OCULTA)(batch_normalization)
+            dropout = Dropout(PORCENTAJE_DROPEO)(activacion)
+            ultima_capa = dropout
+        
+        # Capa de salida
+        dense3 = Dense(NEURONAS_SALIDA, activation=ACTIVACION_SALIDA)(ultima_capa)
+        modelo_cnn = Model(input=entrada, output=dense3)
 
-            # Capa de aplanado
-            flatten = Flatten()(convoluciones_poolings)
-            
-            # Capas ocultas
-            ultima_capa = 0
-            dense = 0
-            for j in range(0, CAPAS_OCULTAS, 1):
-                if j == 0:
-                    dense = Dense(NEURONAS_OCULTAS, use_bias=False)(flatten)
-                else:
-                    dense = Dense(NEURONAS_OCULTAS, use_bias=False)(ultima_capa)
-                batch_normalization = BatchNormalization()(dense)
-                activacion = Activation(ACTIVACION_OCULTA)(batch_normalization)
-                dropout = Dropout(PORCENTAJE_DROPEO)(activacion)
-                ultima_capa = dropout
-            
-            # Capa de salida
-            dense3 = Dense(NEURONAS_SALIDA, activation=ACTIVACION_SALIDA)(ultima_capa)
-            modelo_cnn = Model(input=entrada, output=dense3)
+        # Se guarda la arquitectura del modelo en un archivo de imagen
+        plot_model(modelo_cnn, to_file="modelo_cnn_arquitectura.png")
+        ''' Arquitectura del modelo '''
 
-            # Se guarda la arquitectura del modelo en un archivo de imagen
-            plot_model(modelo_cnn, to_file="modelo_cnn_arquitectura.png")
-            ''' Arquitectura del modelo '''
+        modelo_cnn.compile(optimizer=OPTIMIZADOR,
+                            loss=FUNCION_ERROR,
+                            metrics=[METRICA])
 
-            modelo_cnn.compile(optimizer=OPTIMIZADOR,
-                               loss=FUNCION_ERROR,
-                               metrics=[METRICA])
+        # Callbacks
+        bajar_velocidad = ReduceLROnPlateau(monitor='val_loss',
+                                            factor=0.1,
+                                            patience=2, # 10
+                                            verbose=1,
+                                            mode='auto',
+                                            min_delta=0.0001,
+                                            cooldown=0,
+                                            min_lr=0)
 
-            # Callbacks
-            bajar_velocidad = ReduceLROnPlateau(monitor='val_loss',
-                                                factor=0.1,
-                                                patience=2, # 10
-                                                verbose=1,
-                                                mode='auto',
-                                                min_delta=0.0001,
-                                                cooldown=0,
-                                                min_lr=0)
+        parada_temprana_val_loss = EarlyStopping(monitor='val_loss',
+                                                    patience=4, # 4
+                                                    mode='auto',
+                                                    verbose=1)                                                     
 
-            parada_temprana_val_loss = EarlyStopping(monitor='val_loss',
-                                                     patience=4,
-                                                     mode='auto',
-                                                     verbose=1)                                                     
+        modelo_punto_de_control = ModelCheckpoint("mejor_modelo_cnn_{}.h5".format(i+1),
+                                                    monitor="val_categorical_accuracy",
+                                                    mode="auto",
+                                                    save_best_only=True,
+                                                    verbose=1)
 
-            modelo_punto_de_control = ModelCheckpoint("mejor_modelo_cnn_{}.h5".format((r+1)*(i+1)),
-                                                      monitor="val_categorical_accuracy",
-                                                      mode="auto",
-                                                      save_best_only=True,
-                                                      verbose=1)
+        modelo_cnn.summary() # Detalles del modelo
 
-            modelo_cnn.summary() # Detalles del modelo
+        print("Particion: {}/{}".format(i, PARTICIONES))
 
-            print("Repetición: {}/{} - Particion: {}/{}".format(r+1, REPETICIONES, i+1, PARTICIONES))
+        registro = modelo_cnn.fit(x=x_entrenamiento[train_index],
+                                    y=y_entrenamiento[train_index],
+                                    epochs=CANTIDAD_EPOCAS,
+                                    callbacks=[parada_temprana_val_loss, bajar_velocidad, modelo_punto_de_control], #
+                                    validation_data=(x_entrenamiento[val_index], y_entrenamiento[val_index]),
+                                    verbose=1,
+                                    class_weight=interacciones_pesos_dict,
+                                    batch_size=DIMENSION_BATCH)
 
-            registro = modelo_cnn.fit(x=x_entrenamiento[folds_dict[i][0]],
-                                      y=y_entrenamiento[folds_dict[i][0]],
-                                      epochs=CANTIDAD_EPOCAS,
-                                      callbacks=[parada_temprana_val_loss, bajar_velocidad, modelo_punto_de_control], #
-                                      validation_data=(x_entrenamiento[folds_dict[i][1]], y_entrenamiento[folds_dict[i][1]]),
-                                      verbose=1,
-                                    #   class_weight=interacciones_pesos_dict,
-                                      batch_size=DIMENSION_BATCH)
+        # pplt.plot(registro.history["loss"], label="Error entrenamiento")
+        # pplt.plot(registro.history["val_loss"], label="Error validación")
+        # pplt.plot(registro.history["accuracy"], label="Acierto entrenamiento")
+        # pplt.plot(registro.history["val_accuracy"], label="Acierto validación")
+        # pplt.legend()
+        # pplt.show()
 
-            # pplt.plot(registro.history["loss"], label="Error entrenamiento")
-            # pplt.plot(registro.history["val_loss"], label="Error validación")
-            # pplt.plot(registro.history["accuracy"], label="Acierto entrenamiento")
-            # pplt.plot(registro.history["val_accuracy"], label="Acierto validación")
-            # pplt.legend()
-            # pplt.show()
+        del modelo_cnn
+        modelo_cnn = load_model("mejor_modelo_cnn_{}.h5".format(i+1))
 
-            mejor_modelo_cnn = load_model("mejor_modelo_cnn_{}.h5".format((r+1)*(i+1)))
+        _, acierto_entrenamiento = modelo_cnn.evaluate(x_entrenamiento[train_index], y_entrenamiento[train_index])
+        _, acierto_validacion = modelo_cnn.evaluate(x_entrenamiento[val_index], y_entrenamiento[val_index])
+        # _, acierto_prueba = modelo_cnn.evaluate(x_prueba, y_prueba)
 
-            _, acierto_entrenamiento = mejor_modelo_cnn.evaluate(x_entrenamiento[folds_dict[i][0]], y_entrenamiento[folds_dict[i][0]])
-            _, acierto_validacion = mejor_modelo_cnn.evaluate(x_entrenamiento[folds_dict[i][1]], y_entrenamiento[folds_dict[i][1]])
-            _, acierto_prueba = mejor_modelo_cnn.evaluate(x_prueba, y_prueba)
+        print("Acierto en el entrenamiento: {}%".format("%.2f" % (acierto_entrenamiento*100)))
+        print("Acierto en la validación: {}%".format("%.2f" % (acierto_validacion*100)))
+        # print("Acierto en la prueba: {}%".format("%.2f" % (acierto_prueba*100)))
 
-            print("Acierto en el entrenamiento: {}%".format("%.2f" % (acierto_entrenamiento*100)))
-            print("Acierto en la validación: {}%".format("%.2f" % (acierto_validacion*100)))
-            print("Acierto en la prueba: {}%".format("%.2f" % (acierto_prueba*100)))
+        resultados_finales.append([acierto_entrenamiento,
+                                    acierto_validacion])
 
-            resultados_finales.append([acierto_entrenamiento,
-                                      acierto_validacion,
-                                      acierto_prueba])
-
-            y_prediccion = modelo_cnn.predict(x_prueba)
-            razon_falsos_positivos = dict()
-            razon_verdaderos_positivos = dict()
-            area_bajo_curva_roc = dict()
-            for j in range(cantidad_clases):
-                razon_falsos_positivos[j], razon_verdaderos_positivos[j], _ = roc_curve(y_prueba[:, j], y_prediccion[:, j])
-                area_bajo_curva_roc[j] = auc(razon_falsos_positivos[j], razon_verdaderos_positivos[j])
-            areas_roc.append(area_bajo_curva_roc)
-            # Fin del for de particiones
+        y_prediccion = modelo_cnn.predict(x_entrenamiento[val_index])
+        razon_falsos_positivos = dict()
+        razon_verdaderos_positivos = dict()
+        area_bajo_curva_roc = dict()
+        for j in range(cantidad_clases):
+            razon_falsos_positivos[j], razon_verdaderos_positivos[j], _ = roc_curve(y_entrenamiento[val_index][:, j], y_prediccion[:, j])
+            area_bajo_curva_roc[j] = auc(razon_falsos_positivos[j], razon_verdaderos_positivos[j])
+        areas_roc.append(area_bajo_curva_roc)
     # Fin del for de repeticiones
 
     resultados_finales = np.asarray(resultados_finales)
@@ -309,12 +281,12 @@ else: # Análisis del modelo
     # Medias
     promedio_acierto_entrenamiento = statistics.mean(resultados_finales[:, 0])
     promedio_acierto_validacion = statistics.mean(resultados_finales[:, 1])
-    promedio_acierto_prueba = statistics.mean(resultados_finales[:, 2])
+    # promedio_acierto_prueba = statistics.mean(resultados_finales[:, 2])
 
     # Desvíos estándar
     desvio_acierto_entrenamiento = statistics.stdev(resultados_finales[:, 0])
     desvio_acierto_validacion = statistics.stdev(resultados_finales[:, 1])
-    desvio_acierto_prueba = statistics.stdev(resultados_finales[:, 2])
+    # desvio_acierto_prueba = statistics.stdev(resultados_finales[:, 2])
 
     # AUC's ROC
     promedios_desvios_auc_roc = dict()
@@ -334,7 +306,7 @@ else: # Análisis del modelo
     print("\tCantidad de ejemplos utilizados para entrenar: {}".format(cantidad_ejemplos_entrenamiento))
     print("\tCantidad de ejemplos utilizados para validar: {}".format(cantidad_ejemplos_validacion))
     print("\tCantidad de ejemplos utilizados para probar: {}".format(cantidad_ejemplos_prueba))
-    print("\tTop de palabras frecuentes utilizadas: {}".format(top_palabras_frecuentes))
+    # print("\tTop de palabras frecuentes utilizadas: {}".format(top_palabras_frecuentes))
     # print("\tSolo palabras con longitud mayor a: {}".format(longitud_palabras_mayor_a))
     print("\tLongitud de los ejemplos (filas): {}".format(maxima_longitud_ejemplos))
     print("\tDimension del embedding (columnas): {}".format(dimension_embedding))
@@ -362,7 +334,7 @@ else: # Análisis del modelo
     # for i in range(0, len(resultados_finales), 1):
     #     print("\t\tAcierto en la validación en la repeteción {}, partición {}: {}".format(r+1, i+1, resultados_finales[i][1]))
 
-    print("\tAcierto en el prueba [media, desvío]: [{}% / {}%]".format("%.2f" % (promedio_acierto_prueba*100), "%.2f" % (100*desvio_acierto_prueba)))
+    # print("\tAcierto en el prueba [media, desvío]: [{}% / {}%]".format("%.2f" % (promedio_acierto_prueba*100), "%.2f" % (100*desvio_acierto_prueba)))
     # for i in range(0, len(resultados_finales), 1):
     #     print("\t\tAcierto en la prueba en la repeteción {}, partición {}: {}".format(r+1, i+1, resultados_finales[i][2]))
 
