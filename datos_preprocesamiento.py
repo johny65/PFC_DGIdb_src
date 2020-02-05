@@ -380,30 +380,41 @@ def generar_etiquetas(ocurrencias_genes_dict, # pmid -> [genes encontrados en es
     Genera las etiquetas con todas las posibles combinaciones de genes y drogas con el formato: [pmid, gen, droga, "sin_interaccion"]
     Las etiquetas son guardadas en un archivo csv.
     '''
+    # with open(salida,"w",encoding="utf8") as salida_csv:
+    #     escritor_csv = csv.writer(salida_csv,delimiter=',',lineterminator="\n")
+    #     for pmid_gen,ocurrencias_gen in ocurrencias_genes_dict.items():
+    #         for pmid_droga,ocurrencias_droga in ocurrencias_drogas_dict.items():
+    #             if pmid_gen == pmid_droga:
+    #                 print("Generando etiquetas para la publicación {}.".format(pmid_gen))
+    #                 if not ((not ocurrencias_gen) or (not ocurrencias_droga)): # Solo cuando ambas listas tengan elementos
+    #                     agregados = list()
+    #                     for gen in ocurrencias_gen:
+    #                         genes_e = genes_etiquetados_dict[pmid_gen]
+    #                         if gen in genes_e:
+    #                             for droga in ocurrencias_droga:
+    #                                 if droga in drogas_lista:
+    #                                     lista = [pmid_gen, gen, droga, "sin_interaccion"]
+    #                                     agregados.append(lista)
+    #                                     escritor_csv.writerow(lista)
+    #                     for droga in ocurrencias_droga:
+    #                         drogas_e = drogas_etiquetadas_dict[pmid_droga]
+    #                         if droga in drogas_e and droga in drogas_lista:
+    #                             for gen in ocurrencias_gen:
+    #                                 if gen in genes_lista:
+    #                                     lista = [pmid_droga, gen, droga, "sin_interaccion"]
+    #                                     if lista not in agregados:
+    #                                         escritor_csv.writerow(lista)
     with open(salida,"w",encoding="utf8") as salida_csv:
         escritor_csv = csv.writer(salida_csv,delimiter=',',lineterminator="\n")
         for pmid_gen,ocurrencias_gen in ocurrencias_genes_dict.items():
             for pmid_droga,ocurrencias_droga in ocurrencias_drogas_dict.items():
                 if pmid_gen == pmid_droga:
                     print("Generando etiquetas para la publicación {}.".format(pmid_gen))
-                    if not ((not ocurrencias_gen) or (not ocurrencias_droga)): # Solo cuando ambas listas tengan elementos
-                        agregados = list()
+                    if ocurrencias_gen and ocurrencias_droga: # Solo cuando ambas listas tengan elementos
                         for gen in ocurrencias_gen:
-                            genes_e = genes_etiquetados_dict[pmid_gen]
-                            if gen in genes_e:
-                                for droga in ocurrencias_droga:
-                                    if droga in drogas_lista:
-                                        lista = [pmid_gen, gen, droga, "sin_interaccion"]
-                                        agregados.append(lista)
-                                        escritor_csv.writerow(lista)
-                        for droga in ocurrencias_droga:
-                            drogas_e = drogas_etiquetadas_dict[pmid_droga]
-                            if droga in drogas_e and droga in drogas_lista:
-                                for gen in ocurrencias_gen:
-                                    if gen in genes_lista:
-                                        lista = [pmid_droga, gen, droga, "sin_interaccion"]
-                                        if lista not in agregados:
-                                            escritor_csv.writerow(lista)
+                            for droga in ocurrencias_droga:
+                                lista = [pmid_gen, gen, droga, "sin_interaccion"]
+                                escritor_csv.writerow(lista)
 
 
 def procesar_etiquetas(ifg_dgidb,ifg_generadas,salida):
@@ -477,7 +488,7 @@ def d_occs(pubs, index, params):
 
 
 def main_generar_etiquetas():
-    publicaciones_directorio = "replaced"
+    publicaciones_directorio = "replaced4"
     publicaciones_dict = cargar_publicaciones_con_remplazos(publicaciones_directorio)
     print("Publicaciones cargadas.")
 
@@ -512,7 +523,7 @@ def main_generar_etiquetas():
     ifg_generadas = cargar_ifg(ifg_generadas_ruta)
     print("Interacciones fármaco-gen generadas cargadas.")
     
-    procesar_etiquetas(ifg_dgidb,ifg_generadas, "etiquetas_neural_networks.csv")
+    procesar_etiquetas(ifg_dgidb,ifg_generadas, "etiquetas_neural_networks_4_v2.csv")
     print("Procesamiento de etiquetas finalizado.")
 
 

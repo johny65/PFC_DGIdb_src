@@ -445,7 +445,7 @@ def otro_cargar_ejemplos(etiquetas_neural_networks_ruta,
             lista.append(len(secuencia))
         # print("Máxima longitud de publicación: {}".format(max(lista)))
         # print("Promedio de longitud de publicaciones: {}".format(statistics.mean(lista)))
-        # plt.hist(lista, bins=128)
+        # plt.hist(lista, bins=512)
         # plt.show()
     # maxima_longitud_ejemplos = max([len(i) for i in secuencias_dict.values()])
     # print(maxima_longitud_ejemplos)
@@ -518,24 +518,24 @@ def otro_cargar_ejemplos(etiquetas_neural_networks_ruta,
         x_entrenamiento, x_prueba, y_entrenamiento, y_prueba = train_test_split(x, y, test_size=porcentaje_prueba)
 
         # Guardado de una generación de particiones para agilizar
-        with open("x_entrenamiento_{}.pickle".format(padtrunc_where), "wb") as handle:
+        with open("x_entrenamiento_{}_2.pickle".format(padtrunc_where), "wb") as handle:
             pickle.dump(x_entrenamiento, handle, protocol=pickle.HIGHEST_PROTOCOL)
-        with open("y_entrenamiento_{}.pickle".format(padtrunc_where), "wb") as handle:
+        with open("y_entrenamiento_{}_2.pickle".format(padtrunc_where), "wb") as handle:
             pickle.dump(y_entrenamiento, handle, protocol=pickle.HIGHEST_PROTOCOL)
-        with open("x_prueba_{}.pickle".format(padtrunc_where), "wb") as handle:
+        with open("x_prueba_{}_2.pickle".format(padtrunc_where), "wb") as handle:
             pickle.dump(x_prueba, handle, protocol=pickle.HIGHEST_PROTOCOL)
-        with open("y_prueba_{}.pickle".format(padtrunc_where), "wb") as handle:
+        with open("y_prueba_{}_2.pickle".format(padtrunc_where), "wb") as handle:
             pickle.dump(y_prueba, handle, protocol=pickle.HIGHEST_PROTOCOL)
     
     else:
         # Carga de una generación de particiones para agilizar
-        with open("x_entrenamiento_{}.pickle".format(padtrunc_where), "rb") as handle:
+        with open("x_entrenamiento_{}_2.pickle".format(padtrunc_where), "rb") as handle:
             x_entrenamiento = pickle.load(handle)
-        with open("y_entrenamiento_{}.pickle".format(padtrunc_where), "rb") as handle:
+        with open("y_entrenamiento_{}_2.pickle".format(padtrunc_where), "rb") as handle:
             y_entrenamiento = pickle.load(handle)
-        with open("x_prueba_{}.pickle".format(padtrunc_where), "rb") as handle:
+        with open("x_prueba_{}_2.pickle".format(padtrunc_where), "rb") as handle:
             x_prueba = pickle.load(handle)
-        with open("y_prueba_{}.pickle".format(padtrunc_where), "rb") as handle:
+        with open("y_prueba_{}_2.pickle".format(padtrunc_where), "rb") as handle:
             y_prueba = pickle.load(handle)
         # print("Particiones pre-guardadas cargadas.")
         # np.load("x_entrenamiento", ejemplos_x_entrenamiento_secuencia_ajustada_lista)
@@ -548,12 +548,12 @@ def otro_cargar_ejemplos(etiquetas_neural_networks_ruta,
 # ------------------------------------------------------------------------------------------
 
 if __name__ == "__main__":
-    etiquetas_neural_networks_ruta = "etiquetas_neural_networks_4.csv"
+    etiquetas_neural_networks_ruta = "etiquetas_neural_networks_3.csv"
     interacciones_lista_ruta = "interacciones_lista.txt"
     excluir_interacciones_lista = []
     porcentaje_prueba = 0.2
-    publicaciones_directorio = "replaced4"
-    maxima_longitud_ejemplos = 10000
+    publicaciones_directorio = "replaced_new"
+    maxima_longitud_ejemplos = 16000
     vocabulario_bool = True
     secuencias_bool = True
     particiones_bool = True

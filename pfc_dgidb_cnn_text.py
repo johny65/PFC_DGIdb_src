@@ -19,10 +19,11 @@ import math
 import os
 import pathlib
 import pickle
+import clr_callback
 # os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID" # see issue #152
 # os.environ["CUDA_VISIBLE_DEVICES"] = "-1" # Para utilizar CPU en lugar de GPU
 
-K.set_floatx('float32')
+# K.set_floatx('float32')
 
 ''' Carga de datos '''
 etiquetas_neural_networks_ruta = "etiquetas_neural_networks_4.csv"
@@ -34,7 +35,7 @@ ejemplos_directorio = "replaced4"
 # embeddings_file = "glove.6B.200d.txt"
 # embeddings_file = "glove.6B.300d.txt"
 dimension_embedding = 128 # Recomendado: 8
-maxima_longitud_ejemplos = 10000 # Máxima: 157170; Promedio: 5201.110850439883
+maxima_longitud_ejemplos = 16000 # Máxima: 157170; Promedio: 5201.110850439883
 vocabulario_bool = False
 secuencias_bool = False
 particiones_bool = False
@@ -42,8 +43,7 @@ padtrunc_where = "post"
 
 ''' Parámetros del modelo '''
 PARTICIONES = 5 # Número de particiones para la validación cruzada
-REPETICIONES = 1 # Número de repeticiones de la validación cruzada
-PORCENTAJE_DROPEO = 0.4 # Recomendado: 0.4
+PORCENTAJE_DROPEO = 0.1 # Recomendado: 0.4
 CANTIDAD_EPOCAS = 100
 PORCENTAJE_VALIDACION = 0.2
 # Perceptrón
@@ -53,7 +53,7 @@ ACTIVACION_SALIDA = "softmax"
 # Convolución
 CANTIDAD_FILTROS = 100 # Recomendado: 35
 DIMENSION_KERNEL = list()
-for i in range(3, 10, 2):
+for i in range(1, 10, 2):
     DIMENSION_KERNEL.append(i)
 DIMENSION_KERNEL = tuple(DIMENSION_KERNEL)
 print(DIMENSION_KERNEL)
@@ -140,11 +140,13 @@ else: # Análisis del modelo
     # folds_dict = fa.kfolding(PARTICIONES, cantidad_ejemplos, PORCENTAJE_VALIDACION) # Se obtienen las particiones para realizar la validación cruzada
 
     y_para_split = [y.tolist().index(1) for y in y_entrenamiento]
+    print("y para split:", y_para_split)
     i = 0
     for train_index, val_index in kfold.split(x_entrenamiento, y_para_split):
         i += 1
         cantidad_ejemplos_entrenamiento = len(train_index)
         cantidad_ejemplos_validacion = len(val_index)
+        print("Cantidad para entrenamiento:", cantidad_ejemplos_entrenamiento, "- Cantidad para validación:", cantidad_ejemplos_validacion)
 
         ''' Arquitectura del modelo '''
         formato_entrada = (maxima_longitud_ejemplos,)
@@ -232,6 +234,14 @@ else: # Análisis del modelo
                                                     save_best_only=True,
                                                     verbose=1)
 
+        velocidad_ciclica = clr_callback.CyclicLR(base_lr=0.001,
+                                                  max_lr=0.006,
+                                                  step_size=2000,
+                                                  mode="triangular",
+                                                  gamma=1,
+                                                  scale_fn=None,
+                                                  scale_mode="cycle")
+
         modelo_cnn.summary() # Detalles del modelo
 
         print("Particion: {}/{}".format(i, PARTICIONES))
@@ -274,6 +284,10 @@ else: # Análisis del modelo
             razon_falsos_positivos[j], razon_verdaderos_positivos[j], _ = roc_curve(y_entrenamiento[val_index][:, j], y_prediccion[:, j])
             area_bajo_curva_roc[j] = auc(razon_falsos_positivos[j], razon_verdaderos_positivos[j])
         areas_roc.append(area_bajo_curva_roc)
+
+        print("\tÁreas bajo la curva ROC para las distintas clases:")
+        for i in range(0, len(areas_roc), 1):
+            print("\t\tMedia y desvío AUC ROC de la clase {}: {}".format(interacciones_lista[i], areas_roc[i]))
     # Fin del for de repeticiones
 
     resultados_finales = np.asarray(resultados_finales)
@@ -292,7 +306,7 @@ else: # Análisis del modelo
     promedios_desvios_auc_roc = dict()
     for i in range(0, cantidad_clases, 1):
         lista = list()
-        for j in range(0, PARTICIONES*REPETICIONES, 1):
+        for j in range(0, PARTICIONES, 1):
             area = areas_roc[j][i]
             lista.append(area)
         media = statistics.mean(lista)

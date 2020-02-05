@@ -189,12 +189,6 @@ def balancear_clases(etiquetas_archivo_ruta, # Archivo de etiquetas: pmid, gen, 
                 for ifg in random.choices(ifg_interaccion_entrenamiento_lista, k=cantidad_ejemplos_entrenamiento_por_clase):
                     ifg_balanceadas_entrenamiento_lista.append(ifg)
     else: # Cargar sin balancear
-        clases_pesos_dict = dict()
-        cantidad_elementos_mayor_clase = float(max(interacciones_cantidad_dict.values()))
-        for clase, cantidad_elementos in interacciones_cantidad_dict.items():
-            clases_pesos_dict[clase] = cantidad_elementos_mayor_clase/cantidad_elementos
-        # print(interacciones_cantidad_dict)
-        # print(clases_pesos_dict)
         for interaccion, cantidad in interacciones_cantidad_dict.items():
             ifg_interaccion_lista = list()
             for i in range(0, len(pmids_lista), 1): # Agrega a "ifg_interaccion_lista" las ifg con la interacción "interaccion"
