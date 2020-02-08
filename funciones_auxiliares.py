@@ -11,6 +11,25 @@ import random
 import math
 import os
 
+def histograma(secuencias, secuencia_gen, secuencia_droga):
+    tot = 32000
+    posiciones_genes = []
+    posiciones_drogas = []
+    for ejemplo in secuencias:
+        for p, elemento in enumerate(ejemplo):
+            if elemento == secuencia_gen:
+                if p < tot:
+                    posiciones_genes.append(p)
+            if elemento == secuencia_droga:
+                if p < tot:
+                    posiciones_drogas.append(p)
+    plt.figure()
+    plt.hist(posiciones_genes, bins=150)
+    plt.show()
+    plt.figure()
+    plt.hist(posiciones_drogas, bins=150)
+    plt.show()
+
 def mostrar_imagen(imagen,etiqueta):
     plt.figure()
     plt.imshow(imagen)
