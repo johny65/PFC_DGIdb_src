@@ -11,6 +11,25 @@ import random
 import math
 import os
 
+def histograma(secuencias, secuencia_gen, secuencia_droga):
+    tot = 32000
+    posiciones_genes = []
+    posiciones_drogas = []
+    for ejemplo in secuencias:
+        for p, elemento in enumerate(ejemplo):
+            if elemento == secuencia_gen:
+                if p < tot:
+                    posiciones_genes.append(p)
+            if elemento == secuencia_droga:
+                if p < tot:
+                    posiciones_drogas.append(p)
+    plt.figure()
+    plt.hist(posiciones_genes, bins=150)
+    plt.show()
+    plt.figure()
+    plt.hist(posiciones_drogas, bins=150)
+    plt.show()
+
 def mostrar_imagen(imagen,etiqueta):
     plt.figure()
     plt.imshow(imagen)
@@ -253,6 +272,32 @@ def evaluar(modelo, x, y_real):
     res = [any(p & y) for (p, y) in zip(pred, y_real)]
     acc = np.count_nonzero(res) / len(res) * 100.0
     return acc, pred_orig
+
+
+def test_split(interacciones_ruta, etiquetas_ruta, porcentaje_test):
+    """Separa un conjunto de test para siempre, a partir de las etiquetas."""
+    interacciones = cargar_interacciones(interacciones_ruta, invertir=True)
+    etiquetas = []
+    sin_interaccion = []
+    clases = []
+    with open(etiquetas_ruta) as f:
+        for row in f:
+            clase = row.split(',')[3].strip()
+            clase = clase if clase in interacciones else "other"
+            etiquetas.append(row)
+            clases.append(clase)
+    print("Cantidad de interacciones:", len(interacciones))
+    print("Cantidad de clases de los ejemplos:", len(set(clases)))
+
+    x_train, x_test = train_test_split(etiquetas, test_size=porcentaje_test, stratify=clases)
+    print("Cantidad de ejemplos para train:", len(x_train))
+    print("Cantidad de ejemplos para test:", len(x_test))
+    print("Total:", len(set(x_train) | set(x_test)))
+    
+    with open("etiquetas_train.csv", "w") as out:
+        out.writelines(x_train)
+    with open("etiquetas_test.csv", "w") as out:
+        out.writelines(x_test)
 
 
 # ----------------------------------------------------------------------------------
