@@ -274,6 +274,32 @@ def evaluar(modelo, x, y_real):
     return acc, pred_orig
 
 
+def test_split(interacciones_ruta, etiquetas_ruta, porcentaje_test):
+    """Separa un conjunto de test para siempre, a partir de las etiquetas."""
+    interacciones = cargar_interacciones(interacciones_ruta, invertir=True)
+    etiquetas = []
+    sin_interaccion = []
+    clases = []
+    with open(etiquetas_ruta) as f:
+        for row in f:
+            clase = row.split(',')[3].strip()
+            clase = clase if clase in interacciones else "other"
+            etiquetas.append(row)
+            clases.append(clase)
+    print("Cantidad de interacciones:", len(interacciones))
+    print("Cantidad de clases de los ejemplos:", len(set(clases)))
+
+    x_train, x_test = train_test_split(etiquetas, test_size=porcentaje_test, stratify=clases)
+    print("Cantidad de ejemplos para train:", len(x_train))
+    print("Cantidad de ejemplos para test:", len(x_test))
+    print("Total:", len(set(x_train) | set(x_test)))
+    
+    with open("etiquetas_train.csv", "w") as out:
+        out.writelines(x_train)
+    with open("etiquetas_test.csv", "w") as out:
+        out.writelines(x_test)
+
+
 # ----------------------------------------------------------------------------------
 
 def ifg_entrenamiento_prueba_sin_reejemplificacion(etiquetas_archivo_ruta, # Archivo de etiquetas: pmid, gen, droga, interacción
