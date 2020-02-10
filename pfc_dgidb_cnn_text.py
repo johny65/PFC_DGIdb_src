@@ -20,32 +20,32 @@ import os
 import pathlib
 import pickle
 import clr_callback
+import training_plot_callback
+
+K.clear_session()
 # os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID" # see issue #152
 # os.environ["CUDA_VISIBLE_DEVICES"] = "-1" # Para utilizar CPU en lugar de GPU
 
 # K.set_floatx('float32')
 
 ''' Carga de datos '''
-etiquetas_neural_networks_ruta = "etiquetas_neural_networks_4.csv"
+etiquetas_neural_networks_ruta = "etiquetas_neural_networks_4_v2.csv"
 out_interacciones_ruta = "interacciones_lista.txt"
 excluir_interacciones_lista = []
 ejemplos_directorio = "replaced4"
-# embeddings_file = "glove.6B.50d.txt"
-# embeddings_file = "glove.6B.100d.txt"
-# embeddings_file = "glove.6B.200d.txt"
-# embeddings_file = "glove.6B.300d.txt"
-dimension_embedding = 128 # Recomendado: 8
-maxima_longitud_ejemplos = 16000 # Máxima: 157170; Promedio: 5201.110850439883
+dimension_embedding = 102
+maxima_longitud_ejemplos = 7500
 vocabulario_bool = False
 secuencias_bool = False
 particiones_bool = False
 padtrunc_where = "post"
 
 ''' Parámetros del modelo '''
-PARTICIONES = 5 # Número de particiones para la validación cruzada
-PORCENTAJE_DROPEO = 0.1 # Recomendado: 0.4
-CANTIDAD_EPOCAS = 100
+PARTICIONES = 3 # Número de particiones para la validación cruzada
+PORCENTAJE_DROPEO = 0.4 # Recomendado: 0.4
+CANTIDAD_EPOCAS = 3000
 PORCENTAJE_VALIDACION = 0.2
+PORCENTAJE_PRUEBA = 0.2
 # Perceptrón
 CAPAS_OCULTAS = 1
 ACTIVACION_OCULTA = "relu"
@@ -62,21 +62,47 @@ OPTIMIZADOR = "adam"
 FUNCION_ERROR = "categorical_crossentropy"
 METRICA = "categorical_accuracy" # categorical_accuracy
 # Parámetros de entrenamiento
-DIMENSION_BATCH = 8
+DIMENSION_BATCH = 16
 
 MODELO_FINAL = False
 ''' --------------------- '''
 
-(x_entrenamiento, y_entrenamiento), (x_prueba, y_prueba), vocabulario = otro_cargar_ejemplos(etiquetas_neural_networks_ruta,
-                                                                                            out_interacciones_ruta,
-                                                                                            excluir_interacciones_lista,
-                                                                                            None,
-                                                                                            ejemplos_directorio,
-                                                                                            maxima_longitud_ejemplos,
-                                                                                            vocabulario_bool,
-                                                                                            secuencias_bool,
-                                                                                            particiones_bool,
-                                                                                            padtrunc_where)
+# (x_entrenamiento, y_entrenamiento), (x_prueba, y_prueba), vocabulario = otro_cargar_ejemplos(etiquetas_neural_networks_ruta,
+#                                                                                             out_interacciones_ruta,
+#                                                                                             excluir_interacciones_lista,
+#                                                                                             PORCENTAJE_PRUEBA,
+#                                                                                             ejemplos_directorio,
+#                                                                                             maxima_longitud_ejemplos,
+#                                                                                             vocabulario_bool,
+#                                                                                             secuencias_bool,
+#                                                                                             particiones_bool,
+#                                                                                             padtrunc_where)
+
+x_entrenamiento_ruta = "C:/Users/Administrador/Google Drive/FICH\Proyecto Final de Carrera (PFC)/Código/x_entrenamiento_post_consin_7500_si3000.pickle"
+y_entrenamiento_ruta = "C:/Users/Administrador/Google Drive/FICH/Proyecto Final de Carrera (PFC)/Código/y_entrenamiento_post_consin_7500_si3000.pickle"
+x_prueba_ruta = "C:/Users/Administrador/Google Drive/FICH/Proyecto Final de Carrera (PFC)/Código/x_prueba_post_consin_7500_si3000.pickle"
+y_prueba_ruta = "C:/Users/Administrador/Google Drive/FICH/Proyecto Final de Carrera (PFC)/Código/y_prueba_post_consin_7500_si3000.pickle"
+vocabulario_ruta = "C:/Users/Administrador/Google Drive/FICH/Proyecto Final de Carrera (PFC)/Código/vocabulario.pickle"
+matriz_embeddings_ruta = "C:/Users/Administrador/Google Drive/FICH/Proyecto Final de Carrera (PFC)/Código/matriz_embeddings.pickle"
+
+with open(x_entrenamiento_ruta, "rb") as handle:
+    x_entrenamiento = pickle.load(handle)
+    print("x_entrenamiento cargado.")
+with open(y_entrenamiento_ruta, "rb") as handle:
+    y_entrenamiento = pickle.load(handle)
+    print("y_entrenamiento cargado.")
+with open(x_prueba_ruta, "rb") as handle:
+    x_prueba = pickle.load(handle)
+    print("x_prueba cargado.")
+with open(y_prueba_ruta, "rb") as handle:
+    y_prueba = pickle.load(handle)
+    print("y_prueba cargado.")
+with open(vocabulario_ruta, "rb") as handle:
+    vocabulario = pickle.load(handle)
+    print("vocabulario cargado.")
+with open(matriz_embeddings_ruta, "rb") as handle:
+    matriz_embeddings = pickle.load(handle)
+    print("matriz_embeddings cargada.")
 
 cantidad_ejemplos = x_entrenamiento.shape[0]
 cantidad_ejemplos_entrenamiento = 0
@@ -140,7 +166,7 @@ else: # Análisis del modelo
     # folds_dict = fa.kfolding(PARTICIONES, cantidad_ejemplos, PORCENTAJE_VALIDACION) # Se obtienen las particiones para realizar la validación cruzada
 
     y_para_split = [y.tolist().index(1) for y in y_entrenamiento]
-    print("y para split:", y_para_split)
+    # print("y para split:", y_para_split)
     i = 0
     for train_index, val_index in kfold.split(x_entrenamiento, y_para_split):
         i += 1
@@ -155,11 +181,11 @@ else: # Análisis del modelo
         entrada = Input(formato_entrada)
 
         # Capa de embedding
-        embedding = Embedding(input_dim=len(vocabulario.index_word),
-                                output_dim=dimension_embedding,
-                                input_length=maxima_longitud_ejemplos)(entrada)
-                            #   weights=[embeddings_matriz], # Embeddings de GloVe
-                            #   trainable=True)(entrada)
+        embedding = Embedding(input_dim=len(vocabulario.index_word)+1,
+                              output_dim=dimension_embedding,
+                              input_length=maxima_longitud_ejemplos,
+                              weights=[matriz_embeddings])(entrada)
+                            # trainable=True)(entrada)
 
         # dropout_embedding = Dropout(PORCENTAJE_DROPEO)(embedding)
 
@@ -216,7 +242,7 @@ else: # Análisis del modelo
         # Callbacks
         bajar_velocidad = ReduceLROnPlateau(monitor='val_loss',
                                             factor=0.1,
-                                            patience=2, # 10
+                                            patience=20, # 10
                                             verbose=1,
                                             mode='auto',
                                             min_delta=0.0001,
@@ -234,13 +260,15 @@ else: # Análisis del modelo
                                                     save_best_only=True,
                                                     verbose=1)
 
-        velocidad_ciclica = clr_callback.CyclicLR(base_lr=0.001,
-                                                  max_lr=0.006,
-                                                  step_size=2000,
-                                                  mode="triangular",
-                                                  gamma=1,
-                                                  scale_fn=None,
-                                                  scale_mode="cycle")
+        # velocidad_ciclica = clr_callback.CyclicLR(base_lr=0.001,
+        #                                           max_lr=0.006,
+        #                                           step_size=2000,
+        #                                           mode="triangular",
+        #                                           gamma=1,
+        #                                           scale_fn=None,
+        #                                           scale_mode="cycle")
+
+        graficar_entrenamiento = training_plot_callback.TrainingPlot()                            
 
         modelo_cnn.summary() # Detalles del modelo
 
@@ -249,7 +277,8 @@ else: # Análisis del modelo
         registro = modelo_cnn.fit(x=x_entrenamiento[train_index],
                                     y=y_entrenamiento[train_index],
                                     epochs=CANTIDAD_EPOCAS,
-                                    callbacks=[parada_temprana_val_loss, bajar_velocidad, modelo_punto_de_control], #
+                                    # callbacks=[parada_temprana_val_loss, bajar_velocidad, modelo_punto_de_control], #
+                                    callbacks=[graficar_entrenamiento, bajar_velocidad],
                                     validation_data=(x_entrenamiento[val_index], y_entrenamiento[val_index]),
                                     verbose=1,
                                     class_weight=interacciones_pesos_dict,
@@ -288,6 +317,10 @@ else: # Análisis del modelo
         print("\tÁreas bajo la curva ROC para las distintas clases:")
         for i in range(0, len(areas_roc), 1):
             print("\t\tMedia y desvío AUC ROC de la clase {}: {}".format(interacciones_lista[i], areas_roc[i]))
+
+        del modelo_cnn
+        del registro
+        K.clear_session()
     # Fin del for de repeticiones
 
     resultados_finales = np.asarray(resultados_finales)
