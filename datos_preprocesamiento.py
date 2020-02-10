@@ -406,14 +406,15 @@ def generar_etiquetas(ocurrencias_genes_dict, # pmid -> [genes encontrados en es
     #                                         escritor_csv.writerow(lista)
     with open(salida,"w",encoding="utf8") as salida_csv:
         escritor_csv = csv.writer(salida_csv,delimiter=',',lineterminator="\n")
-        for pmid_gen,ocurrencias_gen in ocurrencias_genes_dict.items():
-            for pmid_droga,ocurrencias_droga in ocurrencias_drogas_dict.items():
+        for pmid_gen, genes_etiquetados in genes_etiquetados_dict.items():
+            for pmid_droga, drogas_etiquetadas in drogas_etiquetadas_dict.items():
                 if pmid_gen == pmid_droga:
+                    pmid = pmid_gen
                     print("Generando etiquetas para la publicación {}.".format(pmid_gen))
-                    if ocurrencias_gen and ocurrencias_droga: # Solo cuando ambas listas tengan elementos
-                        for gen in ocurrencias_gen:
-                            for droga in ocurrencias_droga:
-                                lista = [pmid_gen, gen, droga, "sin_interaccion"]
+                    for gen in genes_etiquetados:
+                        for droga in drogas_etiquetadas:
+                            if gen in ocurrencias_genes_dict[pmid] and droga in ocurrencias_drogas_dict[pmid]:
+                                lista = [pmid, gen, droga, "sin_interaccion"]
                                 escritor_csv.writerow(lista)
 
 
@@ -523,7 +524,7 @@ def main_generar_etiquetas():
     ifg_generadas = cargar_ifg(ifg_generadas_ruta)
     print("Interacciones fármaco-gen generadas cargadas.")
     
-    procesar_etiquetas(ifg_dgidb,ifg_generadas, "etiquetas_neural_networks_4_v2.csv")
+    procesar_etiquetas(ifg_dgidb,ifg_generadas, "etiquetas_neural_networks_4_v3.csv")
     print("Procesamiento de etiquetas finalizado.")
 
 
