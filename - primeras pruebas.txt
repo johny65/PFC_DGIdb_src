@@ -1,0 +1,23 @@
+- primeras pruebas
+
+
+
+
+--------- acortando ejemplos
+
+
+- 
+
+
+
+------------ sólo truncando
+
+- sin usar sin_interaccion
+
+- usando todos sin_interaccion
+
+- usando algunos sin_interaccion
+
+- cambiando longitudes de ejemplos
+
+- nueva generación de sin interacción

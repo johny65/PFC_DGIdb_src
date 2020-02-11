@@ -4,12 +4,37 @@ import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.metrics import roc_curve, auc
 from sklearn.utils.class_weight import compute_class_weight
+from sklearn.model_selection import train_test_split
 from collections import Counter
 import csv
 import statistics
 import random
 import math
 import os
+
+
+def cargar_interacciones(in_file, invertir=False):
+    """
+    Carga el archivo de interacciones existentes de salida, y devuelve un diccionario
+    con el índice de cada una para mapear el vector de salida. Por ejemplo:
+
+        inhibitor
+        agonist
+        potentiator
+
+    Cuando el caso de ejemplo sea de "inhibitor", el vector de salida será [1, 0, 0, 0].
+    El último elemento se usa para agrupar las que no se nombran. Por ejemplo, con el listado
+    anterior, cuando el caso de ejemplo sea de "modulator" el vector de salida será
+    [0, 0, 0, 1].
+
+    """
+    with open(in_file, encoding="utf8") as f:
+        if invertir:
+            res = [l.strip() for l in f.readlines()]
+        else:
+            res = {l.strip(): i for i, l in enumerate(f.readlines())}
+    # res["other"] = len(res)
+    return res
 
 def histograma(secuencias, secuencia_gen, secuencia_droga):
     tot = 32000
@@ -278,26 +303,30 @@ def test_split(interacciones_ruta, etiquetas_ruta, porcentaje_test):
     """Separa un conjunto de test para siempre, a partir de las etiquetas."""
     interacciones = cargar_interacciones(interacciones_ruta, invertir=True)
     etiquetas = []
-    sin_interaccion = []
     clases = []
-    with open(etiquetas_ruta) as f:
+    with open(etiquetas_ruta, encoding="utf8") as f:
         for row in f:
-            clase = row.split(',')[3].strip()
+            row = row.strip()
+            clase = row.split(',')[3]
             clase = clase if clase in interacciones else "other"
             etiquetas.append(row)
             clases.append(clase)
     print("Cantidad de interacciones:", len(interacciones))
     print("Cantidad de clases de los ejemplos:", len(set(clases)))
+    print("Cantidad de ejemplos:", len(etiquetas))
 
     x_train, x_test = train_test_split(etiquetas, test_size=porcentaje_test, stratify=clases)
     print("Cantidad de ejemplos para train:", len(x_train))
     print("Cantidad de ejemplos para test:", len(x_test))
-    print("Total:", len(set(x_train) | set(x_test)))
+    print(x_train[0], x_test[0])
+    print("Total:", len(x_train) + len(x_test))
     
-    with open("etiquetas_train.csv", "w") as out:
-        out.writelines(x_train)
-    with open("etiquetas_test.csv", "w") as out:
-        out.writelines(x_test)
+    with open("etiquetas_train.csv", "w", encoding="utf8") as out:
+        for e in x_train:
+            out.write(e + '\n')
+    with open("etiquetas_test.csv", "w", encoding="utf8") as out:
+        for e in x_test:
+            out.write(e + '\n')
 
 
 # ----------------------------------------------------------------------------------
@@ -438,31 +467,4 @@ def prueba_publicaciones(etiquetas_neural_networks_ruta,
     print(max(longitudes_lista))
 
 if __name__ == "__main__":
-    etiquetas_archivo_ruta = "E:/Descargas/Python/PFC_DGIdb_src/etiquetas_neural_networks_3.csv"
-    interacciones_lista_ruta = "E:/Descargas/Python/PFC_DGIdb_src/interacciones_lista.txt"
-    excluir_interacciones_lista = ["sin_interaccion"]
-    ejemplos_cantidad = 100
-    porcentaje_prueba = 0.2
-    balancear = False
-
-    publicaciones_directorio = "replaced_new"
-    grafica_longitud_publicaciones(publicaciones_directorio)
-
-    ifg_dgidb_ruta = "PFC_DGIdb/pfc_dgidb_export_ifg.csv"
-    ejemplos_directorio = "replaced_new"
-
-    # prueba_publicaciones(etiquetas_archivo_ruta,
-    #                      ejemplos_directorio)
-
-    # ifg_balanceadas_entrenamiento_lista, ifg_balanceadas_prueba_lista = balancear_clases(etiquetas_archivo_ruta, # Archivo de etiquetas: pmid, gen, droga, interacción
-    #                                                                                      interacciones_lista_ruta, # Lista de etiquetas a considerar
-    #                                                                                      excluir_interacciones_lista, # Lista de interacciones que no se cargarán
-    #                                                                                      ejemplos_cantidad, # Cantidad de ejemplos a cargar
-    #                                                                                      porcentaje_prueba,
-    #                                                                                      balancear) # Porcentaje de los ejemplos que se utilizarán para la prueba
-
-    # for ifg in ifg_balanceadas_entrenamiento_lista:
-    #     print(ifg)
-    # print("xxxxxxxxxxxxxxxxxxxxxxx")
-    # for ifg in ifg_balanceadas_prueba_lista:
-    #     print(ifg)
+    test_split("interacciones_lista.txt", "etiquetas_neural_networks_4_v3.csv", 0.2)

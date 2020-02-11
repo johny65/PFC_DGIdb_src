@@ -5,6 +5,7 @@ import random
 import math
 import datos_preprocesamiento as dp
 import funciones_auxiliares as ff
+from funciones_auxiliares import cargar_interacciones
 from keras.preprocessing import text, sequence
 from keras.utils import np_utils
 import pickle
@@ -187,30 +188,6 @@ def _cargar_ejemplos(etiquetas, contenido_dict, tokenizer, top_palabras, max_lon
         print("Ejemplos de {} aleatorizados.".format(tipo))
 
     return xs, ys
-
-
-def cargar_interacciones(in_file, invertir=False):
-    """
-    Carga el archivo de interacciones existentes de salida, y devuelve un diccionario
-    con el índice de cada una para mapear el vector de salida. Por ejemplo:
-
-        inhibitor
-        agonist
-        potentiator
-
-    Cuando el caso de ejemplo sea de "inhibitor", el vector de salida será [1, 0, 0, 0].
-    El último elemento se usa para agrupar las que no se nombran. Por ejemplo, con el listado
-    anterior, cuando el caso de ejemplo sea de "modulator" el vector de salida será
-    [0, 0, 0, 1].
-
-    """
-    with open(in_file, encoding="utf8") as f:
-        if invertir:
-            res = [l.strip() for l in f.readlines()]
-        else:
-            res = {l.strip(): i for i, l in enumerate(f.readlines())}
-    # res["other"] = len(res)
-    return res
 
 
 def generar_matriz_embeddings(contenido, gen, droga, embeddings_dict, maximo_valor_embedding, minimo_valor_embedding):
