@@ -1,0 +1,85 @@
+Model: "sequential_3"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+embedding_3 (Embedding)      (None, 7500, 102)         51645864  
+_________________________________________________________________
+gru_1 (GRU)                  (None, 64)                32064     
+_________________________________________________________________
+dense_3 (Dense)              (None, 17)                1105      
+_________________________________________________________________
+activation_3 (Activation)    (None, 17)                0         
+=================================================================
+Total params: 51,679,033
+Trainable params: 51,679,033
+Non-trainable params: 0
+_________________________________________________________________
+Particion: 1/3
+Train on 2266 samples, validate on 1134 samples
+Epoch 1/40
+2266/2266 [==============================] - 1311s 579ms/step - loss: 2.7482 - categorical_accuracy: 0.2948 - val_loss: 2.0441 - val_categorical_accuracy: 0.3025
+
+Epoch 00001: val_categorical_accuracy improved from -inf to 0.30247, saving model to /content/drive/My Drive/FICH/Proyecto Final de Carrera (PFC)/Código/mejor_modelo_cnn_1.h5
+Epoch 2/40
+2266/2266 [==============================] - 1325s 585ms/step - loss: 2.6398 - categorical_accuracy: 0.3425 - val_loss: 1.9837 - val_categorical_accuracy: 0.3457
+
+Epoch 00002: val_categorical_accuracy improved from 0.30247 to 0.34568, saving model to /content/drive/My Drive/FICH/Proyecto Final de Carrera (PFC)/Código/mejor_modelo_cnn_1.h5
+Epoch 3/40
+2266/2266 [==============================] - 1309s 578ms/step - loss: 2.5752 - categorical_accuracy: 0.3778 - val_loss: 1.9879 - val_categorical_accuracy: 0.3342
+
+Epoch 00003: val_categorical_accuracy did not improve from 0.34568
+Epoch 4/40
+2266/2266 [==============================] - 1281s 565ms/step - loss: 2.4538 - categorical_accuracy: 0.3954 - val_loss: 1.9846 - val_categorical_accuracy: 0.3210
+
+Epoch 00004: val_categorical_accuracy did not improve from 0.34568
+Epoch 5/40
+2266/2266 [==============================] - 1283s 566ms/step - loss: 2.2804 - categorical_accuracy: 0.3989 - val_loss: 2.0126 - val_categorical_accuracy: 0.3351
+
+Epoch 00005: val_categorical_accuracy did not improve from 0.34568
+Epoch 6/40
+2266/2266 [==============================] - 1295s 572ms/step - loss: 2.1260 - categorical_accuracy: 0.4263 - val_loss: 1.9754 - val_categorical_accuracy: 0.3333
+
+Epoch 00006: val_categorical_accuracy did not improve from 0.34568
+Epoch 7/40
+ 768/2266 [=========>....................] - ETA: 12:22 - loss: 2.0887 - categorical_accuracy: 0.4388
+
+ ---
+
+ Model: "sequential_1"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+embedding_1 (Embedding)      (None, 7500, 102)         51645864  
+_________________________________________________________________
+lstm_1 (LSTM)                (None, 64)                42752     
+_________________________________________________________________
+dense_1 (Dense)              (None, 17)                1105      
+_________________________________________________________________
+activation_1 (Activation)    (None, 17)                0         
+=================================================================
+Total params: 51,689,721
+Trainable params: 51,689,721
+Non-trainable params: 0
+_________________________________________________________________
+Particion: 1/3
+WARNING:tensorflow:From /usr/local/lib/python3.6/dist-packages/tensorflow_core/python/ops/math_grad.py:1424: where (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.where in 2.0, which has the same broadcast rule as np.where
+WARNING:tensorflow:From /usr/local/lib/python3.6/dist-packages/keras/backend/tensorflow_backend.py:1033: The name tf.assign_add is deprecated. Please use tf.compat.v1.assign_add instead.
+
+WARNING:tensorflow:From /usr/local/lib/python3.6/dist-packages/keras/backend/tensorflow_backend.py:1020: The name tf.assign is deprecated. Please use tf.compat.v1.assign instead.
+
+Train on 2266 samples, validate on 1134 samples
+Epoch 1/40
+2266/2266 [==============================] - 1264s 558ms/step - loss: 2.7483 - categorical_accuracy: 0.3010 - val_loss: 2.0522 - val_categorical_accuracy: 0.4224
+
+Epoch 00001: val_categorical_accuracy improved from -inf to 0.42240, saving model to /content/drive/My Drive/FICH/Proyecto Final de Carrera (PFC)/Código/mejor_modelo_cnn_1.h5
+Epoch 2/40
+2266/2266 [==============================] - 1264s 558ms/step - loss: 2.6325 - categorical_accuracy: 0.3658 - val_loss: 2.0219 - val_categorical_accuracy: 0.3175
+
+Epoch 00002: val_categorical_accuracy did not improve from 0.42240
+Epoch 3/40
+2240/2266 [============================>.] - ETA: 12s - loss: 2.5385 - categorical_accuracy: 0.3621
+
+---
+
