@@ -23,7 +23,7 @@ from sklearn.utils.class_weight import compute_class_weight
 
 EJEMPLOS_DIRECTORIO = "replaced4"
 INTERACCIONES_RUTA = "interacciones_lista.txt"
-ETIQUETAS_RUTA = "etiquetas_neural_networks_4.csv"
+ETIQUETAS_RUTA = "etiquetas_neural_networks_4_v2.csv"
 TOP_PALABRAS = 1000
 MAXIMA_LONGITUD_EJEMPLOS = 500
 LONGITUD_PALABRAS = 4
@@ -31,8 +31,9 @@ ARCHIVO_X = "xs/x4_{}x{}.pickle".format(MAXIMA_LONGITUD_EJEMPLOS, LONGITUD_PALAB
 INCLUIR_SIN_INTERACCION = False
 MODELO_SIMPLE = "model-simple.h5"
 MODELO_CONV = "model-conv.h5"
-MODELO_RNN = "rnn/rnnv2-16clases-500x4-100ue-01do"
-EPOCAS = 20
+# MODELO_RNN = "rnn/rnnv2-16clases-500x4-100ue-01do"
+MODELO_RNN = "rnn/rnn-16clases-500x4-100-masépocas"
+EPOCAS = 100
 UNIDADES_LSTM = 100
 
 
@@ -185,70 +186,27 @@ def entrenar(entrenar_simple, entrenar_conv, entrenar_rnn, modelo=None):
     print("Cantidad de palabras:", max_words)
     num_classes = len(interacciones)
     print("Cantidad de clases:", num_classes)
-
-    if entrenar_simple:
-        modelo = MODELO_SIMPLE
-        model = Sequential()
-        model.add(Embedding(max_words, 20, input_length=MAXIMA_LONGITUD_EJEMPLOS))
-        model.add(Dropout(0.15))
-        model.add(GlobalMaxPool1D())
-        model.add(Dense(num_classes, activation='sigmoid'))
-
-        model.compile(optimizer=Adam(0.015), loss='binary_crossentropy', metrics=['categorical_accuracy'])
-        callbacks = [
-            ReduceLROnPlateau(),
-            EarlyStopping(patience=4),
-            ModelCheckpoint(filepath=MODELO_SIMPLE, save_best_only=True)
-        ]
-        model.summary()
-
-        history = model.fit(x_train, y_train,
-                            class_weight=pesos_clases,
-                            epochs=EPOCAS,
-                            batch_size=32,
-                            validation_split=0.1,
-                            callbacks=callbacks)
-
-    if entrenar_conv:
-        modelo = MODELO_CONV
-        filter_length = 300
-        kernel = 3
-
-        model = Sequential()
-        model.add(Embedding(max_words, 20, input_length=MAXIMA_LONGITUD_EJEMPLOS))
-        model.add(Dropout(0.1))
-        model.add(Conv1D(filters=filter_length, kernel_size=kernel, padding='valid', activation='relu', strides=1))
-        model.add(GlobalMaxPool1D())
-        model.add(Dense(num_classes))
-        model.add(Activation('sigmoid'))
-
-        model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['categorical_accuracy'])
-        model.summary()
-
-        callbacks = [
-            ReduceLROnPlateau(),
-            EarlyStopping(patience=4),
-            ModelCheckpoint(filepath=MODELO_CONV, save_best_only=True)
-        ]
-
-        history = model.fit(x_train, y_train,
-                            class_weight=pesos_clases,
-                            epochs=EPOCAS,
-                            batch_size=32,
-                            validation_split=0.1,
-                            callbacks=callbacks)
+    
     
     if entrenar_rnn:
         modelo = MODELO_RNN
         model = Sequential()
-        model.add(Embedding(input_dim=max_words, output_dim=UNIDADES_LSTM, input_length=MAXIMA_LONGITUD_EJEMPLOS))
-        model.add(SpatialDropout1D(0.1))
-        model.add(LSTM(units=UNIDADES_LSTM, dropout=0.1, recurrent_dropout=0.1))
-        model.add(Dense(UNIDADES_LSTM, activation='relu'))
-        model.add(Dropout(0.1))
-        model.add(Dense(num_classes, activation='softmax'))
+        # model.add(Embedding(input_dim=max_words, output_dim=UNIDADES_LSTM, input_length=MAXIMA_LONGITUD_EJEMPLOS))
+        # model.add(SpatialDropout1D(0.1))
+        # model.add(LSTM(units=UNIDADES_LSTM, dropout=0.1, recurrent_dropout=0.1))
+        # model.add(Dense(UNIDADES_LSTM, activation='relu'))
+        # model.add(Dropout(0.1))
+        # model.add(Dense(num_classes, activation='softmax'))
     
+        # model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['categorical_accuracy'])
+
+        model.add(Embedding(input_dim=max_words, output_dim=UNIDADES_LSTM, input_length=MAXIMA_LONGITUD_EJEMPLOS))
+        # model.add(Dropout(0.1))
+        model.add(LSTM(units=UNIDADES_LSTM, dropout=0.1)) #, input_shape=formato_entrada))
+        model.add(Dense(num_classes))
+        model.add(Activation('softmax'))
         model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['categorical_accuracy'])
+
         model.summary()
 
         callbacks = [
